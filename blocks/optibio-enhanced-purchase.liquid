@@ -1,0 +1,177 @@
+{% comment %}
+  OptiBio Enhanced Purchase Options Block
+  Compatible with Horizon theme architecture
+  Integrates with Shopify native Subscriptions
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "OptiBio Enhanced Purchase",
+  "class": "optibio-enhanced-purchase-block",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_enhanced_ui",
+      "label": "Enable Enhanced Purchase UI",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "most_popular_label",
+      "label": "Most Popular Badge Text",
+      "default": "⭐ MOST POPULAR"
+    },
+    {
+      "type": "text",
+      "id": "best_value_label",
+      "label": "Best Value Badge Text",
+      "default": "💎 BEST VALUE"
+    }
+  ]
+}
+{% endschema %}
+
+{% if block.settings.show_enhanced_ui %}
+  <!-- Load Custom CSS and JS -->
+  {{ 'optibio-product-enhancements.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'optibio-product-enhancements.js' | asset_url }}" defer></script>
+
+  <div class="optibio-enhanced-buy-box" {{ block.shopify_attributes }}>
+    
+    <!-- Purchase Type Toggle -->
+    <div class="optibio-purchase-type">
+      <!-- One-Time Purchase Option -->
+      <label class="optibio-purchase-option" for="purchase-onetime-{{ section.id }}">
+        <input 
+          type="radio" 
+          name="purchase-type-{{ section.id }}" 
+          id="purchase-onetime-{{ section.id }}" 
+          value="onetime"
+        >
+        <div class="optibio-purchase-label">
+          <div class="optibio-purchase-title">
+            One-Time Purchase
+          </div>
+        </div>
+        <div class="optibio-purchase-price">
+          <span class="original-price">$49.99</span>
+          <span data-onetime-price>$39.99</span>
+        </div>
+      </label>
+      
+      <!-- Subscribe & Save Option (Default Selected) -->
+      <label class="optibio-purchase-option selected" for="purchase-subscription-{{ section.id }}">
+        <input 
+          type="radio" 
+          name="purchase-type-{{ section.id }}" 
+          id="purchase-subscription-{{ section.id }}" 
+          value="subscription"
+          checked
+        >
+        <div class="optibio-purchase-label">
+          <div class="optibio-purchase-title">
+            Subscribe & Save
+            <span class="badge">15% OFF</span>
+          </div>
+          <div class="optibio-purchase-benefits">
+            <span>Free shipping</span>
+            <span>Cancel anytime</span>
+          </div>
+        </div>
+        <div class="optibio-purchase-price">
+          <span class="original-price">$49.99</span>
+          <span data-subscription-price>$33.99</span>
+        </div>
+      </label>
+    </div>
+    
+    <!-- Bundle Size Selector -->
+    <div class="optibio-bundle-selector">
+      <label class="optibio-bundle-label">Select Your Supply:</label>
+      
+      <div class="optibio-bundle-cards">
+        <!-- 1 Bottle -->
+        <div class="optibio-bundle-card">
+          <input 
+            type="radio" 
+            name="bundle-size-{{ section.id }}" 
+            id="bundle-1-{{ section.id }}" 
+            value="1"
+          >
+          <label for="bundle-1-{{ section.id }}">
+            <div class="optibio-bundle-quantity">1 BOTTLE</div>
+            <div class="optibio-bundle-supply">45-Day Supply</div>
+            <div class="optibio-bundle-price" data-bundle-price="1">$33.99</div>
+            <div class="optibio-bundle-discount">(20% off)</div>
+          </label>
+        </div>
+        
+        <!-- 3 Bottles - MOST POPULAR (Default Selected) -->
+        <div class="optibio-bundle-card selected">
+          <span class="optibio-bundle-badge">{{ block.settings.most_popular_label }}</span>
+          <input 
+            type="radio" 
+            name="bundle-size-{{ section.id }}" 
+            id="bundle-3-{{ section.id }}" 
+            value="3"
+            checked
+          >
+          <label for="bundle-3-{{ section.id }}">
+            <div class="optibio-bundle-quantity">3 BOTTLES</div>
+            <div class="optibio-bundle-supply">135-Day Supply</div>
+            <div class="optibio-bundle-price" data-bundle-price="3">$84.99</div>
+            <div class="optibio-bundle-price-per" data-bundle-per-bottle="3">$28.33/bottle</div>
+            <div class="optibio-bundle-savings">Save $64.98</div>
+            <div class="optibio-bundle-discount">(43% off)</div>
+          </label>
+        </div>
+        
+        <!-- 6 Bottles - BEST VALUE -->
+        <div class="optibio-bundle-card">
+          <span class="optibio-bundle-badge best-value">{{ block.settings.best_value_label }}</span>
+          <input 
+            type="radio" 
+            name="bundle-size-{{ section.id }}" 
+            id="bundle-6-{{ section.id }}" 
+            value="6"
+          >
+          <label for="bundle-6-{{ section.id }}">
+            <div class="optibio-bundle-quantity">6 BOTTLES</div>
+            <div class="optibio-bundle-supply">270-Day Supply</div>
+            <div class="optibio-bundle-price" data-bundle-price="6">$152.99</div>
+            <div class="optibio-bundle-price-per" data-bundle-per-bottle="6">$25.50/bottle</div>
+            <div class="optibio-bundle-savings">Save $146.95</div>
+            <div class="optibio-bundle-discount">(49% off)</div>
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Price Summary -->
+    <div class="optibio-price-summary">
+      <div class="optibio-price-row">
+        <span class="optibio-price-label">Subtotal:</span>
+        <span class="optibio-price-value">
+          <span class="compare-at" data-price-compare-at>$149.97</span>
+          <span data-price-subtotal>$84.99</span>
+        </span>
+      </div>
+      
+      <div class="optibio-price-row">
+        <span class="optibio-price-label">Shipping:</span>
+        <span class="optibio-price-value" data-price-shipping>FREE</span>
+      </div>
+      
+      <div class="optibio-price-row">
+        <span class="optibio-price-label">You Save:</span>
+        <span class="optibio-price-value savings" data-price-savings>$64.98 (43%)</span>
+      </div>
+      
+      <div class="optibio-price-row">
+        <span class="optibio-price-label">Total:</span>
+        <span class="optibio-price-value total" data-price-total>$84.99</span>
+      </div>
+    </div>
+    
+  </div>
+{% endif %}

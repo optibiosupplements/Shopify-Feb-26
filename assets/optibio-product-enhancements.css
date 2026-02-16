@@ -1,0 +1,387 @@
+/* OptiBio Enhanced Buy Box - Ethereal Clinical Luxury Design */
+/* Approved Brand Colors: Navy #1B365D, Gold #D4AF37 */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+  --navy: #1B365D;
+  --gold: #D4AF37;
+  --gold-light: #F4E4BA;
+  --sky-50: #f0f9ff;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --green-600: #16a34a;
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-body {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* OptiBio Enhanced Purchase Container */
+.optibio-enhanced-purchase {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(to bottom, var(--sky-50), var(--white), var(--sky-50));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Glassmorphism Effect */
+.optibio-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+/* Bundle Selector */
+.optibio-bundle-selector {
+  margin-bottom: 1.5rem;
+}
+
+.optibio-bundle-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  margin-bottom: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.optibio-bundle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .optibio-bundle-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.optibio-bundle-card {
+  position: relative;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--gray-200);
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.optibio-bundle-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.optibio-bundle-card.selected {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.05);
+  box-shadow: 0 8px 16px rgba(212, 175, 55, 0.2);
+}
+
+.optibio-bundle-badge {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.optibio-bundle-badge.popular {
+  background-color: var(--gold);
+  color: var(--white);
+}
+
+.optibio-bundle-badge.value {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.optibio-bundle-title {
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.optibio-bundle-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0.25rem 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.optibio-bundle-per-bottle {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.optibio-bundle-savings {
+  font-size: 0.75rem;
+  color: var(--green-600);
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.optibio-bundle-supply {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  margin-top: 0.25rem;
+}
+
+.optibio-bundle-checkmark {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--gold);
+}
+
+/* Subscription Toggle */
+.optibio-subscription-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--gray-200);
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.optibio-subscription-toggle:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.optibio-subscription-toggle.active {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.optibio-toggle-switch {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: var(--gray-300);
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.optibio-toggle-switch.active {
+  background-color: var(--gold);
+}
+
+.optibio-toggle-knob {
+  position: absolute;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--white);
+  border-radius: 9999px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  transform: translateX(0.25rem);
+}
+
+.optibio-toggle-knob.active {
+  transform: translateX(1.75rem);
+}
+
+.optibio-toggle-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.optibio-toggle-title {
+  font-weight: 600;
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.optibio-toggle-subtitle {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.optibio-toggle-savings {
+  font-weight: 600;
+  color: var(--green-600);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.optibio-badge-15off {
+  display: inline-block;
+  background-color: var(--gold);
+  color: var(--white);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+
+/* Price Summary */
+.optibio-price-summary {
+  padding: 1rem 0;
+  border-top: 1px solid var(--gray-200);
+  margin-top: 1rem;
+}
+
+.optibio-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.optibio-price-label {
+  color: var(--gray-600);
+  font-size: 0.875rem;
+}
+
+.optibio-price-value {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.optibio-price-strikethrough {
+  text-decoration: line-through;
+  color: var(--gray-400);
+  margin-right: 0.5rem;
+}
+
+.optibio-price-total {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  font-family: 'Playfair Display', serif;
+}
+
+.optibio-savings-highlight {
+  color: var(--green-600);
+  font-weight: 600;
+}
+
+/* CTA Button */
+.optibio-cta-button {
+  width: 100%;
+  background-color: var(--navy);
+  color: var(--white);
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.3);
+  position: relative;
+  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.optibio-cta-button:hover {
+  background-color: rgba(27, 54, 93, 0.9);
+  box-shadow: 0 6px 16px rgba(27, 54, 93, 0.4);
+  transform: translateY(-2px);
+}
+
+.optibio-cta-button:active {
+  transform: translateY(0);
+}
+
+/* Shine effect for CTA button */
+.optibio-cta-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) rotate(30deg); }
+}
+
+/* Trust Signals */
+.optibio-trust-signals {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  flex-wrap: wrap;
+}
+
+.optibio-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.optibio-trust-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--gold);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .optibio-enhanced-purchase {
+    padding: 1rem;
+  }
+  
+  .optibio-price-total {
+    font-size: 2rem;
+  }
+  
+  .optibio-cta-button {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+  
+  .optibio-trust-signals {
+    gap: 1rem;
+  }
+}

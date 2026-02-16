@@ -1,0 +1,50 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_0": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "\n<section class=\"ob-hero-section\">\n  <div class=\"ob-hero-content\">\n    <h1>Feel calm again.<br>Think clearly, Sleep deeply.</h1>\n    \n    <p style=\"font-size: 20px; line-height: 1.6; margin: 24px 0;\">\n      Clinically studied ashwagandha for stress support, better sleep, \n      and clearer focus — one capsule daily.\n    </p>\n    \n    <div class=\"ob-reviews\">\n      <span class=\"stars\">★★★★★</span>\n      <span>4.9 (287 reviews)</span>\n    </div>\n    \n    <a href=\"/products/optibio-ashwagandha-ksm-66\" class=\"btn-primary\">\n      Pre-Order Now - From $25.49/bottle →\n    </a>\n    \n    <div class=\"ob-trust-badges\">\n      <span>🔬 Third-party tested</span>\n      <span>• Made in USA</span>\n      <span>• 90-day guarantee</span>\n    </div>\n  </div>\n  \n  <div class=\"ob-hero-product\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0713/6994/9253/files/product-golden-radiance.png?v=1770611910\" \n         alt=\"OptiBio Ashwagandha KSM-66\" \n         class=\"animate-float animate-glow\" \n         loading=\"eager\" />\n    \n    <div class=\"ob-stats-card card-glass\">\n      <div class=\"ob-stat-number\">44%</div>\n      <div class=\"ob-stat-label\">Cortisol Reduction</div>\n      <a href=\"/pages/science\" class=\"ob-stat-link\">View study →</a>\n    </div>\n  </div>\n</section>\n"
+      }
+    },
+    "section_1": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "\n<section class=\"ob-bundles-section\">\n  <h2>Choose Your Clinical Protocol</h2>\n  <p class=\"subheading\">All include FREE shipping & 90-day guarantee</p>\n  \n  <div class=\"ob-bundles-grid\">\n    \n    <!-- 1 BOTTLE -->\n    <div class=\"ob-bundle-card\">\n      <h3>Trial</h3>\n      <p class=\"supply\">45-Day Supply</p>\n      <p class=\"price\">$39.99</p>\n      <p class=\"compare\">$49.99</p>\n      <p class=\"savings\">Save $10 (20%)</p>\n      <p class=\"per-day\">$0.89/day</p>\n      <p class=\"shipping\">+ $4.99 shipping</p>\n      <a href=\"/products/optibio-ashwagandha-ksm-66\" class=\"btn-secondary\">Select</a>\n    </div>\n    \n    <!-- 3 BOTTLES - FEATURED -->\n    <div class=\"ob-bundle-card ob-bundle-featured\">\n      <div class=\"badge\">MOST POPULAR</div>\n      <h3>Clinical Protocol</h3>\n      <p class=\"supply\">135-Day Supply</p>\n      <p class=\"price\">$99.99</p>\n      <p class=\"price-per\">$33.33/bottle</p>\n      <p class=\"compare\">$149.97</p>\n      <p class=\"savings\">Save $49.98 (33%)</p>\n      <p class=\"per-day\">$0.74/day</p>\n      <p class=\"shipping\">FREE shipping</p>\n      <a href=\"/products/optibio-ashwagandha-ksm-66\" class=\"btn-primary\">Select</a>\n    </div>\n    \n    <!-- 6 BOTTLES -->\n    <div class=\"ob-bundle-card\">\n      <div class=\"badge\">BEST VALUE</div>\n      <h3>Premium</h3>\n      <p class=\"supply\">270-Day Supply</p>\n      <p class=\"price\">$179.94</p>\n      <p class=\"price-per\">$29.99/bottle</p>\n      <p class=\"compare\">$299.94</p>\n      <p class=\"savings\">Save $119.99 (40%)</p>\n      <p class=\"per-day\">$0.67/day</p>\n      <p class=\"shipping\">FREE shipping</p>\n      <a href=\"/products/optibio-ashwagandha-ksm-66\" class=\"btn-secondary\">Select</a>\n    </div>\n    \n  </div>\n  \n  <!-- Subscribe & Save Section -->\n  <div class=\"ob-subscription-info card-glass\">\n    <h3>Subscribe & Save 15%</h3>\n    <p>Get automatic deliveries + FREE shipping always</p>\n    <ul>\n      <li>• 1 bottle: $33.99 every 45 days ($0.76/day)</li>\n      <li>• 3 bottles: $84.99 every 90 days ($0.63/day)</li>\n      <li>• 6 bottles: $152.94 every 180 days ($0.57/day)</li>\n    </ul>\n    <p class=\"note\">Cancel anytime. No commitments.</p>\n  </div>\n</section>\n"
+      }
+    },
+    "section_2": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "\n<section class=\"ob-benefits-section\">\n  <h2>Clinically Proven Benefits</h2>\n  <p class=\"subheading\">Results from peer-reviewed studies</p>\n  \n  <div class=\"ob-benefits-grid\">\n    \n    <div class=\"ob-benefit-card card-glass\">\n      <div class=\"icon\">💤</div>\n      <h3>72% Sleep Improvement</h3>\n      <p>Fall asleep faster and wake refreshed</p>\n      <a href=\"/pages/science\">View study →</a>\n    </div>\n    \n    <div class=\"ob-benefit-card card-glass\">\n      <div class=\"icon\">🧘</div>\n      <h3>44% Stress Reduction</h3>\n      <p>Clinically proven to lower cortisol levels</p>\n      <a href=\"/pages/science\">View study →</a>\n    </div>\n    \n    <div class=\"ob-benefit-card card-glass\">\n      <div class=\"icon\">⚡</div>\n      <h3>27.9% Energy Boost</h3>\n      <p>Enhanced physical performance and endurance</p>\n      <a href=\"/pages/science\">View study →</a>\n    </div>\n    \n    <div class=\"ob-benefit-card card-glass\">\n      <div class=\"icon\">🧠</div>\n      <h3>Mental Clarity</h3>\n      <p>Sharper focus and improved cognitive function</p>\n      <a href=\"/pages/science\">View study →</a>\n    </div>\n    \n  </div>\n</section>\n"
+      }
+    },
+    "section_3": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "\n<section class=\"ob-testimonials-section\">\n  <h2>What Our Customers Say</h2>\n  \n  <div class=\"ob-testimonials-grid\">\n    \n    <div class=\"ob-testimonial-card card-glass\">\n      <div class=\"stars\">★★★★★</div>\n      <p>\"I was skeptical, but after 3 weeks I noticed I wasn't lying awake at 2am anymore. My mind actually quiets down now. This has been a game-changer for my sleep.\"</p>\n      <div class=\"author\">\n        <p class=\"name\">Rachel K.</p>\n        <p class=\"location\">Austin, TX</p>\n      </div>\n    </div>\n    \n    <div class=\"ob-testimonial-card card-glass\">\n      <div class=\"stars\">★★★★★</div>\n      <p>\"As a software engineer, my brain never stops. OptiBio helps me focus during the day and actually relax at night. The clinical dosage matters - I tried cheaper brands and they didn't work.\"</p>\n      <div class=\"author\">\n        <p class=\"name\">David L.</p>\n        <p class=\"location\">San Francisco, CA</p>\n      </div>\n    </div>\n    \n    <div class=\"ob-testimonial-card card-glass\">\n      <div class=\"stars\">★★★★★</div>\n      <p>\"Grad school stress was destroying my health. A friend recommended OptiBio and within a month, I felt like myself again. Better focus, less anxiety, and I'm actually sleeping through the night.\"</p>\n      <div class=\"author\">\n        <p class=\"name\">Maya P.</p>\n        <p class=\"location\">Boston, MA</p>\n      </div>\n    </div>\n    \n  </div>\n</section>\n"
+      }
+    },
+    "section_4": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "\n<section class=\"ob-guarantee-section\">\n  <h2>90-Day Money-Back Guarantee</h2>\n  <p>Try OptiBio risk-free. If you don't feel calmer, sleep better, \n  and think more clearly, we'll refund every penny.</p>\n  \n  <div class=\"ob-steps\">\n    <div class=\"ob-step\">\n      <div class=\"number\">1</div>\n      <h3>Try It</h3>\n      <p>Take OptiBio daily for up to 90 days</p>\n    </div>\n    <div class=\"ob-step\">\n      <div class=\"number\">2</div>\n      <h3>Feel Results</h3>\n      <p>Experience calm, clarity, better sleep</p>\n    </div>\n    <div class=\"ob-step\">\n      <div class=\"number\">3</div>\n      <h3>Keep or Return</h3>\n      <p>Full refund if not satisfied. Keep the bottle.</p>\n    </div>\n  </div>\n  \n  <p class=\"note\">Why 90 days? Ashwagandha's full benefits build over 8+ weeks.</p>\n</section>\n"
+      }
+    }
+  },
+  "order": [
+    "section_0",
+    "section_1",
+    "section_2",
+    "section_3",
+    "section_4"
+  ]
+}
