@@ -148,6 +148,12 @@
         "padding-block-end": 30
       }
     },
+    "fda_disclaimer": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "\n<div style=\"text-align: center; padding: 12px 20px; font-size: 11px; color: #888; line-height: 1.5; max-width: 800px; margin: 0 auto;\">\n  <p style=\"margin: 0;\">†These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>\n</div>\n"
+      }
+    },
     "footer_utilities_jLGE8U": {
       "type": "footer-utilities",
       "blocks": {
@@ -206,6 +212,7 @@
   },
   "order": [
     "footer_m9NzUG",
+    "fda_disclaimer",
     "footer_utilities_jLGE8U"
   ]
 }

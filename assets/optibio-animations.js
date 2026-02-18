@@ -1,4 +1,4 @@
-/* OptiBio Premium Animations v4.0 */
+/* Optibio Premium Animations v4.0 */
 (function() {
   'use strict';
   

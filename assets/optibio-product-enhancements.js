@@ -1,10 +1,10 @@
 /**
- * OptiBio Product Page Enhancements - Phase 1 v2
+ * Optibio Product Page Enhancements - Phase 1 v2
  * Integrated with Shopify Native Subscriptions
- * Actual Variant IDs from OptiBio store
+ * Actual Variant IDs from Optibio store
  */
 
-class OptiBioProductEnhancements {
+class OptibioProductEnhancements {
   constructor() {
     // Real variant IDs from Shopify
     this.variants = {
@@ -265,8 +265,8 @@ class OptiBioProductEnhancements {
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    window.optiBioEnhancements = new OptiBioProductEnhancements();
+    window.optiBioEnhancements = new OptibioProductEnhancements();
   });
 } else {
-  window.optiBioEnhancements = new OptiBioProductEnhancements();
+  window.optiBioEnhancements = new OptibioProductEnhancements();
 }
