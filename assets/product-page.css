@@ -388,15 +388,19 @@
 
 .optibio-hero__media-item {
   display: none;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
 }
 
 .optibio-hero__media-item.active {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .optibio-hero__image {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: var(--optibio-radius-section);
   object-fit: contain;
 }
@@ -1214,5 +1218,16 @@
   .optibio-trust-bar__inner {
     gap: var(--optibio-space-sm);
     font-size: 11px;
+  }
+
+  /* Hero image: breathing room on mobile */
+  .optibio-hero__media-item {
+    max-height: 400px;
+    padding: var(--optibio-space-md);
+  }
+
+  .optibio-hero__image {
+    max-width: 90%;
+    margin: 0 auto;
   }
 }
