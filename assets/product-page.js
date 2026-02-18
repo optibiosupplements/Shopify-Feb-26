@@ -343,6 +343,18 @@
     initStatCounters();
     initProductGallery();
     initPriceSync();
+
+    /* Fallback: force all reveal elements visible after 3s */
+    setTimeout(function() {
+      var reveals = document.querySelectorAll('.optibio-reveal');
+      for (var i = 0; i < reveals.length; i++) {
+        reveals[i].classList.add('visible');
+      }
+      var stats = document.querySelectorAll('.optibio-stat-number');
+      for (var j = 0; j < stats.length; j++) {
+        stats[j].style.opacity = '1';
+      }
+    }, 3000);
   }
 
   if (document.readyState === 'loading') {
