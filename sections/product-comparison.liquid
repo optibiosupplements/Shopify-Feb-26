@@ -1,0 +1,115 @@
+{% comment %}
+  Optibio Comparison Section
+  Section 3: Why KSM-66® — Generic Ashwagandha vs Optibio KSM-66®
+{% endcomment %}
+
+<section class="optibio-section optibio-comparison optibio-reveal" id="optibio-comparison">
+  <div class="page-width">
+
+    <div class="optibio-section-header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+
+    {% comment %} Desktop: Full comparison table {% endcomment %}
+    <div class="optibio-comparison-table-wrap">
+      <table class="optibio-comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Generic Ashwagandha</th>
+            <th>Optibio KSM-66&reg;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Extract Type</td>
+            <td><span class="icon-x">&#10007;</span> Varies (often leaf-only)</td>
+            <td><span class="icon-check">&#10003;</span> Full-spectrum root extract</td>
+          </tr>
+          <tr>
+            <td>Withanolide Content</td>
+            <td><span class="icon-x">&#10007;</span> 1&ndash;2% (unstandardized)</td>
+            <td><span class="icon-check">&#10003;</span> 5% withanolides (standardized)</td>
+          </tr>
+          <tr>
+            <td>Clinical Studies</td>
+            <td><span class="icon-x">&#10007;</span> Few or none</td>
+            <td><span class="icon-check">&#10003;</span> 24+ peer-reviewed trials</td>
+          </tr>
+          <tr>
+            <td>Quality Testing</td>
+            <td><span class="icon-x">&#10007;</span> Unknown or self-tested</td>
+            <td><span class="icon-check">&#10003;</span> 3rd-party verified (COA available)</td>
+          </tr>
+          <tr>
+            <td>Clinical Dosage</td>
+            <td><span class="icon-x">&#10007;</span> Often underdosed</td>
+            <td><span class="icon-check">&#10003;</span> 600mg full clinical dose</td>
+          </tr>
+          <tr>
+            <td>Extraction Method</td>
+            <td><span class="icon-x">&#10007;</span> Chemical solvents common</td>
+            <td><span class="icon-check">&#10003;</span> Green chemistry (milk-based)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    {% comment %} Mobile: Stacked comparison cards {% endcomment %}
+    <div class="optibio-comparison-cards">
+      {% assign features = "Extract Type,Withanolide Content,Clinical Studies,Quality Testing,Clinical Dosage,Extraction Method" | split: "," %}
+      {% assign generic = "Varies (often leaf-only),1-2% (unstandardized),Few or none,Unknown or self-tested,Often underdosed,Chemical solvents common" | split: "," %}
+      {% assign optibio_vals = "Full-spectrum root extract,5% withanolides (standardized),24+ peer-reviewed trials,3rd-party verified (COA available),600mg full clinical dose,Green chemistry (milk-based)" | split: "," %}
+
+      {% for feature in features %}
+        <div class="optibio-comparison-card">
+          <div class="optibio-comparison-card__header" style="font-weight:600;color:#1B365D;margin-bottom:8px;font-size:15px;">{{ feature }}</div>
+          <div class="optibio-comparison-card__row">
+            <span class="optibio-comparison-card__label" style="color:#EF4444;">&#10007; Generic</span>
+            <span>{{ generic[forloop.index0] }}</span>
+          </div>
+          <div class="optibio-comparison-card__row" style="border-bottom:none;">
+            <span class="optibio-comparison-card__label" style="color:#10B981;">&#10003; Optibio</span>
+            <span>{{ optibio_vals[forloop.index0] }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% comment %} CTA link to Science page {% endcomment %}
+    <div style="text-align:center;margin-top:var(--optibio-space-xl);">
+      <a href="/pages/science" style="font-family:var(--optibio-font-body);font-size:16px;font-weight:600;color:var(--optibio-navy);">
+        See the Full Science &rarr;
+      </a>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Optibio Comparison",
+  "tag": "section",
+  "class": "optibio-comparison-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Why KSM-66\u00ae?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Not all ashwagandha is created equal. Here's what sets KSM-66\u00ae apart."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Optibio Comparison"
+    }
+  ]
+}
+{% endschema %}

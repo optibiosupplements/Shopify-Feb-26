@@ -1,0 +1,58 @@
+{% comment %}
+  Optibio Final CTA Section
+  Section 10: Bottom CTA — captures customers ready to buy after scrolling
+  Desktop: full-width navy section
+  Mobile: complemented by sticky cart bar
+{% endcomment %}
+
+<section class="optibio-section optibio-final-cta optibio-reveal" id="optibio-final-cta">
+  <div class="page-width">
+
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+
+    <a href="#optibio-hero" class="optibio-btn-primary" style="display:inline-flex;">
+      {{ section.settings.button_text }}
+    </a>
+
+    <div class="optibio-final-cta__trust">
+      <span>&#10003; 90-day guarantee</span>
+      <span>&#10003; Free shipping $75+</span>
+      <span>&#9733;&#9733;&#9733;&#9733;&#9733; 4.9/5</span>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Optibio Final CTA",
+  "tag": "section",
+  "class": "optibio-final-cta-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to Feel Calm Again?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Join thousands who have transformed their stress response with clinically studied KSM-66\u00ae ashwagandha."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Start Your Journey \u2014 $99.99"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Optibio Final CTA"
+    }
+  ]
+}
+{% endschema %}

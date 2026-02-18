@@ -1,0 +1,141 @@
+{% comment %}
+  Optibio Timeline Section
+  Section 5: What to Expect — 3 milestones
+  Realistic expectations, no hype
+{% endcomment %}
+
+<section class="optibio-section optibio-timeline optibio-reveal" id="optibio-timeline">
+  <div class="page-width">
+
+    <div class="optibio-section-header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="optibio-timeline-track">
+
+      {% comment %} Week 1-2 {% endcomment %}
+      <div class="optibio-timeline-item optibio-reveal optibio-reveal-delay-1">
+        <div class="optibio-timeline-dot">1</div>
+        <div class="optibio-timeline-content">
+          <div class="optibio-timeline-period">{{ section.settings.period_1 }}</div>
+          <h3>{{ section.settings.title_1 }}</h3>
+          <p>{{ section.settings.desc_1 }}</p>
+        </div>
+      </div>
+
+      {% comment %} Week 3-4 {% endcomment %}
+      <div class="optibio-timeline-item optibio-reveal optibio-reveal-delay-2">
+        <div class="optibio-timeline-dot">2</div>
+        <div class="optibio-timeline-content">
+          <div class="optibio-timeline-period">{{ section.settings.period_2 }}</div>
+          <h3>{{ section.settings.title_2 }}</h3>
+          <p>{{ section.settings.desc_2 }}</p>
+        </div>
+      </div>
+
+      {% comment %} Week 5-8 {% endcomment %}
+      <div class="optibio-timeline-item optibio-reveal optibio-reveal-delay-3">
+        <div class="optibio-timeline-dot">3</div>
+        <div class="optibio-timeline-content">
+          <div class="optibio-timeline-period">{{ section.settings.period_3 }}</div>
+          <h3>{{ section.settings.title_3 }}</h3>
+          <p>{{ section.settings.desc_3 }}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;font-size:14px;color:var(--optibio-body);margin-top:var(--optibio-space-xl);font-style:italic;">
+      {{ section.settings.disclaimer }}
+    </p>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Optibio Timeline",
+  "tag": "section",
+  "class": "optibio-timeline-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "What to Expect"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Ashwagandha works with your body over time. Here's a realistic timeline."
+    },
+    {
+      "type": "text",
+      "id": "period_1",
+      "label": "Period 1",
+      "default": "Week 1\u20132"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title 1",
+      "default": "Initial Adaptation"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_1",
+      "label": "Description 1",
+      "default": "Your body begins adapting. You may notice subtle improvements in stress response and a growing sense of calm."
+    },
+    {
+      "type": "text",
+      "id": "period_2",
+      "label": "Period 2",
+      "default": "Week 3\u20134"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title 2",
+      "default": "Building Benefits"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_2",
+      "label": "Description 2",
+      "default": "Most people notice meaningful improvements in sleep quality, sustained energy, and reduced reactivity to daily stressors."
+    },
+    {
+      "type": "text",
+      "id": "period_3",
+      "label": "Period 3",
+      "default": "Week 5\u20138"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title 3",
+      "default": "Full Benefits"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_3",
+      "label": "Description 3",
+      "default": "Cumulative benefits compound: deeper resilience, clearer thinking, better recovery, and consistent well-being."
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer Text",
+      "default": "Results vary. Most customers notice changes within 2\u20134 weeks of consistent daily use."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Optibio Timeline"
+    }
+  ]
+}
+{% endschema %}

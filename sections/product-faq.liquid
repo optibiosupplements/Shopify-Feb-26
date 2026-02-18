@@ -1,0 +1,132 @@
+{% comment %}
+  Optibio FAQ Section
+  Section 9: 7-question accordion, one open at a time
+  Uses <details>/<summary> for no-JS accessibility
+  Enhanced by product-page.js for single-open behavior
+{% endcomment %}
+
+<section class="optibio-section optibio-faq optibio-reveal" id="optibio-faq">
+  <div class="page-width">
+
+    <div class="optibio-section-header">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="optibio-faq-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'faq_item' %}
+          <details class="optibio-faq-item" {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.question }}</summary>
+            <div class="optibio-faq-answer">
+              {{ block.settings.answer }}
+            </div>
+          </details>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% comment %} FDA Disclaimer {% endcomment %}
+    <div class="optibio-fda-disclaimer" style="margin-top:var(--optibio-space-2xl);">
+      {{ section.settings.fda_disclaimer }}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Optibio FAQ",
+  "tag": "section",
+  "class": "optibio-faq-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "fda_disclaimer",
+      "label": "FDA Disclaimer",
+      "default": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How long until I feel results?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Most customers notice subtle improvements within 1\u20132 weeks, with more significant benefits emerging at 3\u20134 weeks of consistent daily use. Full adaptogenic benefits typically develop over 6\u20138 weeks.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Optibio FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long until I feel results?",
+            "answer": "<p>Most customers notice subtle improvements within 1\u20132 weeks, with more significant benefits emerging at 3\u20134 weeks of consistent daily use. Full adaptogenic benefits typically develop over 6\u20138 weeks. Consistency is key \u2014 take it daily for best results.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What\u2019s the difference between KSM-66\u00ae and regular ashwagandha?",
+            "answer": "<p>KSM-66\u00ae is a patented, full-spectrum root extract standardized to 5% withanolides. Unlike generic ashwagandha (which often uses leaf or a mix), KSM-66\u00ae is backed by 24+ peer-reviewed clinical trials and uses a unique milk-based extraction process that preserves the natural balance of active compounds.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are there any side effects?",
+            "answer": "<p>KSM-66\u00ae ashwagandha is generally well-tolerated in clinical studies. Mild, temporary digestive discomfort has been reported in some cases. If you are taking medications, especially for thyroid conditions, blood pressure, or blood sugar, please consult your healthcare provider before starting any new supplement.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I take this with other supplements?",
+            "answer": "<p>Yes, ashwagandha is generally compatible with most supplements. However, if you are taking prescription medications or other adaptogenic herbs, we recommend consulting your doctor to ensure there are no interactions.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if it doesn\u2019t work for me?",
+            "answer": "<p>We offer a 90-day money-back guarantee. If you\u2019re not satisfied with your results after giving it a fair trial (we recommend at least 30 days of consistent use), contact us for a full refund. No questions asked.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Take 2 capsules daily, preferably with food. You can take both capsules together or split them (one in the morning, one in the evening). For sleep support, some customers prefer taking their dose in the evening.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this FDA approved?",
+            "answer": "<p>Dietary supplements are not evaluated or approved by the FDA in the same way prescription drugs are. However, our product is manufactured in an FDA-registered, GMP-certified facility in the United States, and every batch is third-party tested for purity, potency, and contaminants.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

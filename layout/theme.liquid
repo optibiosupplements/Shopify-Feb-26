@@ -37,10 +37,11 @@
 
     {{ content_for_header }}
   
-  {{ 'optibio-brand.css' | asset_url | stylesheet_tag }}
-
-  {{ 'optibio-custom.css' | asset_url | stylesheet_tag }}
-  <link rel="stylesheet" href="{{ 'optibio-ethereal.css' | asset_url }}">
+  {% unless template.suffix == 'optibio-main' %}
+    {{ 'optibio-brand.css' | asset_url | stylesheet_tag }}
+    {{ 'optibio-custom.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="{{ 'optibio-ethereal.css' | asset_url }}">
+  {% endunless %}
 </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">

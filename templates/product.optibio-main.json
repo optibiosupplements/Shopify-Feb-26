@@ -1,0 +1,234 @@
+{
+  "sections": {
+    "hero": {
+      "type": "product-hero",
+      "settings": {
+        "heading": "Feel Calm Again.",
+        "subheading": "Clinically studied KSM-66\u00ae ashwagandha for stress, sleep, and mental clarity.",
+        "benefit_1": "27.9% cortisol reduction\u00b9",
+        "benefit_2": "Sleep efficiency improved to 83.5%\u00b2",
+        "benefit_3": "90-day money-back guarantee",
+        "show_trust_bar": true
+      }
+    },
+    "social_proof": {
+      "type": "product-social-proof",
+      "settings": {
+        "rating": "4.9",
+        "review_count": "2,400+"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "Finally, something that actually works for my stress levels. I feel calmer throughout the day.",
+            "author": "Sarah M."
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "I was skeptical, but after 3 weeks I noticed a real difference in my sleep quality. Waking up feeling rested.",
+            "author": "James T."
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "As a nurse working long shifts, this has been a game changer for my recovery and stress management.",
+            "author": "Maria L."
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "The quality is noticeably better than other ashwagandha supplements I've tried. Worth every penny.",
+            "author": "David K."
+          }
+        },
+        "testimonial_5": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "My cortisol levels were through the roof from work stress. Two months in and my bloodwork shows real improvement.",
+            "author": "Rachel P."
+          }
+        },
+        "testimonial_6": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 4,
+            "quote": "Takes a few weeks to kick in, but once it does the difference is clear. Better focus and less anxiety.",
+            "author": "Michael R."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4",
+        "testimonial_5",
+        "testimonial_6"
+      ]
+    },
+    "comparison": {
+      "type": "product-comparison",
+      "settings": {
+        "heading": "Why KSM-66\u00ae?",
+        "subheading": "Not all ashwagandha is created equal. Here\u2019s what sets KSM-66\u00ae apart."
+      }
+    },
+    "clinical_stats": {
+      "type": "product-clinical-stats",
+      "settings": {
+        "heading": "Clinically Studied Results",
+        "subheading": "Real outcomes from peer-reviewed, placebo-controlled clinical trials."
+      }
+    },
+    "timeline": {
+      "type": "product-timeline",
+      "settings": {
+        "heading": "What to Expect",
+        "subheading": "Ashwagandha works with your body over time. Here\u2019s a realistic timeline.",
+        "period_1": "Week 1\u20132",
+        "title_1": "Initial Adaptation",
+        "desc_1": "Your body begins adapting. You may notice subtle improvements in stress response and a growing sense of calm.",
+        "period_2": "Week 3\u20134",
+        "title_2": "Building Benefits",
+        "desc_2": "Most people notice meaningful improvements in sleep quality, sustained energy, and reduced reactivity to daily stressors.",
+        "period_3": "Week 5\u20138",
+        "title_3": "Full Benefits",
+        "desc_3": "Cumulative benefits compound: deeper resilience, clearer thinking, better recovery, and consistent well-being.",
+        "disclaimer": "Results vary. Most customers notice changes within 2\u20134 weeks of consistent daily use."
+      }
+    },
+    "who_for": {
+      "type": "product-who-for",
+      "settings": {
+        "heading": "Is Optibio Right for You?",
+        "for_1": "Stressed professionals seeking calm without sedation",
+        "for_2": "Poor sleepers who want to wake up actually feeling rested",
+        "for_3": "Active individuals looking for natural endurance support",
+        "for_4": "Anyone experiencing mental fog or burnout",
+        "not_1": "Anyone expecting overnight results",
+        "not_2": "Pregnant or nursing women (consult your doctor)",
+        "not_3": "Those taking sedatives or thyroid medication (consult your doctor)",
+        "not_4": "Anyone under 18 years of age"
+      }
+    },
+    "mechanism": {
+      "type": "product-mechanism",
+      "settings": {
+        "heading": "How KSM-66\u00ae Works",
+        "subheading": "A clinically studied adaptogen that works with your body\u2019s natural stress response system.",
+        "step_1_title": "Cortisol Regulation",
+        "step_1_desc": "KSM-66\u00ae modulates the HPA axis \u2014 your body\u2019s central stress command system \u2014 to help reduce excess cortisol production.",
+        "step_2_title": "Adaptogenic Response",
+        "step_2_desc": "As an adaptogen, it helps your body build resilience to stressors over time, rather than masking symptoms.",
+        "step_3_title": "Cumulative Benefits",
+        "step_3_desc": "With consistent daily use, benefits compound: better sleep, clearer thinking, calmer days, and improved recovery."
+      }
+    },
+    "trust": {
+      "type": "product-trust",
+      "settings": {
+        "heading": "Quality You Can Trust",
+        "subheading": "Every bottle meets the highest standards for purity, potency, and safety.",
+        "manufacturer_info": "Manufactured by Optimal Biology Supplements, Mount Vernon, NY",
+        "testing_info": "Every batch tested for purity, potency, and contaminants by independent laboratories."
+      }
+    },
+    "faq": {
+      "type": "product-faq",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "fda_disclaimer": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long until I feel results?",
+            "answer": "<p>Most customers notice subtle improvements within 1\u20132 weeks, with more significant benefits emerging at 3\u20134 weeks of consistent daily use. Full adaptogenic benefits typically develop over 6\u20138 weeks. Consistency is key \u2014 take it daily for best results.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What\u2019s the difference between KSM-66\u00ae and regular ashwagandha?",
+            "answer": "<p>KSM-66\u00ae is a patented, full-spectrum root extract standardized to 5% withanolides. Unlike generic ashwagandha (which often uses leaf or a mix), KSM-66\u00ae is backed by 24+ peer-reviewed clinical trials and uses a unique milk-based extraction process that preserves the natural balance of active compounds.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are there any side effects?",
+            "answer": "<p>KSM-66\u00ae ashwagandha is generally well-tolerated in clinical studies. Mild, temporary digestive discomfort has been reported in some cases. If you are taking medications, especially for thyroid conditions, blood pressure, or blood sugar, please consult your healthcare provider before starting any new supplement.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I take this with other supplements?",
+            "answer": "<p>Yes, ashwagandha is generally compatible with most supplements. However, if you are taking prescription medications or other adaptogenic herbs, we recommend consulting your doctor to ensure there are no interactions.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if it doesn\u2019t work for me?",
+            "answer": "<p>We offer a 90-day money-back guarantee. If you\u2019re not satisfied with your results after giving it a fair trial (we recommend at least 30 days of consistent use), contact us for a full refund. No questions asked.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Take 2 capsules daily, preferably with food. You can take both capsules together or split them (one in the morning, one in the evening). For sleep support, some customers prefer taking their dose in the evening.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this FDA approved?",
+            "answer": "<p>Dietary supplements are not evaluated or approved by the FDA in the same way prescription drugs are. However, our product is manufactured in an FDA-registered, GMP-certified facility in the United States, and every batch is third-party tested for purity, potency, and contaminants.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7"
+      ]
+    },
+    "final_cta": {
+      "type": "product-final-cta",
+      "settings": {
+        "heading": "Ready to Feel Calm Again?",
+        "subheading": "Join thousands who have transformed their stress response with clinically studied KSM-66\u00ae ashwagandha.",
+        "button_text": "Start Your Journey \u2014 $99.99"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "social_proof",
+    "comparison",
+    "clinical_stats",
+    "timeline",
+    "who_for",
+    "mechanism",
+    "trust",
+    "faq",
+    "final_cta"
+  ]
+}

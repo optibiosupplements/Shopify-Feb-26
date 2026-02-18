@@ -1,0 +1,171 @@
+{% comment %}
+  Optibio Product Hero Section
+  Section 1: Trust bar + image gallery + headline + buy box + ATC
+  Brand: Navy #1B365D, Gold #D4AF37
+  Fonts: Playfair Display (headings), DM Sans (body)
+{% endcomment %}
+
+{{ 'product-page.css' | asset_url | stylesheet_tag }}
+{{ 'optibio-product-enhancements.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-page.js' | asset_url }}" defer></script>
+<script src="{{ 'optibio-product-enhancements.js' | asset_url }}" defer></script>
+
+{% comment %} Preload hero image for LCP performance {% endcomment %}
+{% if product.featured_image %}
+  <link rel="preload" as="image" href="{{ product.featured_image | image_url: width: 800 }}" fetchpriority="high">
+{% endif %}
+
+{% comment %} Preload fonts {% endcomment %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<section class="optibio-section optibio-hero" id="optibio-hero" data-section-id="{{ section.id }}">
+
+  {% comment %} Trust Bar {% endcomment %}
+  {% if section.settings.show_trust_bar %}
+  <div class="optibio-trust-bar">
+    <div class="optibio-trust-bar__inner">
+      <span>&#10003; GMP Certified</span>
+      <span>&#10003; 3rd-Party Tested</span>
+      <span>&#10003; 90-Day Guarantee</span>
+      <span>&#10003; Free Shipping $75+</span>
+      <span>&#9733;&#9733;&#9733;&#9733;&#9733; 4.9/5</span>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="optibio-hero__container page-width">
+
+    {% comment %} Left: Product Image Gallery {% endcomment %}
+    <div class="optibio-hero__media">
+      {% for media in product.media %}
+        {% if media.media_type == 'image' %}
+          <div class="optibio-hero__media-item {% if forloop.first %}active{% endif %}"
+               data-media-index="{{ forloop.index0 }}">
+            {% if forloop.first %}
+              {{ media | image_url: width: 800 | image_tag:
+                class: 'optibio-hero__image',
+                loading: 'eager',
+                fetchpriority: 'high',
+                alt: media.alt | default: product.title,
+                widths: '400, 600, 800, 1200',
+                sizes: '(min-width: 1024px) 50vw, 100vw'
+              }}
+            {% else %}
+              {{ media | image_url: width: 800 | image_tag:
+                class: 'optibio-hero__image',
+                loading: 'lazy',
+                alt: media.alt | default: product.title,
+                widths: '400, 600, 800',
+                sizes: '(min-width: 1024px) 50vw, 100vw'
+              }}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} Thumbnail Strip {% endcomment %}
+      {% if product.media.size > 1 %}
+      <div class="optibio-hero__thumbnails">
+        {% assign thumb_index = 0 %}
+        {% for media in product.media %}
+          {% if media.media_type == 'image' %}
+            <button class="optibio-hero__thumb {% if thumb_index == 0 %}active{% endif %}"
+                    data-thumb-index="{{ thumb_index }}"
+                    type="button"
+                    aria-label="View image {{ forloop.index }}">
+              {{ media | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}
+            </button>
+            {% assign thumb_index = thumb_index | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% comment %} Right: Purchase Form {% endcomment %}
+    <div class="optibio-hero__details">
+      <h1 class="optibio-hero__heading">{{ section.settings.heading }}</h1>
+      <p class="optibio-hero__subheading">{{ section.settings.subheading }}</p>
+
+      {% comment %} Benefit Bullets {% endcomment %}
+      <ul class="optibio-hero__benefits">
+        <li><span class="check">&#10003;</span> {{ section.settings.benefit_1 }}</li>
+        <li><span class="check">&#10003;</span> {{ section.settings.benefit_2 }}</li>
+        <li><span class="check">&#10003;</span> {{ section.settings.benefit_3 }}</li>
+      </ul>
+
+      {% comment %} Render existing buy box snippet (bundle selector, subscription, price summary, ATC) {% endcomment %}
+      {% render 'optibio-enhanced-buy-box' %}
+
+      {% comment %} Shopify product form (hidden, synced by JS for cart API) {% endcomment %}
+      {% form 'product', product, id: 'optibio-product-form', novalidate: 'novalidate', data-product-form: '' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {% endform %}
+
+      {% comment %} Express Checkout {% endcomment %}
+      <div class="optibio-hero__express-checkout">
+        {%- form 'product', product, id: 'optibio-express-checkout-form' -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {{ form | payment_button }}
+        {%- endform -%}
+      </div>
+    </div>
+
+  </div>
+
+  {% comment %} Sticky Cart Bar (appears on scroll) {% endcomment %}
+  {% render 'product-sticky-cart' %}
+
+</section>
+
+{% schema %}
+{
+  "name": "Optibio Hero",
+  "tag": "section",
+  "class": "optibio-hero-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Hero Heading",
+      "default": "Feel Calm Again."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheadline",
+      "default": "Clinically studied KSM-66\u00ae ashwagandha for stress, sleep, and mental clarity."
+    },
+    {
+      "type": "text",
+      "id": "benefit_1",
+      "label": "Benefit 1",
+      "default": "27.9% cortisol reduction\u00b9"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2",
+      "label": "Benefit 2",
+      "default": "Sleep efficiency improved to 83.5%\u00b2"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3",
+      "label": "Benefit 3",
+      "default": "90-day money-back guarantee"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_bar",
+      "label": "Show Trust Bar",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Optibio Hero"
+    }
+  ]
+}
+{% endschema %}

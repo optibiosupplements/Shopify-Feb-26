@@ -1,0 +1,1218 @@
+/* ============================================
+   Optibio Product Page — Design System
+   Brand: "Ethereal Clinical Luxury"
+   Primary: Navy #1B365D | Gold #D4AF37
+   Fonts: Playfair Display (headings) | DM Sans (body)
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* --- CSS Custom Properties (Design Tokens) --- */
+:root {
+  --optibio-navy: #1B365D;
+  --optibio-gold: #D4AF37;
+  --optibio-sky-start: #E8F4FD;
+  --optibio-sky-end: #C0E4F9;
+  --optibio-body: #475569;
+  --optibio-green: #10B981;
+  --optibio-star: #F59E0B;
+  --optibio-red: #EF4444;
+  --optibio-white: #ffffff;
+  --optibio-bg-glass: rgba(255, 255, 255, 0.7);
+  --optibio-border-glass: rgba(255, 255, 255, 0.3);
+  --optibio-font-display: 'Playfair Display', serif;
+  --optibio-font-body: 'DM Sans', sans-serif;
+  --optibio-space-xs: 4px;
+  --optibio-space-sm: 8px;
+  --optibio-space-md: 16px;
+  --optibio-space-lg: 24px;
+  --optibio-space-xl: 32px;
+  --optibio-space-2xl: 48px;
+  --optibio-space-3xl: 64px;
+  --optibio-space-4xl: 96px;
+  --optibio-radius-input: 8px;
+  --optibio-radius-card: 12px;
+  --optibio-radius-section: 16px;
+  --optibio-radius-pill: 999px;
+  --optibio-shadow-sm: 0 2px 8px rgba(27, 54, 93, 0.08);
+  --optibio-shadow-md: 0 4px 16px rgba(27, 54, 93, 0.12);
+  --optibio-shadow-lg: 0 8px 32px rgba(27, 54, 93, 0.16);
+}
+
+/* --- Base Section Styles --- */
+.optibio-section {
+  font-family: var(--optibio-font-body);
+  color: var(--optibio-body);
+  line-height: 1.6;
+  padding: var(--optibio-space-2xl) var(--optibio-space-md);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.optibio-section * {
+  box-sizing: border-box;
+}
+
+.optibio-section .page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Typography --- */
+.optibio-section h1,
+.optibio-section h2,
+.optibio-section h3 {
+  font-family: var(--optibio-font-display);
+  color: var(--optibio-navy);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.optibio-section h1 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.optibio-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: var(--optibio-space-md);
+}
+
+.optibio-section h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.optibio-section p {
+  font-family: var(--optibio-font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--optibio-body);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.optibio-section a {
+  color: var(--optibio-navy);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.optibio-section a:hover {
+  color: var(--optibio-gold);
+}
+
+/* --- Glassmorphism Card --- */
+.optibio-glass {
+  background: var(--optibio-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--optibio-border-glass);
+  border-radius: var(--optibio-radius-section);
+  padding: var(--optibio-space-lg);
+  box-shadow: var(--optibio-shadow-sm);
+}
+
+/* --- Card Component --- */
+.optibio-card {
+  background: var(--optibio-white);
+  border-radius: var(--optibio-radius-card);
+  padding: var(--optibio-space-lg);
+  box-shadow: var(--optibio-shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.optibio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--optibio-shadow-md);
+}
+
+/* --- Buttons --- */
+.optibio-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--optibio-navy);
+  color: var(--optibio-white);
+  font-family: var(--optibio-font-body);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border: none;
+  border-radius: var(--optibio-radius-card);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.optibio-btn-primary:hover {
+  background-color: rgba(27, 54, 93, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(27, 54, 93, 0.4);
+  color: var(--optibio-white);
+  text-decoration: none;
+}
+
+.optibio-btn-primary:active {
+  transform: translateY(0);
+}
+
+.optibio-btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(30deg);
+  animation: optibio-shine 3s ease-in-out infinite;
+}
+
+/* --- Section Backgrounds --- */
+.optibio-bg-sky {
+  background: linear-gradient(to bottom, var(--optibio-sky-start), var(--optibio-sky-end));
+}
+
+.optibio-bg-white {
+  background: var(--optibio-white);
+}
+
+.optibio-bg-navy {
+  background: var(--optibio-navy);
+  color: var(--optibio-white);
+}
+
+.optibio-bg-navy h2,
+.optibio-bg-navy h3 {
+  color: var(--optibio-white);
+}
+
+.optibio-bg-navy p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* --- Stat Number --- */
+.optibio-stat-number {
+  font-family: var(--optibio-font-body);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--optibio-gold);
+  line-height: 1;
+}
+
+.optibio-stat-label {
+  font-family: var(--optibio-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--optibio-navy);
+  margin-top: var(--optibio-space-sm);
+}
+
+.optibio-stat-citation {
+  font-size: 11px;
+  color: var(--optibio-body);
+  vertical-align: super;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.optibio-stat-citation:hover {
+  color: var(--optibio-gold);
+}
+
+/* --- Badge --- */
+.optibio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--optibio-radius-pill);
+  font-family: var(--optibio-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.optibio-badge-gold {
+  background: var(--optibio-gold);
+  color: var(--optibio-white);
+}
+
+.optibio-badge-navy {
+  background: var(--optibio-navy);
+  color: var(--optibio-white);
+}
+
+/* --- Checkmark / X Lists --- */
+.optibio-check-list,
+.optibio-x-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.optibio-check-list li,
+.optibio-x-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--optibio-space-sm);
+  padding: var(--optibio-space-sm) 0;
+  font-family: var(--optibio-font-body);
+  font-size: 16px;
+  color: var(--optibio-body);
+}
+
+.optibio-check-list li::before {
+  content: '\2713';
+  color: var(--optibio-green);
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.optibio-x-list li::before {
+  content: '\2717';
+  color: var(--optibio-red);
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Section Heading with Subheading --- */
+.optibio-section-header {
+  text-align: center;
+  margin-bottom: var(--optibio-space-2xl);
+}
+
+.optibio-section-header p {
+  margin-top: var(--optibio-space-sm);
+  font-size: 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Animations --- */
+@keyframes optibio-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes optibio-shine {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) rotate(30deg); }
+}
+
+@keyframes optibio-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Scroll Reveal --- */
+.optibio-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.optibio-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.optibio-reveal-delay-1 { transition-delay: 0.1s; }
+.optibio-reveal-delay-2 { transition-delay: 0.2s; }
+.optibio-reveal-delay-3 { transition-delay: 0.3s; }
+.optibio-reveal-delay-4 { transition-delay: 0.4s; }
+
+/* --- Trust Bar --- */
+.optibio-trust-bar {
+  background: var(--optibio-navy);
+  color: var(--optibio-white);
+  padding: var(--optibio-space-sm) var(--optibio-space-md);
+  font-family: var(--optibio-font-body);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.optibio-trust-bar__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--optibio-space-lg);
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.optibio-trust-bar__inner span {
+  display: flex;
+  align-items: center;
+  gap: var(--optibio-space-xs);
+  white-space: nowrap;
+}
+
+/* --- Hero Section --- */
+.optibio-hero {
+  background: linear-gradient(to bottom, var(--optibio-sky-start), var(--optibio-white));
+  padding-top: 0;
+}
+
+.optibio-hero__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--optibio-space-xl);
+  align-items: start;
+}
+
+.optibio-hero__media {
+  position: relative;
+}
+
+.optibio-hero__media-item {
+  display: none;
+}
+
+.optibio-hero__media-item.active {
+  display: block;
+}
+
+.optibio-hero__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--optibio-radius-section);
+  object-fit: contain;
+}
+
+.optibio-hero__thumbnails {
+  display: flex;
+  gap: var(--optibio-space-sm);
+  margin-top: var(--optibio-space-md);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.optibio-hero__thumbnails::-webkit-scrollbar {
+  display: none;
+}
+
+.optibio-hero__thumb {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--optibio-radius-input);
+  border: 2px solid transparent;
+  padding: 2px;
+  cursor: pointer;
+  background: var(--optibio-white);
+  transition: border-color 0.3s ease;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.optibio-hero__thumb.active {
+  border-color: var(--optibio-gold);
+}
+
+.optibio-hero__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.optibio-hero__heading {
+  font-size: 36px;
+  margin-bottom: var(--optibio-space-md);
+}
+
+.optibio-hero__subheading {
+  font-size: 16px;
+  margin-bottom: var(--optibio-space-lg);
+  max-width: 500px;
+}
+
+.optibio-hero__benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--optibio-space-lg) 0;
+}
+
+.optibio-hero__benefits li {
+  display: flex;
+  align-items: center;
+  gap: var(--optibio-space-sm);
+  padding: var(--optibio-space-xs) 0;
+  font-family: var(--optibio-font-body);
+  font-size: 15px;
+  color: var(--optibio-body);
+}
+
+.optibio-hero__benefits li .check {
+  color: var(--optibio-green);
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.optibio-hero__express-checkout {
+  margin-top: var(--optibio-space-md);
+}
+
+/* --- Sticky Cart Bar --- */
+.optibio-sticky-cart {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--optibio-white);
+  border-top: 1px solid rgba(27, 54, 93, 0.1);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+  padding: var(--optibio-space-sm) var(--optibio-space-md);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.optibio-sticky-cart.visible {
+  transform: translateY(0);
+}
+
+.optibio-sticky-cart__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--optibio-space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.optibio-sticky-cart__price {
+  font-family: var(--optibio-font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--optibio-navy);
+}
+
+.optibio-sticky-cart__detail {
+  font-family: var(--optibio-font-body);
+  font-size: 13px;
+  color: var(--optibio-body);
+}
+
+.optibio-sticky-cart__button {
+  background-color: var(--optibio-navy);
+  color: var(--optibio-white);
+  font-family: var(--optibio-font-body);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--optibio-radius-card);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-height: 44px;
+}
+
+.optibio-sticky-cart__button:hover {
+  background-color: rgba(27, 54, 93, 0.9);
+}
+
+/* --- Social Proof Section --- */
+.optibio-social-proof {
+  padding: var(--optibio-space-xl) var(--optibio-space-md);
+  background: var(--optibio-white);
+}
+
+.optibio-social-proof__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--optibio-space-sm);
+  margin-bottom: var(--optibio-space-lg);
+  font-family: var(--optibio-font-body);
+}
+
+.optibio-social-proof__stars {
+  color: var(--optibio-star);
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.optibio-social-proof__score {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--optibio-navy);
+}
+
+.optibio-social-proof__count {
+  font-size: 14px;
+  color: var(--optibio-body);
+}
+
+.optibio-testimonial-track {
+  display: flex;
+  gap: var(--optibio-space-md);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--optibio-space-sm) 0;
+}
+
+.optibio-testimonial-track::-webkit-scrollbar {
+  display: none;
+}
+
+.optibio-testimonial-card {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  background: var(--optibio-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--optibio-border-glass);
+  border-radius: var(--optibio-radius-card);
+  padding: var(--optibio-space-lg);
+}
+
+.optibio-testimonial-card__stars {
+  color: var(--optibio-star);
+  font-size: 16px;
+  margin-bottom: var(--optibio-space-sm);
+}
+
+.optibio-testimonial-card__quote {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--optibio-body);
+  margin-bottom: var(--optibio-space-md);
+  line-height: 1.6;
+}
+
+.optibio-testimonial-card__author {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--optibio-navy);
+}
+
+.optibio-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--optibio-space-sm);
+  margin-top: var(--optibio-space-md);
+}
+
+.optibio-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(27, 54, 93, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.optibio-carousel-dot.active {
+  background: var(--optibio-navy);
+  width: 24px;
+  border-radius: var(--optibio-radius-pill);
+}
+
+/* --- Comparison Table --- */
+.optibio-comparison {
+  background: linear-gradient(to bottom, var(--optibio-sky-start), var(--optibio-white));
+}
+
+.optibio-comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--optibio-font-body);
+  border-radius: var(--optibio-radius-card);
+  overflow: hidden;
+  box-shadow: var(--optibio-shadow-sm);
+}
+
+.optibio-comparison-table th,
+.optibio-comparison-table td {
+  padding: var(--optibio-space-md);
+  text-align: left;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+}
+
+.optibio-comparison-table thead th {
+  background: var(--optibio-navy);
+  color: var(--optibio-white);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.optibio-comparison-table thead th:last-child {
+  background: linear-gradient(135deg, var(--optibio-navy) 0%, #264a7a 100%);
+}
+
+.optibio-comparison-table tbody tr:nth-child(even) {
+  background: rgba(232, 244, 253, 0.3);
+}
+
+.optibio-comparison-table tbody td:first-child {
+  font-weight: 600;
+  color: var(--optibio-navy);
+}
+
+.optibio-comparison-table tbody td:last-child {
+  color: var(--optibio-navy);
+  font-weight: 500;
+}
+
+.optibio-comparison-table .icon-check {
+  color: var(--optibio-green);
+  margin-right: 4px;
+}
+
+.optibio-comparison-table .icon-x {
+  color: var(--optibio-red);
+  margin-right: 4px;
+}
+
+/* Mobile comparison: stacked cards */
+.optibio-comparison-cards {
+  display: none;
+}
+
+/* --- Clinical Stats --- */
+.optibio-clinical-stats {
+  background: linear-gradient(to bottom, var(--optibio-sky-start), var(--optibio-sky-end));
+}
+
+.optibio-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--optibio-space-md);
+}
+
+.optibio-stat-card {
+  background: var(--optibio-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--optibio-border-glass);
+  border-radius: var(--optibio-radius-card);
+  padding: var(--optibio-space-lg);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.optibio-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--optibio-shadow-md);
+}
+
+/* --- Citations Footer --- */
+.optibio-citations {
+  margin-top: var(--optibio-space-xl);
+  padding-top: var(--optibio-space-md);
+  border-top: 1px solid rgba(27, 54, 93, 0.1);
+  font-family: var(--optibio-font-body);
+  font-size: 12px;
+  color: var(--optibio-body);
+  line-height: 1.8;
+}
+
+.optibio-citations a {
+  color: var(--optibio-navy);
+  text-decoration: underline;
+}
+
+/* --- Timeline --- */
+.optibio-timeline {
+  background: var(--optibio-white);
+}
+
+.optibio-timeline-track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--optibio-space-lg);
+  position: relative;
+}
+
+.optibio-timeline-item {
+  display: flex;
+  gap: var(--optibio-space-md);
+  align-items: flex-start;
+}
+
+.optibio-timeline-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--optibio-navy);
+  color: var(--optibio-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--optibio-font-body);
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.optibio-timeline-item:not(:last-child) .optibio-timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: calc(var(--optibio-space-lg) + 20px);
+  background: rgba(27, 54, 93, 0.15);
+}
+
+.optibio-timeline-content h3 {
+  font-size: 18px;
+  margin-bottom: var(--optibio-space-xs);
+}
+
+.optibio-timeline-content p {
+  font-size: 15px;
+}
+
+.optibio-timeline-period {
+  font-family: var(--optibio-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--optibio-gold);
+  margin-bottom: var(--optibio-space-xs);
+}
+
+/* --- Who For / Not For --- */
+.optibio-who-for {
+  background: linear-gradient(to bottom, var(--optibio-sky-start), var(--optibio-white));
+}
+
+.optibio-who-for__columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--optibio-space-lg);
+}
+
+.optibio-who-for__column {
+  background: var(--optibio-white);
+  border-radius: var(--optibio-radius-card);
+  padding: var(--optibio-space-lg);
+  box-shadow: var(--optibio-shadow-sm);
+}
+
+.optibio-who-for__column h3 {
+  margin-bottom: var(--optibio-space-md);
+  font-size: 20px;
+}
+
+/* --- Mechanism / How It Works --- */
+.optibio-mechanism {
+  background: var(--optibio-white);
+}
+
+.optibio-mechanism-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--optibio-space-lg);
+}
+
+.optibio-mechanism-step {
+  text-align: center;
+  position: relative;
+}
+
+.optibio-mechanism-step__number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--optibio-navy), #264a7a);
+  color: var(--optibio-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--optibio-font-body);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 auto var(--optibio-space-md);
+}
+
+.optibio-mechanism-step h3 {
+  font-size: 18px;
+  margin-bottom: var(--optibio-space-sm);
+}
+
+.optibio-mechanism-step p {
+  font-size: 15px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* --- Trust Badges --- */
+.optibio-trust {
+  background: linear-gradient(to bottom, var(--optibio-sky-start), var(--optibio-white));
+  text-align: center;
+}
+
+.optibio-trust-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--optibio-space-xl);
+}
+
+.optibio-trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--optibio-space-sm);
+  min-width: 80px;
+}
+
+.optibio-trust-badge__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--optibio-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--optibio-border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.optibio-trust-badge__label {
+  font-family: var(--optibio-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--optibio-navy);
+  text-align: center;
+}
+
+.optibio-trust-manufacturer {
+  margin-top: var(--optibio-space-xl);
+  font-size: 14px;
+  color: var(--optibio-body);
+}
+
+/* --- FAQ Accordion --- */
+.optibio-faq {
+  background: var(--optibio-white);
+}
+
+.optibio-faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.optibio-faq-item {
+  border-bottom: 1px solid rgba(27, 54, 93, 0.1);
+}
+
+.optibio-faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--optibio-space-md) 0;
+  cursor: pointer;
+  font-family: var(--optibio-font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--optibio-navy);
+  list-style: none;
+  min-height: 44px;
+  transition: color 0.3s ease;
+}
+
+.optibio-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.optibio-faq-item summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--optibio-gold);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.optibio-faq-item[open] summary::after {
+  content: '\2212';
+}
+
+.optibio-faq-item summary:hover {
+  color: var(--optibio-gold);
+}
+
+.optibio-faq-answer {
+  padding: 0 0 var(--optibio-space-md) 0;
+  font-family: var(--optibio-font-body);
+  font-size: 15px;
+  color: var(--optibio-body);
+  line-height: 1.7;
+}
+
+/* --- Final CTA --- */
+.optibio-final-cta {
+  background: var(--optibio-navy);
+  text-align: center;
+  padding: var(--optibio-space-3xl) var(--optibio-space-md);
+}
+
+.optibio-final-cta h2 {
+  color: var(--optibio-white);
+  margin-bottom: var(--optibio-space-md);
+}
+
+.optibio-final-cta p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 500px;
+  margin: 0 auto var(--optibio-space-xl);
+}
+
+.optibio-final-cta .optibio-btn-primary {
+  background-color: var(--optibio-gold);
+  color: var(--optibio-navy);
+  font-weight: 700;
+  font-size: 18px;
+  padding: 18px 40px;
+}
+
+.optibio-final-cta .optibio-btn-primary:hover {
+  background-color: #e0c04a;
+  color: var(--optibio-navy);
+}
+
+.optibio-final-cta__trust {
+  margin-top: var(--optibio-space-lg);
+  font-family: var(--optibio-font-body);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  gap: var(--optibio-space-lg);
+  flex-wrap: wrap;
+}
+
+/* --- FDA Disclaimer --- */
+.optibio-fda-disclaimer {
+  font-family: var(--optibio-font-body);
+  font-size: 12px;
+  color: var(--optibio-body);
+  text-align: center;
+  padding: var(--optibio-space-md);
+  border-top: 1px solid rgba(27, 54, 93, 0.08);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Touch Targets --- */
+.optibio-section button,
+.optibio-section a,
+.optibio-section input,
+.optibio-section select,
+.optibio-section summary {
+  min-height: 44px;
+}
+
+/* Prevent iOS zoom */
+.optibio-section input,
+.optibio-section select,
+.optibio-section textarea {
+  font-size: 16px;
+}
+
+/* ============================================
+   RESPONSIVE — Mobile First
+   ============================================ */
+
+/* 768px — Tablet */
+@media (min-width: 768px) {
+  .optibio-section {
+    padding: var(--optibio-space-3xl) var(--optibio-space-lg);
+  }
+
+  .optibio-section h1 {
+    font-size: 44px;
+  }
+
+  .optibio-section h2 {
+    font-size: 32px;
+  }
+
+  .optibio-testimonial-card {
+    flex: 0 0 45%;
+  }
+
+  .optibio-stats-grid {
+    gap: var(--optibio-space-lg);
+  }
+
+  .optibio-stat-number {
+    font-size: 40px;
+  }
+
+  .optibio-who-for__columns {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .optibio-mechanism-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--optibio-space-xl);
+  }
+}
+
+/* 1024px — Desktop */
+@media (min-width: 1024px) {
+  .optibio-section {
+    padding: var(--optibio-space-4xl) var(--optibio-space-xl);
+  }
+
+  .optibio-section h1 {
+    font-size: 52px;
+  }
+
+  .optibio-section h2 {
+    font-size: 36px;
+  }
+
+  .optibio-hero__container {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--optibio-space-2xl);
+    align-items: center;
+  }
+
+  .optibio-hero__heading {
+    font-size: 52px;
+  }
+
+  .optibio-testimonial-card {
+    flex: 0 0 30%;
+  }
+
+  .optibio-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Desktop: show table, hide cards */
+  .optibio-comparison-table-wrap {
+    display: block;
+  }
+
+  .optibio-comparison-cards {
+    display: none;
+  }
+
+  /* Timeline horizontal */
+  .optibio-timeline-track {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .optibio-timeline-item {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--optibio-space-md);
+    position: relative;
+  }
+
+  .optibio-timeline-item:not(:last-child) .optibio-timeline-dot::after {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    width: calc(100% - 40px);
+    height: 2px;
+    position: absolute;
+  }
+
+  .optibio-timeline-content {
+    text-align: center;
+  }
+
+  /* Sticky cart: show on desktop too as slim bar */
+  .optibio-sticky-cart__inner {
+    max-width: 1200px;
+  }
+}
+
+/* 1440px — Large Desktop */
+@media (min-width: 1440px) {
+  .optibio-section .page-width {
+    max-width: 1320px;
+  }
+
+  .optibio-hero__heading {
+    font-size: 56px;
+  }
+}
+
+/* Mobile: hide table, show cards on small screens */
+@media (max-width: 767px) {
+  .optibio-comparison-table-wrap {
+    display: none;
+  }
+
+  .optibio-comparison-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--optibio-space-md);
+  }
+
+  .optibio-comparison-card {
+    background: var(--optibio-white);
+    border-radius: var(--optibio-radius-card);
+    padding: var(--optibio-space-md);
+    box-shadow: var(--optibio-shadow-sm);
+  }
+
+  .optibio-comparison-card__row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--optibio-space-sm) 0;
+    border-bottom: 1px solid rgba(27, 54, 93, 0.06);
+    font-size: 14px;
+  }
+
+  .optibio-comparison-card__label {
+    font-weight: 600;
+    color: var(--optibio-navy);
+  }
+
+  .optibio-trust-bar__inner {
+    gap: var(--optibio-space-sm);
+    font-size: 11px;
+  }
+}

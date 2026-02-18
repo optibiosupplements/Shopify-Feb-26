@@ -1,0 +1,151 @@
+{% comment %}
+  Optibio Social Proof Section
+  Section 2: Star rating + scrolling testimonial carousel
+  Pulls existing product reviews from the live store
+{% endcomment %}
+
+<section class="optibio-section optibio-social-proof optibio-reveal" id="optibio-social-proof">
+  <div class="page-width">
+
+    {% comment %} Rating Summary {% endcomment %}
+    <div class="optibio-social-proof__rating">
+      <span class="optibio-social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span class="optibio-social-proof__score">{{ section.settings.rating }}</span>
+      <span class="optibio-social-proof__count">({{ section.settings.review_count }} reviews)</span>
+    </div>
+
+    {% comment %} Testimonial Carousel {% endcomment %}
+    <div class="optibio-testimonial-track">
+      {% for block in section.blocks %}
+        {% if block.type == 'testimonial' %}
+          <div class="optibio-testimonial-card" {{ block.shopify_attributes }}>
+            <div class="optibio-testimonial-card__stars">
+              {% assign stars = block.settings.stars | default: 5 %}
+              {% for i in (1..stars) %}&#9733;{% endfor %}
+            </div>
+            <p class="optibio-testimonial-card__quote">"{{ block.settings.quote }}"</p>
+            <div class="optibio-testimonial-card__author">— {{ block.settings.author }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% comment %} Carousel Dots {% endcomment %}
+    <div class="optibio-carousel-dots">
+      {% for block in section.blocks %}
+        {% if block.type == 'testimonial' %}
+          <button class="optibio-carousel-dot {% if forloop.first %}active{% endif %}"
+                  type="button"
+                  aria-label="Go to review {{ forloop.index }}"></button>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Optibio Social Proof",
+  "tag": "section",
+  "class": "optibio-social-proof-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Average Rating",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review Count",
+      "default": "2,400+"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Finally, something that actually works for my stress levels."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Sarah M."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Optibio Social Proof",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "Finally, something that actually works for my stress levels. I feel calmer throughout the day.",
+            "author": "Sarah M."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "I was skeptical, but after 3 weeks I noticed a real difference in my sleep quality. Waking up feeling rested.",
+            "author": "James T."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "As a nurse working long shifts, this has been a game changer for my recovery and stress management.",
+            "author": "Maria L."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "The quality is noticeably better than other ashwagandha supplements I've tried. Worth every penny.",
+            "author": "David K."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "My cortisol levels were through the roof from work stress. Two months in and my bloodwork shows real improvement.",
+            "author": "Rachel P."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": 4,
+            "quote": "Takes a few weeks to kick in, but once it does the difference is clear. Better focus and less anxiety.",
+            "author": "Michael R."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

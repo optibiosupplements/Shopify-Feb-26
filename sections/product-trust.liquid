@@ -1,0 +1,88 @@
+{% comment %}
+  Optibio Trust & Quality Section
+  Section 8: Quality badges + manufacturer info
+{% endcomment %}
+
+<section class="optibio-section optibio-trust optibio-reveal" id="optibio-trust">
+  <div class="page-width">
+
+    <div class="optibio-section-header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="optibio-trust-badges">
+
+      <div class="optibio-trust-badge">
+        <div class="optibio-trust-badge__icon">&#127967;</div>
+        <span class="optibio-trust-badge__label">GMP Certified</span>
+      </div>
+
+      <div class="optibio-trust-badge">
+        <div class="optibio-trust-badge__icon">&#128300;</div>
+        <span class="optibio-trust-badge__label">3rd-Party Tested</span>
+      </div>
+
+      <div class="optibio-trust-badge">
+        <div class="optibio-trust-badge__icon">&#127807;</div>
+        <span class="optibio-trust-badge__label">Non-GMO</span>
+      </div>
+
+      <div class="optibio-trust-badge">
+        <div class="optibio-trust-badge__icon">&#127793;</div>
+        <span class="optibio-trust-badge__label">Organic KSM-66&reg;</span>
+      </div>
+
+      <div class="optibio-trust-badge">
+        <div class="optibio-trust-badge__icon">&#127482;&#127480;</div>
+        <span class="optibio-trust-badge__label">Made in USA</span>
+      </div>
+
+    </div>
+
+    <div class="optibio-trust-manufacturer">
+      <p>{{ section.settings.manufacturer_info }}</p>
+      <p style="margin-top:var(--optibio-space-sm);">{{ section.settings.testing_info }}</p>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Optibio Trust Badges",
+  "tag": "section",
+  "class": "optibio-trust-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Quality You Can Trust"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every bottle meets the highest standards for purity, potency, and safety."
+    },
+    {
+      "type": "textarea",
+      "id": "manufacturer_info",
+      "label": "Manufacturer Info",
+      "default": "Manufactured by Optimal Biology Supplements, Mount Vernon, NY"
+    },
+    {
+      "type": "textarea",
+      "id": "testing_info",
+      "label": "Testing Info",
+      "default": "Every batch tested for purity, potency, and contaminants by independent laboratories."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Optibio Trust Badges"
+    }
+  ]
+}
+{% endschema %}
