@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 17, 2026)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -214,10 +214,12 @@ Every clinical claim MUST be:
 4. Checkout flow must be tested end-to-end
 
 ### After Every Session
-1. Add any new mistakes or learnings to the "Past Mistakes" section above
-2. Update "Active Bugs" if anything was fixed or new issues found
-3. Note any decisions made that affect future work
-4. Push updated files to `Shopify-Feb-26` backup repo if any theme/store changes were made
+1. **Update the date in the file title** — The `# CLAUDE.md` heading must always include `(Updated: <date>)` with today's date, so it's immediately clear which version is current
+2. Update the `*Last updated:*` footer at the bottom of the file to match
+3. Add any new mistakes or learnings to the "Past Mistakes" section above
+4. Update "Active Bugs" if anything was fixed or new issues found
+5. Note any decisions made that affect future work
+6. Push updated files to `Shopify-Feb-26` backup repo if any theme/store changes were made
 
 ### GitHub Backup Procedure
 1. ALL pushes go to `Shopify-Feb-26` only — do NOT push to `optibio-shopify-theme` (archived)
