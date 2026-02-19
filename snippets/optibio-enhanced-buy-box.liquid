@@ -90,7 +90,27 @@
     <button class="optibio-cta-button" id="optibio-add-to-cart">
       Subscribe Now — $84.99
     </button>
-    
+
+    {%comment%} CRO: Risk Reversal — directly below Add to Cart {%endcomment%}
+    <div class="optibio-risk-reversal">
+      <svg class="optibio-risk-reversal__icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <span>90-Day Money-Back Guarantee &middot; Free Returns</span>
+    </div>
+
+    {%comment%} CRO: Free Shipping Progress Bar {%endcomment%}
+    <div class="optibio-shipping-progress" id="optibio-shipping-progress" style="display: none;">
+      <div class="optibio-shipping-progress__text">
+        Add <span id="optibio-shipping-remaining">$0.00</span> more for <strong>FREE shipping</strong>
+      </div>
+      <div class="optibio-shipping-progress__bar">
+        <div class="optibio-shipping-progress__fill" id="optibio-shipping-fill" style="width: 0%"></div>
+      </div>
+    </div>
+    <div class="optibio-shipping-free" id="optibio-shipping-free" style="display: none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>You qualify for <strong>FREE shipping!</strong></span>
+    </div>
+
     {%comment%} Trust Signals {%endcomment%}
     <div class="optibio-trust-signals">
       <div class="optibio-trust-item">
@@ -110,7 +130,4 @@
   </div>
 </div>
 
-<style>
-  /* Ensure fonts are loaded */
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-</style>
+{% comment %} Fonts loaded by optibio-global.css — no inline import needed {% endcomment %}

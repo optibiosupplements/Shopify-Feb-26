@@ -41,9 +41,11 @@ class OptibioProductEnhancements {
   }
   
   init() {
+    this.freeShippingThreshold = 75; // $75 for free shipping
     this.attachEventListeners();
     this.updateUI();
     this.integrateWithShopifySubscriptions();
+    this.updateFreeShippingBar();
   }
   
   attachEventListeners() {
@@ -93,6 +95,7 @@ class OptibioProductEnhancements {
     this.updateBundleCardsUI();
     this.updatePriceSummary();
     this.updateAddToCartButton();
+    this.updateFreeShippingBar();
   }
   
   updatePurchaseTypeUI() {
@@ -247,7 +250,7 @@ class OptibioProductEnhancements {
   triggerSubscriptionWidgetUpdate() {
     // Notify Shopify Subscriptions widget of purchase type change
     const isSubscription = this.state.purchaseType === 'subscription';
-    
+
     // Try to find and interact with Shopify's subscription widget
     const subscriptionWidget = document.querySelector('[data-subscription-widget]');
     if (subscriptionWidget) {
@@ -258,6 +261,37 @@ class OptibioProductEnhancements {
         bubbles: true
       });
       subscriptionWidget.dispatchEvent(event);
+    }
+  }
+
+  updateFreeShippingBar() {
+    // CRO: Free shipping progress bar — updates based on selected variant price
+    var progressBar = document.getElementById('optibio-shipping-progress');
+    var freeEl = document.getElementById('optibio-shipping-free');
+    var remainingEl = document.getElementById('optibio-shipping-remaining');
+    var fillEl = document.getElementById('optibio-shipping-fill');
+
+    if (!progressBar || !freeEl) return;
+
+    var isSubscription = this.state.purchaseType === 'subscription';
+    var bundleSize = this.state.bundleSize;
+    var price = isSubscription
+      ? this.pricing.subscription[bundleSize].price
+      : this.pricing.bundles[bundleSize].price;
+
+    var threshold = this.freeShippingThreshold;
+
+    if (price >= threshold || isSubscription) {
+      // Subscriptions always get free shipping; bundles >= $75 qualify too
+      progressBar.style.display = 'none';
+      freeEl.style.display = 'flex';
+    } else {
+      var remaining = (threshold - price).toFixed(2);
+      var percent = Math.min((price / threshold) * 100, 100);
+      progressBar.style.display = 'block';
+      freeEl.style.display = 'none';
+      if (remainingEl) remainingEl.textContent = '$' + remaining;
+      if (fillEl) fillEl.style.width = percent + '%';
     }
   }
 }

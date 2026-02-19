@@ -95,6 +95,21 @@
         <li><span class="check">&#10003;</span> {{ section.settings.benefit_3 }}</li>
       </ul>
 
+      {% comment %} CRO: Inline Social Proof — visible at point of purchase decision {% endcomment %}
+      <div class="optibio-hero__social-proof">
+        <span class="optibio-hero__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="optibio-hero__rating-text">4.9 (287 reviews)</span>
+      </div>
+
+      {% comment %} CRO: Low Stock Indicator — real inventory data only {% endcomment %}
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% if current_variant.inventory_quantity > 0 and current_variant.inventory_quantity < 50 %}
+        <div class="optibio-hero__low-stock">
+          <span class="optibio-low-stock__dot"></span>
+          Only {{ current_variant.inventory_quantity }} left in stock — order soon
+        </div>
+      {% endif %}
+
       {% comment %} Render existing buy box snippet (bundle selector, subscription, price summary, ATC) {% endcomment %}
       {% render 'optibio-enhanced-buy-box' %}
 

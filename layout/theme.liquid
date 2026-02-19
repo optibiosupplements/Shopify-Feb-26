@@ -37,11 +37,12 @@
 
     {{ content_for_header }}
   
-  {% unless template.suffix == 'optibio-main' %}
-    {{ 'optibio-brand.css' | asset_url | stylesheet_tag }}
-    {{ 'optibio-custom.css' | asset_url | stylesheet_tag }}
-    <link rel="stylesheet" href="{{ 'optibio-ethereal.css' | asset_url }}">
-  {% endunless %}
+  {% comment %}
+    Optibio Global Design System — replaces optibio-brand.css, optibio-custom.css, optibio-ethereal.css
+    Loaded on ALL pages (including product optibio-main template)
+    Old files kept in assets/ for rollback but no longer loaded
+  {% endcomment %}
+  {{ 'optibio-global.css' | asset_url | stylesheet_tag }}
 </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">

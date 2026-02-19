@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 17, 2026)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 19, 2026 — Session A)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -239,8 +239,50 @@ Every clinical claim MUST be:
 | Feb 16, 2026 | Updated CLAUDE.md with new backup repo strategy | New repo "Shopify-Feb-26" created for full store disaster recovery backup | Chrome extension disconnected — reconnect needed for push |
 | Feb 16, 2026 | Consolidated to single repo | `Shopify-Feb-26` is now the only active repo. `optibio-shopify-theme` archived. No more double-pushing. | None |
 | Feb 17, 2026 | FTC compliance audit & fix — all 3 pages | Homepage verified clean (8/8 checks pass). Science page: 20 violations found & fixed via full body_html rewrite + SEO update. Product page: 7 violations found & fixed (body_html targeted replacements + SEO title update). All fixes done via Shopify admin CM6 editor (MCP token was expired). | Store name "OptiBio Supplements" needs fixing in Settings > Store details (store-level, not page-level). MCP OAuth token expired — used Chrome browser automation as fallback. |
+| Feb 19, 2026 | Brand logo implementation — full touchpoint audit & asset preparation | Source: `OB logo_white_trans.png` is the ONLY file with true RGBA transparency (78.4% transparent pixels). `OB logo_transparent.png` is misleadingly named — has NO alpha channel (RGB mode, baked-in gray bg). Optimized 5 assets: header logo (64KB, 400×313px), inverse logo (64KB), favicon 180px (18KB), favicon 32px (2KB), OG image (47KB, 1200×630px on #1B365D navy). Logo heights set to 44px desktop / 34px mobile (up from 36/28 defaults — stacked wordmark needs more vertical space). All assets in `~/Desktop/OPTIMAL BIOLOGY/0. BRANDING ASSET/OB LOGO/optimized/`. URL redirect also created: `/products/optibio-ksm-66-ashwagandha` → `/products/optibio-ashwagandha-ksm-66`. | Chrome MCP extension unstable — disconnects on screenshot attempts in Shopify theme editor. Manual upload required for logo `image_picker` settings (cannot be set via settings_data.json). |
+| Feb 19, 2026 | **Session A — CSS Consolidation + Product Page CRO + Traceability Badge** | **Phase 1: CSS Consolidation** — Created `assets/optibio-global.css` (~600 lines) consolidating 3 conflicting CSS files into 1 unified design system. Correct tokens: Navy #1B365D, Gold #D4AF37, Playfair Display + DM Sans. Ported `.ob-*` homepage classes AS-IS with TEMPORARY comment (will be removed in Session B). Edited `layout/theme.liquid` to load single CSS file instead of 3. Old files kept in assets/ for rollback. **Phase 2: CRO Enhancements** — Added inline social proof (★★★★★ 4.9 / 287 reviews) to hero buy box, low stock indicator (real inventory < 50), risk reversal (90-Day Guarantee + Free Returns) below ATC, free shipping progress bar ($75 threshold), sticky cart bar stars + guarantee text. **Phase 2.3: Traceability Badge** — Created `sections/product-traceability-badge.liquid` (glassmorphism card, shield icon, "Seed to Shelf Verified", FDA/cGMP/3rd-Party/USA badges, "Verify Your Batch" CTA). Inserted between Trust and FAQ sections. **Deploy:** Pushed to dev theme ID 146307776581. | Shopify `url` schema type cannot have a `default` value — causes validation error. Fixed with Liquid-level fallback: `section.settings.button_link \| default: '/pages/verify'`. Removed redundant Google Fonts @import from `optibio-enhanced-buy-box.liquid`. Chrome MCP extension disconnected — browser verification pending. |
 
 ---
 
-*Last updated: February 17, 2026*
-*Next review: Before next work session*
+### Session A — Files Modified/Created (Feb 19, 2026)
+
+| Action | File | Purpose |
+|--------|------|---------|
+| CREATED | `assets/optibio-global.css` | Consolidated global design system (~600 lines). Replaces optibio-brand.css + optibio-custom.css + optibio-ethereal.css |
+| CREATED | `sections/product-traceability-badge.liquid` | "Seed to Shelf Verified" glassmorphism badge with CTA |
+| EDITED | `layout/theme.liquid` (lines 40-45) | Replaced 3 CSS imports with single optibio-global.css |
+| EDITED | `sections/product-hero.liquid` | Added inline social proof + low stock indicator |
+| EDITED | `snippets/optibio-enhanced-buy-box.liquid` | Added risk reversal + free shipping progress bar, removed redundant font import |
+| EDITED | `snippets/product-sticky-cart.liquid` | Added stars + "Risk-free · 90-day guarantee" text |
+| EDITED | `assets/product-page.css` | Added CSS for all CRO elements (social proof, low stock pulse, risk reversal, shipping bar) |
+| EDITED | `assets/optibio-product-enhancements.js` | Added `updateFreeShippingBar()` method ($75 threshold logic) |
+| EDITED | `templates/product.optibio-main.json` | Added traceability section between trust and FAQ |
+
+### Dev Theme
+- **Theme ID:** 146307776581
+- **Preview URL:** `https://optibio-store-2026.myshopify.com?preview_theme_id=146307776581`
+- **Status:** Pushed successfully, pending browser verification before publishing to live
+
+### Manual Steps Still Required (Session A)
+- [ ] Verify dev theme renders correctly in browser (homepage, product page, header/footer)
+- [ ] Publish dev theme to live after verification
+- [ ] Delete excess product images (16→3-4) in Shopify Admin
+- [ ] Add "Verify Your Batch" to header navigation (Shopify Admin → Navigation → Main Menu)
+- [ ] Set `button_link` for traceability badge in theme editor (currently defaults to `/pages/verify` via Liquid)
+
+---
+
+### Past Mistakes Addendum (Feb 19, 2026)
+8. **Misleading filename "OB logo_transparent.png"** — This file has NO alpha channel (RGB mode). The background is baked-in gray/white, not transparent. The correct transparent source is `OB logo_white_trans.png` (RGBA, 78.4% transparent pixels). Always verify `img.mode` before assuming transparency from a filename.
+9. **Shopify `url` schema type cannot have a `default` value** — Setting `"type": "url"` with `"default": "/pages/verify"` causes a schema validation error. Use Liquid-level fallback instead: `{% assign verify_link = section.settings.button_link | default: '/pages/verify' %}`.
+
+---
+
+### Remaining Sessions (from Plan)
+- **Session B:** Homepage redesign (5 new sections replacing custom-liquid) + footer redesign + remove temporary `.ob-*` classes from optibio-global.css
+- **Session C:** Traceability backend (Node.js App Proxy) + metaobject definitions (Batch_Lot, Verification_Log) + verification page frontend (/pages/verify)
+
+---
+
+*Last updated: February 19, 2026 (Session A complete — dev theme deployed)*
+*Next review: Before Session B — verify dev theme in browser first*

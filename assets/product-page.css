@@ -1164,6 +1164,145 @@
 }
 
 /* ============================================
+   CRO ENHANCEMENTS — Conversion Optimization
+   ============================================ */
+
+/* Inline Social Proof (hero) */
+.optibio-hero__social-proof {
+  display: flex;
+  align-items: center;
+  gap: var(--optibio-space-sm);
+  margin: var(--optibio-space-md) 0;
+  font-family: var(--optibio-font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--optibio-navy);
+}
+
+.optibio-hero__stars {
+  color: var(--optibio-star);
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.optibio-hero__rating-text {
+  color: var(--optibio-body);
+}
+
+/* Low Stock Indicator */
+.optibio-hero__low-stock {
+  display: flex;
+  align-items: center;
+  gap: var(--optibio-space-sm);
+  font-family: var(--optibio-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--optibio-red);
+  margin: var(--optibio-space-sm) 0 var(--optibio-space-md);
+  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.06);
+  border-radius: var(--optibio-radius-input);
+  border: 1px solid rgba(239, 68, 68, 0.12);
+}
+
+.optibio-low-stock__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--optibio-red);
+  animation: optibio-pulse-dot 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes optibio-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Risk Reversal (below Add to Cart) */
+.optibio-risk-reversal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: var(--optibio-space-md) 0;
+  font-family: var(--optibio-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--optibio-green);
+}
+
+.optibio-risk-reversal__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  stroke: var(--optibio-green);
+}
+
+/* Free Shipping Progress Bar */
+.optibio-shipping-progress {
+  margin: var(--optibio-space-md) 0;
+  font-family: var(--optibio-font-body);
+  font-size: 13px;
+  color: var(--optibio-body);
+}
+
+.optibio-shipping-progress__text {
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.optibio-shipping-progress__text span {
+  font-weight: 700;
+  color: var(--optibio-navy);
+}
+
+.optibio-shipping-progress__bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(27, 54, 93, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.optibio-shipping-progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--optibio-gold), var(--optibio-green));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.optibio-shipping-free {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: var(--optibio-space-sm) 0;
+  font-family: var(--optibio-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--optibio-green);
+}
+
+.optibio-shipping-free svg {
+  stroke: var(--optibio-green);
+  flex-shrink: 0;
+}
+
+/* Sticky Cart Stars */
+.optibio-sticky-cart__top-row {
+  display: flex;
+  align-items: center;
+  gap: var(--optibio-space-sm);
+}
+
+.optibio-sticky-cart__stars {
+  font-size: 12px;
+  color: var(--optibio-star);
+  white-space: nowrap;
+}
+
+/* ============================================
    RESPONSIVE — Mobile First
    ============================================ */
 

@@ -143,6 +143,15 @@
         "testing_info": "Every batch tested for purity, potency, and contaminants by independent laboratories."
       }
     },
+    "traceability": {
+      "type": "product-traceability-badge",
+      "settings": {
+        "heading": "Seed to Shelf Verified",
+        "description": "Every Optibio bottle is traceable from raw material sourcing to your doorstep. Manufactured at an FDA-audited, cGMP-certified facility in Mount Vernon, NY.",
+        "button_text": "Verify Your Batch",
+        "show_badges": true
+      }
+    },
     "faq": {
       "type": "product-faq",
       "settings": {
@@ -228,6 +237,7 @@
     "who_for",
     "mechanism",
     "trust",
+    "traceability",
     "faq",
     "final_cta"
   ]
