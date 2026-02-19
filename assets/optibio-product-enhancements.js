@@ -17,7 +17,7 @@ class OptibioProductEnhancements {
       bundles: {
         1: { price: 39.99, compareAt: 49.99, supply: '45-Day Supply' },
         3: { price: 99.99, pricePerBottle: 33.33, compareAt: 149.97, supply: '135-Day Supply' },
-        6: { price: 179.99, pricePerBottle: 30.00, compareAt: 299.94, supply: '270-Day Supply' }
+        6: { price: 179.94, pricePerBottle: 29.99, compareAt: 299.94, supply: '270-Day Supply' }
       },
       subscription: {
         discount: 0.15, // 15% off
