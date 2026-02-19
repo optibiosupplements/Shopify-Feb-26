@@ -138,16 +138,15 @@ Every clinical claim MUST be:
 - Legacy custom app creation deprecated Jan 1, 2026 — use Dev Dashboard
 
 ### Product Variants & Pricing
-| Tier | Standard Price | Pre-Order Price | Per-Unit |
-|------|---------------|-----------------|----------|
-| 1 Bottle | $39.99 | $28.35 | — |
-| 3 Bottles | $99.99 | $76.55 | $33.33 / $25.52 |
-| 6 Bottles | $179.94 | $136.08 | $29.99 / $22.68 |
-| Subscribe & Save | 15% off standard | N/A | — |
+| Tier | Price | Per-Unit |
+|------|-------|----------|
+| 1 Bottle | $39.99 | $39.99 |
+| 3 Bottles | $99.99 | $33.33 |
+| 6 Bottles | $179.94 | $29.99 |
+| Subscribe & Save | 15% off standard | — |
 
 - 3-bottle tier is pre-selected as "Most Popular"
 - 6-bottle tier labeled "Best Value"
-- Pre-order pricing is for paid ad landing pages ONLY (separate template)
 
 ---
 
