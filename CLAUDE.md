@@ -52,7 +52,7 @@
 - Omitting ® violates the licensing agreement
 
 ### Feature & Product Naming — Brand Identity
-- **"Subscribe & Save"** — the user-facing feature name. NEVER call it "Appstle" in copy, UI, or documentation. Appstle is the underlying app — only reference it when discussing app-level config/dashboard settings.
+- **"Subscribe & Save"** — the user-facing feature name. Powered by Shopify's native Subscriptions app (free). Only reference the app name when discussing app-level config/dashboard settings.
 - **"Product Reviews"** — the user-facing feature name. NEVER call it "Judge.me" in copy, UI, or documentation. Judge.me is the underlying app — only reference it when discussing app-level config/dashboard settings.
 - This rule applies to: customer-facing copy, theme code comments, CLAUDE.md descriptions, commit messages, and all session documentation.
 - **General rule:** Always document brand identity decisions (names, terminology, feature labels) in this CRITICAL RULES section so they persist across sessions and are never lost.
@@ -282,6 +282,7 @@ Every clinical claim MUST be:
 ### Past Mistakes Addendum (Feb 19, 2026)
 8. **Misleading filename "OB logo_transparent.png"** — This file has NO alpha channel (RGB mode). The background is baked-in gray/white, not transparent. The correct transparent source is `OB logo_white_trans.png` (RGBA, 78.4% transparent pixels). Always verify `img.mode` before assuming transparency from a filename.
 9. **Shopify `url` schema type cannot have a `default` value** — Setting `"type": "url"` with `"default": "/pages/verify"` causes a schema validation error. Use Liquid-level fallback instead: `{% assign verify_link = section.settings.button_link | default: '/pages/verify' %}`.
+10. **Wrong subscription app documented** — Previous session incorrectly documented "Appstle" as the Subscribe & Save app. The actual app is **Shopify Subscriptions** (native, free). The theme code correctly references `shopify://apps/subscriptions/blocks/app-block/`. Always verify app identity against actual theme code, not session memory alone.
 
 ---
 
@@ -306,24 +307,24 @@ Every clinical claim MUST be:
 - **Note:** Currently shows sample data in preview mode. Real reviews appear once customers leave them. The sample images (clothing) are Judge.me defaults — they'll be replaced with real product review photos.
 - **Future Upgrade:** Judge.me Awesome plan ($15/mo) needed for: 10% incentive coupons, Q&A on product pages, photo review carousel
 
-#### Subscribe & Save (powered by Appstle app)
-- **Status:** Installed, app embed enabled, onboarding pending user completion
-- **App Embed:** Enabled in `config/settings_data.json` (block ID: `80b36c79c341ba709db28b0a5294fda0/appstle-subscription-helper`)
-- **Subscription Plans (to be created by user in Appstle dashboard):**
+#### Subscribe & Save (powered by Shopify Subscriptions app — Free, Native)
+- **Status:** Installed, app block added to product templates, onboarding pending user completion
+- **App Block:** `shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad` — present in both `product.json` and `product.optibio-main.json`
+- **Subscription Plans (to be created by user in Shopify Admin > Apps > Subscriptions):**
   - 1 Bottle: Every 45 days, 15% off → $33.99 (from $39.99)
   - 3 Bottles: Every 90 days, 15% off → $84.99 (from $99.99)
   - 6 Bottles: Every 180 days, 15% off → $152.94 (from $179.94)
-- **Integration:** Appstle auto-injects subscription widget into the product form via app embed. The existing `product-subscription.liquid` section provides a standalone Subscribe & Save info section with benefits grid and comparison table.
+- **Integration:** Shopify Subscriptions auto-injects subscription widget into the product form via app block. The existing `product-subscription.liquid` section provides a standalone Subscribe & Save info section with benefits grid and comparison table.
 - **Product Page Flow:** Hero buy box has Subscribe & Save toggle (15% OFF badge, free shipping, cancel anytime) built into `optibio-enhanced-buy-box.liquid`
 
 ### Remaining Work
 - **Theme 146307776581 is LIVE** — currently the published theme
 - **Traceability backend (future):** Node.js App Proxy + Shopify metaobjects for dynamic batch lookup (currently uses client-side sample data)
 - ~~**Review system:** Judge.me or similar app integration~~ DONE
-- ~~**Subscribe & Save:** Subscription app~~ DONE (Appstle app installed, plans pending user setup)
+- ~~**Subscribe & Save:** Subscription app~~ DONE (Shopify Subscriptions app installed, plans pending user setup)
 - **Blog content:** 3 foundational articles
 - **Performance/Accessibility audits**
-- **Subscribe & Save onboarding:** User completing Appstle dashboard setup manually (iframe not automatable via browser tools)
+- **Subscribe & Save onboarding:** User completing setup in Shopify Admin > Apps > Subscriptions
 
 ---
 
