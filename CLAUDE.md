@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 19, 2026 — Session A+B + App Integration)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -50,6 +50,12 @@
 - **ALWAYS** write "KSM-66®" with the registered trademark symbol ®
 - KSM-66 is a registered trademark of Ixoreal Biomed
 - Omitting ® violates the licensing agreement
+
+### Feature & Product Naming — Brand Identity
+- **"Subscribe & Save"** — the user-facing feature name. NEVER call it "Appstle" in copy, UI, or documentation. Appstle is the underlying app — only reference it when discussing app-level config/dashboard settings.
+- **"Product Reviews"** — the user-facing feature name. NEVER call it "Judge.me" in copy, UI, or documentation. Judge.me is the underlying app — only reference it when discussing app-level config/dashboard settings.
+- This rule applies to: customer-facing copy, theme code comments, CLAUDE.md descriptions, commit messages, and all session documentation.
+- **General rule:** Always document brand identity decisions (names, terminology, feature labels) in this CRITICAL RULES section so they persist across sessions and are never lost.
 
 ### FTC Compliance — This Is Non-Negotiable
 Every clinical claim MUST be:
@@ -285,7 +291,7 @@ Every clinical claim MUST be:
 
 ### Installed Apps (February 19, 2026)
 
-#### Judge.me Product Reviews (Free Tier)
+#### Product Reviews (powered by Judge.me app — Free Tier)
 - **Status:** Installed, app embed enabled, widgets added to product page
 - **App Embed:** Enabled in `config/settings_data.json` (block ID: `8cada0f5da411a64e756606bb036f1ed/judgeme_core`)
 - **Product Page Widgets (in `product.optibio-main.json`):**
@@ -300,7 +306,7 @@ Every clinical claim MUST be:
 - **Note:** Currently shows sample data in preview mode. Real reviews appear once customers leave them. The sample images (clothing) are Judge.me defaults — they'll be replaced with real product review photos.
 - **Future Upgrade:** Judge.me Awesome plan ($15/mo) needed for: 10% incentive coupons, Q&A on product pages, photo review carousel
 
-#### Appstle Subscribe & Save
+#### Subscribe & Save (powered by Appstle app)
 - **Status:** Installed, app embed enabled, onboarding pending user completion
 - **App Embed:** Enabled in `config/settings_data.json` (block ID: `80b36c79c341ba709db28b0a5294fda0/appstle-subscription-helper`)
 - **Subscription Plans (to be created by user in Appstle dashboard):**
@@ -314,12 +320,12 @@ Every clinical claim MUST be:
 - **Theme 146307776581 is LIVE** — currently the published theme
 - **Traceability backend (future):** Node.js App Proxy + Shopify metaobjects for dynamic batch lookup (currently uses client-side sample data)
 - ~~**Review system:** Judge.me or similar app integration~~ DONE
-- ~~**Subscribe & Save:** Shopify Subscriptions app~~ DONE (Appstle installed, plans pending user setup)
+- ~~**Subscribe & Save:** Subscription app~~ DONE (Appstle app installed, plans pending user setup)
 - **Blog content:** 3 foundational articles
 - **Performance/Accessibility audits**
-- **Appstle onboarding:** User completing manually (iframe not automatable via browser tools)
+- **Subscribe & Save onboarding:** User completing Appstle dashboard setup manually (iframe not automatable via browser tools)
 
 ---
 
-*Last updated: February 19, 2026 (Session A+B + App Integration — Judge.me & Appstle installed and integrated)*
-*Next review: After Appstle onboarding complete — verify subscription widget renders on product page*
+*Last updated: February 20, 2026*
+*Next review: After Subscribe & Save onboarding complete — verify subscription widget renders on product page*
