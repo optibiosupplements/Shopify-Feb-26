@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 19, 2026 — Session A+B)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 19, 2026 — Session A+B + App Integration)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -283,15 +283,43 @@ Every clinical claim MUST be:
 - ~~**Session A:** CSS consolidation + Product page CRO + Traceability badge~~ DONE
 - ~~**Session A+B (continued):** Design system unification (#1A2F4D/#C9A961/Sora/Inter), badge implementation (6 SVG icons), header logo fix, double header fix, homepage audit (all 7 sections verified), Science page verified, About page verified, Verify Your Batch page built (hero + search + results + supply chain timeline + COA), page created in Shopify Admin~~ DONE
 
+### Installed Apps (February 19, 2026)
+
+#### Judge.me Product Reviews (Free Tier)
+- **Status:** Installed, app embed enabled, widgets added to product page
+- **App Embed:** Enabled in `config/settings_data.json` (block ID: `8cada0f5da411a64e756606bb036f1ed/judgeme_core`)
+- **Product Page Widgets (in `product.optibio-main.json`):**
+  - **Preview Badge** (star rating summary) — positioned after Hero section, centered alignment
+  - **Review Widget** (full review list with photo reviews, Write a Review button) — positioned after Social Proof section, with 36px vertical padding
+- **Brand CSS Overrides:** Added to `assets/product-page.css` (bottom of file) — overrides `.jdgm-*` classes to match Optibio brand:
+  - Stars: Gold `#C9A961` (via `--optibio-gold`)
+  - Typography: Sora headings, Inter body
+  - CTA buttons: Electric Blue `#2563EB` (via `--optibio-blue-cta`)
+  - Review borders: Light gray `#F3F4F6`
+- **Settings:** Review request emails sent 14 days after delivery, auto-publish with moderation
+- **Note:** Currently shows sample data in preview mode. Real reviews appear once customers leave them. The sample images (clothing) are Judge.me defaults — they'll be replaced with real product review photos.
+- **Future Upgrade:** Judge.me Awesome plan ($15/mo) needed for: 10% incentive coupons, Q&A on product pages, photo review carousel
+
+#### Appstle Subscribe & Save
+- **Status:** Installed, app embed enabled, onboarding pending user completion
+- **App Embed:** Enabled in `config/settings_data.json` (block ID: `80b36c79c341ba709db28b0a5294fda0/appstle-subscription-helper`)
+- **Subscription Plans (to be created by user in Appstle dashboard):**
+  - 1 Bottle: Every 45 days, 15% off → $33.99 (from $39.99)
+  - 3 Bottles: Every 90 days, 15% off → $84.99 (from $99.99)
+  - 6 Bottles: Every 180 days, 15% off → $152.94 (from $179.94)
+- **Integration:** Appstle auto-injects subscription widget into the product form via app embed. The existing `product-subscription.liquid` section provides a standalone Subscribe & Save info section with benefits grid and comparison table.
+- **Product Page Flow:** Hero buy box has Subscribe & Save toggle (15% OFF badge, free shipping, cancel anytime) built into `optibio-enhanced-buy-box.liquid`
+
 ### Remaining Work
-- **Publish dev theme to live** — Theme 146307776581 ready to go live
+- **Theme 146307776581 is LIVE** — currently the published theme
 - **Traceability backend (future):** Node.js App Proxy + Shopify metaobjects for dynamic batch lookup (currently uses client-side sample data)
-- **Review system:** Judge.me or similar app integration
-- **Subscribe & Save:** Shopify Subscriptions app
+- ~~**Review system:** Judge.me or similar app integration~~ DONE
+- ~~**Subscribe & Save:** Shopify Subscriptions app~~ DONE (Appstle installed, plans pending user setup)
 - **Blog content:** 3 foundational articles
 - **Performance/Accessibility audits**
+- **Appstle onboarding:** User completing manually (iframe not automatable via browser tools)
 
 ---
 
-*Last updated: February 19, 2026 (Session A+B complete — all pages built, dev theme ready to publish)*
-*Next review: After publishing live — verify all pages, create discount codes, transfer domain*
+*Last updated: February 19, 2026 (Session A+B + App Integration — Judge.me & Appstle installed and integrated)*
+*Next review: After Appstle onboarding complete — verify subscription widget renders on product page*

@@ -160,7 +160,32 @@
       {% comment %} Shopify product form (hidden, synced by JS for cart API) {% endcomment %}
       {% form 'product', product, id: 'optibio-product-form', novalidate: 'novalidate', data-product-form: '' %}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="selling_plan" id="optibio-selling-plan-input" value="">
       {% endform %}
+
+      {% comment %} Selling plan data for JS (from Shopify native Subscriptions) {% endcomment %}
+      {% if product.selling_plan_groups.size > 0 %}
+        <script id="optibio-selling-plan-data" type="application/json">
+          {
+            "groups": [
+              {% for group in product.selling_plan_groups %}
+                {
+                  "id": "{{ group.id }}",
+                  "name": {{ group.name | json }},
+                  "plans": [
+                    {% for plan in group.selling_plans %}
+                      {
+                        "id": {{ plan.id }},
+                        "name": {{ plan.name | json }}
+                      }{% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                  ]
+                }{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+            ]
+          }
+        </script>
+      {% endif %}
 
       {% comment %} Express Checkout (inside buy box flow) {% endcomment %}
       <div class="optibio-hero__express-checkout">

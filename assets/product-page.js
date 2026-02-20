@@ -191,22 +191,44 @@
 
   /* ============================================
      Stat Counter Animation
+     Triggers AFTER parent reveal animation completes
+     to avoid counters running while card is invisible
      ============================================ */
   function initStatCounters() {
     var counters = document.querySelectorAll('[data-count-to]');
     if (!counters.length) return;
 
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
+    counters.forEach(function(counter) {
+      var card = counter.closest('.optibio-reveal');
+
+      // If no reveal parent, or already visible, animate immediately via observer
+      if (!card || card.classList.contains('visible')) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.3 });
+        observer.observe(counter);
+        return;
+      }
+
+      // Wait for parent card to get 'visible' class from scroll reveal
+      var animated = false;
+      var mutObs = new MutationObserver(function() {
+        if (!animated && card.classList.contains('visible')) {
+          animated = true;
+          mutObs.disconnect();
+          // Delay counter start until reveal transition finishes (0.8s + up to 0.4s delay)
+          var delay = parseFloat(getComputedStyle(card).transitionDelay) * 1000 || 0;
+          setTimeout(function() {
+            animateCounter(counter);
+          }, delay + 850);
         }
       });
-    }, { threshold: 0.5 });
-
-    counters.forEach(function(counter) {
-      observer.observe(counter);
+      mutObs.observe(card, { attributes: true, attributeFilter: ['class'] });
     });
   }
 
@@ -350,8 +372,18 @@
       for (var i = 0; i < reveals.length; i++) {
         reveals[i].classList.add('visible');
       }
-      var stats = document.querySelectorAll('.optibio-stat-number');
+      /* Re-trigger any counters that haven't reached their target */
+      var stats = document.querySelectorAll('[data-count-to]');
       for (var j = 0; j < stats.length; j++) {
+        var target = parseFloat(stats[j].getAttribute('data-count-to'));
+        var suffix = stats[j].getAttribute('data-count-suffix') || '';
+        var prefix = stats[j].getAttribute('data-count-prefix') || '';
+        var decimals = (target % 1 !== 0) ? 1 : 0;
+        var currentText = stats[j].textContent.replace(/[^0-9.\-]/g, '');
+        var currentVal = parseFloat(currentText) || 0;
+        if (currentVal < target * 0.9) {
+          animateCounter(stats[j]);
+        }
         stats[j].style.opacity = '1';
       }
     }, 3000);

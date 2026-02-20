@@ -62,6 +62,25 @@
       </div>
       <div class="optibio-toggle-savings">-$15.00</div>
     </div>
+
+    {%comment%} Delivery Frequency Selector (shown when subscription active) {%endcomment%}
+    <div class="optibio-frequency-selector" id="optibio-frequency-selector">
+      <label class="optibio-frequency-label">Delivery Frequency:</label>
+      <div class="optibio-frequency-options">
+        <label class="optibio-frequency-option selected" data-frequency="month">
+          <input type="radio" name="optibio-delivery-frequency" value="month" checked>
+          <span class="optibio-frequency-text">Every month</span>
+        </label>
+        <label class="optibio-frequency-option" data-frequency="3months">
+          <input type="radio" name="optibio-delivery-frequency" value="3months">
+          <span class="optibio-frequency-text">Every 3 months</span>
+        </label>
+        <label class="optibio-frequency-option" data-frequency="6months">
+          <input type="radio" name="optibio-delivery-frequency" value="6months">
+          <span class="optibio-frequency-text">Every 6 months</span>
+        </label>
+      </div>
+    </div>
     
     {%comment%} Price Display {%endcomment%}
     <div class="optibio-price-summary">

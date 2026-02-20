@@ -12,7 +12,7 @@ class OptibioProductEnhancements {
       3: 44617498689605,  // 3 Bottles - $99.99
       6: 44617498722373   // 6 Bottles - $179.94
     };
-    
+
     this.pricing = {
       bundles: {
         1: { price: 39.99, compareAt: 49.99, supply: '45-Day Supply' },
@@ -30,13 +30,17 @@ class OptibioProductEnhancements {
         subscription: { 1: 0, 3: 0, 6: 0 }
       }
     };
-    
+
+    // Selling plan IDs — loaded from Liquid data or native widget
+    this.sellingPlans = [];
+    this.selectedFrequencyIndex = 0; // default: first frequency (every month)
+
     this.state = {
       purchaseType: 'subscription', // 'onetime' or 'subscription'
       bundleSize: 3, // 1, 3, or 6 (default to MOST POPULAR)
       currentVariantId: this.variants[3]
     };
-    
+
     this.init();
   }
   

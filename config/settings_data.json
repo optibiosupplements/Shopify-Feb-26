@@ -76,6 +76,36 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "sections": {
+      "email-popup": {
+        "type": "email-popup",
+        "disabled": true,
+        "settings": {
+          "delay_seconds": 8,
+          "enable_exit_intent": true,
+          "dismiss_cookie_days": 7,
+          "submitted_cookie_days": 360,
+          "eyebrow": "LIMITED TIME OFFER",
+          "heading": "Get 10% Off Your First Order",
+          "subheading": "Join 2,400+ customers who chose clinical-grade quality. Enter your email for an exclusive discount.",
+          "discount_code": "WELCOME10",
+          "discount_value": "10% OFF",
+          "placeholder_text": "Enter your email address",
+          "button_text": "Unlock My Discount",
+          "success_heading": "Welcome to Optibio!",
+          "success_text": "Your discount code has been applied. Use it at checkout for 10% off your first order.",
+          "privacy_text": "No spam, ever. Unsubscribe anytime."
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -123,7 +153,7 @@
           "foreground": "#000000cf",
           "primary": "#000000cf",
           "primary_hover": "#ffffff",
-          "border": "#DFDFDF",
+          "border": "#dfdfdf",
           "shadow": "#000000",
           "primary_button_background": "#000000",
           "primary_button_text": "#ffffff",
