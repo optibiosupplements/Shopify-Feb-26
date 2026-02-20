@@ -28,9 +28,41 @@
           width="800"
         />
       {% else %}
-        <div class="optibio-about-hero__image-placeholder">
-          <span class="optibio-about-hero__image-placeholder-icon">🏭</span>
-          Upload a team photo, facility image, or brand lifestyle shot via Theme Editor
+        <div class="optibio-about-hero__image-placeholder optibio-about-hero__image-placeholder--branded">
+          <svg role="img" aria-label="Optibio manufacturing facility illustration" width="280" height="200" viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Facility building -->
+            <rect x="40" y="60" width="200" height="120" rx="8" fill="#1A2F4D" opacity="0.9"/>
+            <rect x="40" y="60" width="200" height="120" rx="8" stroke="#C9A961" stroke-width="2" fill="none"/>
+            <!-- Windows -->
+            <rect x="65" y="85" width="35" height="25" rx="4" fill="#2A4A6D"/>
+            <rect x="122" y="85" width="35" height="25" rx="4" fill="#2A4A6D"/>
+            <rect x="179" y="85" width="35" height="25" rx="4" fill="#2A4A6D"/>
+            <!-- Door -->
+            <rect x="117" y="135" width="46" height="45" rx="4" fill="#2A4A6D"/>
+            <circle cx="155" cy="158" r="3" fill="#C9A961"/>
+            <!-- Roof accent -->
+            <rect x="40" y="60" width="200" height="8" rx="4" fill="#C9A961"/>
+            <!-- Shield icon (quality) -->
+            <g transform="translate(105, 20)">
+              <path d="M35 5L55 15V30C55 42 47 50 35 55C23 50 15 42 15 30V15L35 5Z" fill="#1A2F4D" stroke="#C9A961" stroke-width="2"/>
+              <polyline points="27 30 33 36 43 24" stroke="#C9A961" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <!-- Beaker icon (testing) -->
+            <g transform="translate(15, 100)">
+              <path d="M8 3H22M10 3V12L5 22C4 24 5 26 8 26H22C25 26 26 24 25 22L20 12V3" stroke="#C9A961" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <line x1="12" y1="16" x2="18" y2="16" stroke="#C9A961" stroke-width="1.5"/>
+            </g>
+            <!-- Leaf icon (organic) -->
+            <g transform="translate(248, 100)">
+              <path d="M15 25C15 25 5 20 5 10C5 5 10 2 15 2C20 2 25 5 25 10C25 20 15 25 15 25Z" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+              <line x1="15" y1="25" x2="15" y2="10" stroke="#C9A961" stroke-width="1.5"/>
+              <line x1="15" y1="15" x2="20" y2="10" stroke="#C9A961" stroke-width="1.5"/>
+            </g>
+          </svg>
+          <div class="optibio-about-hero__image-placeholder-info">
+            <span class="optibio-about-hero__image-placeholder-title">FDA-Audited Facility</span>
+            <span class="optibio-about-hero__image-placeholder-location">Mount Vernon, NY</span>
+          </div>
         </div>
       {% endif %}
     </div>

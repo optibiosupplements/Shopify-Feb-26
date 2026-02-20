@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026 — Session B)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -169,6 +169,10 @@ Every clinical claim MUST be:
 - **Facebook Pixel:** Placeholder ID (YOUR_FACEBOOK_PIXEL_ID) — zero tracking
 - **Manus Sign-In:** Link redirects to manus.im auth — breaks for customers
 - **OAuth Expiry:** Token expires every 24hr — refresh before MCP sessions
+- ~~**Verify page 404:** `/pages/verify` returns 404 — nav links in header, footer, and traceability badge all broken~~ **FIXED Feb 20, 2026** — Theme updated with Coming Soon state (disabled form, gold banner, "March 2026" launch date). Admin page creation still required.
+- ~~**About page placeholder text visible:** "Upload a team photo, facility image, or brand lifestyle shot via Theme Editor" shows to customers~~ **FIXED Feb 20, 2026** — Replaced with branded SVG facility illustration (navy/gold) + live text "FDA-Audited Facility / Mount Vernon, NY". Auto-replaces when real image uploaded via Theme Editor.
+- ~~**Homepage missing meta description:** No `<meta name="description">` rendered on homepage~~ **FIXED Feb 20, 2026** — Added theme-level fallback (153 chars): "Science-backed supplements with full transparency. Every batch third-party tested and traceable. Clinical-grade KSM-66® Ashwagandha from an FDA-audited facility." Also added matching `og:description` and `twitter:description` fallbacks.
+- ~~**"Powered by Shopify" visible in footer**~~ **FIXED Feb 20, 2026** — Set `show_powered_by: false` in footer-group.json.
 
 ### Past Mistakes (Never Repeat)
 1. **Misattributed study data** — The original site assigned percentage figures to the WRONG clinical outcomes. Always cross-reference PubMed before using any stat.
@@ -248,6 +252,7 @@ Every clinical claim MUST be:
 | Feb 17, 2026 | FTC compliance audit & fix — all 3 pages | Homepage verified clean (8/8 checks pass). Science page: 20 violations found & fixed via full body_html rewrite + SEO update. Product page: 7 violations found & fixed (body_html targeted replacements + SEO title update). All fixes done via Shopify admin CM6 editor (MCP token was expired). | Store name "OptiBio Supplements" needs fixing in Settings > Store details (store-level, not page-level). MCP OAuth token expired — used Chrome browser automation as fallback. |
 | Feb 19, 2026 | Brand logo implementation — full touchpoint audit & asset preparation | Source: `OB logo_white_trans.png` is the ONLY file with true RGBA transparency (78.4% transparent pixels). `OB logo_transparent.png` is misleadingly named — has NO alpha channel (RGB mode, baked-in gray bg). Optimized 5 assets: header logo (64KB, 400×313px), inverse logo (64KB), favicon 180px (18KB), favicon 32px (2KB), OG image (47KB, 1200×630px on #1B365D navy). Logo heights set to 44px desktop / 34px mobile (up from 36/28 defaults — stacked wordmark needs more vertical space). All assets in `~/Desktop/OPTIMAL BIOLOGY/0. BRANDING ASSET/OB LOGO/optimized/`. URL redirect also created: `/products/optibio-ksm-66-ashwagandha` → `/products/optibio-ashwagandha-ksm-66`. | Chrome MCP extension unstable — disconnects on screenshot attempts in Shopify theme editor. Manual upload required for logo `image_picker` settings (cannot be set via settings_data.json). |
 | Feb 19, 2026 | **Session A — CSS Consolidation + Product Page CRO + Traceability Badge** | **Phase 1: CSS Consolidation** — Created `assets/optibio-global.css` (~600 lines) consolidating 3 conflicting CSS files into 1 unified design system. Correct tokens: Navy #1B365D, Gold #D4AF37, Playfair Display + DM Sans. Ported `.ob-*` homepage classes AS-IS with TEMPORARY comment (will be removed in Session B). Edited `layout/theme.liquid` to load single CSS file instead of 3. Old files kept in assets/ for rollback. **Phase 2: CRO Enhancements** — Added inline social proof (★★★★★ 4.9 / 287 reviews) to hero buy box, low stock indicator (real inventory < 50), risk reversal (90-Day Guarantee + Free Returns) below ATC, free shipping progress bar ($75 threshold), sticky cart bar stars + guarantee text. **Phase 2.3: Traceability Badge** — Created `sections/product-traceability-badge.liquid` (glassmorphism card, shield icon, "Seed to Shelf Verified", FDA/cGMP/3rd-Party/USA badges, "Verify Your Batch" CTA). Inserted between Trust and FAQ sections. **Deploy:** Pushed to dev theme ID 146307776581. | Shopify `url` schema type cannot have a `default` value — causes validation error. Fixed with Liquid-level fallback: `section.settings.button_link \| default: '/pages/verify'`. Removed redundant Google Fonts @import from `optibio-enhanced-buy-box.liquid`. Chrome MCP extension disconnected — browser verification pending. |
+| Feb 20, 2026 | **Session B — Pre-Launch Audit Fixes (4 items)** | **Fix 1: Verify page Coming Soon** — Modified `verify-hero.liquid`: added gold-bordered Coming Soon banner ("March 2026"), disabled input+button with `aria-disabled`, guarded JS with `verifyEnabled = false`, added CSS for `.optibio-verify__coming-soon` and `.optibio-verify__search-card--disabled`. **Fix 2: About page placeholder** — Replaced raw "Upload a team photo..." text in `about-hero.liquid` with branded inline SVG (facility building + shield/beaker/leaf icons in navy/gold) + live HTML text "FDA-Audited Facility / Mount Vernon, NY". Updated `about-page.css` placeholder to navy gradient card. Image picker conditional preserved — real photo auto-replaces SVG. **Fix 3: Homepage meta description** — Added `template == 'index'` fallback in `meta-tags.liquid` for both `<meta name="description">` (153 chars) and `og:description`. Brand-focused copy. **Fix 4: Powered by Shopify** — Set `show_powered_by: false` in `footer-group.json`. | Plan reviewed by simulated SME panel (Shopify dev, SEO, UX). Key improvements: meta description trimmed to 153 chars (under Google's 155 limit), `aria-disabled` added for accessibility, `template == 'index'` used (correct Shopify syntax vs `template.name`), SVG uses `role="img"` + `aria-label`. |
 
 ---
 
@@ -276,6 +281,22 @@ Every clinical claim MUST be:
 - [ ] Delete excess product images (16→3-4) in Shopify Admin
 - [ ] Add "Verify Your Batch" to header navigation (Shopify Admin → Navigation → Main Menu)
 - [ ] Set `button_link` for traceability badge in theme editor (currently defaults to `/pages/verify` via Liquid)
+
+### Session B — Files Modified (Feb 20, 2026)
+
+| Action | File | Purpose |
+|--------|------|---------|
+| EDITED | `sections/verify-hero.liquid` | Added Coming Soon banner + disabled form + JS guard (`verifyEnabled = false`) + CSS for coming-soon and disabled states |
+| EDITED | `sections/about-hero.liquid` | Replaced raw placeholder text with branded inline SVG facility illustration + live HTML labels |
+| EDITED | `assets/about-page.css` | Restyled placeholder as navy gradient branded card with gold accents |
+| EDITED | `snippets/meta-tags.liquid` | Added homepage-specific fallbacks for `<meta name="description">` and `og:description` (153 chars) |
+| EDITED | `sections/footer-group.json` | Set `show_powered_by: false` to hide "Powered by Shopify" |
+
+### Manual Steps Still Required (Session B)
+- [ ] **Create Verify page in Shopify Admin:** Pages → Add page, handle = `verify`, template = `page.verify`
+- [ ] **Set homepage SEO description** in Admin → Online Store → Preferences (overrides theme fallback long-term)
+- [ ] **Update header nav** "Verify Your Batch" link in Admin → Navigation → Main Menu to point to the new page
+- [ ] Push updated theme files to `Shopify-Feb-26` backup repo
 
 ---
 
@@ -308,25 +329,27 @@ Every clinical claim MUST be:
 - **Future Upgrade:** Judge.me Awesome plan ($15/mo) needed for: 10% incentive coupons, Q&A on product pages, photo review carousel
 
 #### Subscribe & Save (powered by Shopify Subscriptions app — Free, Native)
-- **Status:** Installed, app block added to product templates, onboarding pending user completion
-- **App Block:** `shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad` — present in both `product.json` and `product.optibio-main.json`
-- **Subscription Plans (to be created by user in Shopify Admin > Apps > Subscriptions):**
-  - 1 Bottle: Every 45 days, 15% off → $33.99 (from $39.99)
-  - 3 Bottles: Every 90 days, 15% off → $84.99 (from $99.99)
-  - 6 Bottles: Every 180 days, 15% off → $152.94 (from $179.94)
+- **Status:** COMPLETE — Plan created, widget on product page, customer accounts enabled
+- **App Block:** `shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad` — present in `product.optibio-main.json`
+- **Subscription Plan:** Single plan "Subscribe and save" (customer-facing title) covering all 3 variants (1/3/6 bottles), 15% off
+  - Delivery frequencies: Every 1 month, every 3 months, every 6 months — all 15% off
+  - Effective pricing: 1 Bottle $33.99 (from $39.99), 3 Bottles $84.99 (from $99.99), 6 Bottles $152.94 (from $179.94)
 - **Integration:** Shopify Subscriptions auto-injects subscription widget into the product form via app block. The existing `product-subscription.liquid` section provides a standalone Subscribe & Save info section with benefits grid and comparison table.
 - **Product Page Flow:** Hero buy box has Subscribe & Save toggle (15% OFF badge, free shipping, cancel anytime) built into `optibio-enhanced-buy-box.liquid`
+- **Customer Accounts:** Enabled (modern passwordless — one-time code via email). Sign-in links toggle currently OFF in Settings > Customer accounts (customers can still access via direct URL post-purchase).
+- **Billing Settings:** Payment failure: 3 retries / 7 days apart → cancel. Inventory failure: 5 retries / 1 day apart → skip order.
 
 ### Remaining Work
 - **Theme 146307776581 is LIVE** — currently the published theme
 - **Traceability backend (future):** Node.js App Proxy + Shopify metaobjects for dynamic batch lookup (currently uses client-side sample data)
 - ~~**Review system:** Judge.me or similar app integration~~ DONE
-- ~~**Subscribe & Save:** Subscription app~~ DONE (Shopify Subscriptions app installed, plans pending user setup)
+- ~~**Subscribe & Save:** Subscription app~~ DONE (Shopify Subscriptions app installed, plan created, widget verified)
 - **Blog content:** 3 foundational articles
 - **Performance/Accessibility audits**
-- **Subscribe & Save onboarding:** User completing setup in Shopify Admin > Apps > Subscriptions
+- ~~**Subscribe & Save onboarding:** Setup complete~~ DONE (Feb 20, 2026)
+- **Sign-in links:** Consider enabling "Show sign-in links" in Settings > Customer accounts so subscribers can easily access their account to manage subscriptions
 
 ---
 
-*Last updated: February 20, 2026*
-*Next review: After Subscribe & Save onboarding complete — verify subscription widget renders on product page*
+*Last updated: February 20, 2026 (Session B — Pre-Launch Audit Fixes)*
+*Next review: Pre-launch QA — mobile testing, checkout flow, performance audit, verify page admin setup*

@@ -14,8 +14,15 @@
       <h1 class="optibio-verify__title">{{ section.settings.heading }}</h1>
       <p class="optibio-verify__subtitle">{{ section.settings.subheading }}</p>
 
-      <div class="optibio-verify__search-card">
-        <form class="optibio-verify__form" id="optibio-verify-form" onsubmit="return handleVerify(event)">
+      <!-- Coming Soon Banner -->
+      <div class="optibio-verify__coming-soon">
+        <span class="optibio-verify__coming-soon-badge">COMING SOON</span>
+        <p class="optibio-verify__coming-soon-text">Batch verification launching March 2026. Every Optibio bottle will be fully traceable from raw material sourcing to your doorstep.</p>
+        <a href="#footer-email-signup" class="optibio-verify__coming-soon-notify">Get notified when it launches &rarr;</a>
+      </div>
+
+      <div class="optibio-verify__search-card optibio-verify__search-card--disabled">
+        <form class="optibio-verify__form" id="optibio-verify-form" onsubmit="return false;">
           <label class="optibio-verify__label" for="lot-number">Enter your lot number</label>
           <p class="optibio-verify__hint">Found on the bottom of your bottle (e.g., OB-KSM66-2026-001)</p>
           <div class="optibio-verify__input-row">
@@ -25,16 +32,15 @@
               name="lot_number"
               class="optibio-verify__input"
               placeholder="OB-KSM66-2026-001"
-              required
+              disabled
+              aria-disabled="true"
               autocomplete="off"
             >
-            <button type="submit" class="optibio-verify__submit" id="verify-btn">
+            <button type="submit" class="optibio-verify__submit" id="verify-btn" disabled aria-disabled="true">
               <span class="optibio-verify__submit-text">Verify</span>
-              <span class="optibio-verify__submit-loading" style="display:none;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-dasharray="60" stroke-dashoffset="20"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></circle></svg>
-              </span>
             </button>
           </div>
+          <p class="optibio-verify__disabled-hint">Verification system launching soon. Check back in March 2026.</p>
         </form>
 
         <div class="optibio-verify__trust-row">
@@ -218,7 +224,9 @@
 </section>
 
 <script>
+  // Batch verification is currently disabled (Coming Soon state).
   // Sample batch data — replace with Shopify metaobject API calls when ready
+  var verifyEnabled = false;
   var optiboBatches = {
     'OB-KSM66-2026-001': {
       product: 'KSM-66® Ashwagandha — 600mg',
@@ -248,6 +256,7 @@
 
   function handleVerify(e) {
     e.preventDefault();
+    if (!verifyEnabled) return false;
     var input = document.getElementById('lot-number').value.trim().toUpperCase();
     var results = document.getElementById('verify-results');
     var notFound = document.getElementById('verify-not-found');
@@ -327,6 +336,78 @@
     max-width: 560px;
     margin: 0 auto 40px;
     line-height: 1.6;
+  }
+
+  /* === COMING SOON === */
+  .optibio-verify__coming-soon {
+    max-width: 560px;
+    margin: 0 auto 24px;
+    padding: 24px 28px;
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF9E7 100%);
+    border: 2px solid #C9A961;
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .optibio-verify__coming-soon-badge {
+    display: inline-block;
+    background: #1A2F4D;
+    color: #C9A961;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+
+  .optibio-verify__coming-soon-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #1A2F4D;
+    line-height: 1.6;
+    margin: 0 0 12px;
+  }
+
+  .optibio-verify__coming-soon-notify {
+    display: inline-block;
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2563EB;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .optibio-verify__coming-soon-notify:hover {
+    color: #1D4ED8;
+  }
+
+  /* === DISABLED STATE === */
+  .optibio-verify__search-card--disabled {
+    opacity: 0.55;
+    pointer-events: none;
+    position: relative;
+  }
+
+  .optibio-verify__input:disabled {
+    background: #F1F5F9;
+    cursor: not-allowed;
+  }
+
+  .optibio-verify__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .optibio-verify__disabled-hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #94A3B8;
+    text-align: center;
+    margin: 12px 0 0;
+    font-style: italic;
   }
 
   /* === SEARCH CARD === */
@@ -748,6 +829,14 @@
 
     .optibio-verify__trust-row {
       gap: 12px;
+    }
+
+    .optibio-verify__coming-soon {
+      padding: 20px 16px;
+    }
+
+    .optibio-verify__coming-soon-text {
+      font-size: 14px;
     }
   }
 </style>

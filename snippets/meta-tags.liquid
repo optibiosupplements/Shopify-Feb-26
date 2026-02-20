@@ -22,6 +22,10 @@
   assign og_type = 'website'
   assign og_description = page_description | default: shop.description | default: shop.name
 
+  if template == 'index' and page_description == blank
+    assign og_description = 'Science-backed supplements with full transparency. Every batch third-party tested and traceable. Clinical-grade KSM-66 Ashwagandha from an FDA-audited facility.'
+  endif
+
   if request.page_type == 'product'
     assign og_type = 'product'
   elsif request.page_type == 'article'
@@ -134,5 +138,10 @@
   <meta
     name="description"
     content="{{ page_description | escape }}"
+  >
+{% elsif template == 'index' %}
+  <meta
+    name="description"
+    content="Science-backed supplements with full transparency. Every batch third-party tested and traceable. Clinical-grade KSM-66 Ashwagandha from an FDA-audited facility."
   >
 {% endif %}

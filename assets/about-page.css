@@ -76,21 +76,45 @@
 .optibio-about-hero__image-placeholder {
   width: 100%;
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #EBF5FB, #D6EAF8);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: #64748B;
+  gap: 16px;
   text-align: center;
   padding: 40px;
 }
 
-.optibio-about-hero__image-placeholder-icon {
-  font-size: 48px;
+.optibio-about-hero__image-placeholder--branded {
+  background: linear-gradient(145deg, #1A2F4D 0%, #1E3A5F 60%, #2A4A6D 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  box-shadow: 0 8px 32px rgba(26, 47, 77, 0.15);
+}
+
+.optibio-about-hero__image-placeholder--branded svg {
+  opacity: 0.9;
+}
+
+.optibio-about-hero__image-placeholder-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.optibio-about-hero__image-placeholder-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #C9A961;
+  letter-spacing: 0.02em;
+}
+
+.optibio-about-hero__image-placeholder-location {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* ===== MISSION / PROBLEM SECTION ===== */
