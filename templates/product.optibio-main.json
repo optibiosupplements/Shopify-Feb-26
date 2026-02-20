@@ -232,7 +232,7 @@
       "settings": {
         "heading": "Quality You Can Trust",
         "subheading": "Every bottle meets the highest standards for purity, potency, and safety.",
-        "manufacturer_info": "Manufactured by Optimal Biology Supplements, Mount Vernon, NY",
+        "manufacturer_info": "Manufactured by Optimal Biology Supplements — USA",
         "testing_info": "Every batch tested for purity, potency, and contaminants by independent laboratories."
       }
     },
@@ -242,9 +242,9 @@
         "badge_ny": {
           "type": "badge",
           "settings": {
-            "badge_emoji": "🏙️",
-            "badge_label": "Made in NY",
-            "badge_sub": "Mount Vernon, NY"
+            "badge_emoji": "🇺🇸",
+            "badge_label": "Made in USA",
+            "badge_sub": "USA-Based Facility"
           }
         },
         "badge_seed": {
@@ -361,7 +361,7 @@
       "type": "product-traceability-badge",
       "settings": {
         "heading": "Seed to Shelf Verified",
-        "description": "Every Optibio bottle is traceable from raw material sourcing to your doorstep. Manufactured at an FDA-audited, cGMP-certified facility in Mount Vernon, NY.",
+        "description": "Every Optibio bottle is traceable from raw material sourcing to your doorstep. Manufactured at an FDA-audited, cGMP-certified facility in the USA.",
         "button_text": "Verify Your Batch",
         "button_link": "",
         "show_badges": true

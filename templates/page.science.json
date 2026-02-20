@@ -172,7 +172,7 @@
         },
         "source_2": {
           "type": "sourcing_card",
-          "settings": { "icon": "🏭", "title": "FDA-Audited Manufacturing", "description": "Manufactured at an FDA-audited, cGMP-certified facility in Mount Vernon, New York. Every step of production meets pharmaceutical-grade standards.", "detail": "Mount Vernon, NY — USA-based facility" }
+          "settings": { "icon": "🏭", "title": "FDA-Audited Manufacturing", "description": "Manufactured at an FDA-audited, cGMP-certified facility in the United States. Every step of production meets pharmaceutical-grade standards.", "detail": "USA-based facility" }
         },
         "source_3": {
           "type": "sourcing_card",

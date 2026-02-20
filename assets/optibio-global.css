@@ -97,21 +97,29 @@ a:hover {
 /* --- Header Overrides --- */
 .header-section,
 .header-section header-component {
-  background: var(--optibio-white) !important;
+  background:
+    radial-gradient(ellipse at center, rgba(201, 169, 97, 0.08) 0%, rgba(201, 169, 97, 0.03) 50%, transparent 80%),
+    var(--optibio-white) !important;
   border-bottom: none !important;
   box-shadow: 0 1px 8px rgba(30, 58, 95, 0.06);
 }
 
-/* Logo — Sora, premium feel */
+/* Slightly taller header */
+.header-section header-component .header {
+  --header-padding: 14px;
+}
+
+/* Logo — Sora, premium feel + golden glow */
 a.header-logo,
 a.header-logo span {
   font-family: var(--optibio-font-display) !important;
   font-weight: 700 !important;
   color: var(--optibio-navy) !important;
   letter-spacing: -0.02em;
-  font-size: 1.35rem !important;
+  font-size: 1.5rem !important;
   transition: color 0.25s ease;
   text-decoration: none !important;
+  text-shadow: 0 0 20px rgba(201, 169, 97, 0.15);
 }
 
 a.header-logo:hover,
@@ -119,17 +127,18 @@ a.header-logo:hover span {
   color: var(--optibio-gold) !important;
 }
 
-/* Nav Links — Inter, refined spacing & tracking */
+/* Nav Links — Inter, refined spacing & tracking + golden glow */
 .menu-list__link {
   font-family: var(--optibio-font-body) !important;
   font-weight: 500 !important;
   color: var(--optibio-navy) !important;
-  font-size: 13.5px !important;
+  font-size: 14.5px !important;
   letter-spacing: 0.4px;
   text-transform: none !important;
   transition: color 0.25s ease;
   position: relative;
   text-decoration: none !important;
+  text-shadow: 0 0 16px rgba(201, 169, 97, 0.1);
 }
 
 /* Gold underline accent on hover */

@@ -151,7 +151,7 @@
     "footer_nav_info": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "\n<div class=\"optibio-footer-nav\">\n  <div class=\"optibio-footer-nav__container\">\n    <div class=\"optibio-footer-nav__links\">\n      <a href=\"/products/optibio-ashwagandha-ksm-66\">Shop</a>\n      <a href=\"/pages/science\">Science</a>\n      <a href=\"/pages/verify\">Verify Your Batch</a>\n      <a href=\"/pages/about\">About</a>\n      <a href=\"/pages/faq\">FAQ</a>\n      <a href=\"/pages/contact\">Contact</a>\n    </div>\n    <div class=\"optibio-footer-nav__company\">\n      <p><strong>Optimal Biology Supplements</strong></p>\n      <p>Mount Vernon, NY</p>\n    </div>\n    <div class=\"optibio-footer-nav__badge\">\n      <span class=\"optibio-footer-badge\">🌱 Seed to Shelf Verified</span>\n    </div>\n  </div>\n</div>\n"
+        "custom_liquid": "\n<div class=\"optibio-footer-nav\">\n  <div class=\"optibio-footer-nav__container\">\n    <div class=\"optibio-footer-nav__links\">\n      <a href=\"/products/optibio-ashwagandha-ksm-66\">Shop</a>\n      <a href=\"/pages/science\">Science</a>\n      <a href=\"/pages/verify\">Verify Your Batch</a>\n      <a href=\"/pages/about\">About</a>\n      <a href=\"/pages/faq\">FAQ</a>\n      <a href=\"/pages/contact\">Contact</a>\n    </div>\n    <div class=\"optibio-footer-nav__company\">\n      <p><strong>Optimal Biology Supplements</strong></p>\n      <p>USA-Based Manufacturing</p>\n    </div>\n    <div class=\"optibio-footer-nav__badge\">\n      <span class=\"optibio-footer-badge\">🌱 Seed to Shelf Verified</span>\n    </div>\n  </div>\n</div>\n"
       }
     },
     "fda_disclaimer": {

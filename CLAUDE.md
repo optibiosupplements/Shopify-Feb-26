@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026 — Session B)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026 — Session C)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -170,7 +170,7 @@ Every clinical claim MUST be:
 - **Manus Sign-In:** Link redirects to manus.im auth — breaks for customers
 - **OAuth Expiry:** Token expires every 24hr — refresh before MCP sessions
 - ~~**Verify page 404:** `/pages/verify` returns 404 — nav links in header, footer, and traceability badge all broken~~ **FIXED Feb 20, 2026** — Theme updated with Coming Soon state (disabled form, gold banner, "March 2026" launch date). Admin page creation still required.
-- ~~**About page placeholder text visible:** "Upload a team photo, facility image, or brand lifestyle shot via Theme Editor" shows to customers~~ **FIXED Feb 20, 2026** — Replaced with branded SVG facility illustration (navy/gold) + live text "FDA-Audited Facility / Mount Vernon, NY". Auto-replaces when real image uploaded via Theme Editor.
+- ~~**About page placeholder text visible:** "Upload a team photo, facility image, or brand lifestyle shot via Theme Editor" shows to customers~~ **FIXED Feb 20, 2026** — Replaced with branded SVG facility illustration (navy/gold) + live text "FDA-Audited Facility / United States". Auto-replaces when real image uploaded via Theme Editor.
 - ~~**Homepage missing meta description:** No `<meta name="description">` rendered on homepage~~ **FIXED Feb 20, 2026** — Added theme-level fallback (153 chars): "Science-backed supplements with full transparency. Every batch third-party tested and traceable. Clinical-grade KSM-66® Ashwagandha from an FDA-audited facility." Also added matching `og:description` and `twitter:description` fallbacks.
 - ~~**"Powered by Shopify" visible in footer**~~ **FIXED Feb 20, 2026** — Set `show_powered_by: false` in footer-group.json.
 
@@ -252,7 +252,8 @@ Every clinical claim MUST be:
 | Feb 17, 2026 | FTC compliance audit & fix — all 3 pages | Homepage verified clean (8/8 checks pass). Science page: 20 violations found & fixed via full body_html rewrite + SEO update. Product page: 7 violations found & fixed (body_html targeted replacements + SEO title update). All fixes done via Shopify admin CM6 editor (MCP token was expired). | Store name "OptiBio Supplements" needs fixing in Settings > Store details (store-level, not page-level). MCP OAuth token expired — used Chrome browser automation as fallback. |
 | Feb 19, 2026 | Brand logo implementation — full touchpoint audit & asset preparation | Source: `OB logo_white_trans.png` is the ONLY file with true RGBA transparency (78.4% transparent pixels). `OB logo_transparent.png` is misleadingly named — has NO alpha channel (RGB mode, baked-in gray bg). Optimized 5 assets: header logo (64KB, 400×313px), inverse logo (64KB), favicon 180px (18KB), favicon 32px (2KB), OG image (47KB, 1200×630px on #1B365D navy). Logo heights set to 44px desktop / 34px mobile (up from 36/28 defaults — stacked wordmark needs more vertical space). All assets in `~/Desktop/OPTIMAL BIOLOGY/0. BRANDING ASSET/OB LOGO/optimized/`. URL redirect also created: `/products/optibio-ksm-66-ashwagandha` → `/products/optibio-ashwagandha-ksm-66`. | Chrome MCP extension unstable — disconnects on screenshot attempts in Shopify theme editor. Manual upload required for logo `image_picker` settings (cannot be set via settings_data.json). |
 | Feb 19, 2026 | **Session A — CSS Consolidation + Product Page CRO + Traceability Badge** | **Phase 1: CSS Consolidation** — Created `assets/optibio-global.css` (~600 lines) consolidating 3 conflicting CSS files into 1 unified design system. Correct tokens: Navy #1B365D, Gold #D4AF37, Playfair Display + DM Sans. Ported `.ob-*` homepage classes AS-IS with TEMPORARY comment (will be removed in Session B). Edited `layout/theme.liquid` to load single CSS file instead of 3. Old files kept in assets/ for rollback. **Phase 2: CRO Enhancements** — Added inline social proof (★★★★★ 4.9 / 287 reviews) to hero buy box, low stock indicator (real inventory < 50), risk reversal (90-Day Guarantee + Free Returns) below ATC, free shipping progress bar ($75 threshold), sticky cart bar stars + guarantee text. **Phase 2.3: Traceability Badge** — Created `sections/product-traceability-badge.liquid` (glassmorphism card, shield icon, "Seed to Shelf Verified", FDA/cGMP/3rd-Party/USA badges, "Verify Your Batch" CTA). Inserted between Trust and FAQ sections. **Deploy:** Pushed to dev theme ID 146307776581. | Shopify `url` schema type cannot have a `default` value — causes validation error. Fixed with Liquid-level fallback: `section.settings.button_link \| default: '/pages/verify'`. Removed redundant Google Fonts @import from `optibio-enhanced-buy-box.liquid`. Chrome MCP extension disconnected — browser verification pending. |
-| Feb 20, 2026 | **Session B — Pre-Launch Audit Fixes (4 items)** | **Fix 1: Verify page Coming Soon** — Modified `verify-hero.liquid`: added gold-bordered Coming Soon banner ("March 2026"), disabled input+button with `aria-disabled`, guarded JS with `verifyEnabled = false`, added CSS for `.optibio-verify__coming-soon` and `.optibio-verify__search-card--disabled`. **Fix 2: About page placeholder** — Replaced raw "Upload a team photo..." text in `about-hero.liquid` with branded inline SVG (facility building + shield/beaker/leaf icons in navy/gold) + live HTML text "FDA-Audited Facility / Mount Vernon, NY". Updated `about-page.css` placeholder to navy gradient card. Image picker conditional preserved — real photo auto-replaces SVG. **Fix 3: Homepage meta description** — Added `template == 'index'` fallback in `meta-tags.liquid` for both `<meta name="description">` (153 chars) and `og:description`. Brand-focused copy. **Fix 4: Powered by Shopify** — Set `show_powered_by: false` in `footer-group.json`. | Plan reviewed by simulated SME panel (Shopify dev, SEO, UX). Key improvements: meta description trimmed to 153 chars (under Google's 155 limit), `aria-disabled` added for accessibility, `template == 'index'` used (correct Shopify syntax vs `template.name`), SVG uses `role="img"` + `aria-label`. |
+| Feb 20, 2026 | **Session B — Pre-Launch Audit Fixes (4 items)** |
+| Feb 20, 2026 | **Session C — Remove Mount Vernon + Header Golden Glow** | **Privacy:** Removed all 16 "Mount Vernon, NY" location references across 10 theme files (sections, templates, footer). Replaced with generic "USA" / "United States" / "USA-Based Facility". Also changed "Made in NY" badge → "Made in USA" with 🇺🇸 emoji. **Header Enhancement:** Made header slightly bigger (padding 14px, logo 1.5rem, nav 14.5px) and added golden background glow (radial-gradient `rgba(201,169,97,0.08)`) + subtle gold text-shadow on logo and nav links for premium warm feel. | Location disclosure was a privacy concern for the owner. All "Mount Vernon" references replaced — grep returns 0 results in theme files. | **Fix 1: Verify page Coming Soon** — Modified `verify-hero.liquid`: added gold-bordered Coming Soon banner ("March 2026"), disabled input+button with `aria-disabled`, guarded JS with `verifyEnabled = false`, added CSS for `.optibio-verify__coming-soon` and `.optibio-verify__search-card--disabled`. **Fix 2: About page placeholder** — Replaced raw "Upload a team photo..." text in `about-hero.liquid` with branded inline SVG (facility building + shield/beaker/leaf icons in navy/gold) + live HTML text "FDA-Audited Facility / United States". Updated `about-page.css` placeholder to navy gradient card. Image picker conditional preserved — real photo auto-replaces SVG. **Fix 3: Homepage meta description** — Added `template == 'index'` fallback in `meta-tags.liquid` for both `<meta name="description">` (153 chars) and `og:description`. Brand-focused copy. **Fix 4: Powered by Shopify** — Set `show_powered_by: false` in `footer-group.json`. | Plan reviewed by simulated SME panel (Shopify dev, SEO, UX). Key improvements: meta description trimmed to 153 chars (under Google's 155 limit), `aria-disabled` added for accessibility, `template == 'index'` used (correct Shopify syntax vs `template.name`), SVG uses `role="img"` + `aria-label`. |
 
 ---
 
@@ -293,10 +294,27 @@ Every clinical claim MUST be:
 | EDITED | `sections/footer-group.json` | Set `show_powered_by: false` to hide "Powered by Shopify" |
 
 ### Manual Steps Still Required (Session B)
-- [ ] **Create Verify page in Shopify Admin:** Pages → Add page, handle = `verify`, template = `page.verify`
-- [ ] **Set homepage SEO description** in Admin → Online Store → Preferences (overrides theme fallback long-term)
-- [ ] **Update header nav** "Verify Your Batch" link in Admin → Navigation → Main Menu to point to the new page
-- [ ] Push updated theme files to `Shopify-Feb-26` backup repo
+- [x] **Create Verify page in Shopify Admin:** DONE — Page created, handle = `verify`, template = `page.verify`, page ID 113770528837
+- [x] **Set homepage SEO description** in Admin → Online Store → Preferences — DONE (title + meta description set)
+- [x] **Update header nav** — DONE — "Verify Your Batch" link already pointed to `/pages/verify`
+- [x] Push updated theme files to `Shopify-Feb-26` backup repo — DONE
+
+### Session C — Files Modified (Feb 20, 2026)
+
+| Action | File | Purpose |
+|--------|------|---------|
+| EDITED | `sections/about-hero.liquid` | "Mount Vernon, NY" → "United States" in SVG placeholder |
+| EDITED | `sections/verify-hero.liquid` | 3 Mount Vernon refs → "USA" (HTML + JS batch data) |
+| EDITED | `sections/product-badge-strip.liquid` | "Made in NY" / "Mount Vernon, NY" → "Made in USA" / "USA-Based Facility" |
+| EDITED | `sections/product-traceability-badge.liquid` | "Mount Vernon, NY" → "the USA" in description default |
+| EDITED | `sections/product-trust.liquid` | "Mount Vernon, NY" → "USA" in manufacturer info default |
+| EDITED | `sections/about-standards.liquid` | 2 Mount Vernon refs → "United States" |
+| EDITED | `sections/science-sourcing.liquid` | 2 Mount Vernon refs → "United States" / "USA-based facility" |
+| EDITED | `sections/footer-group.json` | "Mount Vernon, NY" → "USA-Based Manufacturing" in footer nav |
+| EDITED | `templates/product.optibio-main.json` | 3 Mount Vernon refs → "USA" (trust, badge, traceability) |
+| EDITED | `templates/page.about.json` | Mount Vernon ref → "United States" |
+| EDITED | `templates/page.science.json` | 2 Mount Vernon refs → "United States" / "USA-based facility" |
+| EDITED | `assets/optibio-global.css` | Header: bigger (padding 14px, logo 1.5rem, nav 14.5px) + golden radial glow + text-shadow |
 
 ---
 
@@ -304,6 +322,7 @@ Every clinical claim MUST be:
 8. **Misleading filename "OB logo_transparent.png"** — This file has NO alpha channel (RGB mode). The background is baked-in gray/white, not transparent. The correct transparent source is `OB logo_white_trans.png` (RGBA, 78.4% transparent pixels). Always verify `img.mode` before assuming transparency from a filename.
 9. **Shopify `url` schema type cannot have a `default` value** — Setting `"type": "url"` with `"default": "/pages/verify"` causes a schema validation error. Use Liquid-level fallback instead: `{% assign verify_link = section.settings.button_link | default: '/pages/verify' %}`.
 10. **Wrong subscription app documented** — Previous session incorrectly documented "Appstle" as the Subscribe & Save app. The actual app is **Shopify Subscriptions** (native, free). The theme code correctly references `shopify://apps/subscriptions/blocks/app-block/`. Always verify app identity against actual theme code, not session memory alone.
+11. **Manufacturing location disclosed** — "Mount Vernon, NY" appeared in 16 places across 10 theme files. Owner requested removal for privacy. Replaced with generic "USA" / "United States" / "USA-Based Facility". Never include specific city/state manufacturing location in theme files — use "USA" as the default.
 
 ---
 
@@ -351,5 +370,5 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 20, 2026 (Session B — Pre-Launch Audit Fixes)*
-*Next review: Pre-launch QA — mobile testing, checkout flow, performance audit, verify page admin setup*
+*Last updated: February 20, 2026 (Session C — Mount Vernon Removal + Header Golden Glow)*
+*Next review: Pre-launch QA — mobile testing, checkout flow, performance audit*
