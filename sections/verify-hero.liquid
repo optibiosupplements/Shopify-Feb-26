@@ -1,0 +1,775 @@
+{% comment %}
+  Optibio Verify Your Batch — Hero + Search
+  Brand: Navy #1A2F4D, Gold #C9A961, Sora + Inter
+  CTA: Electric Blue #2563EB
+{% endcomment %}
+
+<section class="optibio-section optibio-verify" id="optibio-verify">
+  <div class="optibio-verify__hero">
+    <div class="page-width">
+      <div class="optibio-verify__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg>
+        Seed-to-Shelf Traceability
+      </div>
+      <h1 class="optibio-verify__title">{{ section.settings.heading }}</h1>
+      <p class="optibio-verify__subtitle">{{ section.settings.subheading }}</p>
+
+      <div class="optibio-verify__search-card">
+        <form class="optibio-verify__form" id="optibio-verify-form" onsubmit="return handleVerify(event)">
+          <label class="optibio-verify__label" for="lot-number">Enter your lot number</label>
+          <p class="optibio-verify__hint">Found on the bottom of your bottle (e.g., OB-KSM66-2026-001)</p>
+          <div class="optibio-verify__input-row">
+            <input
+              type="text"
+              id="lot-number"
+              name="lot_number"
+              class="optibio-verify__input"
+              placeholder="OB-KSM66-2026-001"
+              required
+              autocomplete="off"
+            >
+            <button type="submit" class="optibio-verify__submit" id="verify-btn">
+              <span class="optibio-verify__submit-text">Verify</span>
+              <span class="optibio-verify__submit-loading" style="display:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-dasharray="60" stroke-dashoffset="20"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></circle></svg>
+              </span>
+            </button>
+          </div>
+        </form>
+
+        <div class="optibio-verify__trust-row">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="2"><path d="M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg> FDA-Audited Facility</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="2"><path d="M12 2l8 4v6c0 6-3.5 10-8 13-4.5-3-8-7-8-13V6z"/></svg> 3rd-Party Tested</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> cGMP Certified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Container (hidden by default) -->
+  <div class="optibio-verify__results" id="verify-results" style="display:none;">
+    <div class="page-width">
+
+      <!-- Verified Banner -->
+      <div class="optibio-verify__banner optibio-verify__banner--success" id="verify-banner">
+        <div class="optibio-verify__banner-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5"><path d="M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div>
+          <h2 class="optibio-verify__banner-title" id="banner-title">Batch Verified</h2>
+          <p class="optibio-verify__banner-subtitle" id="banner-subtitle">This is an authentic Optibio product.</p>
+        </div>
+      </div>
+
+      <!-- Batch Details Grid -->
+      <div class="optibio-verify__grid">
+
+        <!-- Product Info Card -->
+        <div class="optibio-verify__card">
+          <h3 class="optibio-verify__card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            Product Information
+          </h3>
+          <div class="optibio-verify__detail">
+            <span class="optibio-verify__detail-label">Product</span>
+            <span class="optibio-verify__detail-value" id="result-product">KSM-66® Ashwagandha</span>
+          </div>
+          <div class="optibio-verify__detail">
+            <span class="optibio-verify__detail-label">Lot Number</span>
+            <span class="optibio-verify__detail-value" id="result-lot">—</span>
+          </div>
+          <div class="optibio-verify__detail">
+            <span class="optibio-verify__detail-label">Manufacturing Date</span>
+            <span class="optibio-verify__detail-value" id="result-mfg-date">—</span>
+          </div>
+          <div class="optibio-verify__detail">
+            <span class="optibio-verify__detail-label">Expiration Date</span>
+            <span class="optibio-verify__detail-value" id="result-exp-date">—</span>
+          </div>
+          <div class="optibio-verify__detail">
+            <span class="optibio-verify__detail-label">Bottle Size</span>
+            <span class="optibio-verify__detail-value" id="result-size">90 Capsules</span>
+          </div>
+        </div>
+
+        <!-- Quality Testing Card -->
+        <div class="optibio-verify__card">
+          <h3 class="optibio-verify__card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="2"><path d="M12 2l8 4v6c0 6-3.5 10-8 13-4.5-3-8-7-8-13V6z"/></svg>
+            Quality Testing
+          </h3>
+          <div class="optibio-verify__test-list">
+            <div class="optibio-verify__test-item optibio-verify__test-item--pass">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <span class="optibio-verify__test-name">Identity Testing</span>
+                <span class="optibio-verify__test-result">Confirmed: Withania somnifera root</span>
+              </div>
+            </div>
+            <div class="optibio-verify__test-item optibio-verify__test-item--pass">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <span class="optibio-verify__test-name">Potency</span>
+                <span class="optibio-verify__test-result" id="result-potency">5% withanolides (600mg/serving)</span>
+              </div>
+            </div>
+            <div class="optibio-verify__test-item optibio-verify__test-item--pass">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <span class="optibio-verify__test-name">Heavy Metals</span>
+                <span class="optibio-verify__test-result">Below detection limits</span>
+              </div>
+            </div>
+            <div class="optibio-verify__test-item optibio-verify__test-item--pass">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <span class="optibio-verify__test-name">Microbial</span>
+                <span class="optibio-verify__test-result">Pass — No pathogens detected</span>
+              </div>
+            </div>
+            <div class="optibio-verify__test-item optibio-verify__test-item--pass">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <span class="optibio-verify__test-name">Allergen Free</span>
+                <span class="optibio-verify__test-result">No soy, gluten, dairy, or GMO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Supply Chain Timeline -->
+        <div class="optibio-verify__card optibio-verify__card--full">
+          <h3 class="optibio-verify__card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Supply Chain Timeline
+          </h3>
+          <div class="optibio-verify__timeline">
+            <div class="optibio-verify__timeline-step optibio-verify__timeline-step--complete">
+              <div class="optibio-verify__timeline-dot"></div>
+              <div class="optibio-verify__timeline-content">
+                <span class="optibio-verify__timeline-title">Raw Material Sourced</span>
+                <span class="optibio-verify__timeline-detail" id="result-sourced">Organic KSM-66® from Ixoreal Biomed, India</span>
+              </div>
+            </div>
+            <div class="optibio-verify__timeline-step optibio-verify__timeline-step--complete">
+              <div class="optibio-verify__timeline-dot"></div>
+              <div class="optibio-verify__timeline-content">
+                <span class="optibio-verify__timeline-title">Third-Party Lab Tested</span>
+                <span class="optibio-verify__timeline-detail" id="result-lab">Independent laboratory verification</span>
+              </div>
+            </div>
+            <div class="optibio-verify__timeline-step optibio-verify__timeline-step--complete">
+              <div class="optibio-verify__timeline-dot"></div>
+              <div class="optibio-verify__timeline-content">
+                <span class="optibio-verify__timeline-title">Manufactured</span>
+                <span class="optibio-verify__timeline-detail" id="result-facility">FDA-audited, cGMP facility — Mount Vernon, NY</span>
+              </div>
+            </div>
+            <div class="optibio-verify__timeline-step optibio-verify__timeline-step--complete">
+              <div class="optibio-verify__timeline-dot"></div>
+              <div class="optibio-verify__timeline-content">
+                <span class="optibio-verify__timeline-title">Quality Released</span>
+                <span class="optibio-verify__timeline-detail" id="result-released">Final QA inspection passed</span>
+              </div>
+            </div>
+            <div class="optibio-verify__timeline-step optibio-verify__timeline-step--complete">
+              <div class="optibio-verify__timeline-dot"></div>
+              <div class="optibio-verify__timeline-content">
+                <span class="optibio-verify__timeline-title">Shipped</span>
+                <span class="optibio-verify__timeline-detail">Ready for delivery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COA Download -->
+      <div class="optibio-verify__coa" id="verify-coa">
+        <div class="optibio-verify__coa-content">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A2F4D" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <div>
+            <strong>Certificate of Analysis (COA)</strong>
+            <p>Full third-party lab report for this batch</p>
+          </div>
+        </div>
+        <a href="#" class="optibio-verify__coa-btn" id="coa-link">
+          Download COA
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Not Found State -->
+  <div class="optibio-verify__not-found" id="verify-not-found" style="display:none;">
+    <div class="page-width">
+      <div class="optibio-verify__banner optibio-verify__banner--warning">
+        <div class="optibio-verify__banner-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <h2 class="optibio-verify__banner-title">Lot Number Not Found</h2>
+          <p class="optibio-verify__banner-subtitle">We couldn't find a match. Please double-check the lot number on the bottom of your bottle and try again. If you continue to have issues, contact us at <a href="mailto:support@optibiosupplements.com">support@optibiosupplements.com</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Sample batch data — replace with Shopify metaobject API calls when ready
+  var optiboBatches = {
+    'OB-KSM66-2026-001': {
+      product: 'KSM-66® Ashwagandha — 600mg',
+      lot: 'OB-KSM66-2026-001',
+      mfgDate: 'January 15, 2026',
+      expDate: 'January 15, 2028',
+      size: '90 Capsules (45-Day Supply)',
+      potency: '5.2% withanolides (600mg/serving) — Exceeds spec',
+      sourced: 'Organic KSM-66® root extract — Ixoreal Biomed, Hyderabad, India',
+      lab: 'Eurofins Scientific — Los Angeles, CA',
+      facility: 'FDA-audited, cGMP certified — Mount Vernon, NY',
+      released: 'January 22, 2026 — All specs passed'
+    },
+    'OB-KSM66-2026-002': {
+      product: 'KSM-66® Ashwagandha — 600mg',
+      lot: 'OB-KSM66-2026-002',
+      mfgDate: 'February 5, 2026',
+      expDate: 'February 5, 2028',
+      size: '90 Capsules (45-Day Supply)',
+      potency: '5.1% withanolides (600mg/serving) — Meets spec',
+      sourced: 'Organic KSM-66® root extract — Ixoreal Biomed, Hyderabad, India',
+      lab: 'Eurofins Scientific — Los Angeles, CA',
+      facility: 'FDA-audited, cGMP certified — Mount Vernon, NY',
+      released: 'February 12, 2026 — All specs passed'
+    }
+  };
+
+  function handleVerify(e) {
+    e.preventDefault();
+    var input = document.getElementById('lot-number').value.trim().toUpperCase();
+    var results = document.getElementById('verify-results');
+    var notFound = document.getElementById('verify-not-found');
+    var btn = document.getElementById('verify-btn');
+    var btnText = btn.querySelector('.optibio-verify__submit-text');
+    var btnLoad = btn.querySelector('.optibio-verify__submit-loading');
+
+    btnText.style.display = 'none';
+    btnLoad.style.display = 'inline';
+    btn.disabled = true;
+
+    setTimeout(function() {
+      btnText.style.display = 'inline';
+      btnLoad.style.display = 'none';
+      btn.disabled = false;
+
+      var batch = optiboBatches[input];
+      if (batch) {
+        document.getElementById('result-product').textContent = batch.product;
+        document.getElementById('result-lot').textContent = batch.lot;
+        document.getElementById('result-mfg-date').textContent = batch.mfgDate;
+        document.getElementById('result-exp-date').textContent = batch.expDate;
+        document.getElementById('result-size').textContent = batch.size;
+        document.getElementById('result-potency').textContent = batch.potency;
+        document.getElementById('result-sourced').textContent = batch.sourced;
+        document.getElementById('result-lab').textContent = batch.lab;
+        document.getElementById('result-facility').textContent = batch.facility;
+        document.getElementById('result-released').textContent = batch.released;
+        results.style.display = 'block';
+        notFound.style.display = 'none';
+        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        results.style.display = 'none';
+        notFound.style.display = 'block';
+        notFound.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 800);
+  }
+</script>
+
+<style>
+  /* === HERO === */
+  .optibio-verify__hero {
+    background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
+    padding: 80px 16px 60px;
+    text-align: center;
+  }
+
+  .optibio-verify__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1A2F4D;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .optibio-verify__title {
+    font-family: 'Sora', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #1A2F4D;
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+
+  .optibio-verify__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #64748B;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  /* === SEARCH CARD === */
+  .optibio-verify__search-card {
+    max-width: 560px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(201, 169, 97, 0.25);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(30, 58, 95, 0.08);
+  }
+
+  .optibio-verify__label {
+    display: block;
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A2F4D;
+    margin-bottom: 4px;
+    text-align: left;
+  }
+
+  .optibio-verify__hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #94A3B8;
+    margin: 0 0 16px;
+    text-align: left;
+  }
+
+  .optibio-verify__input-row {
+    display: flex;
+    gap: 12px;
+  }
+
+  .optibio-verify__input {
+    flex: 1;
+    padding: 14px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: #fff;
+    color: #1A2F4D;
+  }
+
+  .optibio-verify__input:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .optibio-verify__submit {
+    padding: 14px 28px;
+    background: #2563EB;
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  .optibio-verify__submit:hover {
+    background: #1D4ED8;
+  }
+
+  .optibio-verify__submit:active {
+    transform: scale(0.97);
+  }
+
+  .optibio-verify__submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  .optibio-verify__trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .optibio-verify__trust-row span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #64748B;
+  }
+
+  /* === RESULTS === */
+  .optibio-verify__results {
+    padding: 40px 16px 60px;
+    background: #FAFBFC;
+  }
+
+  .optibio-verify__banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 28px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+  }
+
+  .optibio-verify__banner--success {
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+    border: 2px solid #BBF7D0;
+  }
+
+  .optibio-verify__banner--warning {
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+    border: 2px solid #FDE68A;
+  }
+
+  .optibio-verify__banner-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1A2F4D;
+    margin: 0;
+  }
+
+  .optibio-verify__banner-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #64748B;
+    margin: 4px 0 0;
+  }
+
+  .optibio-verify__banner-subtitle a {
+    color: #2563EB;
+    text-decoration: underline;
+  }
+
+  /* === GRID === */
+  .optibio-verify__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .optibio-verify__card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 8px rgba(30, 58, 95, 0.04);
+  }
+
+  .optibio-verify__card--full {
+    grid-column: 1 / -1;
+  }
+
+  .optibio-verify__card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A2F4D;
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F1F5F9;
+  }
+
+  .optibio-verify__detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #F8FAFC;
+  }
+
+  .optibio-verify__detail:last-child {
+    border-bottom: none;
+  }
+
+  .optibio-verify__detail-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #94A3B8;
+    font-weight: 500;
+  }
+
+  .optibio-verify__detail-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #1A2F4D;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* === TEST LIST === */
+  .optibio-verify__test-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .optibio-verify__test-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .optibio-verify__test-item svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .optibio-verify__test-name {
+    display: block;
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1A2F4D;
+  }
+
+  .optibio-verify__test-result {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #64748B;
+    margin-top: 2px;
+  }
+
+  /* === TIMELINE === */
+  .optibio-verify__timeline {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 20px;
+  }
+
+  .optibio-verify__timeline::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 24px;
+    right: 24px;
+    height: 3px;
+    background: linear-gradient(90deg, #C9A961 0%, #1A2F4D 100%);
+    border-radius: 3px;
+  }
+
+  .optibio-verify__timeline-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+
+  .optibio-verify__timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1A2F4D;
+    border: 3px solid #C9A961;
+    margin-bottom: 12px;
+  }
+
+  .optibio-verify__timeline-step--complete .optibio-verify__timeline-dot {
+    background: #16A34A;
+    border-color: #BBF7D0;
+  }
+
+  .optibio-verify__timeline-title {
+    display: block;
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1A2F4D;
+    margin-bottom: 4px;
+  }
+
+  .optibio-verify__timeline-detail {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #94A3B8;
+    max-width: 140px;
+  }
+
+  /* === COA === */
+  .optibio-verify__coa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 2px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 20px 28px;
+  }
+
+  .optibio-verify__coa-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .optibio-verify__coa-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #94A3B8;
+    margin: 4px 0 0;
+  }
+
+  .optibio-verify__coa-content strong {
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    color: #1A2F4D;
+  }
+
+  .optibio-verify__coa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #1A2F4D;
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .optibio-verify__coa-btn:hover {
+    background: #1E3A5F;
+  }
+
+  /* === NOT FOUND === */
+  .optibio-verify__not-found {
+    padding: 40px 16px 60px;
+    background: #FAFBFC;
+  }
+
+  /* === MOBILE === */
+  @media (max-width: 768px) {
+    .optibio-verify__hero {
+      padding: 60px 16px 40px;
+    }
+
+    .optibio-verify__title {
+      font-size: 32px;
+    }
+
+    .optibio-verify__subtitle {
+      font-size: 16px;
+    }
+
+    .optibio-verify__input-row {
+      flex-direction: column;
+    }
+
+    .optibio-verify__submit {
+      width: 100%;
+    }
+
+    .optibio-verify__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .optibio-verify__timeline {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      padding-left: 24px;
+    }
+
+    .optibio-verify__timeline::before {
+      left: 9px;
+      top: 20px;
+      bottom: 20px;
+      right: auto;
+      width: 3px;
+      height: auto;
+    }
+
+    .optibio-verify__timeline-step {
+      flex-direction: row;
+      text-align: left;
+      gap: 16px;
+    }
+
+    .optibio-verify__timeline-dot {
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .optibio-verify__timeline-detail {
+      max-width: none;
+    }
+
+    .optibio-verify__coa {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .optibio-verify__coa-content {
+      flex-direction: column;
+    }
+
+    .optibio-verify__trust-row {
+      gap: 12px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Verify Hero + Results",
+  "tag": "section",
+  "class": "optibio-verify-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Verify Your Batch"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every Optibio bottle is traceable from raw material sourcing to your doorstep. Enter your lot number to view the full quality report."
+    }
+  ]
+}
+{% endschema %}

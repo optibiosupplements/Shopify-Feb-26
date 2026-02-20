@@ -1,0 +1,153 @@
+{% comment %}
+  About Page — Our Standards Grid + What's Next + CTA
+  6-card grid of quality standards
+  "What's Next" teaser for upcoming products
+  Bottom CTA with trust signals
+{% endcomment %}
+
+<section class="optibio-about-standards optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <h2 class="optibio-page-section__heading" style="text-align: center; margin-left: auto; margin-right: auto;">{{ section.settings.heading }}</h2>
+    <p class="optibio-page-section__subheading" style="text-align: center; margin-left: auto; margin-right: auto;">{{ section.settings.subheading }}</p>
+
+    <div class="optibio-about-standards__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'standard' %}
+          <div class="optibio-about-standards__card" {{ block.shopify_attributes }}>
+            <div class="optibio-about-standards__card-icon">{{ block.settings.icon }}</div>
+            <h3 class="optibio-about-standards__card-title">{{ block.settings.title }}</h3>
+            <p class="optibio-about-standards__card-desc">{{ block.settings.description }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_next_section %}
+      <div class="optibio-about-next">
+        <h3 class="optibio-about-next__heading">{{ section.settings.next_heading }}</h3>
+        <p class="optibio-about-next__text">{{ section.settings.next_text }}</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{%- comment -%} Bottom CTA {%- endcomment -%}
+<section class="optibio-page-cta optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <h2 class="optibio-page-section__heading" style="text-align: center; margin-left: auto; margin-right: auto;">{{ section.settings.cta_heading }}</h2>
+    <p class="optibio-page-section__subheading" style="text-align: center; margin-left: auto; margin-right: auto;">{{ section.settings.cta_subheading }}</p>
+
+    <a href="{{ section.settings.cta_link | default: '/products/optibio-ashwagandha-ksm-66' }}" class="optibio-page-cta__btn">
+      {{ section.settings.cta_text }}
+      <span>→</span>
+    </a>
+
+    <div class="optibio-page-cta__trust">
+      <span><span class="optibio-page-cta__check">✔</span> 90-day money-back guarantee</span>
+      <span><span class="optibio-page-cta__check">✔</span> Free shipping on $75+</span>
+      <span><span class="optibio-page-cta__check">✔</span> Third-party tested</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Standards & CTA",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Standards Heading",
+      "default": "Our Standards"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Standards Subheading",
+      "default": "Six non-negotiable commitments that define every Optibio product."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_next_section",
+      "label": "Show 'What's Next' Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "next_heading",
+      "label": "What's Next Heading",
+      "default": "We're Just Getting Started"
+    },
+    {
+      "type": "textarea",
+      "id": "next_text",
+      "label": "What's Next Text",
+      "default": "Ashwagandha is our first product — but not our last. We're developing additional clinical-grade supplements targeting stress, sleep, focus, and recovery. Each one will meet the same rigorous standards: patented ingredients, clinical dosages, third-party testing, and full traceability."
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA Heading",
+      "default": "Experience the Optibio Difference"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_subheading",
+      "label": "CTA Subheading",
+      "default": "Join thousands who have chosen clinical-grade quality over empty marketing claims."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Shop Optibio"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "standard",
+      "name": "Standard Card",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🏭"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "FDA-Audited Facility"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Manufactured at an FDA-audited, cGMP-certified facility in Mount Vernon, New York."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Standards & CTA",
+      "blocks": [
+        { "type": "standard", "settings": { "icon": "🏭", "title": "FDA-Audited Facility", "description": "Manufactured in Mount Vernon, NY at an FDA-audited, cGMP-certified pharmaceutical-grade facility." } },
+        { "type": "standard", "settings": { "icon": "🔬", "title": "Third-Party Tested", "description": "Every batch is sent to independent labs for heavy metal, microbial, potency, and identity testing." } },
+        { "type": "standard", "settings": { "icon": "🌿", "title": "Full-Spectrum Root Only", "description": "We use only root extract — never cheaper leaf or aerial parts that dilute potency." } },
+        { "type": "standard", "settings": { "icon": "📊", "title": "Clinical Dosage", "description": "600mg per serving — the exact dosage used in peer-reviewed clinical trials. No underdosing." } },
+        { "type": "standard", "settings": { "icon": "💊", "title": "90 Capsules Per Bottle", "description": "50% more capsules than most competitors. A 45-day supply per bottle for better value." } },
+        { "type": "standard", "settings": { "icon": "📋", "title": "Full Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Verify your batch online." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

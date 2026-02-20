@@ -1,27 +1,30 @@
 /* ============================================
    Optibio Product Page — Design System
    Brand: "Ethereal Clinical Luxury"
-   Primary: Navy #1B365D | Gold #D4AF37
-   Fonts: Playfair Display (headings) | DM Sans (body)
+   Primary: Navy #1A2F4D | Gold #C9A961
+   Fonts: Sora (headings) | Inter (body)
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+/* Fonts loaded via optibio-global.css — no duplicate @import needed */
 
 /* --- CSS Custom Properties (Design Tokens) --- */
 :root {
-  --optibio-navy: #1B365D;
-  --optibio-gold: #D4AF37;
-  --optibio-sky-start: #E8F4FD;
-  --optibio-sky-end: #C0E4F9;
+  --optibio-navy: #1A2F4D;
+  --optibio-gold: #C9A961;
+  --optibio-sky-start: #F8FCFE;
+  --optibio-sky-mid: #EBF5FB;
+  --optibio-sky-end: #D6EAF8;
   --optibio-body: #475569;
   --optibio-green: #10B981;
   --optibio-star: #F59E0B;
   --optibio-red: #EF4444;
   --optibio-white: #ffffff;
+  --optibio-blue-cta: #2563EB;
+  --optibio-blue-hover: #1D4ED8;
   --optibio-bg-glass: rgba(255, 255, 255, 0.7);
   --optibio-border-glass: rgba(255, 255, 255, 0.3);
-  --optibio-font-display: 'Playfair Display', serif;
-  --optibio-font-body: 'DM Sans', sans-serif;
+  --optibio-font-display: 'Sora', sans-serif;
+  --optibio-font-body: 'Inter', sans-serif;
   --optibio-space-xs: 4px;
   --optibio-space-sm: 8px;
   --optibio-space-md: 16px;
@@ -34,9 +37,9 @@
   --optibio-radius-card: 12px;
   --optibio-radius-section: 16px;
   --optibio-radius-pill: 999px;
-  --optibio-shadow-sm: 0 2px 8px rgba(27, 54, 93, 0.08);
-  --optibio-shadow-md: 0 4px 16px rgba(27, 54, 93, 0.12);
-  --optibio-shadow-lg: 0 8px 32px rgba(27, 54, 93, 0.16);
+  --optibio-shadow-sm: 0 2px 8px rgba(30, 58, 95, 0.08);
+  --optibio-shadow-md: 0 4px 16px rgba(30, 58, 95, 0.12);
+  --optibio-shadow-lg: 0 8px 32px rgba(30, 58, 95, 0.16);
 }
 
 /* --- Base Section Styles --- */
@@ -152,7 +155,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--optibio-navy);
+  background-color: var(--optibio-blue-cta);
   color: var(--optibio-white);
   font-family: var(--optibio-font-body);
   font-size: 16px;
@@ -162,7 +165,7 @@
   border-radius: var(--optibio-radius-card);
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.3);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
   position: relative;
   overflow: hidden;
   text-decoration: none;
@@ -170,9 +173,9 @@
 }
 
 .optibio-btn-primary:hover {
-  background-color: rgba(27, 54, 93, 0.9);
+  background-color: var(--optibio-blue-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(27, 54, 93, 0.4);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
   color: var(--optibio-white);
   text-decoration: none;
 }
@@ -195,7 +198,7 @@
 
 /* --- Section Backgrounds --- */
 .optibio-bg-sky {
-  background: linear-gradient(to bottom, var(--optibio-sky-start), var(--optibio-sky-end));
+  background: radial-gradient(ellipse at center, var(--optibio-sky-start) 0%, var(--optibio-sky-mid) 40%, var(--optibio-sky-end) 100%);
 }
 
 .optibio-bg-white {
@@ -393,8 +396,9 @@
 
 /* --- Hero Section --- */
 .optibio-hero {
-  background: linear-gradient(to bottom, var(--optibio-sky-start), var(--optibio-white));
+  background: radial-gradient(ellipse at center, var(--optibio-sky-start) 0%, var(--optibio-sky-mid) 40%, var(--optibio-sky-end) 100%);
   padding-top: 0;
+  padding-bottom: var(--optibio-space-xl);
 }
 
 .optibio-hero__container {
@@ -407,12 +411,179 @@
 .optibio-hero__media {
   position: relative;
   min-width: 0;
-  max-height: 600px;
-  overflow: hidden;
 }
 
 .optibio-hero__details {
   min-width: 0;
+}
+
+/* Certification Trust Badges */
+.optibio-hero__certifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: var(--optibio-space-md) 0;
+}
+
+.optibio-cert-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(30, 58, 95, 0.04);
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  border-radius: var(--optibio-radius-pill);
+  font-family: var(--optibio-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--optibio-navy);
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.optibio-cert-badge:hover {
+  background: rgba(30, 58, 95, 0.07);
+  transform: translateY(-1px);
+}
+
+.optibio-cert-badge__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.optibio-cert-badge__check {
+  width: 14px;
+  height: 14px;
+  background: var(--optibio-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.optibio-cert-badge__check svg {
+  width: 9px;
+  height: 9px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+}
+
+/* Social Proof Widget */
+.optibio-social-proof-widget {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.03), rgba(201, 169, 97, 0.04));
+  border: 1px solid rgba(30, 58, 95, 0.06);
+  border-radius: var(--optibio-radius-card);
+  margin: var(--optibio-space-md) 0;
+  font-family: var(--optibio-font-body);
+}
+
+.optibio-social-proof-widget__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 16px;
+  border-right: 1px solid rgba(30, 58, 95, 0.1);
+}
+
+.optibio-social-proof-widget__score {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--optibio-navy);
+  font-family: var(--optibio-font-display);
+  line-height: 1;
+}
+
+.optibio-social-proof-widget__stars-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.optibio-social-proof-widget__stars-row svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--optibio-star);
+}
+
+.optibio-social-proof-widget__details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.optibio-social-proof-widget__count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--optibio-navy);
+}
+
+.optibio-social-proof-widget__recent {
+  font-size: 11px;
+  color: var(--optibio-body);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.optibio-social-proof-widget__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--optibio-green);
+  animation: optibio-pulse-dot 2s ease-in-out infinite;
+}
+
+/* Subtitle Badge */
+.optibio-hero__subtitle-badge {
+  display: inline-block;
+  font-family: var(--optibio-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--optibio-gold);
+  padding: 6px 14px;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  border-radius: var(--optibio-radius-pill);
+  background: rgba(201, 169, 97, 0.06);
+  margin-bottom: var(--optibio-space-md);
+}
+
+/* Express Checkout inside buy box */
+.optibio-hero__express-checkout {
+  margin-top: var(--optibio-space-sm);
+}
+
+.optibio-hero__express-checkout .shopify-payment-button {
+  margin: 0;
+}
+
+.optibio-hero__express-checkout .shopify-payment-button__button {
+  border-radius: 0.75rem !important;
+  min-height: 52px;
+  width: 100% !important;
+}
+
+/* Or separator between CTA and express checkout */
+.optibio-hero__express-checkout::before {
+  content: 'or';
+  display: block;
+  text-align: center;
+  font-family: var(--optibio-font-body);
+  font-size: 12px;
+  color: var(--optibio-body);
+  margin-bottom: var(--optibio-space-sm);
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .optibio-hero__media-item {
@@ -435,7 +606,7 @@
   object-fit: contain;
   display: block;
   margin: 0 auto;
-  box-shadow: 0 20px 60px rgba(27, 54, 93, 0.12);
+  box-shadow: 0 20px 60px rgba(30, 58, 95, 0.12);
   transition: transform 0.5s ease;
 }
 
@@ -481,28 +652,30 @@
 }
 
 .optibio-hero__heading {
-  font-size: 36px;
-  margin-bottom: var(--optibio-space-md);
+  font-size: 32px;
+  margin-bottom: var(--optibio-space-sm);
   position: relative;
   display: inline-block;
   width: fit-content;
+  letter-spacing: -0.02em;
 }
 
 .optibio-hero__heading::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -6px;
   left: 0;
-  width: 60px;
+  width: 50px;
   height: 3px;
-  background: var(--optibio-gold);
+  background: linear-gradient(90deg, var(--optibio-gold), transparent);
   border-radius: 2px;
 }
 
 .optibio-hero__subheading {
-  font-size: 16px;
-  margin-bottom: var(--optibio-space-lg);
-  max-width: 500px;
+  font-size: 15px;
+  margin-bottom: var(--optibio-space-md);
+  max-width: 480px;
+  line-height: 1.5;
 }
 
 .optibio-hero__benefits {
@@ -528,10 +701,6 @@
   flex-shrink: 0;
 }
 
-.optibio-hero__express-checkout {
-  margin-top: var(--optibio-space-md);
-}
-
 /* --- Buy Box Button Overrides --- */
 .optibio-hero .shopify-payment-button__button {
   background: var(--optibio-gold) !important;
@@ -542,7 +711,7 @@
   border-radius: var(--optibio-radius-card) !important;
   letter-spacing: 0.03em;
   padding: 16px 24px !important;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -558,7 +727,7 @@
 
 .optibio-hero__details .optibio-cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(27, 54, 93, 0.25);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.25);
 }
 
 /* --- Sticky Cart Bar --- */
@@ -571,8 +740,8 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(27, 54, 93, 0.06);
-  box-shadow: 0 -4px 24px rgba(27, 54, 93, 0.08);
+  border-top: 1px solid rgba(30, 58, 95, 0.06);
+  box-shadow: 0 -4px 24px rgba(30, 58, 95, 0.08);
   padding: var(--optibio-space-sm) var(--optibio-space-md);
   transform: translateY(100%);
   transition: transform 0.3s ease;
@@ -620,7 +789,7 @@
 }
 
 .optibio-sticky-cart__button:hover {
-  background-color: rgba(27, 54, 93, 0.9);
+  background-color: rgba(30, 58, 95, 0.9);
 }
 
 /* --- Social Proof Section --- */
@@ -675,7 +844,7 @@
   background: var(--optibio-bg-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(27, 54, 93, 0.06);
+  border: 1px solid rgba(30, 58, 95, 0.06);
   border-radius: var(--optibio-radius-card);
   padding: var(--optibio-space-lg);
   box-shadow: var(--optibio-shadow-sm);
@@ -718,7 +887,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(27, 54, 93, 0.2);
+  background: rgba(30, 58, 95, 0.2);
   border: none;
   padding: 0;
   cursor: pointer;
@@ -751,7 +920,7 @@
   padding: var(--optibio-space-md);
   text-align: left;
   font-size: 15px;
-  border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+  border-bottom: 1px solid rgba(30, 58, 95, 0.08);
 }
 
 .optibio-comparison-table thead th {
@@ -811,7 +980,7 @@
   background: var(--optibio-bg-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(27, 54, 93, 0.06);
+  border: 1px solid rgba(30, 58, 95, 0.06);
   border-radius: var(--optibio-radius-card);
   padding: var(--optibio-space-lg);
   text-align: center;
@@ -828,7 +997,7 @@
 .optibio-citations {
   margin-top: var(--optibio-space-xl);
   padding-top: var(--optibio-space-md);
-  border-top: 1px solid rgba(27, 54, 93, 0.1);
+  border-top: 1px solid rgba(30, 58, 95, 0.1);
   font-family: var(--optibio-font-body);
   font-size: 12px;
   color: var(--optibio-body);
@@ -882,7 +1051,7 @@
   transform: translateX(-50%);
   width: 2px;
   height: calc(var(--optibio-space-lg) + 20px);
-  background: rgba(27, 54, 93, 0.15);
+  background: rgba(30, 58, 95, 0.15);
 }
 
 .optibio-timeline-content h3 {
@@ -1036,7 +1205,7 @@
 }
 
 .optibio-faq-item {
-  border-bottom: 1px solid rgba(27, 54, 93, 0.1);
+  border-bottom: 1px solid rgba(30, 58, 95, 0.1);
   border-left: 3px solid transparent;
   transition: border-color 0.3s ease;
 }
@@ -1141,7 +1310,7 @@
   color: var(--optibio-body);
   text-align: center;
   padding: var(--optibio-space-md);
-  border-top: 1px solid rgba(27, 54, 93, 0.08);
+  border-top: 1px solid rgba(30, 58, 95, 0.08);
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
@@ -1260,7 +1429,7 @@
 .optibio-shipping-progress__bar {
   width: 100%;
   height: 6px;
-  background: rgba(27, 54, 93, 0.08);
+  background: rgba(30, 58, 95, 0.08);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -1324,6 +1493,23 @@
     font-size: 11px;
   }
 
+  /* Hero goes side-by-side at 768px */
+  .optibio-hero__container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--optibio-space-xl);
+    align-items: start;
+  }
+
+  .optibio-hero__media {
+    position: sticky;
+    top: 100px;
+    max-height: none;
+  }
+
+  .optibio-hero__heading {
+    font-size: 38px;
+  }
+
   .optibio-testimonial-card {
     flex: 0 0 45%;
   }
@@ -1361,13 +1547,13 @@
   }
 
   .optibio-hero__container {
-    grid-template-columns: 1fr minmax(40%, 1fr);
-    gap: var(--optibio-space-2xl);
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: var(--optibio-space-3xl);
+    align-items: start;
   }
 
   .optibio-hero__heading {
-    font-size: 52px;
+    font-size: 46px;
   }
 
   .optibio-testimonial-card {
@@ -1456,7 +1642,7 @@
     display: flex;
     justify-content: space-between;
     padding: var(--optibio-space-sm) 0;
-    border-bottom: 1px solid rgba(27, 54, 93, 0.06);
+    border-bottom: 1px solid rgba(30, 58, 95, 0.06);
     font-size: 14px;
   }
 

@@ -1,8 +1,8 @@
 {% comment %}
-  Optibio Product Hero Section
-  Section 1: Trust bar + image gallery + headline + buy box + ATC
-  Brand: Navy #1B365D, Gold #D4AF37
-  Fonts: Playfair Display (headings), DM Sans (body)
+  Optibio Product Hero Section — Premium Buy Box
+  Two-column: sticky product image + buy box with certifications & social proof
+  Brand: Navy #1A2F4D, Gold #C9A961
+  Fonts: Sora (headings), Inter (body)
 {% endcomment %}
 
 {{ 'product-page.css' | asset_url | stylesheet_tag }}
@@ -21,22 +21,11 @@
 
 <section class="optibio-section optibio-hero" id="optibio-hero" data-section-id="{{ section.id }}">
 
-  {% comment %} Trust Bar {% endcomment %}
-  {% if section.settings.show_trust_bar %}
-  <div class="optibio-trust-bar">
-    <div class="optibio-trust-bar__inner">
-      <span>&#10003; GMP Certified</span>
-      <span>&#10003; 3rd-Party Tested</span>
-      <span>&#10003; 90-Day Guarantee</span>
-      <span>&#10003; Free Shipping $75+</span>
-      <span>&#9733;&#9733;&#9733;&#9733;&#9733; 4.9/5</span>
-    </div>
-  </div>
-  {% endif %}
+  {% comment %} Trust Bar removed — duplicates announcement bar + certification pills {% endcomment %}
 
   <div class="optibio-hero__container page-width">
 
-    {% comment %} Left: Product Image Gallery {% endcomment %}
+    {% comment %} Left: Product Image Gallery (sticky on desktop) {% endcomment %}
     <div class="optibio-hero__media">
       {% for media in product.media %}
         {% if media.media_type == 'image' %}
@@ -49,7 +38,7 @@
                 fetchpriority: 'high',
                 alt: media.alt | default: product.title,
                 widths: '400, 600, 800, 1200',
-                sizes: '(min-width: 1024px) 50vw, 100vw'
+                sizes: '(min-width: 768px) 45vw, 100vw'
               }}
             {% else %}
               {{ media | image_url: width: 800 | image_tag:
@@ -57,7 +46,7 @@
                 loading: 'lazy',
                 alt: media.alt | default: product.title,
                 widths: '400, 600, 800',
-                sizes: '(min-width: 1024px) 50vw, 100vw'
+                sizes: '(min-width: 768px) 45vw, 100vw'
               }}
             {% endif %}
           </div>
@@ -83,10 +72,50 @@
       {% endif %}
     </div>
 
-    {% comment %} Right: Purchase Form {% endcomment %}
+    {% comment %} Right: Buy Box {% endcomment %}
     <div class="optibio-hero__details">
+
+      {% comment %} Subtitle badge {% endcomment %}
+      <div class="optibio-hero__subtitle-badge">
+        Science-Backed &middot; Third-Party Tested &middot; Made in USA
+      </div>
+
       <h1 class="optibio-hero__heading">{{ section.settings.heading }}</h1>
       <p class="optibio-hero__subheading">{{ section.settings.subheading }}</p>
+
+      {% comment %} Certification Trust Badges with "Verified" status {% endcomment %}
+      <div class="optibio-hero__certifications">
+        <div class="optibio-cert-badge">
+          <svg class="optibio-cert-badge__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Third-Party Tested</span>
+          <span class="optibio-cert-badge__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+        </div>
+        <div class="optibio-cert-badge">
+          <svg class="optibio-cert-badge__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span>GMP Certified</span>
+          <span class="optibio-cert-badge__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+        </div>
+        <div class="optibio-cert-badge">
+          <svg class="optibio-cert-badge__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+          <span>Non-GMO</span>
+          <span class="optibio-cert-badge__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+        </div>
+        <div class="optibio-cert-badge">
+          <svg class="optibio-cert-badge__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>FDA-Audited Facility</span>
+          <span class="optibio-cert-badge__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+        </div>
+        <div class="optibio-cert-badge">
+          <svg class="optibio-cert-badge__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          <span>Award-Winning</span>
+          <span class="optibio-cert-badge__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+        </div>
+        <div class="optibio-cert-badge">
+          <svg class="optibio-cert-badge__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"></path><path d="M12 3c1.5 2 2.5 5 2.5 9"></path><path d="M12 3c-1.5 2-2.5 5-2.5 9s1 7 2.5 9"></path><line x1="3" y1="12" x2="21" y2="12"></line></svg>
+          <span>Halal Certified</span>
+          <span class="optibio-cert-badge__check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></span>
+        </div>
+      </div>
 
       {% comment %} Benefit Bullets {% endcomment %}
       <ul class="optibio-hero__benefits">
@@ -95,10 +124,25 @@
         <li><span class="check">&#10003;</span> {{ section.settings.benefit_3 }}</li>
       </ul>
 
-      {% comment %} CRO: Inline Social Proof — visible at point of purchase decision {% endcomment %}
-      <div class="optibio-hero__social-proof">
-        <span class="optibio-hero__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span class="optibio-hero__rating-text">4.9 (287 reviews)</span>
+      {% comment %} Social Proof Widget {% endcomment %}
+      <div class="optibio-social-proof-widget">
+        <div class="optibio-social-proof-widget__rating">
+          <span class="optibio-social-proof-widget__score">4.9</span>
+          <div class="optibio-social-proof-widget__stars-row">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
+          </div>
+        </div>
+        <div class="optibio-social-proof-widget__details">
+          <span class="optibio-social-proof-widget__count">2,400+ happy customers</span>
+          <span class="optibio-social-proof-widget__recent">
+            <span class="optibio-social-proof-widget__dot"></span>
+            287 verified reviews
+          </span>
+        </div>
       </div>
 
       {% comment %} CRO: Low Stock Indicator — real inventory data only {% endcomment %}
@@ -110,7 +154,7 @@
         </div>
       {% endif %}
 
-      {% comment %} Render existing buy box snippet (bundle selector, subscription, price summary, ATC) {% endcomment %}
+      {% comment %} Render buy box (bundle selector, subscription, price summary, ATC) {% endcomment %}
       {% render 'optibio-enhanced-buy-box' %}
 
       {% comment %} Shopify product form (hidden, synced by JS for cart API) {% endcomment %}
@@ -118,7 +162,7 @@
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
       {% endform %}
 
-      {% comment %} Express Checkout {% endcomment %}
+      {% comment %} Express Checkout (inside buy box flow) {% endcomment %}
       <div class="optibio-hero__express-checkout">
         {%- form 'product', product, id: 'optibio-express-checkout-form' -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">

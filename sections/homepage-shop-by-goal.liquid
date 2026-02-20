@@ -1,0 +1,305 @@
+{% comment %}
+  Shop by Goal — Goal-based navigation chips
+  Horizontal scrollable pills on mobile, centered row on desktop
+  Each links to a filtered collection view
+{% endcomment %}
+
+<section class="optibio-goals optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <div class="optibio-goals__header">
+      <h2 class="optibio-goals__heading">{{ section.settings.heading }}</h2>
+      <p class="optibio-goals__subheading">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="optibio-goals__track">
+      {% for block in section.blocks %}
+        {% if block.type == 'goal' %}
+          <a href="{{ block.settings.link | default: '/collections/all' }}" class="optibio-goals__chip {% if block.settings.featured %}optibio-goals__chip--featured{% endif %}" {{ block.shopify_attributes }}>
+            <span class="optibio-goals__chip-icon">{{ block.settings.icon }}</span>
+            <span class="optibio-goals__chip-label">{{ block.settings.label }}</span>
+            {% if block.settings.tag != blank %}
+              <span class="optibio-goals__chip-tag">{{ block.settings.tag }}</span>
+            {% endif %}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_featured_product %}
+      <div class="optibio-goals__featured">
+        <div class="optibio-goals__featured-card">
+          <div class="optibio-goals__featured-badge">{{ section.settings.featured_badge }}</div>
+          <h3 class="optibio-goals__featured-title">{{ section.settings.featured_title }}</h3>
+          <p class="optibio-goals__featured-desc">{{ section.settings.featured_desc }}</p>
+          <div class="optibio-goals__featured-certs">
+            <span>🔬 Third-Party Tested</span>
+            <span>🏭 FDA-Audited Facility</span>
+            <span>🌿 Full-Spectrum Root</span>
+          </div>
+          <a href="{{ section.settings.featured_link | default: '/products/optibio-ashwagandha-ksm-66' }}" class="optibio-page-cta__btn">
+            {{ section.settings.featured_cta }} &rarr;
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .optibio-goals {
+    background: #fff;
+    padding: 64px 0;
+  }
+  .optibio-goals__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+  .optibio-goals__heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1A2F4D;
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  .optibio-goals__subheading {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #475569;
+    margin: 0;
+  }
+  .optibio-goals__track {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .optibio-goals__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border: 1px solid #E5E7EB;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1A2F4D;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .optibio-goals__chip:hover {
+    border-color: #C9A961;
+    background: rgba(201, 169, 97, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(30, 58, 95, 0.1);
+  }
+  .optibio-goals__chip--featured {
+    border-color: #C9A961;
+    background: linear-gradient(135deg, rgba(201, 169, 97, 0.08), rgba(201, 169, 97, 0.03));
+    font-weight: 600;
+  }
+  .optibio-goals__chip-icon {
+    font-size: 20px;
+    line-height: 1;
+  }
+  .optibio-goals__chip-label {
+    line-height: 1;
+  }
+  .optibio-goals__chip-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: #C9A961;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 10px;
+    line-height: 1;
+  }
+  .optibio-goals__featured {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .optibio-goals__featured-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(247,244,239,0.9));
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(201, 169, 97, 0.3);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+  }
+  .optibio-goals__featured-badge {
+    display: inline-block;
+    background: #1E3A5F;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .optibio-goals__featured-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A2F4D;
+    margin: 0 0 8px;
+  }
+  .optibio-goals__featured-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #475569;
+    margin: 0 0 16px;
+  }
+  .optibio-goals__featured-certs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #475569;
+    margin-bottom: 20px;
+  }
+  .optibio-goals__featured-certs span {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .optibio-goals { padding: 48px 0; }
+    .optibio-goals__heading { font-size: 28px; }
+    .optibio-goals__track {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 8px;
+    }
+    .optibio-goals__track::-webkit-scrollbar { display: none; }
+    .optibio-goals__chip {
+      flex-shrink: 0;
+      padding: 12px 20px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Shop by Goal",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Goal"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Clinical-grade supplements designed for specific health outcomes."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured_product",
+      "label": "Show Featured Product Card",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "featured_badge",
+      "label": "Featured Badge",
+      "default": "NOW AVAILABLE"
+    },
+    {
+      "type": "text",
+      "id": "featured_title",
+      "label": "Featured Title",
+      "default": "KSM-66\u00ae Ashwagandha"
+    },
+    {
+      "type": "textarea",
+      "id": "featured_desc",
+      "label": "Featured Description",
+      "default": "600mg clinical dose. 90 capsules per bottle. Full-spectrum root extract backed by 24+ clinical trials."
+    },
+    {
+      "type": "text",
+      "id": "featured_cta",
+      "label": "Featured CTA Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "featured_link",
+      "label": "Featured Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "goal",
+      "name": "Goal",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🧘"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Goal Label",
+          "default": "Stress Relief"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag (optional)",
+          "info": "Small badge like 'NEW' or 'POPULAR'"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Featured (gold border)",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Goal",
+      "blocks": [
+        { "type": "goal", "settings": { "icon": "🧘", "label": "Stress Relief", "tag": "POPULAR", "featured": true, "link": "/products/optibio-ashwagandha-ksm-66" } },
+        { "type": "goal", "settings": { "icon": "😴", "label": "Better Sleep", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } },
+        { "type": "goal", "settings": { "icon": "🧠", "label": "Mental Clarity", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } },
+        { "type": "goal", "settings": { "icon": "💪", "label": "Endurance", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

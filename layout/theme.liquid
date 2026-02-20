@@ -43,6 +43,11 @@
     Old files kept in assets/ for rollback but no longer loaded
   {% endcomment %}
   {{ 'optibio-global.css' | asset_url | stylesheet_tag }}
+
+  {% comment %} Optibio Blog Styles — brand typography + glassmorphism cards for blog pages {% endcomment %}
+  {% if request.page_type == 'blog' or request.page_type == 'article' %}
+    {{ 'blog.css' | asset_url | stylesheet_tag }}
+  {% endif %}
 </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -130,5 +135,7 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+    {% section 'email-popup' %}
   </body>
 </html>

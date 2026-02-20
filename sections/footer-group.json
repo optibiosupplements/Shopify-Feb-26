@@ -148,10 +148,16 @@
         "padding-block-end": 30
       }
     },
+    "footer_nav_info": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "\n<div class=\"optibio-footer-nav\">\n  <div class=\"optibio-footer-nav__container\">\n    <div class=\"optibio-footer-nav__links\">\n      <a href=\"/products/optibio-ashwagandha-ksm-66\">Shop</a>\n      <a href=\"/pages/science\">Science</a>\n      <a href=\"/pages/verify\">Verify Your Batch</a>\n      <a href=\"/pages/about\">About</a>\n      <a href=\"/pages/faq\">FAQ</a>\n      <a href=\"/pages/contact\">Contact</a>\n    </div>\n    <div class=\"optibio-footer-nav__company\">\n      <p><strong>Optimal Biology Supplements</strong></p>\n      <p>Mount Vernon, NY</p>\n    </div>\n    <div class=\"optibio-footer-nav__badge\">\n      <span class=\"optibio-footer-badge\">🌱 Seed to Shelf Verified</span>\n    </div>\n  </div>\n</div>\n"
+      }
+    },
     "fda_disclaimer": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "\n<div style=\"text-align: center; padding: 12px 20px; font-size: 11px; color: #888; line-height: 1.5; max-width: 800px; margin: 0 auto;\">\n  <p style=\"margin: 0;\">†These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>\n</div>\n"
+        "custom_liquid": "\n<div class=\"optibio-footer-fda\">\n  <p>†These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>\n</div>\n"
       }
     },
     "footer_utilities_jLGE8U": {
@@ -212,6 +218,7 @@
   },
   "order": [
     "footer_m9NzUG",
+    "footer_nav_info",
     "fda_disclaimer",
     "footer_utilities_jLGE8U"
   ]

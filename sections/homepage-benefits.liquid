@@ -1,0 +1,130 @@
+{% comment %}
+  Optibio Homepage Benefits Section
+  4-column glassmorphism card grid with clinical study stats
+  Brand: Navy #1A2F4D, Gold #C9A961, Sora + Inter
+{% endcomment %}
+
+<section class="optibio-home-benefits">
+  <div class="optibio-home-benefits__container">
+
+    <h2 class="optibio-home-benefits__heading">{{ section.settings.heading }}</h2>
+    <p class="optibio-home-benefits__subheading">{{ section.settings.subheading }}</p>
+
+    <div class="optibio-home-benefits__grid">
+      {%- for block in section.blocks -%}
+        <div class="optibio-home-benefits__card" {{ block.shopify_attributes }}>
+          <div class="optibio-home-benefits__icon">{{ block.settings.icon }}</div>
+          <h3 class="optibio-home-benefits__stat">{{ block.settings.stat_headline }}</h3>
+          <p class="optibio-home-benefits__desc">{{ block.settings.description }}</p>
+          {%- if block.settings.study_link != blank -%}
+            <a href="{{ block.settings.study_link }}" class="optibio-home-benefits__link">View study →</a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="optibio-home-benefits__references">
+      <p><strong>References:</strong></p>
+      <p>¹ Chandrasekhar et al. (2012) <em>Indian J Psychol Med</em>. PubMed: 23439798</p>
+      <p>² Langade et al. (2019) <em>Cureus</em>. PubMed: 31728244</p>
+      <p>³ Choudhary et al. (2015) <em>J Ayurveda Integr Med</em>. PubMed: 26730141</p>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Homepage Benefits",
+  "tag": "section",
+  "class": "optibio-home-benefits-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Clinically Studied Benefits"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Results from peer-reviewed studies"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "💤"
+        },
+        {
+          "type": "text",
+          "id": "stat_headline",
+          "label": "Stat Headline",
+          "default": "Sleep Efficiency: 75.6% → 83.5%"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Improved sleep quality and efficiency²"
+        },
+        {
+          "type": "url",
+          "id": "study_link",
+          "label": "Study Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "💤",
+            "stat_headline": "Sleep Efficiency: 75.6% → 83.5%",
+            "description": "Improved sleep quality and efficiency²",
+
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "🧘",
+            "stat_headline": "44% Stress Reduction",
+            "description": "Reduced perceived stress (PSS score)¹",
+
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "⚡",
+            "stat_headline": "13% Endurance Improvement",
+            "description": "Improved VO2max in clinical trial³",
+
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "🧠",
+            "stat_headline": "Mental Clarity",
+            "description": "Sharper focus and improved cognitive function",
+
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

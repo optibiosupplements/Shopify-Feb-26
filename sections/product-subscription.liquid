@@ -1,0 +1,298 @@
+{% comment %}
+  Subscribe & Save Info Section
+  Shows subscription benefits even before subscription app is configured
+  Placed on product page to build awareness of subscription option
+{% endcomment %}
+
+<section class="optibio-subscription optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <div class="optibio-subscription__header">
+      <span class="optibio-subscription__badge">{{ section.settings.badge_text }}</span>
+      <h2 class="optibio-subscription__heading">{{ section.settings.heading }}</h2>
+      <p class="optibio-subscription__subheading">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="optibio-subscription__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'benefit' %}
+          <div class="optibio-subscription__card" {{ block.shopify_attributes }}>
+            <span class="optibio-subscription__card-icon">{{ block.settings.icon }}</span>
+            <h3 class="optibio-subscription__card-title">{{ block.settings.title }}</h3>
+            <p class="optibio-subscription__card-desc">{{ block.settings.description }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_comparison %}
+      <div class="optibio-subscription__comparison">
+        <div class="optibio-subscription__compare-row optibio-subscription__compare-row--header">
+          <span></span>
+          <span>One-Time</span>
+          <span class="optibio-subscription__compare-highlight">Subscribe</span>
+        </div>
+        <div class="optibio-subscription__compare-row">
+          <span>Price</span>
+          <span>{{ section.settings.onetime_price }}</span>
+          <span class="optibio-subscription__compare-highlight">{{ section.settings.subscribe_price }}</span>
+        </div>
+        <div class="optibio-subscription__compare-row">
+          <span>Shipping</span>
+          <span>{{ section.settings.onetime_shipping }}</span>
+          <span class="optibio-subscription__compare-highlight">{{ section.settings.subscribe_shipping }}</span>
+        </div>
+        <div class="optibio-subscription__compare-row">
+          <span>Flexibility</span>
+          <span>—</span>
+          <span class="optibio-subscription__compare-highlight">{{ section.settings.subscribe_flexibility }}</span>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings.cta_text != blank %}
+      <div class="optibio-subscription__cta-wrap">
+        <a href="{{ section.settings.cta_link | default: '/products/optibio-ashwagandha-ksm-66' }}" class="optibio-page-cta__btn">
+          {{ section.settings.cta_text }} →
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .optibio-subscription {
+    background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
+    padding: 80px 0;
+  }
+  .optibio-subscription__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+  .optibio-subscription__badge {
+    display: inline-block;
+    background: #1E3A5F;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .optibio-subscription__heading {
+    font-family: 'Sora', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1A2F4D;
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  .optibio-subscription__subheading {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #475569;
+    margin: 0;
+  }
+  .optibio-subscription__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+  }
+  .optibio-subscription__card {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(201, 169, 97, 0.2);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .optibio-subscription__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+  }
+  .optibio-subscription__card-icon {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .optibio-subscription__card-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A2F4D;
+    margin: 0 0 6px;
+  }
+  .optibio-subscription__card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #475569;
+    margin: 0;
+  }
+  .optibio-subscription__comparison {
+    max-width: 500px;
+    margin: 0 auto 32px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 16px;
+    border: 1px solid rgba(201, 169, 97, 0.3);
+    overflow: hidden;
+  }
+  .optibio-subscription__compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 12px 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #475569;
+    border-bottom: 1px solid #F3F4F6;
+  }
+  .optibio-subscription__compare-row:last-child {
+    border-bottom: none;
+  }
+  .optibio-subscription__compare-row--header {
+    background: #1E3A5F;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .optibio-subscription__compare-row--header .optibio-subscription__compare-highlight {
+    color: #C9A961;
+  }
+  .optibio-subscription__compare-highlight {
+    color: #1A2F4D;
+    font-weight: 600;
+  }
+  .optibio-subscription__cta-wrap {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .optibio-subscription { padding: 48px 20px; }
+    .optibio-subscription__heading { font-size: 28px; }
+    .optibio-subscription__subheading { font-size: 15px; }
+    .optibio-subscription__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .optibio-subscription__comparison { margin-left: 0; margin-right: 0; }
+    .optibio-subscription__compare-row { padding: 10px 12px; font-size: 13px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Subscribe & Save",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "SAVE MORE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Subscribe & Save 15%"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Never run out. Delivered on your schedule with free shipping and the flexibility to cancel anytime."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_comparison",
+      "label": "Show Comparison Table",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "onetime_price",
+      "label": "One-Time Price",
+      "default": "$39.99"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_price",
+      "label": "Subscribe Price",
+      "default": "$33.99"
+    },
+    {
+      "type": "text",
+      "id": "onetime_shipping",
+      "label": "One-Time Shipping",
+      "default": "Standard"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_shipping",
+      "label": "Subscribe Shipping",
+      "default": "FREE Always"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_flexibility",
+      "label": "Flexibility Text",
+      "default": "Cancel anytime"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Start Saving Today"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "💰"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Save 15%"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "On every order, automatically applied"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Subscribe & Save",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "💰", "title": "Save 15%", "description": "On every order, automatically applied" } },
+        { "type": "benefit", "settings": { "icon": "🚚", "title": "Free Shipping", "description": "Every delivery, always free" } },
+        { "type": "benefit", "settings": { "icon": "🔄", "title": "Flexible Schedule", "description": "Change frequency or skip anytime" } },
+        { "type": "benefit", "settings": { "icon": "❌", "title": "Cancel Anytime", "description": "No contracts, no commitments" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

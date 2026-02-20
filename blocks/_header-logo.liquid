@@ -53,14 +53,24 @@
     class="header-logo__image-container header-logo__image-container--original"
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      text_fallback: shop.name,
-      style: logo_style,
-      alt: 'Optibio'
-    %}
+    {% if settings.logo != blank %}
+      {% render 'image',
+        image: settings.logo,
+        class: 'header-logo__image',
+        height: settings.logo_height,
+        text_fallback: shop.name,
+        style: logo_style,
+        alt: 'Optibio'
+      %}
+    {% else %}
+      <img
+        src="{{ 'optibio-logo.png' | asset_url }}"
+        alt="Optibio"
+        class="header-logo__image"
+        style="height: {{ settings.logo_height | default: 36 }}px; width: auto; object-fit: contain;"
+        loading="eager"
+      >
+    {% endif %}
   </span>
 
   {% if use_inverse_logo %}

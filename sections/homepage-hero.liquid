@@ -1,0 +1,370 @@
+{% comment %}
+  Optibio Homepage Hero Section v3 — Official Brand Guidelines Match
+  Two-column layout: copy + price card (left), product image (right)
+  Brand: Navy #1E3A5F, Gold #C9A961, Electric Blue #2563EB CTA
+  Typography: Sora (headings) + Inter (body)
+  Background: Sky Blue radial gradient
+  Price card: Glassmorphism with gold border accent
+{% endcomment %}
+
+{{ 'homepage.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Load Sora + Inter fonts — official brand typography {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+<section class="optibio-hero" id="optibio-hero">
+  <div class="optibio-hero__container">
+
+    {%- comment -%} Left Column: Copy + Price Card {%- endcomment -%}
+    <div class="optibio-hero__copy">
+
+      {%- comment -%} 1. Eyebrow Badge {%- endcomment -%}
+      <div class="optibio-hero__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        {{ section.settings.badge_text }}
+      </div>
+
+      {%- comment -%} 2. Headline — "Yourself" gets gradient text {%- endcomment -%}
+      <h1 class="optibio-hero__headline">
+        {%- assign headline_parts = section.settings.headline | split: '[gradient]' -%}
+        {%- if headline_parts.size > 1 -%}
+          {{ headline_parts[0] }}<span class="optibio-hero__gradient-text">{{ headline_parts[1] | split: '[/gradient]' | first }}</span>{{ headline_parts[1] | split: '[/gradient]' | last }}
+        {%- else -%}
+          {{ section.settings.headline }}
+        {%- endif -%}
+      </h1>
+
+      {%- comment -%} 3. Subheadline {%- endcomment -%}
+      <p class="optibio-hero__subheadline">{{ section.settings.subheadline }}</p>
+
+      {%- comment -%} 4. Certification Row — horizontal flex {%- endcomment -%}
+      <div class="optibio-hero__cert-row">
+        {% for block in section.blocks %}
+          {% if block.type == 'certification' %}
+            <div class="optibio-hero__cert-item" {{ block.shopify_attributes }}>
+              <div class="optibio-hero__cert-icon">
+                {% case block.settings.icon_type %}
+                  {% when 'shield' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                  {% when 'certificate' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+                  {% when 'leaf' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-1 3.5-3.5 5.5-5 7"/><path d="M11.2 15c-1.3-1-2.2-2.6-2.2-4.5 0-.5 0-1 .2-1.5"/></svg>
+                  {% when 'building' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  {% else %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                {% endcase %}
+              </div>
+              <div class="optibio-hero__cert-text">
+                <strong>{{ block.settings.cert_name }}</strong>
+                {% if block.settings.cert_subtitle != blank %}
+                  <small>{{ block.settings.cert_subtitle }}</small>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {%- comment -%} 5. Price Card — Glassmorphism with gold border {%- endcomment -%}
+      <div class="optibio-hero__price-card">
+
+        {%- comment -%} 5a. Countdown Timer — Red tint urgency {%- endcomment -%}
+        {% if section.settings.coupon_code != blank %}
+          <div class="optibio-hero__countdown" id="optibio-hero-countdown" data-end-date="{{ section.settings.coupon_end_date }}">
+            <div class="optibio-hero__countdown-label">
+              <span>⏰</span>
+              <span>{{ section.settings.coupon_code }} code expires in:</span>
+            </div>
+            <div class="optibio-hero__countdown-digits">
+              <div class="optibio-hero__time-unit">
+                <span class="optibio-hero__time-num" id="optibio-timer-days">--</span>
+                <span class="optibio-hero__time-label">Days</span>
+              </div>
+              <span class="optibio-hero__time-sep">:</span>
+              <div class="optibio-hero__time-unit">
+                <span class="optibio-hero__time-num" id="optibio-timer-hrs">--</span>
+                <span class="optibio-hero__time-label">Hrs</span>
+              </div>
+              <span class="optibio-hero__time-sep">:</span>
+              <div class="optibio-hero__time-unit">
+                <span class="optibio-hero__time-num" id="optibio-timer-min">--</span>
+                <span class="optibio-hero__time-label">Min</span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        {%- comment -%} 5b. Price Row {%- endcomment -%}
+        <div class="optibio-hero__price-row">
+          <span class="optibio-hero__price-current">{{ section.settings.price }}</span>
+          {% if section.settings.compare_price != blank %}
+            <span class="optibio-hero__price-compare">{{ section.settings.compare_price }}</span>
+          {% endif %}
+          {% if section.settings.savings_text != blank %}
+            <span class="optibio-hero__save-badge">{{ section.settings.savings_text }}</span>
+          {% endif %}
+        </div>
+
+        {%- comment -%} 5c. Info Box — Yellow {%- endcomment -%}
+        <div class="optibio-hero__info-box">
+          {% if section.settings.capsule_callout != blank %}
+            <div class="optibio-hero__info-row">
+              <span>✨</span>
+              <span><strong>{{ section.settings.capsule_callout | split: ' · ' | first }}</strong> · {{ section.settings.capsule_callout | split: ' · ' | slice: 1, 10 | join: ' · ' }}</span>
+            </div>
+          {% endif %}
+          {% if section.settings.shipping_text != blank %}
+            <div class="optibio-hero__info-row">
+              <span>📦</span>
+              <span>{{ section.settings.shipping_text }}</span>
+            </div>
+          {% endif %}
+        </div>
+
+        {%- comment -%} 5d. CTA Button — Electric Blue {%- endcomment -%}
+        <a href="{{ section.settings.cta_link | default: '/products/optibio-ashwagandha-ksm-66' }}" class="optibio-hero__cta">
+          {{ section.settings.cta_text }}
+          <span class="optibio-hero__cta-arrow">→</span>
+        </a>
+
+        {%- comment -%} 5e. Trust Footer — green checks {%- endcomment -%}
+        <div class="optibio-hero__trust-footer">
+          <span><span class="optibio-hero__green-check">✔</span> Secure checkout</span>
+          <span class="optibio-hero__trust-sep">•</span>
+          <span><span class="optibio-hero__green-check">✔</span> Free shipping on $75+</span>
+          <span class="optibio-hero__trust-sep">•</span>
+          <span><span class="optibio-hero__green-check">✔</span> 90-day guarantee</span>
+        </div>
+      </div>
+
+      {%- comment -%} 6. Social Proof Card — Green gradient {%- endcomment -%}
+      <div class="optibio-hero__social-proof">
+        <div class="optibio-hero__avatars">
+          <div class="optibio-hero__avatar"></div>
+          <div class="optibio-hero__avatar"></div>
+          <div class="optibio-hero__avatar"></div>
+          <div class="optibio-hero__avatar"></div>
+        </div>
+        <div class="optibio-hero__social-text">
+          <div class="optibio-hero__stars">★★★★★ <span class="optibio-hero__rating-num">{{ section.settings.rating }}/5</span></div>
+          <div class="optibio-hero__customer-count">Based on <strong>{{ section.settings.customer_count }} happy customers</strong></div>
+          {% if section.settings.bottles_sold != blank %}
+            <div class="optibio-hero__bottles-sold"><span class="optibio-hero__green-check">✔</span> {{ section.settings.bottles_sold }} bottles sold in last 24 hours</div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+
+    {%- comment -%} Right Column: Product Image {%- endcomment -%}
+    <div class="optibio-hero__media">
+      <div class="optibio-hero__image-wrap">
+        {%- if section.settings.product_image != blank -%}
+          <img
+            src="{{ section.settings.product_image | image_url: width: 900 }}"
+            alt="Optibio Ashwagandha KSM-66&reg;"
+            class="optibio-hero__image"
+            loading="eager"
+            fetchpriority="high"
+            width="900"
+            height="900"
+          />
+        {%- else -%}
+          <img
+            src="https://cdn.shopify.com/s/files/1/0713/6994/9253/files/LToMdDXYNWhaGtfI.png"
+            alt="Optibio Ashwagandha KSM-66&reg;"
+            class="optibio-hero__image"
+            loading="eager"
+            fetchpriority="high"
+            width="900"
+            height="900"
+          />
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{%- comment -%} FIRSTDOSE Countdown Timer Script {%- endcomment -%}
+<script>
+(function() {
+  var el = document.getElementById('optibio-hero-countdown');
+  if (!el) return;
+  var endDate = new Date(el.dataset.endDate + 'T23:59:59').getTime();
+  function update() {
+    var now = Date.now();
+    var diff = endDate - now;
+    if (diff <= 0) { el.style.display = 'none'; return; }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var dEl = document.getElementById('optibio-timer-days');
+    var hEl = document.getElementById('optibio-timer-hrs');
+    var mEl = document.getElementById('optibio-timer-min');
+    if (dEl) dEl.textContent = d < 10 ? '0' + d : d;
+    if (hEl) hEl.textContent = h < 10 ? '0' + h : h;
+    if (mEl) mEl.textContent = m < 10 ? '0' + m : m;
+  }
+  update();
+  setInterval(update, 60000);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Homepage Hero",
+  "tag": "section",
+  "class": "optibio-hero-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Pill Text",
+      "default": "Science-Backed · Third-Party Tested"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline (use [gradient]...[/gradient] for gradient text)",
+      "default": "Feel Like<br>[gradient]Yourself[/gradient] Again"
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Clinically-proven ashwagandha for the stress, overwhelm, and exhaustion of modern life. Wake up calm. Work with focus. Sleep deeply."
+    },
+    {
+      "type": "text",
+      "id": "coupon_code",
+      "label": "Coupon Code",
+      "default": "FIRSTDOSE"
+    },
+    {
+      "type": "text",
+      "id": "coupon_message",
+      "label": "Coupon Message",
+      "default": "20% off your first bottle"
+    },
+    {
+      "type": "text",
+      "id": "coupon_end_date",
+      "label": "Coupon End Date (YYYY-MM-DD)",
+      "default": "2026-03-21"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Display Price",
+      "default": "$39.99"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Compare-at Price (strikethrough)",
+      "default": "$49.99"
+    },
+    {
+      "type": "text",
+      "id": "savings_text",
+      "label": "Savings Badge Text",
+      "default": "Save 20%"
+    },
+    {
+      "type": "text",
+      "id": "capsule_callout",
+      "label": "Capsule Callout",
+      "default": "90 Capsules · 45-Day Supply · 50% More Than Most Brands"
+    },
+    {
+      "type": "text",
+      "id": "shipping_text",
+      "label": "Shipping Note",
+      "default": "Free shipping on orders $75+"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Unlock Your Calm — Save 20%"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Star Rating",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "customer_count",
+      "label": "Customer Count",
+      "default": "2,400+"
+    },
+    {
+      "type": "text",
+      "id": "bottles_sold",
+      "label": "Bottles Sold (24h)",
+      "default": "127"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "certification",
+      "name": "Certification Badge",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon",
+          "options": [
+            { "value": "shield", "label": "Shield (Third-Party Tested)" },
+            { "value": "certificate", "label": "Award (GMP Certified)" },
+            { "value": "leaf", "label": "Leaf (Non-GMO / Organic)" },
+            { "value": "building", "label": "Building (FDA-Audited)" },
+            { "value": "checkmark", "label": "Checkmark (Generic)" }
+          ],
+          "default": "shield"
+        },
+        {
+          "type": "text",
+          "id": "cert_name",
+          "label": "Certification Name",
+          "default": "Third-Party Tested"
+        },
+        {
+          "type": "text",
+          "id": "cert_subtitle",
+          "label": "Certification Subtitle",
+          "default": "for purity"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Hero",
+      "blocks": [
+        { "type": "certification", "settings": { "icon_type": "shield", "cert_name": "Third-Party Tested", "cert_subtitle": "for purity" } },
+        { "type": "certification", "settings": { "icon_type": "certificate", "cert_name": "GMP Certified", "cert_subtitle": "facility" } },
+        { "type": "certification", "settings": { "icon_type": "leaf", "cert_name": "Non-GMO & Organic", "cert_subtitle": "ingredients" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,136 @@
+{% comment %}
+  Science Page — Sourcing & Traceability
+  Two-column grid of sourcing cards + bottom CTA
+{% endcomment %}
+
+<section class="optibio-sourcing optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <h2 class="optibio-page-section__heading">{{ section.settings.heading }}</h2>
+    <p class="optibio-page-section__subheading">{{ section.settings.subheading }}</p>
+
+    <div class="optibio-sourcing__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'sourcing_card' %}
+          <div class="optibio-sourcing__card" {{ block.shopify_attributes }}>
+            <div class="optibio-sourcing__card-icon">{{ block.settings.icon }}</div>
+            <h3 class="optibio-sourcing__card-title">{{ block.settings.title }}</h3>
+            <p class="optibio-sourcing__card-desc">{{ block.settings.description }}</p>
+            {% if block.settings.detail != blank %}
+              <div class="optibio-sourcing__card-detail">
+                <span class="optibio-sourcing__card-detail-icon">✓</span>
+                {{ block.settings.detail }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{%- comment -%} Bottom CTA Section {%- endcomment -%}
+<section class="optibio-page-cta optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <h2 class="optibio-page-section__heading">{{ section.settings.cta_heading }}</h2>
+    <p class="optibio-page-section__subheading" style="text-align: center;">{{ section.settings.cta_subheading }}</p>
+
+    <a href="{{ section.settings.cta_link | default: '/products/optibio-ashwagandha-ksm-66' }}" class="optibio-page-cta__btn">
+      {{ section.settings.cta_text }}
+      <span>→</span>
+    </a>
+
+    <div class="optibio-page-cta__trust">
+      <span><span class="optibio-page-cta__check">✔</span> 90-day money-back guarantee</span>
+      <span><span class="optibio-page-cta__check">✔</span> Free shipping on $75+</span>
+      <span><span class="optibio-page-cta__check">✔</span> Third-party tested</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sourcing & CTA",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Sourcing Heading",
+      "default": "Sourcing & Traceability"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sourcing Subheading",
+      "default": "We trace every ingredient from source to shelf. Full transparency, nothing to hide."
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA Heading",
+      "default": "Ready to Feel the Difference?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_subheading",
+      "label": "CTA Subheading",
+      "default": "Try Optibio risk-free with our 90-day money-back guarantee. If you don't feel calmer, sleep better, and think more clearly — we'll refund every penny."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Try Optibio Risk-Free"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sourcing_card",
+      "name": "Sourcing Card",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🌱"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "KSM-66® by Ixoreal Biomed"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Our ashwagandha is sourced from Ixoreal Biomed, the creators of KSM-66® — the world's most clinically studied ashwagandha extract."
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Verification Detail",
+          "default": "Rajasthan, India — sustainably farmed"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sourcing & CTA",
+      "blocks": [
+        { "type": "sourcing_card", "settings": { "icon": "🌱", "title": "KSM-66® by Ixoreal Biomed", "description": "Our ashwagandha is sourced from Ixoreal Biomed, the creators of KSM-66® — the world's most clinically studied ashwagandha extract, with over 24 gold-standard clinical trials.", "detail": "Origin: Rajasthan, India — sustainably farmed" } },
+        { "type": "sourcing_card", "settings": { "icon": "🏭", "title": "FDA-Audited Manufacturing", "description": "Manufactured at an FDA-audited, cGMP-certified facility in Mount Vernon, New York. Every step of production meets pharmaceutical-grade standards.", "detail": "Mount Vernon, NY — USA-based facility" } },
+        { "type": "sourcing_card", "settings": { "icon": "🔬", "title": "Independent Lab Testing", "description": "Every batch is sent to independent, third-party laboratories for comprehensive testing — heavy metals, microbial, potency, and identity verification.", "detail": "Results available via Verify Your Batch" } },
+        { "type": "sourcing_card", "settings": { "icon": "📦", "title": "Seed to Shelf Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Purchase verification gives you access to your batch's full quality documentation.", "detail": "COA and lab results available per batch" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

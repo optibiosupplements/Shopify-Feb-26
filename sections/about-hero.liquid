@@ -1,0 +1,75 @@
+{% comment %}
+  About Page Hero — Brand Story
+  Two-column: content left, image right
+  Sky blue gradient bg
+{% endcomment %}
+
+{{ 'about-page.css' | asset_url | stylesheet_tag }}
+{{ 'science-page.css' | asset_url | stylesheet_tag }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+
+<section class="optibio-about-hero optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <div class="optibio-about-hero__content">
+      <span class="optibio-about-hero__badge">{{ section.settings.badge_text }}</span>
+      <h1 class="optibio-about-hero__heading">{{ section.settings.heading }}</h1>
+      <div class="optibio-about-hero__desc">{{ section.settings.description }}</div>
+    </div>
+
+    <div class="optibio-about-hero__image-wrap">
+      {% if section.settings.hero_image != blank %}
+        <img
+          src="{{ section.settings.hero_image | image_url: width: 800 }}"
+          alt="{{ section.settings.heading }}"
+          class="optibio-about-hero__image"
+          loading="eager"
+          width="800"
+        />
+      {% else %}
+        <div class="optibio-about-hero__image-placeholder">
+          <span class="optibio-about-hero__image-placeholder-icon">🏭</span>
+          Upload a team photo, facility image, or brand lifestyle shot via Theme Editor
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why We Started Optibio"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>The supplement industry has a trust problem. Too many brands hide behind proprietary blends, use underdosed ingredients, and make claims without evidence.</p><p>We started Optibio because we believed consumers deserve better — clinical-grade supplements with full transparency, real dosages, and every claim backed by peer-reviewed research.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image (team, facility, or lifestyle)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero"
+    }
+  ]
+}
+{% endschema %}

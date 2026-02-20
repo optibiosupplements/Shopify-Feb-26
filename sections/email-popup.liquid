@@ -1,0 +1,247 @@
+{% comment %}
+  Email Capture Popup
+  Triggers after configurable delay on first visit OR exit-intent on desktop
+  Offers discount code for email signup
+  Cookie-based suppression (7 days after dismiss, permanent after submit)
+{% endcomment %}
+
+{{ 'email-popup.css' | asset_url | stylesheet_tag }}
+
+<div id="optibio-popup-overlay" class="optibio-popup__overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="optibio-popup-heading">
+  <div class="optibio-popup__card">
+    <button class="optibio-popup__close" aria-label="Close popup" id="optibio-popup-close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="optibio-popup__content">
+      {%- if section.settings.popup_image != blank -%}
+        <div class="optibio-popup__image-wrap">
+          <img
+            src="{{ section.settings.popup_image | image_url: width: 400 }}"
+            alt="{{ section.settings.heading | escape }}"
+            class="optibio-popup__image"
+            loading="lazy"
+            width="400"
+          />
+        </div>
+      {%- endif -%}
+
+      <div class="optibio-popup__body">
+        {% if section.settings.eyebrow != blank %}
+          <span class="optibio-popup__eyebrow">{{ section.settings.eyebrow }}</span>
+        {% endif %}
+
+        <h2 id="optibio-popup-heading" class="optibio-popup__heading">{{ section.settings.heading }}</h2>
+        <p class="optibio-popup__subheading">{{ section.settings.subheading }}</p>
+
+        {% if section.settings.discount_code != blank %}
+          <div class="optibio-popup__discount-preview">
+            <span class="optibio-popup__discount-code">{{ section.settings.discount_code }}</span>
+            <span class="optibio-popup__discount-value">{{ section.settings.discount_value }}</span>
+          </div>
+        {% endif %}
+
+        <form id="optibio-popup-form" class="optibio-popup__form" action="/contact#contact_form" method="post" accept-charset="UTF-8">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="utf8" value="✓">
+          <input type="hidden" name="contact[tags]" value="popup,prospect,{{ section.settings.discount_code }}">
+
+          <div class="optibio-popup__input-group">
+            <input
+              type="email"
+              name="contact[email]"
+              id="optibio-popup-email"
+              class="optibio-popup__input"
+              placeholder="{{ section.settings.placeholder_text }}"
+              required
+              autocomplete="email"
+            />
+            <button type="submit" class="optibio-popup__submit" id="optibio-popup-submit">
+              <span class="optibio-popup__submit-text">{{ section.settings.button_text }}</span>
+              <span class="optibio-popup__submit-loading" style="display:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-dasharray="60" stroke-dashoffset="20"><animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/></circle></svg>
+              </span>
+            </button>
+          </div>
+        </form>
+
+        <div id="optibio-popup-success" class="optibio-popup__success" style="display:none;">
+          <div class="optibio-popup__success-icon">✓</div>
+          <h3 class="optibio-popup__success-heading">{{ section.settings.success_heading }}</h3>
+          <p class="optibio-popup__success-text">{{ section.settings.success_text }}</p>
+          {% if section.settings.discount_code != blank %}
+            <div class="optibio-popup__success-code">
+              <span>Your code:</span>
+              <strong id="optibio-popup-code-display">{{ section.settings.discount_code }}</strong>
+              <button class="optibio-popup__copy-btn" id="optibio-popup-copy" aria-label="Copy code">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          {% endif %}
+        </div>
+
+        <p class="optibio-popup__privacy">{{ section.settings.privacy_text }}</p>
+
+        <div class="optibio-popup__trust-row">
+          {% for block in section.blocks %}
+            {% if block.type == 'trust_item' %}
+              <span class="optibio-popup__trust-item" {{ block.shopify_attributes }}>
+                {{ block.settings.icon }} {{ block.settings.text }}
+              </span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+  src="{{ 'email-popup.js' | asset_url }}"
+  defer
+  data-delay="{{ section.settings.delay_seconds }}"
+  data-exit-intent="{{ section.settings.enable_exit_intent }}"
+  data-dismiss-days="{{ section.settings.dismiss_cookie_days }}"
+  data-submitted-days="{{ section.settings.submitted_cookie_days }}"
+  id="optibio-popup-script"
+></script>
+
+{% schema %}
+{
+  "name": "Email Popup",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "delay_seconds",
+      "label": "Popup Delay (seconds)",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "default": 8,
+      "info": "Seconds before popup appears on first visit"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_exit_intent",
+      "label": "Enable Exit-Intent (Desktop)",
+      "default": true,
+      "info": "Show popup when mouse moves to close/leave page"
+    },
+    {
+      "type": "range",
+      "id": "dismiss_cookie_days",
+      "label": "Re-show After Dismiss (days)",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "submitted_cookie_days",
+      "label": "Hide After Submit (days)",
+      "min": 30,
+      "max": 360,
+      "step": 30,
+      "default": 360
+    },
+    {
+      "type": "image_picker",
+      "id": "popup_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "LIMITED TIME OFFER"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get 10% Off Your First Order"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Join 2,400+ customers who chose clinical-grade quality. Enter your email for an exclusive discount."
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount Code",
+      "default": "WELCOME10"
+    },
+    {
+      "type": "text",
+      "id": "discount_value",
+      "label": "Discount Value Text",
+      "default": "10% OFF"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_text",
+      "label": "Email Placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Unlock My Discount"
+    },
+    {
+      "type": "text",
+      "id": "success_heading",
+      "label": "Success Heading",
+      "default": "Welcome to Optibio!"
+    },
+    {
+      "type": "textarea",
+      "id": "success_text",
+      "label": "Success Message",
+      "default": "Your discount code has been applied. Use it at checkout for 10% off your first order."
+    },
+    {
+      "type": "text",
+      "id": "privacy_text",
+      "label": "Privacy Text",
+      "default": "No spam, ever. Unsubscribe anytime."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🔬"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Science-Backed"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email Popup",
+      "blocks": [
+        { "type": "trust_item", "settings": { "icon": "🔬", "text": "Science-Backed" } },
+        { "type": "trust_item", "settings": { "icon": "🛡️", "text": "90-Day Guarantee" } },
+        { "type": "trust_item", "settings": { "icon": "🚚", "text": "Free Shipping $75+" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

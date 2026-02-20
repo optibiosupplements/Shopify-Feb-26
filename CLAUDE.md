@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 19, 2026 — Session A)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 19, 2026 — Session A+B)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -87,9 +87,11 @@ Every clinical claim MUST be:
 ### Colors
 | Color | Hex | Role |
 |-------|-----|------|
-| Deep Navy | #1B365D | Headlines, primary buttons, dark backgrounds. BRAND ANCHOR. |
-| Antique Gold | #D4AF37 | Accents, CTAs, badges, stat numbers. MAX 15% of screen. |
-| Sky Blue Gradient | #E8F4FD → #C0E4F9 | Page backgrounds. Top-to-bottom gradient. |
+| Navy | #1A2F4D | Headlines, headings, primary text. BRAND ANCHOR. |
+| Deep Navy | #1E3A5F | Dark backgrounds, badge seals, table headers. |
+| Antique Gold | #C9A961 | Accents, badges, stat numbers, gold borders. MAX 15% of screen. |
+| Electric Blue | #2563EB | CTA buttons, links, primary actions. Hover: #1D4ED8. |
+| Sky Blue Gradient | radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%) | Page backgrounds. Radial ellipse. |
 | Body Text | #475569 | All paragraph text. NEVER use pure black (#000000). |
 | Success Green | #10B981 | Checkmarks, verification badges only. |
 | Star Gold | #F59E0B | Review stars ONLY. |
@@ -97,12 +99,12 @@ Every clinical claim MUST be:
 ### Typography
 | Element | Font | Size | Weight |
 |---------|------|------|--------|
-| Hero Title | Playfair Display | 48–56px | 800 |
-| Section Headings | Playfair Display | 28–36px | 700 |
-| Body Text | DM Sans | 15–16px | 400 |
-| Stat Numbers | DM Sans | 32–40px | 700 |
-| Badges/Labels | DM Sans | 11–13px | 600 |
-| CTA Buttons | DM Sans | 15–16px | 600 |
+| Hero Title | Sora | 48–56px | 700 |
+| Section Headings | Sora | 28–36px | 700 |
+| Body Text | Inter | 15–16px | 400 |
+| Stat Numbers | Inter | 32–40px | 700 |
+| Badges/Labels | Inter | 11–13px | 600 |
+| CTA Buttons | Sora | 15–16px | 600 |
 
 ### Visual Effects
 - **Glassmorphism:** backdrop-filter: blur(12px), background: rgba(255,255,255,0.7), border: 1px solid rgba(255,255,255,0.3)
@@ -277,11 +279,19 @@ Every clinical claim MUST be:
 
 ---
 
-### Remaining Sessions (from Plan)
-- **Session B:** Homepage redesign (5 new sections replacing custom-liquid) + footer redesign + remove temporary `.ob-*` classes from optibio-global.css
-- **Session C:** Traceability backend (Node.js App Proxy) + metaobject definitions (Batch_Lot, Verification_Log) + verification page frontend (/pages/verify)
+### Completed Sessions
+- ~~**Session A:** CSS consolidation + Product page CRO + Traceability badge~~ DONE
+- ~~**Session A+B (continued):** Design system unification (#1A2F4D/#C9A961/Sora/Inter), badge implementation (6 SVG icons), header logo fix, double header fix, homepage audit (all 7 sections verified), Science page verified, About page verified, Verify Your Batch page built (hero + search + results + supply chain timeline + COA), page created in Shopify Admin~~ DONE
+
+### Remaining Work
+- **Publish dev theme to live** — Theme 146307776581 ready to go live
+- **Traceability backend (future):** Node.js App Proxy + Shopify metaobjects for dynamic batch lookup (currently uses client-side sample data)
+- **Review system:** Judge.me or similar app integration
+- **Subscribe & Save:** Shopify Subscriptions app
+- **Blog content:** 3 foundational articles
+- **Performance/Accessibility audits**
 
 ---
 
-*Last updated: February 19, 2026 (Session A complete — dev theme deployed)*
-*Next review: Before Session B — verify dev theme in browser first*
+*Last updated: February 19, 2026 (Session A+B complete — all pages built, dev theme ready to publish)*
+*Next review: After publishing live — verify all pages, create discount codes, transfer domain*

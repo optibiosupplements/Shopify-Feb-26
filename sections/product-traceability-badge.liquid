@@ -2,14 +2,23 @@
   Optibio Traceability Badge Section
   "Seed to Shelf Verified" trust signal
   Placed between Trust Badges and FAQ on product page
-  Brand: Navy #1B365D, Gold #D4AF37
+  Brand: Navy #1A2F4D, Gold #C9A961
 {% endcomment %}
 
 <section class="optibio-section optibio-traceability" id="optibio-traceability">
   <div class="optibio-traceability__card optibio-glass">
 
+    <div class="optibio-traceability__seal-img">
+      <img
+        src="{{ 'badge-seed-to-shelf.png' | asset_url }}"
+        alt="Seed-to-Shelf Traceability"
+        width="100"
+        height="100"
+        loading="lazy"
+      >
+    </div>
+
     <div class="optibio-traceability__header">
-      <svg class="optibio-traceability__shield" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
       <h3 class="optibio-traceability__title">{{ section.settings.heading }}</h3>
     </div>
 
@@ -35,8 +44,12 @@
         3rd-Party Tested
       </span>
       <span class="optibio-traceability__badge-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-        Made in USA
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Made in New York
+      </span>
+      <span class="optibio-traceability__badge-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        Halal Certified
       </span>
     </div>
     {% endif %}
@@ -64,17 +77,24 @@
     border-right: 1px solid var(--optibio-border-glass);
   }
 
+  .optibio-traceability__seal-img {
+    margin-bottom: var(--optibio-space-md);
+  }
+
+  .optibio-traceability__seal-img img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(201, 169, 97, 0.15);
+  }
+
   .optibio-traceability__header {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--optibio-space-sm);
     margin-bottom: var(--optibio-space-md);
-  }
-
-  .optibio-traceability__shield {
-    color: var(--optibio-gold);
-    flex-shrink: 0;
   }
 
   .optibio-traceability__title {
@@ -121,7 +141,7 @@
     justify-content: center;
     gap: var(--optibio-space-md) var(--optibio-space-lg);
     padding-top: var(--optibio-space-md);
-    border-top: 1px solid rgba(27, 54, 93, 0.08);
+    border-top: 1px solid rgba(30, 58, 95, 0.08);
   }
 
   .optibio-traceability__badge-item {

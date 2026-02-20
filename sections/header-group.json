@@ -17,8 +17,34 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Save up to 40% + FREE Shipping on 3+ bottles",
+            "text": "🎉 Use code FIRSTDOSE for 20% off your first order",
             "link": "/products/optibio-ashwagandha-ksm-66",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_shipping": {
+          "type": "_announcement",
+          "settings": {
+            "text": "🚚 FREE Shipping on orders $75+ · Save up to 40% on bundles",
+            "link": "/products/optibio-ashwagandha-ksm-66",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_testing": {
+          "type": "_announcement",
+          "settings": {
+            "text": "🔬 Every batch third-party tested for purity · FDA-audited facility",
+            "link": "/pages/science",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
             "weight": "",
@@ -29,7 +55,9 @@
         }
       },
       "block_order": [
-        "announcement_BxgCk9"
+        "announcement_BxgCk9",
+        "announcement_shipping",
+        "announcement_testing"
       ],
       "name": "t:names.announcement_bar",
       "settings": {

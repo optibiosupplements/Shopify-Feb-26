@@ -1,0 +1,114 @@
+{% comment %}
+  Optibio Homepage Guarantee Section
+  3-step flow with numbered navy circles
+  90-day money-back guarantee messaging
+  Brand: Navy #1A2F4D, Gold #C9A961, Sora + Inter
+{% endcomment %}
+
+<section class="optibio-home-guarantee">
+  <div class="optibio-home-guarantee__container">
+
+    <h2 class="optibio-home-guarantee__heading">{{ section.settings.heading }}</h2>
+    <p class="optibio-home-guarantee__desc">{{ section.settings.description }}</p>
+
+    <div class="optibio-home-guarantee__steps">
+      {%- for block in section.blocks -%}
+        <div class="optibio-home-guarantee__step" {{ block.shopify_attributes }}>
+          <div class="optibio-home-guarantee__number">{{ block.settings.step_number }}</div>
+          <h3 class="optibio-home-guarantee__step-title">{{ block.settings.step_title }}</h3>
+          <p class="optibio-home-guarantee__step-desc">{{ block.settings.step_description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.note_text != blank -%}
+      <p class="optibio-home-guarantee__note">{{ section.settings.note_text }}</p>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Homepage Guarantee",
+  "tag": "section",
+  "class": "optibio-home-guarantee-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "90-Day Money-Back Guarantee"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Try Optibio risk-free. If you don't feel calmer, sleep better, and think more clearly, we'll refund every penny."
+    },
+    {
+      "type": "text",
+      "id": "note_text",
+      "label": "Bottom Note",
+      "default": "Why 90 days? Ashwagandha's full benefits build over 8+ weeks."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step Number",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "step_title",
+          "label": "Step Title",
+          "default": "Try It"
+        },
+        {
+          "type": "text",
+          "id": "step_description",
+          "label": "Step Description",
+          "default": "Take Optibio daily for up to 90 days"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Guarantee",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "1",
+            "step_title": "Try It",
+            "step_description": "Take Optibio daily for up to 90 days"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "2",
+            "step_title": "Feel Results",
+            "step_description": "Experience calm, clarity, better sleep"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "3",
+            "step_title": "Keep or Return",
+            "step_description": "Full refund if not satisfied. Keep the bottle."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

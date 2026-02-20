@@ -1,0 +1,296 @@
+/* ============================================
+   OPTIBIO ABOUT PAGE STYLES
+   Covers: Hero, Mission/Problem, Standards Grid
+   Brand: Navy #1E3A5F, Gold #C9A961, Electric Blue #2563EB
+   Fonts: Sora (headings) + Inter (body)
+   Uses shared .optibio-page-section from science-page.css
+   ============================================ */
+
+/* ===== ABOUT HERO ===== */
+
+.optibio-about-hero {
+  background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
+  padding: 120px 64px 80px;
+}
+
+.optibio-about-hero .optibio-page-section__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.optibio-about-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.optibio-about-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(201, 169, 97, 0.12);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #C9A961;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+}
+
+.optibio-about-hero__heading {
+  font-family: 'Sora', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #1A2F4D;
+  margin: 0;
+}
+
+.optibio-about-hero__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.optibio-about-hero__image-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(30, 58, 95, 0.12);
+}
+
+.optibio-about-hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.optibio-about-hero__image-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #EBF5FB, #D6EAF8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #64748B;
+  text-align: center;
+  padding: 40px;
+}
+
+.optibio-about-hero__image-placeholder-icon {
+  font-size: 48px;
+}
+
+/* ===== MISSION / PROBLEM SECTION ===== */
+
+.optibio-about-mission {
+  background: #FFFFFF;
+}
+
+.optibio-about-mission__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.optibio-about-mission__block {
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.optibio-about-mission__problem {
+  background: linear-gradient(135deg, #FEF2F2, #FFF7ED);
+  border: 1px solid #FECACA;
+}
+
+.optibio-about-mission__solution {
+  background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+  border: 1px solid #BBF7D0;
+}
+
+.optibio-about-mission__block-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.optibio-about-mission__block-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1A2F4D;
+  margin: 0 0 16px 0;
+}
+
+.optibio-about-mission__block-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.optibio-about-mission__block-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.optibio-about-mission__block-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #374151;
+}
+
+.optibio-about-mission__block-list li::before {
+  content: '✓';
+  color: #16A34A;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.optibio-about-mission__problem .optibio-about-mission__block-list li::before {
+  content: '✕';
+  color: #DC2626;
+}
+
+/* ===== STANDARDS GRID ===== */
+
+.optibio-about-standards {
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+}
+
+.optibio-about-standards__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.optibio-about-standards__card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.optibio-about-standards__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+  border-color: rgba(201, 169, 97, 0.3);
+}
+
+.optibio-about-standards__card-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.optibio-about-standards__card-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1A2F4D;
+  margin: 0 0 8px 0;
+}
+
+.optibio-about-standards__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #64748B;
+}
+
+/* What's Next */
+.optibio-about-next {
+  margin-top: 64px;
+  padding: 40px;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(247, 244, 239, 0.95));
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(201, 169, 97, 0.2);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.optibio-about-next__heading {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1A2F4D;
+  margin: 0 0 12px 0;
+}
+
+.optibio-about-next__text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+  .optibio-about-hero {
+    padding: 100px 32px 60px;
+  }
+
+  .optibio-about-hero .optibio-page-section__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .optibio-about-mission__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .optibio-about-standards__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .optibio-about-hero {
+    padding: 80px 20px 48px;
+  }
+
+  .optibio-about-hero__heading {
+    font-size: 34px;
+  }
+
+  .optibio-about-hero__desc {
+    font-size: 16px;
+  }
+
+  .optibio-about-standards__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .optibio-about-mission__block {
+    padding: 24px;
+  }
+
+  .optibio-about-next {
+    padding: 28px;
+    margin-top: 40px;
+  }
+}

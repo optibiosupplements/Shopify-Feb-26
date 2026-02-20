@@ -1,12 +1,12 @@
 /* Optibio Enhanced Buy Box - Ethereal Clinical Luxury Design */
-/* Approved Brand Colors: Navy #1B365D, Gold #D4AF37 */
+/* Approved Brand Colors: Navy #1A2F4D, Gold #C9A961 */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+/* Fonts loaded via optibio-global.css — no duplicate @import needed */
 
 :root {
-  --navy: #1B365D;
-  --gold: #D4AF37;
-  --gold-light: #F4E4BA;
+  --navy: #1A2F4D;
+  --gold: #C9A961;
+  --gold-light: #E8DFC4;
   --sky-50: #f0f9ff;
   --white: #ffffff;
   --gray-50: #f9fafb;
@@ -22,16 +22,16 @@
 
 /* Typography */
 .font-display {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Sora', sans-serif;
 }
 
 .font-body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Optibio Enhanced Purchase Container */
 .optibio-enhanced-purchase {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: linear-gradient(to bottom, var(--sky-50), var(--white), var(--sky-50));
   border-radius: 1rem;
   padding: 1.5rem;
@@ -58,7 +58,7 @@
   font-weight: 500;
   color: var(--gray-600);
   margin-bottom: 0.75rem;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .optibio-bundle-grid {
@@ -85,15 +85,15 @@
 }
 
 .optibio-bundle-card:hover {
-  border-color: rgba(212, 175, 55, 0.5);
+  border-color: rgba(201, 169, 97, 0.5);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .optibio-bundle-card.selected {
   border-color: var(--gold);
-  background: rgba(212, 175, 55, 0.05);
-  box-shadow: 0 8px 16px rgba(212, 175, 55, 0.2);
+  background: rgba(201, 169, 97, 0.05);
+  box-shadow: 0 8px 16px rgba(201, 169, 97, 0.2);
 }
 
 .optibio-bundle-badge {
@@ -106,7 +106,7 @@
   font-weight: 700;
   border-radius: 9999px;
   white-space: nowrap;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .optibio-bundle-badge.popular {
@@ -124,7 +124,7 @@
   color: var(--navy);
   margin-top: 0.5rem;
   margin-bottom: 0.25rem;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .optibio-bundle-price {
@@ -132,7 +132,7 @@
   font-weight: 700;
   color: var(--navy);
   margin: 0.25rem 0;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Sora', sans-serif;
 }
 
 .optibio-bundle-per-bottle {
@@ -177,12 +177,12 @@
 }
 
 .optibio-subscription-toggle:hover {
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: rgba(201, 169, 97, 0.3);
 }
 
 .optibio-subscription-toggle.active {
   border-color: var(--gold);
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(201, 169, 97, 0.05);
 }
 
 .optibio-toggle-switch {
@@ -223,7 +223,7 @@
 .optibio-toggle-title {
   font-weight: 600;
   color: var(--navy);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .optibio-toggle-subtitle {
@@ -234,7 +234,7 @@
 .optibio-toggle-savings {
   font-weight: 600;
   color: var(--green-600);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .optibio-badge-15off {
@@ -260,7 +260,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .optibio-price-label {
@@ -283,7 +283,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--navy);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Sora', sans-serif;
 }
 
 .optibio-savings-highlight {
@@ -294,7 +294,7 @@
 /* CTA Button */
 .optibio-cta-button {
   width: 100%;
-  background-color: var(--navy);
+  background-color: #2563EB;
   color: var(--white);
   padding: 1rem 2rem;
   border-radius: 0.75rem;
@@ -303,15 +303,15 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.3);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
   position: relative;
   overflow: hidden;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .optibio-cta-button:hover {
-  background-color: rgba(27, 54, 93, 0.9);
-  box-shadow: 0 6px 16px rgba(27, 54, 93, 0.4);
+  background-color: #1D4ED8;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
   transform: translateY(-2px);
 }
 

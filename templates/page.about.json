@@ -1,0 +1,63 @@
+{
+  "sections": {
+    "about_hero": {
+      "type": "about-hero",
+      "settings": {
+        "badge_text": "Our Story",
+        "heading": "Why We Started Optibio",
+        "description": "<p>The supplement industry has a trust problem. Too many brands hide behind proprietary blends, use underdosed ingredients, and make claims without evidence. Consumers are left guessing whether what's on the label is actually in the bottle.</p><p>We started Optibio because we believed you deserve better — clinical-grade supplements with full transparency, real dosages, and every single claim backed by peer-reviewed research. Not marketing hype. Science.</p>"
+      }
+    },
+    "mission": {
+      "type": "about-mission",
+      "settings": {
+        "heading": "Our Mission",
+        "subheading": "We believe the supplement industry can do better — and we're proving it, one batch at a time.",
+        "problem_icon": "⚠️",
+        "problem_title": "The Industry Problem",
+        "problem_text": "Most supplement brands cut corners. They hide behind \"proprietary blends,\" use the cheapest ingredients available, and make health claims without any clinical evidence to back them up.",
+        "solution_icon": "✅",
+        "solution_title": "The Optibio Standard",
+        "solution_text": "Every Optibio product meets the highest standards for transparency, quality, and clinical evidence. What's on our label is in the bottle — verified by independent labs."
+      },
+      "blocks": {
+        "prob_1": { "type": "problem_item", "settings": { "text": "Proprietary blends hiding real ingredient dosages" } },
+        "prob_2": { "type": "problem_item", "settings": { "text": "Underdosed \"pixie-dust\" ingredients for label appeal" } },
+        "prob_3": { "type": "problem_item", "settings": { "text": "No third-party testing or batch verification" } },
+        "prob_4": { "type": "problem_item", "settings": { "text": "Health claims without published clinical evidence" } },
+        "sol_1": { "type": "solution_item", "settings": { "text": "Full ingredient transparency — every dosage listed" } },
+        "sol_2": { "type": "solution_item", "settings": { "text": "600mg clinical dosage from peer-reviewed trials" } },
+        "sol_3": { "type": "solution_item", "settings": { "text": "Every batch third-party tested and traceable" } },
+        "sol_4": { "type": "solution_item", "settings": { "text": "Only claims supported by published clinical data" } }
+      },
+      "block_order": ["prob_1", "prob_2", "prob_3", "prob_4", "sol_1", "sol_2", "sol_3", "sol_4"]
+    },
+    "standards": {
+      "type": "about-standards",
+      "settings": {
+        "heading": "Our Standards",
+        "subheading": "Six non-negotiable commitments that define every Optibio product.",
+        "show_next_section": true,
+        "next_heading": "We're Just Getting Started",
+        "next_text": "Ashwagandha is our first product — but not our last. We're developing additional clinical-grade supplements targeting stress, sleep, focus, and recovery. Each will meet the same rigorous standards: patented ingredients, clinical dosages, third-party testing, and full traceability.",
+        "cta_heading": "Experience the Optibio Difference",
+        "cta_subheading": "Join thousands who have chosen clinical-grade quality over empty marketing claims.",
+        "cta_text": "Shop Optibio"
+      },
+      "blocks": {
+        "std_1": { "type": "standard", "settings": { "icon": "🏭", "title": "FDA-Audited Facility", "description": "Manufactured in Mount Vernon, NY at an FDA-audited, cGMP-certified pharmaceutical-grade facility." } },
+        "std_2": { "type": "standard", "settings": { "icon": "🔬", "title": "Third-Party Tested", "description": "Every batch is sent to independent labs for heavy metal, microbial, potency, and identity testing." } },
+        "std_3": { "type": "standard", "settings": { "icon": "🌿", "title": "Full-Spectrum Root Only", "description": "We use only root extract — never cheaper leaf or aerial parts that dilute potency and bioavailability." } },
+        "std_4": { "type": "standard", "settings": { "icon": "📊", "title": "Clinical Dosage: 600mg", "description": "The exact dosage used in peer-reviewed clinical trials — not an underdosed marketing gimmick." } },
+        "std_5": { "type": "standard", "settings": { "icon": "💊", "title": "90 Capsules Per Bottle", "description": "50% more capsules than most competitors. A full 45-day supply per bottle for better value." } },
+        "std_6": { "type": "standard", "settings": { "icon": "📋", "title": "Full Batch Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Verify your batch online anytime." } }
+      },
+      "block_order": ["std_1", "std_2", "std_3", "std_4", "std_5", "std_6"]
+    }
+  },
+  "order": [
+    "about_hero",
+    "mission",
+    "standards"
+  ]
+}

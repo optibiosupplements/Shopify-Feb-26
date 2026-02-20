@@ -1,0 +1,122 @@
+{% comment %}
+  Science Page — Quality & Testing
+  4-column grid of testing categories + process flow
+{% endcomment %}
+
+<section class="optibio-quality optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <h2 class="optibio-page-section__heading">{{ section.settings.heading }}</h2>
+    <p class="optibio-page-section__subheading">{{ section.settings.subheading }}</p>
+
+    <div class="optibio-quality__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'test_category' %}
+          <div class="optibio-quality__card" {{ block.shopify_attributes }}>
+            <div class="optibio-quality__card-icon">{{ block.settings.icon }}</div>
+            <h3 class="optibio-quality__card-title">{{ block.settings.title }}</h3>
+            <p class="optibio-quality__card-desc">{{ block.settings.description }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_process %}
+      <div class="optibio-quality__process">
+        <h3 class="optibio-quality__process-title">{{ section.settings.process_title }}</h3>
+        <div class="optibio-quality__process-steps">
+          <div class="optibio-quality__process-step">
+            <div class="optibio-quality__process-num">1</div>
+            <div class="optibio-quality__process-label">Raw Material<br>Identity Testing</div>
+          </div>
+          <div class="optibio-quality__process-step">
+            <div class="optibio-quality__process-num">2</div>
+            <div class="optibio-quality__process-label">Potency &<br>Purity Analysis</div>
+          </div>
+          <div class="optibio-quality__process-step">
+            <div class="optibio-quality__process-num">3</div>
+            <div class="optibio-quality__process-label">Heavy Metal<br>Screening</div>
+          </div>
+          <div class="optibio-quality__process-step">
+            <div class="optibio-quality__process-num">4</div>
+            <div class="optibio-quality__process-label">Microbial<br>Testing</div>
+          </div>
+          <div class="optibio-quality__process-step">
+            <div class="optibio-quality__process-num">5</div>
+            <div class="optibio-quality__process-label">Third-Party<br>Verification</div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quality & Testing",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Quality & Testing"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every batch undergoes rigorous testing before it reaches you. No shortcuts, no exceptions."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_process",
+      "label": "Show Testing Process Flow",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "process_title",
+      "label": "Process Flow Title",
+      "default": "Our 5-Step Quality Assurance Process"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "test_category",
+      "name": "Testing Category",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🔬"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Heavy Metal Testing"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Every batch is screened for lead, mercury, cadmium, and arsenic — ensuring levels are well below FDA safety limits."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quality & Testing",
+      "blocks": [
+        { "type": "test_category", "settings": { "icon": "⚗️", "title": "Heavy Metal Testing", "description": "Screened for lead, mercury, cadmium, and arsenic — well below FDA safety limits." } },
+        { "type": "test_category", "settings": { "icon": "🦠", "title": "Microbial Testing", "description": "Tested for yeast, mold, E. coli, salmonella, and staph to ensure product safety." } },
+        { "type": "test_category", "settings": { "icon": "💊", "title": "Potency Verification", "description": "Confirmed to contain the exact amount of active ingredient (5% withanolides) listed on the label." } },
+        { "type": "test_category", "settings": { "icon": "🔍", "title": "Identity Testing", "description": "Raw materials are verified to be genuine KSM-66® ashwagandha root — not a substitute or adulterated material." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

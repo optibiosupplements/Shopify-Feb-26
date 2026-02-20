@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "verify_hero": {
+      "type": "verify-hero",
+      "settings": {
+        "heading": "Verify Your Batch",
+        "subheading": "Every Optibio bottle is traceable from raw material sourcing to your doorstep. Enter your lot number to view the full quality report."
+      }
+    }
+  },
+  "order": [
+    "verify_hero"
+  ]
+}

@@ -1,0 +1,208 @@
+{% comment %}
+  Science Page — Clinical Studies Grid
+  Cards showing key findings, study design, PubMed links
+  FDA disclaimer at bottom
+{% endcomment %}
+
+<section class="optibio-studies optibio-page-section">
+  <div class="optibio-page-section__inner">
+    <h2 class="optibio-page-section__heading">{{ section.settings.heading }}</h2>
+    <p class="optibio-page-section__subheading">{{ section.settings.subheading }}</p>
+
+    <div class="optibio-studies__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'study' %}
+          <div class="optibio-studies__card" {{ block.shopify_attributes }}>
+            <span class="optibio-studies__card-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              {{ block.settings.study_type }}
+            </span>
+
+            <div class="optibio-studies__card-finding">
+              {{ block.settings.key_finding }}
+            </div>
+
+            <div class="optibio-studies__card-title">{{ block.settings.study_title }}</div>
+
+            <div class="optibio-studies__card-meta">
+              {% if block.settings.journal != blank %}
+                <span class="optibio-studies__card-meta-item">📰 {{ block.settings.journal }}</span>
+              {% endif %}
+              {% if block.settings.year != blank %}
+                <span class="optibio-studies__card-meta-item">📅 {{ block.settings.year }}</span>
+              {% endif %}
+              {% if block.settings.participants != blank %}
+                <span class="optibio-studies__card-meta-item">👥 {{ block.settings.participants }}</span>
+              {% endif %}
+              {% if block.settings.duration != blank %}
+                <span class="optibio-studies__card-meta-item">⏱ {{ block.settings.duration }}</span>
+              {% endif %}
+            </div>
+
+            <p class="optibio-studies__card-desc">{{ block.settings.description }}</p>
+
+            {% if block.settings.pubmed_url != blank %}
+              <a href="{{ block.settings.pubmed_url }}" class="optibio-studies__card-link" target="_blank" rel="noopener noreferrer">
+                View on PubMed →
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.fda_disclaimer != blank %}
+      <div class="optibio-studies__disclaimer">
+        ⚠️ {{ section.settings.fda_disclaimer }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Clinical Studies",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Clinically Studied Results"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real outcomes from peer-reviewed, placebo-controlled clinical trials using KSM-66® ashwagandha."
+    },
+    {
+      "type": "textarea",
+      "id": "fda_disclaimer",
+      "label": "FDA Disclaimer",
+      "default": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "study",
+      "name": "Clinical Study",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "study_type",
+          "label": "Study Type Badge",
+          "default": "Randomized, Double-Blind"
+        },
+        {
+          "type": "text",
+          "id": "key_finding",
+          "label": "Key Finding (large text)",
+          "default": "27.9% Cortisol Reduction"
+        },
+        {
+          "type": "text",
+          "id": "study_title",
+          "label": "Study Title",
+          "default": "A Prospective, Randomized Double-Blind, Placebo-Controlled Study of Safety and Efficacy..."
+        },
+        {
+          "type": "text",
+          "id": "journal",
+          "label": "Journal Name",
+          "default": "Indian J Psychol Med"
+        },
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year",
+          "default": "2012"
+        },
+        {
+          "type": "text",
+          "id": "participants",
+          "label": "Participants",
+          "default": "64 participants"
+        },
+        {
+          "type": "text",
+          "id": "duration",
+          "label": "Duration",
+          "default": "60 days"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Study Description",
+          "default": "Subjects receiving KSM-66® showed a significant reduction in serum cortisol levels compared to placebo, alongside improvements in perceived stress scores."
+        },
+        {
+          "type": "url",
+          "id": "pubmed_url",
+          "label": "PubMed URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clinical Studies",
+      "blocks": [
+        {
+          "type": "study",
+          "settings": {
+            "study_type": "Randomized, Double-Blind, Placebo-Controlled",
+            "key_finding": "27.9% Cortisol Reduction",
+            "study_title": "A Prospective, Randomized Double-Blind, Placebo-Controlled Study of Safety and Efficacy of a High-Concentration Full-Spectrum Extract of Ashwagandha Root",
+            "journal": "Indian J Psychol Med",
+            "year": "2012",
+            "participants": "64 participants",
+            "duration": "60 days",
+            "description": "Adults with chronic stress receiving 600mg/day KSM-66® showed a 27.9% reduction in serum cortisol and significant improvements on all stress-assessment scales vs. placebo."
+          }
+        },
+        {
+          "type": "study",
+          "settings": {
+            "study_type": "Randomized, Double-Blind, Placebo-Controlled",
+            "key_finding": "Sleep Efficiency: 72% → 83.5%",
+            "study_title": "Efficacy and Safety of Ashwagandha Root Extract on Sleep Quality in Insomnia and Anxiety",
+            "journal": "Cureus",
+            "year": "2019",
+            "participants": "60 participants",
+            "duration": "10 weeks",
+            "description": "Participants taking 600mg/day KSM-66® showed significant improvement in sleep quality (SOL), with sleep efficiency improving from 75.6% to 83.5%, compared to no meaningful change in the placebo group."
+          }
+        },
+        {
+          "type": "study",
+          "settings": {
+            "study_type": "Randomized, Double-Blind, Placebo-Controlled",
+            "key_finding": "44% Stress Reduction",
+            "study_title": "Body Weight Management and Stress Reduction with Ashwagandha Root Extract",
+            "journal": "J Evid Based Complement Altern Med",
+            "year": "2015",
+            "participants": "52 participants",
+            "duration": "8 weeks",
+            "description": "Participants under chronic stress receiving KSM-66® showed a 44% reduction in perceived stress (PSS score) and significant improvements in food cravings and body weight management."
+          }
+        },
+        {
+          "type": "study",
+          "settings": {
+            "study_type": "Randomized, Double-Blind, Placebo-Controlled",
+            "key_finding": "13% Endurance Improvement",
+            "study_title": "Examining the Effect of Withania Somnifera on Muscle Strength and Recovery",
+            "journal": "J Int Soc Sports Nutr",
+            "year": "2015",
+            "participants": "57 participants",
+            "duration": "8 weeks",
+            "description": "Healthy young men receiving 600mg/day KSM-66® showed significantly greater increases in muscle strength, muscle size, and VO2max compared to placebo, with faster recovery."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

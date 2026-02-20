@@ -1,0 +1,692 @@
+/* ============================================
+   OPTIBIO SCIENCE PAGE STYLES
+   Covers: Hero, Ingredient Deep-Dive, Clinical Studies, Quality, Sourcing
+   Brand: Navy #1E3A5F, Gold #C9A961, Electric Blue #2563EB
+   Fonts: Sora (headings) + Inter (body)
+   ============================================ */
+
+/* ===== SHARED PAGE STYLES ===== */
+
+.optibio-page-section {
+  width: 100%;
+  padding: 80px 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.optibio-page-section__inner {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.optibio-page-section__heading {
+  font-family: 'Sora', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #1A2F4D;
+  margin: 0 0 16px 0;
+}
+
+.optibio-page-section__subheading {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 48px 0;
+  max-width: 680px;
+}
+
+/* ===== SCIENCE HERO ===== */
+
+.optibio-science-hero {
+  background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
+  padding: 120px 64px 80px;
+  text-align: center;
+}
+
+.optibio-science-hero .optibio-page-section__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.optibio-science-hero .optibio-page-section__heading {
+  font-size: 52px;
+  max-width: 800px;
+}
+
+.optibio-science-hero .optibio-page-section__subheading {
+  text-align: center;
+  max-width: 640px;
+}
+
+.optibio-science-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #2C4A6B;
+  border-radius: 24px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.optibio-science-hero__trust-row {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.optibio-science-hero__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #1A2F4D;
+  font-weight: 500;
+}
+
+.optibio-science-hero__trust-icon {
+  color: #C9A961;
+  font-size: 18px;
+}
+
+/* ===== INGREDIENT DEEP-DIVE ===== */
+
+.optibio-ingredient {
+  background: #FFFFFF;
+}
+
+.optibio-ingredient__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.optibio-ingredient__content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.optibio-ingredient__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(201, 169, 97, 0.12), rgba(201, 169, 97, 0.06));
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #C9A961;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.optibio-ingredient__name {
+  font-family: 'Sora', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1A2F4D;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.optibio-ingredient__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.optibio-ingredient__features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.optibio-ingredient__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(247, 244, 239, 0.9));
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  border-radius: 12px;
+}
+
+.optibio-ingredient__feature-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.optibio-ingredient__feature-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #2D2D2D;
+}
+
+.optibio-ingredient__feature-text strong {
+  color: #1A2F4D;
+  font-weight: 600;
+}
+
+/* Supplement Facts Card */
+.optibio-ingredient__facts-card {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(247, 244, 239, 0.95));
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(201, 169, 97, 0.3);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(30, 58, 95, 0.08);
+}
+
+.optibio-ingredient__facts-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A2F4D;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.optibio-ingredient__facts-image {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+}
+
+.optibio-ingredient__facts-placeholder {
+  background: #F8FAFC;
+  border: 2px dashed #CBD5E1;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #94A3B8;
+}
+
+.optibio-ingredient__dosage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.optibio-ingredient__dosage-item {
+  padding: 16px;
+  background: rgba(248, 252, 254, 0.8);
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+}
+
+.optibio-ingredient__dosage-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1A2F4D;
+  display: block;
+}
+
+.optibio-ingredient__dosage-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ===== CLINICAL STUDIES ===== */
+
+.optibio-studies {
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+}
+
+.optibio-studies__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.optibio-studies__card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 28px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.optibio-studies__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+}
+
+.optibio-studies__card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+  border: 1px solid #BBF7D0;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #166534;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+}
+
+.optibio-studies__card-finding {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1A2F4D;
+  line-height: 1.2;
+}
+
+.optibio-studies__card-finding span {
+  color: #C9A961;
+}
+
+.optibio-studies__card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A2F4D;
+  line-height: 1.4;
+}
+
+.optibio-studies__card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #64748B;
+}
+
+.optibio-studies__card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.optibio-studies__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.optibio-studies__card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563EB;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  align-self: flex-start;
+}
+
+.optibio-studies__card-link:hover {
+  color: #1D4ED8;
+}
+
+.optibio-studies__disclaimer {
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #92400E;
+  line-height: 1.5;
+}
+
+/* ===== QUALITY & TESTING ===== */
+
+.optibio-quality {
+  background: #FFFFFF;
+}
+
+.optibio-quality__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.optibio-quality__card {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(247, 244, 239, 0.95));
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.optibio-quality__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+}
+
+.optibio-quality__card-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.optibio-quality__card-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A2F4D;
+  margin: 0 0 8px 0;
+}
+
+.optibio-quality__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #64748B;
+}
+
+.optibio-quality__process {
+  margin-top: 48px;
+  padding: 32px;
+  background: linear-gradient(135deg, #F8FCFE 0%, #EBF5FB 100%);
+  border-radius: 16px;
+  border: 1px solid #D6EAF8;
+}
+
+.optibio-quality__process-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1A2F4D;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.optibio-quality__process-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.optibio-quality__process-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.optibio-quality__process-step::after {
+  content: '→';
+  position: absolute;
+  right: -16px;
+  top: 20px;
+  font-size: 20px;
+  color: #C9A961;
+}
+
+.optibio-quality__process-step:last-child::after {
+  display: none;
+}
+
+.optibio-quality__process-num {
+  width: 40px;
+  height: 40px;
+  background: #1E3A5F;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 auto 12px;
+}
+
+.optibio-quality__process-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A2F4D;
+  line-height: 1.4;
+}
+
+/* ===== SOURCING & TRACEABILITY ===== */
+
+.optibio-sourcing {
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+}
+
+.optibio-sourcing__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.optibio-sourcing__card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.optibio-sourcing__card-icon {
+  font-size: 28px;
+}
+
+.optibio-sourcing__card-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A2F4D;
+  margin: 0;
+}
+
+.optibio-sourcing__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.optibio-sourcing__card-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #F8FAFC;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #1A2F4D;
+  font-weight: 500;
+}
+
+.optibio-sourcing__card-detail-icon {
+  color: #16A34A;
+}
+
+/* Bottom CTA */
+.optibio-page-cta {
+  background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
+  text-align: center;
+}
+
+.optibio-page-cta .optibio-page-section__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.optibio-page-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 40px;
+  background: #2563EB;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s ease;
+}
+
+.optibio-page-cta__btn:hover {
+  background: #1D4ED8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.optibio-page-cta__trust {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.optibio-page-cta__trust span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.optibio-page-cta__check {
+  color: #16A34A;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+  .optibio-page-section {
+    padding: 60px 32px;
+  }
+
+  .optibio-science-hero {
+    padding: 100px 32px 60px;
+  }
+
+  .optibio-ingredient__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .optibio-quality__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .optibio-quality__process-steps {
+    flex-wrap: wrap;
+  }
+
+  .optibio-quality__process-step {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  .optibio-quality__process-step::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .optibio-page-section {
+    padding: 48px 20px;
+  }
+
+  .optibio-science-hero {
+    padding: 80px 20px 48px;
+  }
+
+  .optibio-page-section__heading {
+    font-size: 30px;
+  }
+
+  .optibio-science-hero .optibio-page-section__heading {
+    font-size: 36px;
+  }
+
+  .optibio-page-section__subheading {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .optibio-studies__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .optibio-quality__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .optibio-sourcing__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .optibio-ingredient__dosage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .optibio-science-hero__trust-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .optibio-studies__card-finding {
+    font-size: 24px;
+  }
+
+  .optibio-ingredient__name {
+    font-size: 28px;
+  }
+
+  .optibio-page-cta__trust {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "sections": {
+    "science_hero": {
+      "type": "science-hero",
+      "settings": {
+        "badge_text": "Peer-Reviewed Research",
+        "heading": "The Science Behind Optibio",
+        "subheading": "Every ingredient is clinically studied. Every claim is backed by peer-reviewed research. No proprietary blends, no hidden dosages — just transparent, evidence-based formulation."
+      },
+      "blocks": {
+        "trust_1": {
+          "type": "trust_item",
+          "settings": { "icon": "🔬", "text": "24+ Clinical Trials" }
+        },
+        "trust_2": {
+          "type": "trust_item",
+          "settings": { "icon": "📊", "text": "Peer-Reviewed Journals" }
+        },
+        "trust_3": {
+          "type": "trust_item",
+          "settings": { "icon": "🛡️", "text": "Third-Party Verified" }
+        },
+        "trust_4": {
+          "type": "trust_item",
+          "settings": { "icon": "🇺🇸", "text": "FDA-Audited Facility" }
+        }
+      },
+      "block_order": ["trust_1", "trust_2", "trust_3", "trust_4"]
+    },
+    "ingredient": {
+      "type": "science-ingredient",
+      "settings": {
+        "heading": "Our Ingredient",
+        "subheading": "We use only clinically studied, patented ingredients at their researched dosages. No proprietary blends, no pixie-dusting.",
+        "ingredient_label": "★ Patented Ingredient",
+        "ingredient_name": "KSM-66® Ashwagandha",
+        "ingredient_description": "<p>KSM-66® is the world's most clinically studied ashwagandha extract — a full-spectrum root extract standardized to 5% withanolides. Unlike generic ashwagandha products that use leaf or aerial parts, KSM-66® uses only the root, preserving the natural balance of active compounds exactly as studied in clinical trials.</p><p>The patented milk-based extraction process — developed over 14 years of R&D — maintains the natural ratio of withanolides without harsh chemical solvents, producing the most bioavailable form of ashwagandha available.</p>",
+        "facts_title": "Supplement Facts",
+        "dosage_amount": "600mg",
+        "capsules_per_serving": "2",
+        "servings_per_container": "45",
+        "standardization": "5%"
+      },
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": { "icon": "🌿", "title": "Full-Spectrum Root Extract", "description": "Uses only the root — not leaf or aerial parts — preserving the complete natural compound profile as studied in clinical trials." }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": { "icon": "🧪", "title": "Milk-Based Extraction", "description": "Patented 14-year process that maintains the natural ratio of active compounds without harsh chemical solvents." }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": { "icon": "📊", "title": "Clinical Dosage: 600mg", "description": "The exact dosage used in clinical trials. Not an underdosed 'sprinkle' like many competitors — 50% more capsules per bottle." }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": { "icon": "🏆", "title": "24+ Gold-Standard Studies", "description": "The most clinically studied ashwagandha extract in the world, with randomized, double-blind, placebo-controlled trials." }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"]
+    },
+    "studies": {
+      "type": "science-studies",
+      "settings": {
+        "heading": "Clinical Studies",
+        "subheading": "Real outcomes from peer-reviewed, placebo-controlled clinical trials using KSM-66® ashwagandha at 600mg/day.",
+        "fda_disclaimer": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary."
+      },
+      "blocks": {
+        "study_cortisol": {
+          "type": "study",
+          "settings": {
+            "study_type": "Randomized, Double-Blind, Placebo-Controlled",
+            "key_finding": "27.9% Cortisol Reduction",
+            "study_title": "Safety and Efficacy of a High-Concentration Full-Spectrum Extract of Ashwagandha Root in Reducing Stress and Anxiety",
+            "journal": "Indian J Psychol Med",
+            "year": "2012",
+            "participants": "64 adults",
+            "duration": "60 days",
+            "description": "Adults with chronic stress receiving 600mg/day KSM-66® showed a 27.9% reduction in serum cortisol and significant improvements on all stress-assessment scales compared to placebo.",
+            "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/23439798/"
+          }
+        },
+        "study_sleep": {
+          "type": "study",
+          "settings": {
+            "study_type": "Randomized, Double-Blind, Placebo-Controlled",
+            "key_finding": "Sleep Efficiency: 75.6% → 83.5%",
+            "study_title": "Efficacy and Safety of Ashwagandha Root Extract on Sleep Quality in Insomnia and Anxiety",
+            "journal": "Cureus",
+            "year": "2019",
+            "participants": "60 adults",
+            "duration": "10 weeks",
+            "description": "Participants taking 600mg/day KSM-66® showed significant improvement in sleep quality, with sleep efficiency improving from 75.6% to 83.5% — a clinically meaningful change.",
+            "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31728244/"
+          }
+        },
+        "study_stress": {
+          "type": "study",
+          "settings": {
+            "study_type": "Randomized, Double-Blind, Placebo-Controlled",
+            "key_finding": "44% Stress Reduction (PSS)",
+            "study_title": "Body Weight Management in Adults Under Chronic Stress Through Ashwagandha Root Extract",
+            "journal": "J Evid Based Complement Altern Med",
+            "year": "2015",
+            "participants": "52 adults",
+            "duration": "8 weeks",
+            "description": "Chronically stressed adults receiving KSM-66® showed a 44% reduction in perceived stress (PSS score) and significant improvements in food cravings and reactive eating.",
+            "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/26730141/"
+          }
+        },
+        "study_endurance": {
+          "type": "study",
+          "settings": {
+            "study_type": "Randomized, Double-Blind, Placebo-Controlled",
+            "key_finding": "13% VO2max Improvement",
+            "study_title": "Examining the Effect of Withania Somnifera on Muscle Strength and Recovery",
+            "journal": "J Int Soc Sports Nutr",
+            "year": "2015",
+            "participants": "57 adults",
+            "duration": "8 weeks",
+            "description": "Healthy men receiving 600mg/day KSM-66® showed significantly greater increases in muscle strength, muscle size, and cardiorespiratory endurance (VO2max) vs. placebo.",
+            "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/26609282/"
+          }
+        }
+      },
+      "block_order": ["study_cortisol", "study_sleep", "study_stress", "study_endurance"]
+    },
+    "quality": {
+      "type": "science-quality",
+      "settings": {
+        "heading": "Quality & Testing",
+        "subheading": "Every batch undergoes rigorous testing before it reaches you. No shortcuts, no exceptions.",
+        "show_process": true,
+        "process_title": "Our 5-Step Quality Assurance Process"
+      },
+      "blocks": {
+        "test_1": {
+          "type": "test_category",
+          "settings": { "icon": "⚗️", "title": "Heavy Metal Testing", "description": "Screened for lead, mercury, cadmium, and arsenic — verified to be well below FDA safety limits." }
+        },
+        "test_2": {
+          "type": "test_category",
+          "settings": { "icon": "🦠", "title": "Microbial Testing", "description": "Tested for yeast, mold, E. coli, salmonella, and staph to ensure product safety and purity." }
+        },
+        "test_3": {
+          "type": "test_category",
+          "settings": { "icon": "💊", "title": "Potency Verification", "description": "Confirmed to contain exactly 600mg KSM-66® with 5% withanolides — what's on the label is in the bottle." }
+        },
+        "test_4": {
+          "type": "test_category",
+          "settings": { "icon": "🔍", "title": "Identity Testing", "description": "Raw materials verified to be genuine KSM-66® ashwagandha root — not a substitute or adulterated material." }
+        }
+      },
+      "block_order": ["test_1", "test_2", "test_3", "test_4"]
+    },
+    "sourcing": {
+      "type": "science-sourcing",
+      "settings": {
+        "heading": "Sourcing & Traceability",
+        "subheading": "We trace every ingredient from source to shelf. Full transparency, nothing to hide.",
+        "cta_heading": "Ready to Feel the Difference?",
+        "cta_subheading": "Try Optibio risk-free with our 90-day money-back guarantee. If you don't feel calmer, sleep better, and think more clearly — we'll refund every penny.",
+        "cta_text": "Try Optibio Risk-Free"
+      },
+      "blocks": {
+        "source_1": {
+          "type": "sourcing_card",
+          "settings": { "icon": "🌱", "title": "KSM-66® by Ixoreal Biomed", "description": "Our ashwagandha is sourced from Ixoreal Biomed, the creators of KSM-66® — with over 24 gold-standard clinical trials and 14 years of R&D behind the extraction process.", "detail": "Origin: Rajasthan, India — sustainably farmed" }
+        },
+        "source_2": {
+          "type": "sourcing_card",
+          "settings": { "icon": "🏭", "title": "FDA-Audited Manufacturing", "description": "Manufactured at an FDA-audited, cGMP-certified facility in Mount Vernon, New York. Every step of production meets pharmaceutical-grade standards.", "detail": "Mount Vernon, NY — USA-based facility" }
+        },
+        "source_3": {
+          "type": "sourcing_card",
+          "settings": { "icon": "🔬", "title": "Independent Lab Testing", "description": "Every batch is sent to independent, third-party laboratories for comprehensive testing — heavy metals, microbial, potency, and identity verification.", "detail": "Results available via Verify Your Batch" }
+        },
+        "source_4": {
+          "type": "sourcing_card",
+          "settings": { "icon": "📦", "title": "Seed to Shelf Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Purchase verification gives you access to your batch's full quality documentation.", "detail": "COA and lab results available per batch" }
+        }
+      },
+      "block_order": ["source_1", "source_2", "source_3", "source_4"]
+    }
+  },
+  "order": [
+    "science_hero",
+    "ingredient",
+    "studies",
+    "quality",
+    "sourcing"
+  ]
+}

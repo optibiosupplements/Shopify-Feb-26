@@ -143,6 +143,87 @@
         "testing_info": "Every batch tested for purity, potency, and contaminants by independent laboratories."
       }
     },
+    "badge_strip": {
+      "type": "product-badge-strip",
+      "settings": {
+        "show_heading": true,
+        "heading": "Certified Quality You Can Trust"
+      },
+      "blocks": {
+        "badge_ny": {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Made in NY",
+            "badge_sub": "Mount Vernon, NY",
+            "badge_emoji": "🏙️"
+          }
+        },
+        "badge_seed": {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Seed-to-Shelf",
+            "badge_sub": "Full Traceability",
+            "badge_emoji": "🌱"
+          }
+        },
+        "badge_award": {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Award Winning",
+            "badge_sub": "KSM-66® Ingredient",
+            "badge_emoji": "🏆"
+          }
+        },
+        "badge_halal": {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Halal Certified",
+            "badge_sub": "Dietary Compliance",
+            "badge_emoji": "☪️"
+          }
+        },
+        "badge_tested": {
+          "type": "badge",
+          "settings": {
+            "badge_label": "3rd-Party Tested",
+            "badge_sub": "Independent Quality",
+            "badge_emoji": "🧪"
+          }
+        },
+        "badge_allergen": {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Allergen Free",
+            "badge_sub": "Soy · Gluten · GMO",
+            "badge_emoji": "✅"
+          }
+        }
+      },
+      "block_order": ["badge_ny", "badge_seed", "badge_award", "badge_halal", "badge_tested", "badge_allergen"]
+    },
+    "subscription": {
+      "type": "product-subscription",
+      "settings": {
+        "badge_text": "SAVE MORE",
+        "heading": "Subscribe & Save 15%",
+        "subheading": "Never run out. Delivered on your schedule with free shipping and the flexibility to cancel anytime.",
+        "show_comparison": true,
+        "onetime_price": "$39.99",
+        "subscribe_price": "$33.99",
+        "onetime_shipping": "Standard",
+        "subscribe_shipping": "FREE Always",
+        "subscribe_flexibility": "Cancel anytime",
+        "cta_text": "Start Saving Today",
+        "cta_link": "/products/optibio-ashwagandha-ksm-66"
+      },
+      "blocks": {
+        "sub_1": { "type": "benefit", "settings": { "icon": "💰", "title": "Save 15%", "description": "On every order, automatically applied" } },
+        "sub_2": { "type": "benefit", "settings": { "icon": "🚚", "title": "Free Shipping", "description": "Every delivery, always free" } },
+        "sub_3": { "type": "benefit", "settings": { "icon": "🔄", "title": "Flexible Schedule", "description": "Change frequency or skip anytime" } },
+        "sub_4": { "type": "benefit", "settings": { "icon": "❌", "title": "Cancel Anytime", "description": "No contracts, no commitments" } }
+      },
+      "block_order": ["sub_1", "sub_2", "sub_3", "sub_4"]
+    },
     "traceability": {
       "type": "product-traceability-badge",
       "settings": {
@@ -237,6 +318,8 @@
     "who_for",
     "mechanism",
     "trust",
+    "badge_strip",
+    "subscription",
     "traceability",
     "faq",
     "final_cta"
