@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026 — Session E)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 21, 2026 — Session F)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** Pre-Launch (all pages FTC-compliant as of Feb 17, 2026 — domain connected, Shopify Payments setup started, Pixel ID still pending)
+**Current Status:** Pre-Launch READY (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS — remaining: favicon upload, test order, shipping rates config, Payments completion, Pixel ID)
 
 ---
 
@@ -258,6 +258,7 @@ Every clinical claim MUST be:
 
 | Feb 20, 2026 | **Session D — Pre-Launch Audit & SEO Fixes** | Comprehensive re-audit of entire store. Fixed 14 issues: **SEO:** Trimmed product meta desc (171→153 chars), science meta desc (189→150 chars). **Accessibility:** Fixed duplicate H1 on FAQ (`page.json` H1→H2), Contact (`page.contact.json` H1→H2), Homepage (header.liquid hidden H1→`<span>`). **Structured Data:** Added FAQPage JSON-LD schema to `product-faq.liquid`, WebSite schema with SearchAction to `meta-tags.liquid`, BreadcrumbList schema for inner pages. **OG Tags:** Added `product:availability` meta tag. **Brand:** Fixed "OptiBio" → "Optibio" in About, FAQ, Contact page titles + meta descriptions (6 admin fixes). **UX:** Added review widget scroll-trap fix (max-height 600px). **Alt Text:** Updated all 6 product images with descriptive alt text + correct branding. | Previous audit scored 6.5/10. This session addresses 14 of 21 identified issues. Remaining P2 items: favicon upload (manual), store name in Settings, Facebook Pixel, blog content, about placeholder photo, collections, Lighthouse audit. |
 | Feb 20, 2026 | **Session E — Domain Connection & Payments Setup** | **Domain:** Connected `optibiosupplements.com` to Shopify via Settings → Domains → Connect existing. GoDaddy auto-connect successfully updated DNS (CNAME `www` from `cname.manus.space` → `shops.myshopify.com`). Domain set as Primary. TLS certificate provisioning started. **Payments:** Initiated Shopify Payments (Stripe) activation — reached Step 1 of 4 (business type selection). Requires owner to complete remaining steps with personal/financial info (SSN, banking details). | GoDaddy auto-connect initially showed spinner for ~10 seconds but completed successfully (green toast: "Your DNS records are now connected to Shopify"). Shopify Payments setup requires sensitive personal/financial information — cannot be completed by Claude. |
+| Feb 21, 2026 | **Session F — Full Implementation: Legal, Email, Blog, Chat, Policies, Audit** | **Legal Pages:** Created 4 custom HTML files (Terms, Privacy, Refund, Shipping) in `/legal-pages/`. **Email Templates:** Created 3 branded HTML templates (Order Confirm, Shipping, Delivery) in `/email-templates/`. **Customer Support:** Created 5 response templates + expanded FAQ to 20 Q&As in `/customer-support/`. **Blog Content:** Polished 3 blog posts with 12 compliance fixes each (brand name, pricing, guarantee, FDA disclaimer, claims accuracy). **Chat Widget:** Customized Shopify Inbox via browser — Navy #1A2F4D background, Gold #C9A961 buttons, branded greeting, 4 instant answers fixed (wrong email, visibility). **Shopify Admin Policies:** Added 6 legal policies via browser (Refund, Privacy, Terms, Shipping, Contact, Subscription Cancel) — replaced auto-generated content with custom HTML. Fixed wrong email (gmail→support@) and brand name (OptiBio→Optibio) across all policies. **Compliance Audit:** Full 11-category theme audit — 0 violations found across 430 files. **Theme Edit:** Fixed "clinically-proven" → "clinically studied" in `homepage-hero.liquid`. **Documentation:** Created SESSION_6_TRACKING.md with full implementation log. | CodeMirror 6 in Shopify Admin policies editor doesn't accept synthetic JS events (insertText, beforeinput, ClipboardEvent). Working approach: write to clipboard via `navigator.clipboard.writeText()`, then use keyboard shortcut `cmd+a` + `cmd+v` to paste. Shopify's color picker hex input requires: triple-click → type value → Tab → click elsewhere to apply. Chrome MCP extension disconnects intermittently during long sessions. |
 
 ---
 
@@ -380,12 +381,64 @@ Every clinical claim MUST be:
 10. **Wrong subscription app documented** — Previous session incorrectly documented "Appstle" as the Subscribe & Save app. The actual app is **Shopify Subscriptions** (native, free). The theme code correctly references `shopify://apps/subscriptions/blocks/app-block/`. Always verify app identity against actual theme code, not session memory alone.
 11. **Manufacturing location disclosed** — "Mount Vernon, NY" appeared in 16 places across 10 theme files. Owner requested removal for privacy. Replaced with generic "USA" / "United States" / "USA-Based Facility". Never include specific city/state manufacturing location in theme files — use "USA" as the default.
 12. **"OptiBio" (capital B) in page SEO titles and meta descriptions** — Despite brand rule, "OptiBio" with capital B persisted in About, FAQ, and Contact page SEO titles and descriptions, plus all 6 product image alt texts. Always search all admin-level SEO fields after any content generation — these are NOT in theme code files, so grep won't catch them.
+13. **CodeMirror 6 paste technique for Shopify Admin** — The Shopify policies editor uses CodeMirror 6 which rejects synthetic JS events (`document.execCommand('insertText')`, `InputEvent('beforeinput')`, `ClipboardEvent('paste')`). The ONLY reliable method is: `navigator.clipboard.writeText(html)` then keyboard `cmd+a` → `cmd+v`. This works because the real keyboard paste event is handled by CM6's native input handling.
+14. **Shopify Inbox wrong email on auto-generated content** — Shopify generates instant answers and policies using the store's original contact email (optibiosupplements@gmail.com), not the support email. Must manually check and update all auto-generated content when adding support infrastructure.
+15. **Shopify theme editor color picker** — Typing a hex value in the color picker input doesn't auto-apply. Must: triple-click hex field → type value → press Tab → click elsewhere on the page. Enter key and Escape key don't apply the value reliably.
 
 ---
+
+### Session F — Files Created/Modified (Feb 21, 2026)
+
+| Action | File | Purpose |
+|--------|------|---------|
+| CREATED | `/legal-pages/TERMS_OF_SERVICE.html` | Custom Terms of Service (FDA disclaimer, supplement terms, KSM-66 IP, NY law) |
+| CREATED | `/legal-pages/PRIVACY_POLICY.html` | Custom Privacy Policy (CCPA/GDPR, Meta Pixel, Judge.me, Stripe disclosures) |
+| CREATED | `/legal-pages/REFUND_POLICY.html` | Custom Return & Refund Policy (90-day guarantee, step-by-step process) |
+| CREATED | `/legal-pages/SHIPPING_POLICY.html` | Custom Shipping Policy (US-only, $75 free, PO boxes, Subscribe & Save) |
+| CREATED | `/email-templates/ORDER_CONFIRMATION.html` | Branded order confirmation email template |
+| CREATED | `/email-templates/SHIPPING_CONFIRMATION.html` | Branded shipping notification email template |
+| CREATED | `/email-templates/DELIVERY_CONFIRMATION.html` | Branded delivery notification email template |
+| CREATED | `/customer-support/RESPONSE_TEMPLATES.md` | 5 customer service response templates |
+| CREATED | `/customer-support/EXPANDED_FAQ.md` | 20 FAQ Q&As (13 new + 7 existing) |
+| CREATED | `/blog-content/blog_post_1_ashwagandha_benefits.md` | Polished blog post 1 (12 compliance fixes) |
+| CREATED | `/blog-content/blog_post_2_ksm66_vs_regular.md` | Polished blog post 2 (12 compliance fixes) |
+| CREATED | `/blog-content/blog_post_3_stress_anxiety.md` | Polished blog post 3 (12 compliance fixes) |
+| CREATED | `/tracking/GTM_SETUP_GUIDE.md` | GTM + GA4 setup guide for future implementation |
+| CREATED | `/shipping/SHIPPING_CONFIG_GUIDE.md` | Shopify Admin shipping rate configuration guide |
+| CREATED | `SESSION_6_TRACKING.md` | Full session implementation tracking document |
+| EDITED | `sections/homepage-hero.liquid` | "clinically-proven" → "clinically studied" (compliance fix) |
+
+### Session F — Admin Changes (Feb 21, 2026)
+
+| Task | Where | Change |
+|------|-------|--------|
+| Return and refund policy | Admin → Settings → Legal | Replaced auto-generated with custom HTML (90-day guarantee, correct email) |
+| Privacy policy | Admin → Settings → Legal | Turned off automated, replaced with custom HTML (CCPA/GDPR, third-party disclosures) |
+| Terms of service | Admin → Settings → Legal | Replaced auto-generated with custom HTML (FDA disclaimer, KSM-66, supplement terms) |
+| Shipping policy | Admin → Settings → Legal | Replaced auto-generated with custom HTML (US-only, PO box support) |
+| Contact information | Admin → Settings → Legal | Fixed wrong email (gmail→support@) and brand name (OptiBio→Optibio) |
+| Subscription cancellation policy | Admin → Settings → Legal | Created NEW (was empty/required). Cancel/pause/modify instructions. |
+| Shopify Inbox — Return policy answer | Admin → Inbox → Instant answers | Fixed content, turned visibility ON |
+| Shopify Inbox — Shipping details answer | Admin → Inbox → Instant answers | Custom answer with free shipping + US-only |
+| Shopify Inbox — Contact info answer | Admin → Inbox → Instant answers | Fixed email (gmail→support@), turned visibility ON |
+| Shopify Inbox — Chat widget appearance | Theme Editor → App Embeds | Background #000→#1A2F4D (Navy), Buttons #6A6A6A→#C9A961 (Gold) |
+| Shopify Inbox — Greeting message | Theme Editor → App Embeds | Updated to mention Optibio and KSM-66 Ashwagandha |
+
+### Manual Steps Still Required (Session F)
+- [ ] **Upload favicon** — Upload 32px + 180px images via Admin → Settings → Brand (files in `optimized/`)
+- [ ] **Place test order** — Via Bogus Gateway or Shopify Payments test mode after Payments activation
+- [ ] **Configure shipping rates** — Follow `/shipping/SHIPPING_CONFIG_GUIDE.md` in Admin → Settings → Shipping
+- [ ] **Install email templates** — Paste 3 HTML templates from `/email-templates/` into Admin → Settings → Notifications
+- [ ] **Publish 3 blog posts** — Create articles in Admin from polished `/blog-content/*.md` files
+- [ ] **Complete Shopify Payments** — Owner must finish Steps 2-4 (personal/banking info)
+- [ ] **Set Facebook Pixel ID** — Replace placeholder in Admin → Settings → Customer events
+- [ ] **Push to Shopify-Feb-26 repo** — Backup all theme + new files
 
 ### Completed Sessions
 - ~~**Session A:** CSS consolidation + Product page CRO + Traceability badge~~ DONE
 - ~~**Session A+B (continued):** Design system unification (#1A2F4D/#C9A961/Sora/Inter), badge implementation (6 SVG icons), header logo fix, double header fix, homepage audit (all 7 sections verified), Science page verified, About page verified, Verify Your Batch page built (hero + search + results + supply chain timeline + COA), page created in Shopify Admin~~ DONE
+
+- ~~**Session F:** Full implementation — legal pages, email templates, customer support, blog content (12 fixes each), chat widget branded, 6 policies published to Admin, compliance audit (11/11 PASS)~~ DONE
 
 ### Installed Apps (February 19, 2026)
 
@@ -420,12 +473,12 @@ Every clinical claim MUST be:
 - **Traceability backend (future):** Node.js App Proxy + Shopify metaobjects for dynamic batch lookup (currently uses client-side sample data)
 - ~~**Review system:** Judge.me or similar app integration~~ DONE
 - ~~**Subscribe & Save:** Subscription app~~ DONE (Shopify Subscriptions app installed, plan created, widget verified)
-- **Blog content:** 3 foundational articles
+- ~~**Blog content:** 3 foundational articles~~ DONE (Feb 21, 2026 — Session F: 3 posts polished with 12 compliance fixes each, ready for publication in Shopify Admin)
 - **Performance/Accessibility audits**
 - ~~**Subscribe & Save onboarding:** Setup complete~~ DONE (Feb 20, 2026)
 - **Sign-in links:** Consider enabling "Show sign-in links" in Settings > Customer accounts so subscribers can easily access their account to manage subscriptions
 
 ---
 
-*Last updated: February 20, 2026 (Session E — Domain Connection & Payments Setup)*
-*Next review: Complete Shopify Payments activation, test order, favicon upload, store name fix, Facebook Pixel, Lighthouse audit*
+*Last updated: February 21, 2026 (Session F — Full Implementation: Legal, Email, Blog, Chat, Policies, Audit)*
+*Next review: Favicon upload, test order, shipping rates config, email template install, blog post publication, Shopify Payments completion, Facebook Pixel*

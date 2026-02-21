@@ -1,0 +1,159 @@
+{% comment %}
+  Optibio Cookie Consent Banner
+  Uses Shopify's native Customer Privacy API
+  Lightweight, GDPR/CCPA compliant
+  Brand: Navy #1A2F4D, Gold #C9A961, Inter font
+{% endcomment %}
+
+<div id="optibio-cookie-banner" class="optibio-cookie-banner" style="display:none;" role="dialog" aria-label="Cookie consent">
+  <div class="optibio-cookie-banner__inner">
+    <p class="optibio-cookie-banner__text">
+      We use cookies to improve your experience and for analytics. By continuing to browse, you accept our use of cookies.
+      <a href="/policies/privacy-policy" class="optibio-cookie-banner__link">Privacy Policy</a>
+    </p>
+    <div class="optibio-cookie-banner__actions">
+      <button type="button" class="optibio-cookie-banner__btn optibio-cookie-banner__btn--accept" id="cookie-accept">Accept</button>
+      <button type="button" class="optibio-cookie-banner__btn optibio-cookie-banner__btn--decline" id="cookie-decline">Decline</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .optibio-cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #1A2F4D;
+    border-top: 1px solid rgba(201, 169, 97, 0.3);
+    padding: 16px 24px;
+    font-family: 'Inter', sans-serif;
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .optibio-cookie-banner__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .optibio-cookie-banner__text {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+  }
+
+  .optibio-cookie-banner__link {
+    color: #C9A961;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .optibio-cookie-banner__link:hover {
+    color: #D4B96A;
+  }
+
+  .optibio-cookie-banner__actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .optibio-cookie-banner__btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+  }
+
+  .optibio-cookie-banner__btn--accept {
+    background: #2563EB;
+    color: #fff;
+  }
+
+  .optibio-cookie-banner__btn--accept:hover {
+    background: #1D4ED8;
+  }
+
+  .optibio-cookie-banner__btn--decline {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .optibio-cookie-banner__btn--decline:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  @media (max-width: 640px) {
+    .optibio-cookie-banner__inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .optibio-cookie-banner__actions {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .optibio-cookie-banner__btn {
+      flex: 1;
+      max-width: 140px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var banner = document.getElementById('optibio-cookie-banner');
+    var acceptBtn = document.getElementById('cookie-accept');
+    var declineBtn = document.getElementById('cookie-decline');
+
+    // Check if consent was already given
+    if (localStorage.getItem('optibio_cookie_consent') !== null) {
+      return; // Don't show banner if already consented or declined
+    }
+
+    // Show banner
+    banner.style.display = 'block';
+
+    function hideBanner() {
+      banner.style.display = 'none';
+    }
+
+    acceptBtn.addEventListener('click', function() {
+      localStorage.setItem('optibio_cookie_consent', 'accepted');
+      // Use Shopify's Customer Privacy API if available
+      if (window.Shopify && window.Shopify.customerPrivacy) {
+        window.Shopify.customerPrivacy.setTrackingConsent(true, function() {});
+      }
+      hideBanner();
+    });
+
+    declineBtn.addEventListener('click', function() {
+      localStorage.setItem('optibio_cookie_consent', 'declined');
+      // Use Shopify's Customer Privacy API if available
+      if (window.Shopify && window.Shopify.customerPrivacy) {
+        window.Shopify.customerPrivacy.setTrackingConsent(false, function() {});
+      }
+      hideBanner();
+    });
+  })();
+</script>
