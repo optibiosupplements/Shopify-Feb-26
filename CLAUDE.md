@@ -164,7 +164,7 @@ Every clinical claim MUST be:
 - ~~**Homepage:** 4 false claims still live~~ **FIXED Feb 17, 2026** — All claims verified correct (27.9% cortisol, 44% PSS stress, 75.6%→83.5% sleep, 13% endurance). PubMed citations and FDA disclaimer present.
 - ~~**Science Page:** 6 false claims still live~~ **FIXED Feb 17, 2026** — Full rewrite of body_html via Shopify admin. 20 violations corrected: fabricated stats (72% sleep, 69% anxiety), misattributed stats (44% cortisol, 27.9% energy), "Clinically Proven" → "Clinically Studied", "22+" → "multiple peer-reviewed trials". 5 PubMed citations and FDA disclaimer added. SEO title/meta updated.
 - ~~**Product Page:**~~ **FIXED Feb 17, 2026** — 7 violations corrected: "Clinically Proven" → "Clinically Studied", "22+" → "multiple peer-reviewed trials". SEO title updated from "Clinically-Proven" to "Clinically-Studied".
-- **Store Name:** "OptiBio Supplements" (capital B) appears in store-level settings (Settings > Store details). Shows in admin bar and `og:site_name` meta tags across all pages. Should be updated to "Optibio Supplements" for brand consistency. Not an FTC issue but violates brand naming rules.
+- ~~**Store Name:** "OptiBio Supplements" (capital B) appears in store-level settings (Settings > Store details).~~ **VERIFIED FIXED Feb 20, 2026 (Session E)** — Store name already reads "Optibio Supplements" (lowercase b). Confirmed in Admin → Settings → General → Store contact details and via live site tab title + og:site_name.
 - ~~**Domain:** optibiosupplements.com still points to Manus platform~~ **FIXED Feb 20, 2026 (Session E)** — Domain connected to Shopify via GoDaddy auto-connect. DNS CNAME `www` changed from `cname.manus.space` → `shops.myshopify.com`. TLS certificate provisioned. Domain set as Primary.
 - **Facebook Pixel:** Placeholder ID (YOUR_FACEBOOK_PIXEL_ID) — zero tracking
 - **Manus Sign-In:** Link redirects to manus.im auth — breaks for customers
@@ -352,7 +352,7 @@ Every clinical claim MUST be:
 
 ### Manual Steps Still Required (Session D)
 - [ ] **Upload favicon** — Upload 32px + 180px favicon images via Admin → Settings → Brand (images already prepared in `~/Desktop/OPTIMAL BIOLOGY/0. BRANDING ASSET/OB LOGO/optimized/`)
-- [ ] **Fix store name** — Change "OptiBio Supplements" → "Optibio Supplements" in Admin → Settings → Store details
+- [x] **Fix store name** — Verified already correct: "Optibio Supplements" in Admin → Settings → Store details
 - [ ] **Set Facebook Pixel ID** — Replace placeholder with real Pixel ID in Admin → Settings → Customer events
 - [ ] **Configure social media links** — Add social profiles in Theme Settings → Social media (or defer if no accounts yet)
 
@@ -362,13 +362,14 @@ Every clinical claim MUST be:
 |------|-------|--------|
 | Domain connected | Admin → Settings → Domains | Added `optibiosupplements.com` as Primary domain. GoDaddy DNS auto-configured (CNAME www → shops.myshopify.com). TLS cert provisioning started. |
 | Payments setup started | Admin → Settings → Payments | Initiated Shopify Payments (Stripe) activation. Reached Step 1 of 4 (business type). Owner must complete Steps 2-4 with personal/banking info. |
+| Brand compliance sweep | All theme files + Admin | Full grep audit for "OptiBio" (capital B). Result: 0 instances in theme code (.liquid/.json/.js/.css user-facing). Store name already correct ("Optibio Supplements"). CSS all-caps "OPTIBIO" in comment banners — acceptable. CLAUDE.md refs are intentional documentation. |
 
 ### Manual Steps Still Required (Session E)
 - [ ] **Complete Shopify Payments setup** — Owner must finish Steps 2-4: personal details (SSN, DOB, address), banking info (routing + account number), review & confirm
-- [ ] **Verify domain is live** — Check `optibiosupplements.com` loads correctly after DNS propagation (may take up to 48 hours, usually minutes)
+- [x] **Verify domain is live** — Confirmed `optibiosupplements.com` loads correctly (tab title: "Optibio Supplements | Science-Backed Ashwagandha KSM-66®")
 - [ ] **Run test order** — After Payments are activated, place a test order via Bogus Gateway or Shopify Payments test mode to verify full checkout flow
 - [ ] **Upload favicon** — Still pending from Session D
-- [ ] **Fix store name** — Still pending from Session D ("OptiBio" → "Optibio" in Settings → Store details)
+- [x] **Fix store name** — Verified already correct (Session E brand sweep)
 - [ ] **Set Facebook Pixel ID** — Still pending from Session D
 
 ---
