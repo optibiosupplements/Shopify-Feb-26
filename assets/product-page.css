@@ -1840,6 +1840,13 @@
   box-shadow: 0 4px 20px rgba(30, 58, 95, 0.06);
 }
 
+/* Prevent review widget from scroll-trapping on mobile */
+.jdgm-widget.jdgm-review-widget {
+  max-height: 600px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Sort/filter dropdown */
 .jdgm-sort-dropdown,
 .jdgm-rev-widg__sort-dropdown {

@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026 — Session C)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026 — Session D)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -255,6 +255,8 @@ Every clinical claim MUST be:
 | Feb 20, 2026 | **Session B — Pre-Launch Audit Fixes (4 items)** |
 | Feb 20, 2026 | **Session C — Remove Mount Vernon + Header Golden Glow** | **Privacy:** Removed all 16 "Mount Vernon, NY" location references across 10 theme files (sections, templates, footer). Replaced with generic "USA" / "United States" / "USA-Based Facility". Also changed "Made in NY" badge → "Made in USA" with 🇺🇸 emoji. **Header Enhancement:** Made header slightly bigger (padding 14px, logo 1.5rem, nav 14.5px) and added golden background glow (radial-gradient `rgba(201,169,97,0.08)`) + subtle gold text-shadow on logo and nav links for premium warm feel. | Location disclosure was a privacy concern for the owner. All "Mount Vernon" references replaced — grep returns 0 results in theme files. | **Fix 1: Verify page Coming Soon** — Modified `verify-hero.liquid`: added gold-bordered Coming Soon banner ("March 2026"), disabled input+button with `aria-disabled`, guarded JS with `verifyEnabled = false`, added CSS for `.optibio-verify__coming-soon` and `.optibio-verify__search-card--disabled`. **Fix 2: About page placeholder** — Replaced raw "Upload a team photo..." text in `about-hero.liquid` with branded inline SVG (facility building + shield/beaker/leaf icons in navy/gold) + live HTML text "FDA-Audited Facility / United States". Updated `about-page.css` placeholder to navy gradient card. Image picker conditional preserved — real photo auto-replaces SVG. **Fix 3: Homepage meta description** — Added `template == 'index'` fallback in `meta-tags.liquid` for both `<meta name="description">` (153 chars) and `og:description`. Brand-focused copy. **Fix 4: Powered by Shopify** — Set `show_powered_by: false` in `footer-group.json`. | Plan reviewed by simulated SME panel (Shopify dev, SEO, UX). Key improvements: meta description trimmed to 153 chars (under Google's 155 limit), `aria-disabled` added for accessibility, `template == 'index'` used (correct Shopify syntax vs `template.name`), SVG uses `role="img"` + `aria-label`. |
 
+| Feb 20, 2026 | **Session D — Pre-Launch Audit & SEO Fixes** | Comprehensive re-audit of entire store. Fixed 14 issues: **SEO:** Trimmed product meta desc (171→153 chars), science meta desc (189→150 chars). **Accessibility:** Fixed duplicate H1 on FAQ (`page.json` H1→H2), Contact (`page.contact.json` H1→H2), Homepage (header.liquid hidden H1→`<span>`). **Structured Data:** Added FAQPage JSON-LD schema to `product-faq.liquid`, WebSite schema with SearchAction to `meta-tags.liquid`, BreadcrumbList schema for inner pages. **OG Tags:** Added `product:availability` meta tag. **Brand:** Fixed "OptiBio" → "Optibio" in About, FAQ, Contact page titles + meta descriptions (6 admin fixes). **UX:** Added review widget scroll-trap fix (max-height 600px). **Alt Text:** Updated all 6 product images with descriptive alt text + correct branding. | Previous audit scored 6.5/10. This session addresses 14 of 21 identified issues. Remaining P2 items: favicon upload (manual), store name in Settings, Facebook Pixel, blog content, about placeholder photo, collections, Lighthouse audit. |
+
 ---
 
 ### Session A — Files Modified/Created (Feb 19, 2026)
@@ -316,6 +318,42 @@ Every clinical claim MUST be:
 | EDITED | `templates/page.science.json` | 2 Mount Vernon refs → "United States" / "USA-based facility" |
 | EDITED | `assets/optibio-global.css` | Header: bigger (padding 14px, logo 1.5rem, nav 14.5px) + golden radial glow + text-shadow |
 
+### Session D — Files Modified (Feb 20, 2026)
+
+| Action | File | Purpose |
+|--------|------|---------|
+| EDITED | `templates/page.json` | Changed template heading H1 → H2 to fix duplicate H1 on FAQ and default pages |
+| EDITED | `templates/page.contact.json` | Changed template heading H1 → H2 to fix duplicate H1 on Contact page |
+| EDITED | `sections/header.liquid` | Changed homepage hidden H1 (`<h1 class="visually-hidden">`) → `<span>` to fix duplicate H1 |
+| EDITED | `sections/product-faq.liquid` | Added FAQPage JSON-LD structured data schema (generates from section blocks) |
+| EDITED | `snippets/meta-tags.liquid` | Added `product:availability` OG tag, WebSite schema with SearchAction, BreadcrumbList schema for inner pages |
+| EDITED | `assets/product-page.css` | Added review widget scroll-trap fix (`max-height: 600px; overflow-y: auto`) |
+
+### Session D — Admin Changes (Feb 20, 2026)
+
+| Task | Where | Change |
+|------|-------|--------|
+| Product meta desc | Admin → Products → SEO | Trimmed from 171 → 153 chars (removed "90-day guarantee." suffix) |
+| Science meta desc | Admin → Pages → Science → SEO | Trimmed from 189 → 150 chars |
+| About page title | Admin → Pages → About → SEO | "OptiBio" → "Optibio" |
+| About meta desc | Admin → Pages → About → SEO | "OptiBio's" → "Optibio's" |
+| FAQ page title | Admin → Pages → FAQ → SEO | "OptiBio" → "Optibio" |
+| FAQ meta desc | Admin → Pages → FAQ → SEO | "OptiBio" → "Optibio" |
+| Contact page title | Admin → Pages → Contact → SEO | "OptiBio" → "Optibio" |
+| Contact meta desc | Admin → Pages → Contact → SEO | "OptiBio's" → "Optibio's" |
+| Product image 1 alt | Admin → Products → Images | Fixed "OptiBio" → "Optibio" + improved description |
+| Product image 2 alt | Admin → Products → Images | Fixed "OptiBio" → "Optibio" + improved description |
+| Product image 3 alt | Admin → Products → Images | Improved alt text description |
+| Product image 4 alt | Admin → Products → Images | Fixed "OptiBio" → "Optibio" + improved description |
+| Product image 5 alt | Admin → Products → Images | Fixed "OptiBio" → "Optibio" + improved description |
+| Product image 6 alt | Admin → Products → Images | Added alt text (was empty) |
+
+### Manual Steps Still Required (Session D)
+- [ ] **Upload favicon** — Upload 32px + 180px favicon images via Admin → Settings → Brand (images already prepared in `~/Desktop/OPTIMAL BIOLOGY/0. BRANDING ASSET/OB LOGO/optimized/`)
+- [ ] **Fix store name** — Change "OptiBio Supplements" → "Optibio Supplements" in Admin → Settings → Store details
+- [ ] **Set Facebook Pixel ID** — Replace placeholder with real Pixel ID in Admin → Settings → Customer events
+- [ ] **Configure social media links** — Add social profiles in Theme Settings → Social media (or defer if no accounts yet)
+
 ---
 
 ### Past Mistakes Addendum (Feb 19, 2026)
@@ -323,6 +361,7 @@ Every clinical claim MUST be:
 9. **Shopify `url` schema type cannot have a `default` value** — Setting `"type": "url"` with `"default": "/pages/verify"` causes a schema validation error. Use Liquid-level fallback instead: `{% assign verify_link = section.settings.button_link | default: '/pages/verify' %}`.
 10. **Wrong subscription app documented** — Previous session incorrectly documented "Appstle" as the Subscribe & Save app. The actual app is **Shopify Subscriptions** (native, free). The theme code correctly references `shopify://apps/subscriptions/blocks/app-block/`. Always verify app identity against actual theme code, not session memory alone.
 11. **Manufacturing location disclosed** — "Mount Vernon, NY" appeared in 16 places across 10 theme files. Owner requested removal for privacy. Replaced with generic "USA" / "United States" / "USA-Based Facility". Never include specific city/state manufacturing location in theme files — use "USA" as the default.
+12. **"OptiBio" (capital B) in page SEO titles and meta descriptions** — Despite brand rule, "OptiBio" with capital B persisted in About, FAQ, and Contact page SEO titles and descriptions, plus all 6 product image alt texts. Always search all admin-level SEO fields after any content generation — these are NOT in theme code files, so grep won't catch them.
 
 ---
 
@@ -370,5 +409,5 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 20, 2026 (Session C — Mount Vernon Removal + Header Golden Glow)*
-*Next review: Pre-launch QA — mobile testing, checkout flow, performance audit*
+*Last updated: February 20, 2026 (Session D — Pre-Launch Audit & SEO Fixes)*
+*Next review: Final launch checklist — favicon upload, store name fix, Facebook Pixel, Lighthouse performance audit*

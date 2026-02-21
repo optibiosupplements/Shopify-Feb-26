@@ -101,6 +101,10 @@
     property="og:price:currency"
     content="{{ cart.currency.iso_code }}"
   >
+  <meta
+    property="product:availability"
+    content="{% if product.available %}in stock{% else %}out of stock{% endif %}"
+  >
 {%- endif -%}
 
 {%- if settings.social_twitter_link != blank -%}
@@ -145,3 +149,66 @@
     content="Science-backed supplements with full transparency. Every batch third-party tested and traceable. Clinical-grade KSM-66 Ashwagandha from an FDA-audited facility."
   >
 {% endif %}
+
+{% comment %} WebSite Schema — enables Google sitelinks search box {% endcomment %}
+{%- if template == 'index' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Optibio Supplements",
+  "url": "{{ shop.url }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ shop.url }}/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{%- endif -%}
+
+{% comment %} BreadcrumbList Schema — enhances search result appearance for inner pages {% endcomment %}
+{%- unless template == 'index' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ shop.url }}"
+    }
+    {%- if request.page_type == 'product' -%}
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Products",
+      "item": "{{ shop.url }}/collections/all"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ product.title | json }},
+      "item": "{{ shop.url }}{{ product.url }}"
+    }
+    {%- elsif request.page_type == 'page' -%}
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ page.title | json }},
+      "item": "{{ shop.url }}{{ page.url }}"
+    }
+    {%- elsif request.page_type == 'collection' -%}
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ collection.title | json }},
+      "item": "{{ shop.url }}{{ collection.url }}"
+    }
+    {%- endif -%}
+  ]
+}
+</script>
+{%- endunless -%}
