@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026 — Session D)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 20, 2026 — Session E)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -11,9 +11,9 @@
 **Brand:** Optibio — Premium Ashwagandha KSM-66® Supplement
 **Positioning:** "Ethereal Clinical Luxury" — pharmaceutical-grade clinical credibility meets premium visual identity (comparable to Goop, Ritual, The Nue Co.)
 **Shopify Store:** optibio-store-2026.myshopify.com
-**Live Domain:** optibiosupplements.com (currently still on Manus — NOT yet transferred)
+**Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** Pre-Launch (all pages FTC-compliant as of Feb 17, 2026 — domain transfer and Pixel ID still pending)
+**Current Status:** Pre-Launch (all pages FTC-compliant as of Feb 17, 2026 — domain connected, Shopify Payments setup started, Pixel ID still pending)
 
 ---
 
@@ -165,7 +165,7 @@ Every clinical claim MUST be:
 - ~~**Science Page:** 6 false claims still live~~ **FIXED Feb 17, 2026** — Full rewrite of body_html via Shopify admin. 20 violations corrected: fabricated stats (72% sleep, 69% anxiety), misattributed stats (44% cortisol, 27.9% energy), "Clinically Proven" → "Clinically Studied", "22+" → "multiple peer-reviewed trials". 5 PubMed citations and FDA disclaimer added. SEO title/meta updated.
 - ~~**Product Page:**~~ **FIXED Feb 17, 2026** — 7 violations corrected: "Clinically Proven" → "Clinically Studied", "22+" → "multiple peer-reviewed trials". SEO title updated from "Clinically-Proven" to "Clinically-Studied".
 - **Store Name:** "OptiBio Supplements" (capital B) appears in store-level settings (Settings > Store details). Shows in admin bar and `og:site_name` meta tags across all pages. Should be updated to "Optibio Supplements" for brand consistency. Not an FTC issue but violates brand naming rules.
-- **Domain:** optibiosupplements.com still points to Manus platform
+- ~~**Domain:** optibiosupplements.com still points to Manus platform~~ **FIXED Feb 20, 2026 (Session E)** — Domain connected to Shopify via GoDaddy auto-connect. DNS CNAME `www` changed from `cname.manus.space` → `shops.myshopify.com`. TLS certificate provisioned. Domain set as Primary.
 - **Facebook Pixel:** Placeholder ID (YOUR_FACEBOOK_PIXEL_ID) — zero tracking
 - **Manus Sign-In:** Link redirects to manus.im auth — breaks for customers
 - **OAuth Expiry:** Token expires every 24hr — refresh before MCP sessions
@@ -221,8 +221,9 @@ Every clinical claim MUST be:
 ### Before Any Launch Activity
 1. ~~ALL 10 false claims on Homepage + Science Page must be fixed first~~ DONE — verified Feb 17, 2026
 2. Facebook Pixel must have a real ID (not placeholder)
-3. Domain must be transferred to Shopify
-4. Checkout flow must be tested end-to-end
+3. ~~Domain must be transferred to Shopify~~ DONE — connected Feb 20, 2026
+4. Shopify Payments must be fully activated (owner must complete 4-step setup with personal/banking info)
+5. Checkout flow must be tested end-to-end
 
 ### After Every Session
 1. **Update the date in the file title** — The `# CLAUDE.md` heading must always include `(Updated: <date>)` with today's date, so it's immediately clear which version is current
@@ -256,6 +257,7 @@ Every clinical claim MUST be:
 | Feb 20, 2026 | **Session C — Remove Mount Vernon + Header Golden Glow** | **Privacy:** Removed all 16 "Mount Vernon, NY" location references across 10 theme files (sections, templates, footer). Replaced with generic "USA" / "United States" / "USA-Based Facility". Also changed "Made in NY" badge → "Made in USA" with 🇺🇸 emoji. **Header Enhancement:** Made header slightly bigger (padding 14px, logo 1.5rem, nav 14.5px) and added golden background glow (radial-gradient `rgba(201,169,97,0.08)`) + subtle gold text-shadow on logo and nav links for premium warm feel. | Location disclosure was a privacy concern for the owner. All "Mount Vernon" references replaced — grep returns 0 results in theme files. | **Fix 1: Verify page Coming Soon** — Modified `verify-hero.liquid`: added gold-bordered Coming Soon banner ("March 2026"), disabled input+button with `aria-disabled`, guarded JS with `verifyEnabled = false`, added CSS for `.optibio-verify__coming-soon` and `.optibio-verify__search-card--disabled`. **Fix 2: About page placeholder** — Replaced raw "Upload a team photo..." text in `about-hero.liquid` with branded inline SVG (facility building + shield/beaker/leaf icons in navy/gold) + live HTML text "FDA-Audited Facility / United States". Updated `about-page.css` placeholder to navy gradient card. Image picker conditional preserved — real photo auto-replaces SVG. **Fix 3: Homepage meta description** — Added `template == 'index'` fallback in `meta-tags.liquid` for both `<meta name="description">` (153 chars) and `og:description`. Brand-focused copy. **Fix 4: Powered by Shopify** — Set `show_powered_by: false` in `footer-group.json`. | Plan reviewed by simulated SME panel (Shopify dev, SEO, UX). Key improvements: meta description trimmed to 153 chars (under Google's 155 limit), `aria-disabled` added for accessibility, `template == 'index'` used (correct Shopify syntax vs `template.name`), SVG uses `role="img"` + `aria-label`. |
 
 | Feb 20, 2026 | **Session D — Pre-Launch Audit & SEO Fixes** | Comprehensive re-audit of entire store. Fixed 14 issues: **SEO:** Trimmed product meta desc (171→153 chars), science meta desc (189→150 chars). **Accessibility:** Fixed duplicate H1 on FAQ (`page.json` H1→H2), Contact (`page.contact.json` H1→H2), Homepage (header.liquid hidden H1→`<span>`). **Structured Data:** Added FAQPage JSON-LD schema to `product-faq.liquid`, WebSite schema with SearchAction to `meta-tags.liquid`, BreadcrumbList schema for inner pages. **OG Tags:** Added `product:availability` meta tag. **Brand:** Fixed "OptiBio" → "Optibio" in About, FAQ, Contact page titles + meta descriptions (6 admin fixes). **UX:** Added review widget scroll-trap fix (max-height 600px). **Alt Text:** Updated all 6 product images with descriptive alt text + correct branding. | Previous audit scored 6.5/10. This session addresses 14 of 21 identified issues. Remaining P2 items: favicon upload (manual), store name in Settings, Facebook Pixel, blog content, about placeholder photo, collections, Lighthouse audit. |
+| Feb 20, 2026 | **Session E — Domain Connection & Payments Setup** | **Domain:** Connected `optibiosupplements.com` to Shopify via Settings → Domains → Connect existing. GoDaddy auto-connect successfully updated DNS (CNAME `www` from `cname.manus.space` → `shops.myshopify.com`). Domain set as Primary. TLS certificate provisioning started. **Payments:** Initiated Shopify Payments (Stripe) activation — reached Step 1 of 4 (business type selection). Requires owner to complete remaining steps with personal/financial info (SSN, banking details). | GoDaddy auto-connect initially showed spinner for ~10 seconds but completed successfully (green toast: "Your DNS records are now connected to Shopify"). Shopify Payments setup requires sensitive personal/financial information — cannot be completed by Claude. |
 
 ---
 
@@ -354,6 +356,21 @@ Every clinical claim MUST be:
 - [ ] **Set Facebook Pixel ID** — Replace placeholder with real Pixel ID in Admin → Settings → Customer events
 - [ ] **Configure social media links** — Add social profiles in Theme Settings → Social media (or defer if no accounts yet)
 
+### Session E — Admin Changes (Feb 20, 2026)
+
+| Task | Where | Change |
+|------|-------|--------|
+| Domain connected | Admin → Settings → Domains | Added `optibiosupplements.com` as Primary domain. GoDaddy DNS auto-configured (CNAME www → shops.myshopify.com). TLS cert provisioning started. |
+| Payments setup started | Admin → Settings → Payments | Initiated Shopify Payments (Stripe) activation. Reached Step 1 of 4 (business type). Owner must complete Steps 2-4 with personal/banking info. |
+
+### Manual Steps Still Required (Session E)
+- [ ] **Complete Shopify Payments setup** — Owner must finish Steps 2-4: personal details (SSN, DOB, address), banking info (routing + account number), review & confirm
+- [ ] **Verify domain is live** — Check `optibiosupplements.com` loads correctly after DNS propagation (may take up to 48 hours, usually minutes)
+- [ ] **Run test order** — After Payments are activated, place a test order via Bogus Gateway or Shopify Payments test mode to verify full checkout flow
+- [ ] **Upload favicon** — Still pending from Session D
+- [ ] **Fix store name** — Still pending from Session D ("OptiBio" → "Optibio" in Settings → Store details)
+- [ ] **Set Facebook Pixel ID** — Still pending from Session D
+
 ---
 
 ### Past Mistakes Addendum (Feb 19, 2026)
@@ -409,5 +426,5 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 20, 2026 (Session D — Pre-Launch Audit & SEO Fixes)*
-*Next review: Final launch checklist — favicon upload, store name fix, Facebook Pixel, Lighthouse performance audit*
+*Last updated: February 20, 2026 (Session E — Domain Connection & Payments Setup)*
+*Next review: Complete Shopify Payments activation, test order, favicon upload, store name fix, Facebook Pixel, Lighthouse audit*
