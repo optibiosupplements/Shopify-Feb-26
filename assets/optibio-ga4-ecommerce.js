@@ -1,7 +1,8 @@
 /**
- * Optibio GA4 Enhanced E-Commerce — dataLayer Integration
- * Events: view_item, add_to_cart, view_item_list
- * begin_checkout + purchase handled via GTM triggers on Shopify checkout/thank-you pages
+ * Optibio GA4 + Meta Pixel Enhanced E-Commerce — dataLayer + fbq Integration
+ * GA4 Events: view_item, add_to_cart, view_item_list (via dataLayer)
+ * Meta Events: ViewContent, AddToCart (via fbq)
+ * begin_checkout + purchase handled via GTM triggers / Facebook & Instagram sales channel
  */
 
 (function() {
@@ -35,6 +36,17 @@
         }]
       }
     });
+
+    // Meta Pixel — ViewContent
+    if (typeof fbq === 'function') {
+      fbq('track', 'ViewContent', {
+        content_ids: [String(productData.id)],
+        content_name: productData.title,
+        content_type: 'product',
+        value: productData.price,
+        currency: 'USD'
+      });
+    }
   }
 
   /**
@@ -60,6 +72,17 @@
         }]
       }
     });
+
+    // Meta Pixel — AddToCart
+    if (typeof fbq === 'function') {
+      fbq('track', 'AddToCart', {
+        content_ids: [String(productData.id)],
+        content_name: productData.title,
+        content_type: 'product',
+        value: price * quantity,
+        currency: 'USD'
+      });
+    }
   }
 
   /**

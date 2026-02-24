@@ -1,5 +1,5 @@
 /**
- * Optibio Product Page Enhancements - Phase 1 v2
+ * Optibio Product Page Enhancements - Phase 1 v3
  * Integrated with Shopify Native Subscriptions
  * Actual Variant IDs from Optibio store
  */
@@ -31,7 +31,7 @@ class OptibioProductEnhancements {
       }
     };
 
-    // Selling plan IDs — loaded from Liquid data or native widget
+    // Selling plan IDs — loaded from Liquid JSON script tag
     this.sellingPlans = [];
     this.selectedFrequencyIndex = 0; // default: first frequency (every month)
 
@@ -43,167 +43,254 @@ class OptibioProductEnhancements {
 
     this.init();
   }
-  
+
   init() {
     this.freeShippingThreshold = 49; // $49 for free shipping
+    this.loadSellingPlans();
     this.attachEventListeners();
     this.updateUI();
-    this.integrateWithShopifySubscriptions();
     this.updateFreeShippingBar();
   }
-  
+
+  loadSellingPlans() {
+    var scriptEl = document.getElementById('optibio-selling-plan-data');
+    if (!scriptEl) return;
+    try {
+      var data = JSON.parse(scriptEl.textContent);
+      if (data.groups && data.groups.length > 0) {
+        this.sellingPlans = data.groups[0].plans || [];
+      }
+    } catch (e) {
+      // selling plan data unavailable
+    }
+  }
+
   attachEventListeners() {
-    // Purchase type toggle
-    document.querySelectorAll('input[name="purchase-type"]').forEach(radio => {
-      radio.addEventListener('change', (e) => {
-        this.state.purchaseType = e.target.value;
-        this.updateUI();
-        this.triggerSubscriptionWidgetUpdate();
+    var self = this;
+
+    // Bundle card selection (cards use data-bundle attribute, not radio inputs)
+    document.querySelectorAll('.optibio-bundle-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var bundleSize = parseInt(card.getAttribute('data-bundle'));
+        if (!bundleSize || bundleSize === self.state.bundleSize) return;
+        self.state.bundleSize = bundleSize;
+        self.state.currentVariantId = self.variants[bundleSize];
+        self.updateUI();
+        self.updateShopifyVariant();
       });
     });
-    
-    // Bundle selection
-    document.querySelectorAll('input[name="bundle-size"]').forEach(radio => {
-      radio.addEventListener('change', (e) => {
-        this.state.bundleSize = parseInt(e.target.value);
-        this.state.currentVariantId = this.variants[this.state.bundleSize];
-        this.updateUI();
-        this.updateShopifyVariant();
-      });
-    });
-    
-    // Card click handlers for better UX
-    document.querySelectorAll('.optibio-bundle-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const radio = card.querySelector('input[type="radio"]');
-        if (radio && !radio.checked) {
-          radio.checked = true;
-          radio.dispatchEvent(new Event('change'));
+
+    // Subscription toggle click
+    var subscriptionToggle = document.getElementById('optibio-subscription-toggle');
+    if (subscriptionToggle) {
+      subscriptionToggle.addEventListener('click', function() {
+        if (self.state.purchaseType === 'subscription') {
+          self.state.purchaseType = 'onetime';
+        } else {
+          self.state.purchaseType = 'subscription';
         }
+        self.updateUI();
+        self.updateShopifyVariant();
+      });
+    }
+
+    // Delivery frequency radio buttons
+    document.querySelectorAll('input[name="optibio-delivery-frequency"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        var value = radio.value;
+        // Map frequency value to selling plan index
+        if (value === 'month') self.selectedFrequencyIndex = 0;
+        else if (value === '3months') self.selectedFrequencyIndex = 1;
+        else if (value === '6months') self.selectedFrequencyIndex = 2;
+        self.updateShopifyVariant();
+
+        // Update frequency option visual state
+        document.querySelectorAll('.optibio-frequency-option').forEach(function(opt) {
+          opt.classList.remove('selected');
+        });
+        radio.closest('.optibio-frequency-option').classList.add('selected');
       });
     });
-    
-    document.querySelectorAll('.optibio-purchase-option').forEach(option => {
-      option.addEventListener('click', () => {
-        const radio = option.querySelector('input[type="radio"]');
-        if (radio && !radio.checked) {
-          radio.checked = true;
-          radio.dispatchEvent(new Event('change'));
-        }
+
+    // Add to Cart / Subscribe Now button
+    var addToCartBtn = document.getElementById('optibio-add-to-cart');
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        self.addToCart();
       });
-    });
+    }
   }
   
   updateUI() {
-    this.updatePurchaseTypeUI();
+    this.updateSubscriptionToggleUI();
     this.updateBundleCardsUI();
     this.updatePriceSummary();
     this.updateAddToCartButton();
     this.updateFreeShippingBar();
   }
   
-  updatePurchaseTypeUI() {
-    document.querySelectorAll('.optibio-purchase-option').forEach(option => {
-      const radio = option.querySelector('input[type="radio"]');
-      if (radio && radio.value === this.state.purchaseType) {
-        option.classList.add('selected');
+  updateSubscriptionToggleUI() {
+    var isSubscription = this.state.purchaseType === 'subscription';
+    var toggle = document.getElementById('optibio-subscription-toggle');
+    var freqSelector = document.getElementById('optibio-frequency-selector');
+
+    if (toggle) {
+      var switchEl = toggle.querySelector('.optibio-toggle-switch');
+      var knobEl = toggle.querySelector('.optibio-toggle-knob');
+      if (isSubscription) {
+        toggle.classList.add('active');
+        if (switchEl) switchEl.classList.add('active');
+        if (knobEl) knobEl.classList.add('active');
       } else {
-        option.classList.remove('selected');
+        toggle.classList.remove('active');
+        if (switchEl) switchEl.classList.remove('active');
+        if (knobEl) knobEl.classList.remove('active');
       }
-    });
+    }
+
+    // Show/hide frequency selector
+    if (freqSelector) {
+      freqSelector.style.display = isSubscription ? 'block' : 'none';
+    }
   }
-  
+
   updateBundleCardsUI() {
-    document.querySelectorAll('.optibio-bundle-card').forEach(card => {
-      const radio = card.querySelector('input[type="radio"]');
-      if (radio && parseInt(radio.value) === this.state.bundleSize) {
+    var self = this;
+    document.querySelectorAll('.optibio-bundle-card').forEach(function(card) {
+      var bundleSize = parseInt(card.getAttribute('data-bundle'));
+      var checkmark = card.querySelector('.optibio-bundle-checkmark');
+      if (bundleSize === self.state.bundleSize) {
         card.classList.add('selected');
+        if (checkmark) checkmark.style.display = '';
       } else {
         card.classList.remove('selected');
+        if (checkmark) checkmark.style.display = 'none';
       }
     });
-    
+
     // Update bundle prices based on purchase type
-    const isSubscription = this.state.purchaseType === 'subscription';
-    
-    [1, 3, 6].forEach(size => {
-      const priceEl = document.querySelector(`[data-bundle-price="${size}"]`);
+    var isSubscription = this.state.purchaseType === 'subscription';
+
+    [1, 3, 6].forEach(function(size) {
+      var card = document.querySelector('.optibio-bundle-card[data-bundle="' + size + '"]');
+      if (!card) return;
+      var priceEl = card.querySelector('.optibio-bundle-price');
       if (priceEl) {
-        const price = isSubscription 
-          ? this.pricing.subscription[size].price 
-          : this.pricing.bundles[size].price;
-        priceEl.textContent = `$${price.toFixed(2)}`;
-      }
-      
-      const perBottleEl = document.querySelector(`[data-bundle-per-bottle="${size}"]`);
-      if (perBottleEl && size > 1) {
-        const perBottle = isSubscription 
-          ? this.pricing.subscription[size].pricePerBottle 
-          : this.pricing.bundles[size].pricePerBottle;
-        perBottleEl.textContent = `$${perBottle.toFixed(2)}/bottle`;
+        var price = isSubscription
+          ? self.pricing.subscription[size].price
+          : self.pricing.bundles[size].price;
+        // For multi-bottle, show per-bottle price
+        if (size > 1) {
+          var perBottle = isSubscription
+            ? self.pricing.subscription[size].pricePerBottle
+            : self.pricing.bundles[size].pricePerBottle;
+          priceEl.textContent = '$' + perBottle.toFixed(2);
+        } else {
+          priceEl.textContent = '$' + price.toFixed(2);
+        }
       }
     });
   }
   
   updatePriceSummary() {
-    const { purchaseType, bundleSize } = this.state;
-    const isSubscription = purchaseType === 'subscription';
-    
-    const pricing = isSubscription 
-      ? this.pricing.subscription[bundleSize] 
+    var purchaseType = this.state.purchaseType;
+    var bundleSize = this.state.bundleSize;
+    var isSubscription = purchaseType === 'subscription';
+
+    var pricing = isSubscription
+      ? this.pricing.subscription[bundleSize]
       : this.pricing.bundles[bundleSize];
-    
-    const shipping = isSubscription 
-      ? this.pricing.shipping.subscription[bundleSize] 
+
+    var shipping = isSubscription
+      ? this.pricing.shipping.subscription[bundleSize]
       : this.pricing.shipping.oneTime[bundleSize];
-    
-    const subtotal = pricing.price;
-    const compareAt = pricing.compareAt;
-    const total = subtotal + shipping;
-    const savings = compareAt - subtotal;
-    const savingsPercent = Math.round((savings / compareAt) * 100);
-    
-    // Update summary elements
-    const subtotalEl = document.querySelector('[data-price-subtotal]');
-    if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-    
-    const compareAtEl = document.querySelector('[data-price-compare-at]');
-    if (compareAtEl) compareAtEl.textContent = `$${compareAt.toFixed(2)}`;
-    
-    const savingsEl = document.querySelector('[data-price-savings]');
-    if (savingsEl) savingsEl.textContent = `Save $${savings.toFixed(2)} (${savingsPercent}%)`;
-    
-    const shippingEl = document.querySelector('[data-price-shipping]');
-    if (shippingEl) {
-      shippingEl.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
-      shippingEl.style.color = shipping === 0 ? '#4CAF50' : '#666';
-      shippingEl.style.fontWeight = shipping === 0 ? '600' : 'normal';
+
+    var subtotal = pricing.price;
+    var compareAt = pricing.compareAt;
+    var total = subtotal + shipping;
+    var savings = compareAt - subtotal;
+    var savingsPercent = Math.round((savings / compareAt) * 100);
+
+    // Update price summary rows in the buy box
+    var priceSummary = document.querySelector('.optibio-price-summary');
+    if (!priceSummary) return;
+
+    var rows = priceSummary.querySelectorAll('.optibio-price-row');
+
+    // Row 0: Subtotal (strikethrough + current)
+    if (rows[0]) {
+      var strikeEl = rows[0].querySelector('.optibio-price-strikethrough');
+      var currentEl = strikeEl ? strikeEl.nextElementSibling || rows[0].querySelector('.optibio-price-value span:last-child') : null;
+      if (strikeEl) strikeEl.textContent = '$' + compareAt.toFixed(2);
+      // The second span inside .optibio-price-value
+      var valueDiv = rows[0].querySelector('.optibio-price-value');
+      if (valueDiv) {
+        var spans = valueDiv.querySelectorAll('span');
+        if (spans.length >= 2) spans[1].textContent = '$' + subtotal.toFixed(2);
+        // Show/hide strikethrough based on whether there are savings
+        if (spans[0]) spans[0].style.display = isSubscription || bundleSize > 1 ? '' : 'none';
+      }
     }
-    
-    const totalEl = document.querySelector('[data-price-total]');
-    if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+
+    // Row 1: Shipping
+    if (rows[1]) {
+      var shippingVal = rows[1].querySelector('.optibio-price-value');
+      if (shippingVal) {
+        shippingVal.textContent = shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2);
+        if (shipping === 0) {
+          shippingVal.classList.add('optibio-savings-highlight');
+        } else {
+          shippingVal.classList.remove('optibio-savings-highlight');
+        }
+      }
+    }
+
+    // Row 2: You Save
+    if (rows[2]) {
+      var savingsVal = rows[2].querySelector('.optibio-price-value');
+      if (savingsVal) {
+        var totalSavings = savings + (shipping === 0 && this.pricing.shipping.oneTime[bundleSize] > 0 ? this.pricing.shipping.oneTime[bundleSize] : 0);
+        savingsVal.textContent = '$' + totalSavings.toFixed(2) + ' (' + savingsPercent + '%)';
+      }
+    }
+
+    // Row 3: Total
+    if (rows[3]) {
+      var totalEl = rows[3].querySelector('.optibio-price-total');
+      if (totalEl) totalEl.textContent = '$' + total.toFixed(2);
+    }
+
+    // Update the toggle savings display
+    var toggleSavings = document.querySelector('.optibio-toggle-savings');
+    if (toggleSavings) {
+      var subSavings = this.pricing.bundles[bundleSize].price - this.pricing.subscription[bundleSize].price;
+      toggleSavings.textContent = '-$' + subSavings.toFixed(2);
+    }
   }
   
   updateAddToCartButton() {
-    const { purchaseType, bundleSize } = this.state;
-    const isSubscription = purchaseType === 'subscription';
-    
-    const price = isSubscription 
-      ? this.pricing.subscription[bundleSize].price 
+    var purchaseType = this.state.purchaseType;
+    var bundleSize = this.state.bundleSize;
+    var isSubscription = purchaseType === 'subscription';
+
+    var price = isSubscription
+      ? this.pricing.subscription[bundleSize].price
       : this.pricing.bundles[bundleSize].price;
-    
-    const buttonText = isSubscription 
-      ? `Subscribe Now — $${price.toFixed(2)}` 
-      : `Add to Cart — $${price.toFixed(2)}`;
-    
-    const addToCartBtn = document.querySelector('.optibio-add-to-cart-btn, button[name="add"]');
+
+    var buttonText = isSubscription
+      ? 'Subscribe Now \u2014 $' + price.toFixed(2)
+      : 'Add to Cart \u2014 $' + price.toFixed(2);
+
+    var addToCartBtn = document.getElementById('optibio-add-to-cart');
     if (addToCartBtn) {
-      const textNode = Array.from(addToCartBtn.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-      if (textNode) {
-        textNode.textContent = buttonText;
-      } else {
-        addToCartBtn.textContent = buttonText;
-      }
+      addToCartBtn.textContent = buttonText;
+    }
+
+    // Also update sticky cart button text if present
+    var stickyBtn = document.getElementById('optibio-sticky-add');
+    if (stickyBtn) {
+      stickyBtn.textContent = buttonText;
     }
   }
   
@@ -236,36 +323,70 @@ class OptibioProductEnhancements {
     }
   }
   
-  integrateWithShopifySubscriptions() {
-    // Listen for Shopify Subscriptions widget events
-    document.addEventListener('subscription:changed', (e) => {
-      if (e.detail && e.detail.sellingPlanId) {
-        // Subscription selected in widget
-        this.state.purchaseType = 'subscription';
-        this.updateUI();
-      } else {
-        // One-time purchase selected
-        this.state.purchaseType = 'onetime';
-        this.updateUI();
-      }
-    });
-  }
-  
-  triggerSubscriptionWidgetUpdate() {
-    // Notify Shopify Subscriptions widget of purchase type change
-    const isSubscription = this.state.purchaseType === 'subscription';
+  addToCart() {
+    var self = this;
+    var variantId = this.state.currentVariantId;
+    var isSubscription = this.state.purchaseType === 'subscription';
 
-    // Try to find and interact with Shopify's subscription widget
-    const subscriptionWidget = document.querySelector('[data-subscription-widget]');
-    if (subscriptionWidget) {
-      const event = new CustomEvent('purchase-type:change', {
-        detail: {
-          isSubscription: isSubscription
-        },
-        bubbles: true
-      });
-      subscriptionWidget.dispatchEvent(event);
+    var body = {
+      items: [{
+        id: variantId,
+        quantity: 1
+      }]
+    };
+
+    // Attach selling plan if subscription
+    if (isSubscription && this.sellingPlans.length > 0) {
+      var planIndex = Math.min(this.selectedFrequencyIndex, this.sellingPlans.length - 1);
+      body.items[0].selling_plan = this.sellingPlans[planIndex].id;
     }
+
+    // Also update the hidden form inputs (for express checkout compatibility)
+    var variantInput = document.querySelector('#optibio-product-form input[name="id"]');
+    if (variantInput) variantInput.value = variantId;
+
+    var sellingPlanInput = document.getElementById('optibio-selling-plan-input');
+    if (sellingPlanInput) {
+      if (isSubscription && this.sellingPlans.length > 0) {
+        var idx = Math.min(this.selectedFrequencyIndex, this.sellingPlans.length - 1);
+        sellingPlanInput.value = this.sellingPlans[idx].id;
+      } else {
+        sellingPlanInput.value = '';
+      }
+    }
+
+    // Disable button during request
+    var btn = document.getElementById('optibio-add-to-cart');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Adding...';
+    }
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+    .then(function(response) {
+      if (!response.ok) throw new Error('Add to cart failed');
+      return response.json();
+    })
+    .then(function() {
+      // Redirect to checkout for subscribe, or update cart drawer
+      if (isSubscription) {
+        window.location.href = '/checkout';
+      } else {
+        // Redirect to cart page
+        window.location.href = '/cart';
+      }
+    })
+    .catch(function(err) {
+      if (btn) {
+        btn.disabled = false;
+        self.updateAddToCartButton();
+      }
+      console.error('Optibio: Add to cart error', err);
+    });
   }
 
   updateFreeShippingBar() {

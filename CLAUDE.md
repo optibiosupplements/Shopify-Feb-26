@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session O)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session R)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -167,6 +167,7 @@ Every clinical claim MUST be:
 - ~~**Store Name:** "OptiBio Supplements" (capital B) appears in store-level settings (Settings > Store details).~~ **VERIFIED FIXED Feb 20, 2026 (Session E)** — Store name already reads "Optibio Supplements" (lowercase b). Confirmed in Admin → Settings → General → Store contact details and via live site tab title + og:site_name.
 - ~~**Domain:** optibiosupplements.com still points to Manus platform~~ **FIXED Feb 20, 2026 (Session E)** — Domain connected to Shopify via GoDaddy auto-connect. DNS CNAME `www` changed from `cname.manus.space` → `shops.myshopify.com`. TLS certificate provisioned. Domain set as Primary.
 - ~~**Free shipping threshold $75 in theme code**~~ **FIXED Feb 24, 2026 (Session O)** — All 8 theme files updated from $75 to $49. Pushed to live and verified.
+- ~~**Buy box buttons non-functional**~~ **FIXED Feb 24, 2026 (Session Q)** — Subscribe Now button, bundle card selection, and subscription toggle had no working event handlers. JS expected radio inputs that didn't exist in the HTML. Rewrote `optibio-product-enhancements.js` (v2 → v3) with proper DOM targeting.
 - **Facebook Pixel:** Placeholder ID (YOUR_FACEBOOK_PIXEL_ID) — zero tracking
 - **Manus Sign-In:** Link redirects to manus.im auth — breaks for customers
 - **OAuth Expiry:** Token expires every 24hr — refresh before MCP sessions
@@ -462,6 +463,10 @@ Every clinical claim MUST be:
 - ~~**Session K:** Verification session — confirmed GTM/GA4/Meta Pixel all firing on live site, verified 3 blog posts live at /blogs/news/, confirmed Manus sign-in link already resolved (zero refs), ran Lighthouse audit (Homepage: 46/93/54/100, Product: 35/93/54/92), verified hero product image visible, confirmed GitHub repo up to date~~ DONE
 
 - ~~**Session L:** Lighthouse fixes — 19 contrast ratio failures fixed (darkened green/red/gold tokens), touch targets fixed (carousel dots 8→24px), non-crawlable links fixed (COA button + Judge.me patch), GA4 Enhanced E-Commerce dataLayer events added (view_item, add_to_cart, view_item_list), performance optimized (font loading moved from @import to async link, preconnect/dns-prefetch added). Pushed to Shopify + GitHub (commit `2b873fa`)~~ DONE
+
+- ~~**Session P:** Tracking infrastructure — Consent Mode v2 (default denied, update on accept/decline, auto-restore), Meta Pixel E-Commerce events (ViewContent + AddToCart), Microsoft Clarity placeholder (needs Project ID). Pushed to Shopify live theme.~~ DONE
+
+- ~~**Session R:** Tracking infrastructure completion — Activated Microsoft Clarity (Project ID: p4haz84jol), created + published GA4 Configuration tag in GTM (Version 2), pushed theme.liquid to live. Remaining user tasks: Facebook & Instagram sales channel install (Meta CAPI), Google Ads account creation.~~ DONE
 
 ### Installed Apps (February 19, 2026)
 
@@ -761,11 +766,73 @@ Every clinical claim MUST be:
 - Shopify CLI (`shopify theme push`) still works via device-code auth — used for this push
 - **Action needed:** Regenerate token at dev.shopify.com → Claud MCP app → Settings
 
+### Session P — Tracking Infrastructure: Consent Mode v2 + Meta Pixel Events + Clarity (Feb 24, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| EDITED | `layout/theme.liquid` | Added Consent Mode v2 default script (all consent denied) BEFORE GTM/GA4/Meta Pixel |
+| EDITED | `layout/theme.liquid` | Added Microsoft Clarity script placeholder (commented out — needs Project ID from owner) |
+| EDITED | `snippets/cookie-consent.liquid` | Added `gtag('consent', 'update', ...)` calls on Accept (granted) and Decline (denied) + auto-restore on page load |
+| EDITED | `assets/optibio-ga4-ecommerce.js` | Added Meta Pixel `fbq('track', 'ViewContent')` on product page + `fbq('track', 'AddToCart')` on ATC click |
+| PUSHED | 3 files to live theme 146307776581 | Via `shopify theme push --allow-live --theme 146307776581` |
+
+**Consent Mode v2 Implementation:**
+- Default state: `ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage` all set to `denied`
+- `wait_for_update: 500` — gives cookie banner 500ms to load before tags fire
+- On Accept: all four consent signals updated to `granted`
+- On Decline: all four remain `denied`
+- Auto-restore: on page load, if `optibio_cookie_consent === 'accepted'` in localStorage, consent is restored to `granted`
+- GDPR/CCPA compliant — no tracking fires until user explicitly accepts
+
+**Meta Pixel E-Commerce Events Added:**
+- `ViewContent` — fires on product page load with content_ids, content_name, content_type, value, currency
+- `AddToCart` — fires on ATC button click with same parameters
+- `InitiateCheckout` + `Purchase` — must be configured via Facebook & Instagram sales channel (Shopify checkout is outside theme code)
+
+**Microsoft Clarity:**
+- ~~Script template added but COMMENTED OUT~~ → ACTIVATED in Session R
+- Project ID: `p4haz84jol` (Optibio Supplements project at clarity.microsoft.com)
+- Script live in theme.liquid, pushed to Shopify live theme
+
+### Session Q — Buy Box Bug Fix + Shipping Verification + Test Mode Cleanup (Feb 24, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| VERIFIED | Shopify Admin > Settings > Shipping | Confirmed 3 rates: Standard $5.99 (<$49), Express FREE ($49+), Priority $12.99 (all orders) |
+| ADDED | Priority Shipping rate in Shopify admin | $12.99 USPS Priority Mail, 2-3 business days, no condition (all orders) |
+| EDITED | `SHIPPING_SETUP_GUIDE.md` | Rewritten for $49 threshold + Priority $12.99 rate documentation |
+| FIXED | `assets/optibio-product-enhancements.js` | **CRITICAL BUG FIX** — v2 → v3: Subscribe Now button, bundle cards, subscription toggle all non-functional |
+| PUSHED | `assets/optibio-product-enhancements.js` to live theme 146307776581 | Via `shopify theme push --allow-live --theme 146307776581` |
+| VERIFIED | Live site — Subscribe Now button | Adds to cart with selling plan + redirects to checkout at $84.99 |
+| VERIFIED | Live site — Bundle card selection | Switching 1/3/6 bottles updates prices, shipping, savings correctly |
+| VERIFIED | Live site — Subscription toggle | Toggles between Subscribe ($84.99) and One-time ($99.99), hides/shows frequency selector |
+| VERIFIED | Checkout — shipping rates | Express FREE on 3-bottle ($99.99), Priority $12.99 available, Standard hidden (>$49) |
+| DISABLED | Shopify Payments test mode | Toggled OFF in Admin > Settings > Payments > Shopify Payments > Test mode |
+| CANCELLED | Test order #1001 | $45.98 test order (1 bottle, from previous session) cancelled and refunded |
+
+**Buy Box Bug Fix Details (v2 → v3):**
+- **Root cause:** JS event listeners targeted `input[name="purchase-type"]` and `input[name="bundle-size"]` radio inputs — these elements NEVER existed in the buy box HTML. Bundle cards use `data-bundle` attributes, not radio inputs.
+- **Subscribe Now button** had NO click handler at all — `updateAddToCartButton()` only updated text (and targeted wrong selector `.optibio-add-to-cart-btn` instead of `#optibio-add-to-cart`)
+- **Subscription toggle** `#optibio-subscription-toggle` had no click event listener in any JS file
+- **Fix:** Rewrote `attachEventListeners()` to use `data-bundle` attributes on cards, added click handler on `#optibio-subscription-toggle`, added click handler on `#optibio-add-to-cart` calling new `addToCart()` method
+- **New `addToCart()` method:** Uses Cart API (`/cart/add.js`) with selling plan from Liquid JSON data, then redirects to `/checkout` (subscription) or `/cart` (one-time)
+- **New `loadSellingPlans()`:** Reads selling plan IDs from `#optibio-selling-plan-data` JSON script tag (output by `product-hero.liquid`)
+- **Selling Plan IDs discovered:** 1968963653 (monthly), 1968996421 (every 3 months), 1969029189 (every 6 months)
+
+**Shopify Subscriptions App-Block Error (pre-existing, NOT fixed):**
+- `app-block.js` throws `TypeError: Cannot read properties of undefined (reading 'querySelector')` on every page load
+- Root cause: Shopify Subscriptions widget expects a native product form structure that doesn't match our custom buy box
+- This is cosmetic — our custom buy box handles subscriptions independently via Cart API
+- Impact: None visible to customers — error is console-only
+
 ### Past Mistakes Addendum (Feb 24, 2026)
+27. **Meta Pixel only fired PageView — missing e-commerce events** — The GA4 Enhanced E-Commerce events (view_item, add_to_cart, view_item_list) were implemented with dataLayer pushes but Meta Pixel equivalents (ViewContent, AddToCart) were never added. Meta's ad algorithm needs these events to optimize ad delivery. Always implement tracking events for BOTH GA4 (dataLayer) and Meta Pixel (fbq) simultaneously when adding e-commerce tracking.
+
 25. **$75 free shipping threshold persisted across 8 files after rate change** — Session A set the free shipping threshold at $75 in JavaScript and hardcoded "$75+" text in 7 Liquid/JSON files. When shipping rates were changed to $49+ (Session F/G), only the Shopify shipping settings were updated — not the theme code. Always search all theme files (`grep -r "$75" --include="*.liquid" --include="*.json" --include="*.js"`) after changing any pricing/threshold configuration to catch hardcoded values.
 26. **Shopify API token in MCP config was stale** — The token in `claude_desktop_config.json` was the OLD expired token, not the one refreshed in Session M. The config file must be manually updated after each token refresh, and the token expires every 24 hours. Consider using environment variables or a token refresh script.
+28. **Buy box JS targeted non-existent DOM elements** — `optibio-product-enhancements.js` v2 attached listeners to `input[name="purchase-type"]` and `input[name="bundle-size"]` radio inputs that never existed in the buy box HTML. The buy box uses `data-*` attributes on cards and a `#optibio-subscription-toggle` div — not radio inputs. Always verify JS selectors match actual DOM structure by inspecting the Liquid template output.
 
 ---
 
-*Last updated: February 24, 2026 (Session O — Free shipping $75→$49 fix pushed live, Asset Studio updated, Marketing rollout created)*
-*Next review: Refresh Shopify API token, Merchant Center T&C acceptance, social media accounts (Instagram, TikTok, LinkedIn), email sequence builds, ad creative production*
+*Last updated: February 24, 2026 (Session Q — Buy box critical bug fix, shipping verification, test mode disabled)*
+*Next review: Microsoft Clarity Project ID needed, GA4 Configuration tag in GTM, Meta CAPI setup, Google Ads account creation, social media accounts*

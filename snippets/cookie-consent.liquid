@@ -126,8 +126,21 @@
     var acceptBtn = document.getElementById('cookie-accept');
     var declineBtn = document.getElementById('cookie-decline');
 
+    // Auto-restore consent state on page load (Consent Mode v2)
+    var savedConsent = localStorage.getItem('optibio_cookie_consent');
+    if (savedConsent === 'accepted') {
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    }
+
     // Check if consent was already given
-    if (localStorage.getItem('optibio_cookie_consent') !== null) {
+    if (savedConsent !== null) {
       return; // Don't show banner if already consented or declined
     }
 
@@ -140,6 +153,15 @@
 
     acceptBtn.addEventListener('click', function() {
       localStorage.setItem('optibio_cookie_consent', 'accepted');
+      // Update Google Consent Mode v2
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
       // Use Shopify's Customer Privacy API if available
       if (window.Shopify && window.Shopify.customerPrivacy) {
         window.Shopify.customerPrivacy.setTrackingConsent(true, function() {});
@@ -149,6 +171,15 @@
 
     declineBtn.addEventListener('click', function() {
       localStorage.setItem('optibio_cookie_consent', 'declined');
+      // Update Google Consent Mode v2
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': 'denied'
+        });
+      }
       // Use Shopify's Customer Privacy API if available
       if (window.Shopify && window.Shopify.customerPrivacy) {
         window.Shopify.customerPrivacy.setTrackingConsent(false, function() {});

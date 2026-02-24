@@ -37,6 +37,21 @@
 
     {{ content_for_header }}
 
+  <!-- Google Consent Mode v2 — Default to denied until user consents -->
+  <!-- Must load BEFORE GTM/GA4/Meta Pixel so consent state is set when tags initialize -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+  </script>
+  <!-- End Consent Mode v2 -->
+
   <!-- Meta Pixel Code — Optibio (Dataset ID: 3892490224214287) -->
   <!-- Installed: Feb 20, 2026 | Business Portfolio: Miampa Ventures LLC -->
   <script>
@@ -74,6 +89,17 @@
     gtag('config', 'G-38QZ0WCZLG');
   </script>
   <!-- End GA4 -->
+
+  <!-- Microsoft Clarity — Session Recording + Heatmaps (Free CRO Tool) -->
+  <!-- Project ID: p4haz84jol | Installed: Feb 24, 2026 -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","p4haz84jol");
+  </script>
+  <!-- End Microsoft Clarity -->
 
   {% comment %} Preconnect to Google Fonts + third-party tracking domains {% endcomment %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
