@@ -1,0 +1,658 @@
+/* ═══════════════════════════════════════════════════════════════
+   Optibio Hero — Design D: Editorial (Adapted to Live Design System)
+   Magazine-style layout with warm authority tone
+   Colors: Navy #1A2F4D, Gold #C9A961, Electric Blue #2563EB
+   Fonts: Sora (headings), Inter (body)
+   Background: Sky Blue Gradient
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Base Section ───────────────────────────────────────────── */
+.optibio-hero-ed {
+  background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
+  color: #1A2F4D;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Hero Grid ──────────────────────────────────────────────── */
+.optibio-hero-ed__container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 48px 60px 0;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 0;
+  min-height: calc(100vh - 120px);
+  align-items: start;
+}
+
+/* ════════════════════════════════════════════════════════════
+   LEFT COLUMN: Editorial Content
+   ════════════════════════════════════════════════════════════ */
+.optibio-hero-ed__editorial {
+  padding: 40px 60px 40px 0;
+}
+
+/* Category Tag */
+.optibio-hero-ed__category {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C9A961;
+  font-weight: 600;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.optibio-hero-ed__category::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: #C9A961;
+  flex-shrink: 0;
+}
+
+/* Headline — Sora per live design system */
+.optibio-hero-ed__headline {
+  font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 54px;
+  line-height: 1.12;
+  font-weight: 700;
+  color: #1A2F4D;
+  margin: 0 0 28px 0;
+  letter-spacing: -0.5px;
+}
+.optibio-hero-ed__headline em {
+  font-style: italic;
+  color: #C9A961;
+}
+
+/* Lede (italic intro) */
+.optibio-hero-ed__lede {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #475569;
+  font-weight: 400;
+  margin: 0 0 28px 0;
+  font-style: italic;
+  max-width: 500px;
+}
+
+/* Body Copy */
+.optibio-hero-ed__body {
+  font-size: 15px;
+  line-height: 1.85;
+  color: #475569;
+  margin: 0 0 32px 0;
+  max-width: 480px;
+  font-weight: 400;
+}
+
+/* Pull Quote */
+.optibio-hero-ed__pull-quote {
+  border-left: 3px solid #C9A961;
+  padding: 16px 0 16px 24px;
+  margin: 0 0 36px 0;
+  max-width: 420px;
+}
+.optibio-hero-ed__pull-quote p {
+  font-family: 'Sora', -apple-system, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #1A2F4D;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+}
+.optibio-hero-ed__pull-quote cite {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: #8B95A5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-style: normal;
+  margin-top: 12px;
+  display: block;
+}
+
+/* CTAs — Primary: Electric Blue per live design system */
+.optibio-hero-ed__ctas {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 36px;
+}
+.optibio-hero-ed__btn-primary {
+  background: #2563EB;
+  color: #FFFFFF;
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+.optibio-hero-ed__btn-primary:hover {
+  background: #1D4ED8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  color: #FFFFFF;
+}
+/* Keep gold as alias for backward compatibility */
+.optibio-hero-ed__btn-gold {
+  background: #2563EB;
+  color: #FFFFFF;
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+.optibio-hero-ed__btn-gold:hover {
+  background: #1D4ED8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  color: #FFFFFF;
+}
+.optibio-hero-ed__btn-outline {
+  color: #1A2F4D;
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(26, 47, 77, 0.2);
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+.optibio-hero-ed__btn-outline:hover {
+  border-color: #1A2F4D;
+  background: rgba(26, 47, 77, 0.03);
+  color: #1A2F4D;
+}
+
+/* Trust Row */
+.optibio-hero-ed__trust-row {
+  display: flex;
+  gap: 28px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(26, 47, 77, 0.08);
+  margin-bottom: 24px;
+}
+.optibio-hero-ed__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.optibio-hero-ed__trust-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(201, 169, 97, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #C9A961;
+  flex-shrink: 0;
+}
+.optibio-hero-ed__trust-text {
+  font-size: 11px;
+  color: #475569;
+  line-height: 1.4;
+}
+.optibio-hero-ed__trust-text strong {
+  display: block;
+  color: #1A2F4D;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Detail Grid (hybrid from Design B) */
+.optibio-hero-ed__detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(26, 47, 77, 0.06);
+}
+.optibio-hero-ed__detail-item {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.6;
+}
+.optibio-hero-ed__detail-item strong {
+  display: block;
+  color: #1A2F4D;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  opacity: 0.5;
+}
+
+/* ════════════════════════════════════════════════════════════
+   RIGHT COLUMN: Product Feature Card
+   Glassmorphism per live design system
+   ════════════════════════════════════════════════════════════ */
+.optibio-hero-ed__feature-card {
+  background: linear-gradient(165deg, #1A2F4D 0%, #1E3A5F 60%, #1A2F4D 100%);
+  border-radius: 16px;
+  padding: 48px 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  overflow: hidden;
+}
+/* Subtle decorative elements — NO golden glow (per CLAUDE.md rule) */
+.optibio-hero-ed__feature-card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 169, 97, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.optibio-hero-ed__feature-card::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 169, 97, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Feature Tag */
+.optibio-hero-ed__feature-tag {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C9A961;
+  font-weight: 600;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Product Image */
+.optibio-hero-ed__product-image {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 32px;
+}
+.optibio-hero-ed__product-image img {
+  max-width: 240px;
+  height: auto;
+  /* NO CSS glow — radiance is baked into photography per CLAUDE.md */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  border-radius: 8px;
+}
+
+/* Bottle Placeholder (when no image uploaded) */
+.optibio-hero-ed__bottle-placeholder {
+  width: 180px;
+  height: 300px;
+  position: relative;
+}
+.optibio-hero-ed__bottle-cap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 22px;
+  background: #1A2F4D;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+}
+.optibio-hero-ed__bottle-body {
+  width: 180px;
+  height: 280px;
+  margin-top: 20px;
+  background: linear-gradient(180deg, #F5F0E8 0%, #E8E2D8 100%);
+  border-radius: 10px 10px 6px 6px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+.optibio-hero-ed__bottle-label {
+  position: absolute;
+  top: 32px;
+  left: 16px;
+  right: 16px;
+  bottom: 24px;
+  background: white;
+  border-radius: 3px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.optibio-hero-ed__bl-brand {
+  font-size: 7px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #8B95A5;
+  font-weight: 600;
+}
+.optibio-hero-ed__bl-line {
+  width: 24px;
+  height: 1px;
+  background: #C9A961;
+  margin: 10px 0;
+}
+.optibio-hero-ed__bl-name {
+  font-family: 'Sora', -apple-system, sans-serif;
+  font-size: 13px;
+  color: #1A2F4D;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.optibio-hero-ed__bl-dose {
+  font-size: 9px;
+  color: #C9A961;
+  letter-spacing: 2px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+.optibio-hero-ed__bl-type {
+  font-size: 8px;
+  color: #8B95A5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* Feature Price */
+.optibio-hero-ed__feature-price {
+  color: white;
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.optibio-hero-ed__fp-current {
+  font-family: 'Sora', -apple-system, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  display: block;
+}
+.optibio-hero-ed__fp-compare {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+.optibio-hero-ed__fp-detail {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 4px;
+  font-weight: 300;
+  display: block;
+}
+
+/* Feature CTA Button — Electric Blue per live design system */
+.optibio-hero-ed__feature-btn {
+  background: #2563EB;
+  color: #FFFFFF;
+  padding: 14px 40px;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+.optibio-hero-ed__feature-btn:hover {
+  background: #1D4ED8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  color: #FFFFFF;
+}
+
+/* Feature Stats */
+.optibio-hero-ed__feature-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+.optibio-hero-ed__stat {
+  text-align: center;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.5px;
+}
+.optibio-hero-ed__stat strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  color: #C9A961;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SCIENCE STRIP
+   ════════════════════════════════════════════════════════════ */
+.optibio-hero-ed__science-strip {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 40px 60px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  align-items: center;
+  border-top: 1px solid rgba(26, 47, 77, 0.06);
+}
+.optibio-hero-ed__sci-item {
+  text-align: center;
+}
+.optibio-hero-ed__sci-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  color: #C9A961;
+  font-weight: 700;
+  display: block;
+}
+.optibio-hero-ed__sci-label {
+  font-size: 11px;
+  color: #475569;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+  display: block;
+}
+.optibio-hero-ed__sci-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(26, 47, 77, 0.08);
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════════════════
+   FDA DISCLAIMER
+   ════════════════════════════════════════════════════════════ */
+.optibio-hero-ed__fda {
+  text-align: center;
+  padding: 20px 60px 32px;
+  font-size: 10px;
+  color: #8B95A5;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE: TABLET (≤ 1024px)
+   ════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 1024px) {
+  .optibio-hero-ed__container {
+    grid-template-columns: 1fr;
+    padding: 32px 32px 0;
+    min-height: auto;
+    gap: 32px;
+  }
+  .optibio-hero-ed__editorial {
+    padding: 24px 0;
+  }
+  .optibio-hero-ed__headline {
+    font-size: 42px;
+  }
+  .optibio-hero-ed__lede {
+    font-size: 18px;
+    max-width: 100%;
+  }
+  .optibio-hero-ed__body {
+    max-width: 100%;
+  }
+  .optibio-hero-ed__pull-quote {
+    max-width: 100%;
+  }
+  .optibio-hero-ed__feature-card {
+    min-height: auto;
+    padding: 40px 32px;
+    border-radius: 12px;
+  }
+  .optibio-hero-ed__science-strip {
+    gap: 32px;
+    padding: 32px;
+    flex-wrap: wrap;
+  }
+  .optibio-hero-ed__trust-row {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE: MOBILE (≤ 768px)
+   ════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 768px) {
+  .optibio-hero-ed__container {
+    padding: 24px 20px 0;
+    gap: 24px;
+  }
+  .optibio-hero-ed__editorial {
+    padding: 16px 0;
+  }
+  .optibio-hero-ed__category {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .optibio-hero-ed__headline {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  .optibio-hero-ed__lede {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .optibio-hero-ed__body {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .optibio-hero-ed__pull-quote p {
+    font-size: 16px;
+  }
+  .optibio-hero-ed__ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .optibio-hero-ed__btn-gold,
+  .optibio-hero-ed__btn-primary,
+  .optibio-hero-ed__btn-outline {
+    text-align: center;
+    padding: 16px 24px;
+  }
+  .optibio-hero-ed__trust-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .optibio-hero-ed__detail-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .optibio-hero-ed__feature-card {
+    padding: 32px 24px;
+    min-height: auto;
+  }
+  .optibio-hero-ed__product-image img {
+    max-width: 180px;
+  }
+  .optibio-hero-ed__bottle-placeholder {
+    width: 140px;
+    height: 240px;
+  }
+  .optibio-hero-ed__bottle-body {
+    width: 140px;
+    height: 220px;
+  }
+  .optibio-hero-ed__fp-current {
+    font-size: 28px;
+  }
+  .optibio-hero-ed__feature-stats {
+    gap: 16px;
+  }
+  .optibio-hero-ed__science-strip {
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px 20px;
+  }
+  .optibio-hero-ed__sci-divider {
+    width: 40px;
+    height: 1px;
+  }
+  .optibio-hero-ed__sci-number {
+    font-size: 28px;
+  }
+  .optibio-hero-ed__fda {
+    padding: 16px 20px 24px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE: SMALL MOBILE (≤ 375px)
+   ════════════════════════════════════════════════════════════ */
+@media screen and (max-width: 375px) {
+  .optibio-hero-ed__headline {
+    font-size: 30px;
+  }
+  .optibio-hero-ed__lede {
+    font-size: 15px;
+  }
+  .optibio-hero-ed__feature-card {
+    padding: 28px 20px;
+  }
+}

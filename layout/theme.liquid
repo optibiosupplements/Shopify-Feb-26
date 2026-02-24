@@ -56,12 +56,36 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
 
+  <!-- Google Tag Manager — Container: GTM-NG6QSJRD -->
+  <!-- Installed: Feb 23, 2026 -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NG6QSJRD');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google Analytics 4 — Measurement ID: G-38QZ0WCZLG -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-38QZ0WCZLG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-38QZ0WCZLG');
+  </script>
+  <!-- End GA4 -->
+
   {% comment %}
     Optibio Global Design System — replaces optibio-brand.css, optibio-custom.css, optibio-ethereal.css
     Loaded on ALL pages (including product optibio-main template)
     Old files kept in assets/ for rollback but no longer loaded
   {% endcomment %}
   {{ 'optibio-global.css' | asset_url | stylesheet_tag }}
+
+  {% comment %} Optibio Homepage Styles — bundles, benefits, testimonials, shop-by-goal, coming-soon, guarantee {% endcomment %}
+  {% if template == 'index' %}
+    {{ 'homepage.css' | asset_url | stylesheet_tag }}
+  {% endif %}
 
   {% comment %} Optibio Blog Styles — brand typography + glassmorphism cards for blog pages {% endcomment %}
   {% if request.page_type == 'blog' or request.page_type == 'article' %}
@@ -70,6 +94,10 @@
 </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NG6QSJRD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
     <div id="header-group">
       {% sections 'header-group' %}

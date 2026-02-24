@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 21, 2026 — Session F)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session I)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** Pre-Launch READY (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS — remaining: favicon upload, test order, shipping rates config, Payments completion, Pixel ID)
+**Current Status:** LAUNCH READY (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live — remaining: Shopify API token refresh, hero product image upload, Knowledge Base App setup, content agent delegation)
 
 ---
 
@@ -432,13 +432,13 @@ Every clinical claim MUST be:
 | Shopify Inbox — Greeting message | Theme Editor → App Embeds | Updated to mention Optibio and KSM-66 Ashwagandha |
 
 ### Manual Steps Still Required (Session F)
-- [ ] **Upload favicon** — Upload 32px + 180px images via Admin → Settings → Brand (files in `optimized/`)
-- [ ] **Place test order** — Via Bogus Gateway or Shopify Payments test mode after Payments activation
-- [ ] **Configure shipping rates** — Follow `/shipping/SHIPPING_CONFIG_GUIDE.md` in Admin → Settings → Shipping
-- [ ] **Install email templates** — Paste 3 HTML templates from `/email-templates/` into Admin → Settings → Notifications
+- [x] ~~**Upload favicon**~~ DONE (owner confirmed)
+- [x] ~~**Place test order**~~ DONE (Session I — 1 bottle $39.99 + $5.99 shipping = $45.98, test mode verified)
+- [x] ~~**Configure shipping rates**~~ DONE (owner confirmed)
+- [x] ~~**Install email templates**~~ DONE (Session I — all 3 templates installed: Order Confirmation, Shipping Confirmation, Delivery Confirmation)
 - [ ] **Publish 3 blog posts** — Create articles in Admin from polished `/blog-content/*.md` files
-- [ ] **Complete Shopify Payments** — Owner must finish Steps 2-4 (personal/banking info)
-- [ ] **Set Facebook Pixel ID** — Replace placeholder in Admin → Settings → Customer events
+- [x] ~~**Complete Shopify Payments**~~ DONE (owner confirmed)
+- [x] ~~**Set Facebook Pixel ID**~~ DONE (real ID installed)
 - [x] **Push to Shopify-Feb-26 repo** — ✅ DONE Feb 21, 2026 (commit `74400c3`, pushed via Shopify CLI + git push)
 
 ### Completed Sessions
@@ -446,6 +446,12 @@ Every clinical claim MUST be:
 - ~~**Session A+B (continued):** Design system unification (#1A2F4D/#C9A961/Sora/Inter), badge implementation (6 SVG icons), header logo fix, double header fix, homepage audit (all 7 sections verified), Science page verified, About page verified, Verify Your Batch page built (hero + search + results + supply chain timeline + COA), page created in Shopify Admin~~ DONE
 
 - ~~**Session F:** Full implementation — legal pages, email templates, customer support, blog content (12 fixes each), chat widget branded, 6 policies published to Admin, compliance audit (11/11 PASS)~~ DONE
+
+- ~~**Session G:** Compliance & social proof cleanup — removed fabricated metrics from 8 files, FTC scan 11/11 PASS~~ DONE
+
+- ~~**Session H:** Hero Editorial deploy, GTM/GA4 installation, delegation briefs created~~ DONE
+
+- ~~**Session I:** Email templates installed (3), homepage.css fix, schema default fixes, product SEO optimized, test order verified end-to-end, theme pushed to live~~ DONE
 
 ### Installed Apps (February 19, 2026)
 
@@ -487,5 +493,96 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 21, 2026 (Session F — Full Implementation: Legal, Email, Blog, Chat, Policies, Audit)*
-*Next review: Favicon upload, test order, shipping rates config, email template install, blog post publication, Shopify Payments completion, Facebook Pixel*
+### Session G — Compliance & Social Proof Cleanup (Feb 22-23, 2026)
+
+| Action | File | Purpose |
+|--------|------|---------|
+| EDITED | `templates/index.json` | Cleared fabricated rating, customer_count, bottles_sold values |
+| EDITED | `templates/product.optibio-main.json` | Cleared fake 4.9 rating, 2,400+ review count, enabled Judge.me, replaced "Join thousands" |
+| EDITED | `templates/page.about.json` | Replaced "Join thousands" with clinical credibility copy |
+| EDITED | `sections/homepage-hero.liquid` | Added blank-check conditionals for rating/customer_count, clinical fallback display |
+| EDITED | `sections/homepage-bundles.liquid` | Added blank-check on review count, shows "Backed by 24+ clinical studies" when empty |
+| EDITED | `sections/product-social-proof.liquid` | Added blank-check conditional, cleared defaults, enabled Judge.me widget |
+| EDITED | `sections/product-final-cta.liquid` | Updated "Join thousands" default, fixed $84.99 to $39.99 schema default |
+| EDITED | `sections/about-standards.liquid` | Updated "Join thousands" default |
+
+**FTC Compliance Scan Result:** 11/11 PASS (all 430+ theme files verified clean)
+
+**Fabricated Social Proof Removed (4 categories, 8 files):**
+- ★★★★★ 4.9/5 fake rating → blank (shows clinical credibility copy)
+- "2,400+ happy customers" → blank
+- "127 bottles sold in last 24 hours" → blank
+- "287 reviews" on bundle cards → blank
+- All files use `{% if section.settings.rating != blank %}` conditional pattern
+
+### Session H — Hero Editorial Deploy + GTM/GA4 + Delegation (Feb 23, 2026)
+
+| Action | File | Purpose |
+|--------|------|---------|
+| CREATED | `assets/homepage-hero-editorial.css` | Editorial hero CSS (Sora/Inter, Navy/Gold/Electric Blue, Sky Blue gradient) |
+| REPLACED | `sections/homepage-hero.liquid` | Replaced old hero with Design D Editorial (magazine-style, editorial left + product card right) |
+| BACKUP | `sections/homepage-hero.liquid.backup` | Backup of pre-editorial hero for rollback |
+| EDITED | `templates/index.json` | Updated homepage_hero section — new schema settings (category_text, headline lines, lede, body, pull quote, CTAs, product card, science strip) + new block types (trust_item × 3, detail_item × 3) |
+| EDITED | `templates/product.optibio-main.json` | Fixed button_text "$84.99" → "$39.99" in final_cta section |
+| EDITED | `layout/theme.liquid` | Added GTM container (GTM-NG6QSJRD) head + noscript body snippets + GA4 gtag.js (G-38QZ0WCZLG) |
+| CREATED | `/DELEGATION_INSTRUCTIONS.md` | Comprehensive content agent briefs: 5 briefs covering email sequences (12 emails), ad copy (9 creatives), social captions (Week 1), Knowledge Base App content, optimized product data for AI discovery |
+
+### Session H — Tracking Configuration
+
+| Tracker | ID | Status |
+|---------|-----|--------|
+| Meta Pixel | 3892490224214287 | LIVE (installed Session E) |
+| GTM Container | GTM-NG6QSJRD | Installed in theme.liquid head + body noscript |
+| GA4 Measurement | G-38QZ0WCZLG | Installed in theme.liquid via gtag.js |
+
+### Manual Steps Still Required (Session H)
+- [ ] **Refresh Shopify API token** — Current token `shpat_10545...` returning 401. Go to Dev Dashboard → "Claud MCP" → API credentials → regenerate
+- [x] ~~**Update product title/description**~~ DONE (Session I — updated via Shopify Admin browser: title, description HTML, SEO page title, meta description)
+- [x] ~~**Push theme to live**~~ DONE (Session I — pushed multiple times, all schema errors fixed, zero errors on final push)
+- [ ] **Upload product image in hero** — Theme Customizer → Homepage → Hero Editorial → Product Feature Card → upload bottle image
+- [ ] **Verify GTM is firing** — Visit site → GTM Preview mode or Chrome Tag Assistant
+- [ ] **Delegate content briefs** — Hand `/DELEGATION_INSTRUCTIONS.md` to content agents for email, ad, and social creation
+- [ ] **Shopify Knowledge Base App** — Install from App Store and populate with Brief 4 content
+- [x] ~~Favicon~~ DONE (owner confirmed)
+- [x] ~~Shipping rates~~ DONE (owner confirmed)
+- [x] ~~Shopify Payments~~ DONE (owner confirmed)
+- [x] ~~Facebook Pixel~~ DONE (real ID installed)
+
+### Session I — Email Templates + Homepage Fix + Test Order + Product SEO (Feb 24, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| INSTALLED | Admin → Notifications → Order Confirmation | Pasted custom Optibio-branded HTML template (navy header, order details, "What to Expect" box, guarantee, FDA disclaimer) |
+| INSTALLED | Admin → Notifications → Shipping Confirmation | Pasted custom Optibio-branded HTML template (tracking CTA, "Getting Started with Optibio" tips) |
+| INSTALLED | Admin → Notifications → Delivered | Pasted custom Optibio-branded HTML template (Quick Start Guide, "What to Expect" timeline, guarantee reminder) |
+| EDITED | `layout/theme.liquid` | Added conditional homepage.css loading: `{% if template == 'index' %}{{ 'homepage.css' \| asset_url \| stylesheet_tag }}{% endif %}` — fixed bundles/benefits/testimonials rendering as unstyled text |
+| EDITED | `sections/homepage-bundles.liquid` | Removed `"default": ""` from review_count schema (caused Shopify validation error) |
+| EDITED | `sections/product-social-proof.liquid` | Removed `"default": ""` from rating and review_count schema (caused Shopify validation error) |
+| UPDATED | Admin → Products → Optibio Ashwagandha | Updated product title, full HTML description, SEO page title (58/70 chars), meta description (143/160 chars) — all optimized for AI discovery |
+| VERIFIED | Shopify Payments test mode | Enabled test mode, placed test order (1 bottle $39.99 + $5.99 shipping = $45.98), verified checkout flow, disabled test mode |
+| PUSHED | Theme to live (3 times) | Full theme push, then targeted push for schema fixes, then final clean push — zero errors |
+
+**Product SEO Updates (Shopify Admin):**
+- Title: `Optibio KSM-66® Ashwagandha Root Extract | 600mg Clinical Dose | 90 Capsules | Stress & Sleep Support`
+- SEO Page Title: `Optibio KSM-66® Ashwagandha 600mg | Stress & Sleep Support` (58/70 chars)
+- Meta Description: `600mg KSM-66® Ashwagandha root extract. Clinically studied: 27.9% lower cortisol, 44% less stress, better sleep. 90-day guarantee. Made in USA.` (143/160 chars)
+- URL Handle: `products/optibio-ashwagandha-ksm-66` (unchanged)
+
+**Test Order Results:**
+- Variant: 1 Bottle (45-Day Supply) — $39.99
+- Shipping: Standard — $5.99 (correctly charged for orders under $75 threshold)
+- Total: $45.98
+- Checkout flow: Clean, express options (Shop Pay, Google Pay) visible
+- Email templates: Owner verified delivery
+
+### Past Mistakes Addendum (Feb 23, 2026)
+17. **Fabricated social proof on live site** — The original site (from Manus build) had fabricated metrics across 8 theme files: fake 4.9 star rating, fake "2,400+ happy customers", fake "127 bottles sold in 24h", fake "287 reviews" on bundle cards. All were removed and replaced with clinical credibility copy using Liquid blank-check conditionals. When real reviews accumulate via Judge.me, the numbers can be re-populated with verified data.
+18. **Product final CTA button showing $84.99** — The schema default was fixed to $39.99 in Session G but the template JSON value in `product.optibio-main.json` was missed. Fixed in Session H. Always check BOTH the section schema defaults AND the template JSON values when correcting pricing.
+19. **Shopify MCP API token 401** — Token expired (24hr OAuth expiry per CLAUDE.md). Cannot update product data via API until token is refreshed. Workaround: prepare optimized copy in documentation, paste manually via Admin, or use browser automation.
+20. **Homepage.css not loaded — bundles rendered as unstyled text** — The `homepage.css` file (containing all homepage section styles: bundles, benefits, testimonials, shop-by-goal, coming-soon, guarantee) existed in `assets/` but was never loaded by `theme.liquid` or any section file. Only the hero section loaded its own CSS. Result: the bundles section rendered as plain unstyled text on the live site. Fix: added `{% if template == 'index' %}{{ 'homepage.css' | asset_url | stylesheet_tag }}{% endif %}` to `theme.liquid`. Lesson: always verify CSS is actually loaded in the browser, not just present in the assets folder.
+21. **Shopify section schema "default": "" causes validation error** — Setting `"default": ""` (blank string) on text-type section settings causes Shopify to reject the theme push with "Invalid schema: setting with id=X default can't be blank". Fix: remove the `"default"` key entirely — Shopify treats absent defaults as null/empty without error. This was introduced during Session G social proof cleanup when clearing fake values.
+
+---
+
+*Last updated: February 24, 2026 (Session I — Email Templates, Homepage CSS Fix, Test Order, Product SEO)*
+*Next review: Hero product image upload, GTM verification, content agent delegation, Knowledge Base App setup, blog post publication, Shopify API token refresh*

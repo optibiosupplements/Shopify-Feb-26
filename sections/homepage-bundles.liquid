@@ -33,7 +33,7 @@
         <a href="/products/optibio-ashwagandha-ksm-66?variant=44617498722373" class="optibio-home-bundles__cta optibio-home-bundles__cta--secondary">
           Select
         </a>
-        <div class="optibio-home-bundles__social-proof">★★★★★ {{ section.settings.review_count }} reviews</div>
+        {% if section.settings.review_count != blank %}<div class="optibio-home-bundles__social-proof">★★★★★ {{ section.settings.review_count }} reviews</div>{% else %}<div class="optibio-home-bundles__social-proof">✔ Backed by 24+ clinical studies</div>{% endif %}
       </div>
 
       {%- comment -%} Card 2: 3 Bottles — MOST POPULAR (featured) {%- endcomment -%}
@@ -52,7 +52,7 @@
         <a href="/products/optibio-ashwagandha-ksm-66?variant=44617498689605" class="optibio-home-bundles__cta optibio-home-bundles__cta--primary">
           Select
         </a>
-        <div class="optibio-home-bundles__social-proof">★★★★★ {{ section.settings.review_count }} reviews</div>
+        {% if section.settings.review_count != blank %}<div class="optibio-home-bundles__social-proof">★★★★★ {{ section.settings.review_count }} reviews</div>{% else %}<div class="optibio-home-bundles__social-proof">✔ Backed by 24+ clinical studies</div>{% endif %}
       </div>
 
       {%- comment -%} Card 3: 1 Bottle — Trial {%- endcomment -%}
@@ -69,7 +69,7 @@
         <a href="/products/optibio-ashwagandha-ksm-66?variant=44617498656837" class="optibio-home-bundles__cta optibio-home-bundles__cta--secondary">
           Select
         </a>
-        <div class="optibio-home-bundles__social-proof">★★★★★ {{ section.settings.review_count }} reviews</div>
+        {% if section.settings.review_count != blank %}<div class="optibio-home-bundles__social-proof">★★★★★ {{ section.settings.review_count }} reviews</div>{% else %}<div class="optibio-home-bundles__social-proof">✔ Backed by 24+ clinical studies</div>{% endif %}
       </div>
 
     </div>
@@ -116,8 +116,7 @@
     {
       "type": "text",
       "id": "review_count",
-      "label": "Review Count",
-      "default": "287"
+      "label": "Review Count (leave blank until real reviews exist)"
     },
     {
       "type": "header",

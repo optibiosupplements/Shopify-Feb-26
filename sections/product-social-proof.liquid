@@ -7,12 +7,18 @@
 <section class="optibio-section optibio-social-proof optibio-reveal" id="optibio-social-proof">
   <div class="page-width">
 
-    {% comment %} Rating Summary {% endcomment %}
-    <div class="optibio-social-proof__rating">
-      <span class="optibio-social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <span class="optibio-social-proof__score">{{ section.settings.rating }}</span>
-      <span class="optibio-social-proof__count">({{ section.settings.review_count }} reviews)</span>
-    </div>
+    {% comment %} Rating Summary — only show when real review data exists {% endcomment %}
+    {% if section.settings.rating != blank and section.settings.review_count != blank %}
+      <div class="optibio-social-proof__rating">
+        <span class="optibio-social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="optibio-social-proof__score">{{ section.settings.rating }}</span>
+        <span class="optibio-social-proof__count">({{ section.settings.review_count }} reviews)</span>
+      </div>
+    {% else %}
+      <div class="optibio-social-proof__rating">
+        <span class="optibio-social-proof__score">What Our Customers Say</span>
+      </div>
+    {% endif %}
 
     {% comment %} Testimonial Carousel {% endcomment %}
     <div class="optibio-testimonial-track">
@@ -65,21 +71,19 @@
     {
       "type": "text",
       "id": "rating",
-      "label": "Average Rating",
-      "default": "4.9"
+      "label": "Average Rating (leave blank until real reviews exist)"
     },
     {
       "type": "text",
       "id": "review_count",
-      "label": "Review Count",
-      "default": "2,400+"
+      "label": "Review Count (leave blank until real reviews exist)"
     },
     {
       "type": "checkbox",
       "id": "show_review_app",
-      "label": "Show Review App Widget",
-      "default": false,
-      "info": "Enable after installing Judge.me or another review app"
+      "label": "Show Review App Widget (Judge.me)",
+      "default": true,
+      "info": "Shows real reviews from Judge.me"
     }
   ],
   "blocks": [

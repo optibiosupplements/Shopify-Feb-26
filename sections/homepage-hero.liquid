@@ -1,368 +1,469 @@
 {% comment %}
-  Optibio Homepage Hero Section v3 — Official Brand Guidelines Match
-  Two-column layout: copy + price card (left), product image (right)
-  Brand: Navy #1E3A5F, Gold #C9A961, Electric Blue #2563EB CTA
-  Typography: Sora (headings) + Inter (body)
-  Background: Sky Blue radial gradient
-  Price card: Glassmorphism with gold border accent
+  ═══════════════════════════════════════════════════════════════
+  Optibio Hero Section — Design D: Editorial
+  Magazine-style layout: editorial narrative left, product card right
+  "Warm authority" tone: clinical but human, not robotic
+  ═══════════════════════════════════════════════════════════════
+
+  DEPLOYMENT: Replace the existing sections/homepage-hero.liquid
+  with this file. CSS is self-contained in <style> tags.
+
+  SETTINGS: All text, images, and CTA links are editable from
+  the Shopify theme customizer (Customize > Homepage > Hero).
 {% endcomment %}
 
-{{ 'homepage.css' | asset_url | stylesheet_tag }}
+{{ 'homepage-hero-editorial.css' | asset_url | stylesheet_tag }}
 
-{%- comment -%} Load Sora + Inter fonts — official brand typography {%- endcomment -%}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<section
+  id="optibio-hero"
+  class="optibio-hero-ed"
+  data-section-id="{{ section.id }}"
+  data-section-type="homepage-hero"
+>
+  {%- comment -%} ── HERO GRID: Editorial Left + Product Card Right ── {%- endcomment -%}
+  <div class="optibio-hero-ed__container">
 
-<section class="optibio-hero" id="optibio-hero">
-  <div class="optibio-hero__container">
+    {%- comment -%} ══ LEFT COLUMN: Editorial Content ══ {%- endcomment -%}
+    <div class="optibio-hero-ed__editorial">
 
-    {%- comment -%} Left Column: Copy + Price Card {%- endcomment -%}
-    <div class="optibio-hero__copy">
-
-      {%- comment -%} 1. Eyebrow Badge {%- endcomment -%}
-      <div class="optibio-hero__badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        {{ section.settings.badge_text }}
+      {%- comment -%} Category Tag ─────────────────────── {%- endcomment -%}
+      <div class="optibio-hero-ed__category">
+        {{ section.settings.category_text | default: 'Adaptogens & Wellness' }}
       </div>
 
-      {%- comment -%} 2. Headline — "Yourself" gets gradient text {%- endcomment -%}
-      <h1 class="optibio-hero__headline">
-        {%- assign headline_parts = section.settings.headline | split: '[gradient]' -%}
-        {%- if headline_parts.size > 1 -%}
-          {{ headline_parts[0] }}<span class="optibio-hero__gradient-text">{{ headline_parts[1] | split: '[/gradient]' | first }}</span>{{ headline_parts[1] | split: '[/gradient]' | last }}
-        {%- else -%}
-          {{ section.settings.headline }}
-        {%- endif -%}
+      {%- comment -%} Headline ─────────────────────────── {%- endcomment -%}
+      <h1 class="optibio-hero-ed__headline">
+        {{ section.settings.headline_line1 | default: 'Your Body' }}<br>
+        {{ section.settings.headline_line2 | default: 'Knows How' }}<br>
+        {{ section.settings.headline_line3 | default: 'to' }}
+        <em>{{ section.settings.headline_accent | default: 'Thrive.' }}</em>
       </h1>
 
-      {%- comment -%} 3. Subheadline {%- endcomment -%}
-      <p class="optibio-hero__subheadline">{{ section.settings.subheadline }}</p>
+      {%- comment -%} Lede (italic intro paragraph) ───── {%- endcomment -%}
+      <p class="optibio-hero-ed__lede">
+        {{ section.settings.lede_text | default: 'Sometimes it just needs the right support. KSM-66® Ashwagandha is the most clinically studied adaptogen in the world — and we deliver the full clinical dose.' }}
+      </p>
 
-      {%- comment -%} 4. Certification Row — horizontal flex {%- endcomment -%}
-      <div class="optibio-hero__cert-row">
-        {% for block in section.blocks %}
-          {% if block.type == 'certification' %}
-            <div class="optibio-hero__cert-item" {{ block.shopify_attributes }}>
-              <div class="optibio-hero__cert-icon">
-                {% case block.settings.icon_type %}
-                  {% when 'shield' %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-                  {% when 'certificate' %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
-                  {% when 'leaf' %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-1 3.5-3.5 5.5-5 7"/><path d="M11.2 15c-1.3-1-2.2-2.6-2.2-4.5 0-.5 0-1 .2-1.5"/></svg>
-                  {% when 'building' %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                  {% else %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                {% endcase %}
-              </div>
-              <div class="optibio-hero__cert-text">
-                <strong>{{ block.settings.cert_name }}</strong>
-                {% if block.settings.cert_subtitle != blank %}
-                  <small>{{ block.settings.cert_subtitle }}</small>
-                {% endif %}
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
+      {%- comment -%} Body Copy ─────────────────────────── {%- endcomment -%}
+      <p class="optibio-hero-ed__body">
+        {{ section.settings.body_text | default: "Stress doesn't announce itself. It accumulates — in tight shoulders, restless nights, and that low hum of exhaustion you've learned to live with. KSM-66 works with your body's own stress-response system, helping you find balance again." }}
+      </p>
+
+      {%- comment -%} Pull Quote ─────────────────────────── {%- endcomment -%}
+      {%- if section.settings.show_pull_quote -%}
+        <blockquote class="optibio-hero-ed__pull-quote">
+          <p>&ldquo;{{ section.settings.quote_text | default: "The difference between feeling like you're surviving and feeling like you're actually living." }}&rdquo;</p>
+          <cite>{{ section.settings.quote_attribution | default: 'What our customers tell us' }}</cite>
+        </blockquote>
+      {%- endif -%}
+
+      {%- comment -%} CTAs ─────────────────────────────── {%- endcomment -%}
+      <div class="optibio-hero-ed__ctas">
+        <a href="{{ section.settings.primary_cta_link | default: '/products/optibio-ashwagandha-ksm-66' }}" class="optibio-hero-ed__btn-gold">
+          {{ section.settings.primary_cta_text | default: 'Start Feeling Better' }}
+        </a>
+        <a href="{{ section.settings.secondary_cta_link | default: '/pages/science' }}" class="optibio-hero-ed__btn-outline">
+          {{ section.settings.secondary_cta_text | default: 'Read the Research' }}
+        </a>
       </div>
 
-      {%- comment -%} 5. Price Card — Glassmorphism with gold border {%- endcomment -%}
-      <div class="optibio-hero__price-card">
-
-        {%- comment -%} 5a. Countdown Timer — Red tint urgency {%- endcomment -%}
-        {% if section.settings.coupon_code != blank %}
-          <div class="optibio-hero__countdown" id="optibio-hero-countdown" data-end-date="{{ section.settings.coupon_end_date }}">
-            <div class="optibio-hero__countdown-label">
-              <span>⏰</span>
-              <span>{{ section.settings.coupon_code }} code expires in:</span>
+      {%- comment -%} Trust Row ─────────────────────────── {%- endcomment -%}
+      <div class="optibio-hero-ed__trust-row">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'trust_item' -%}
+            <div class="optibio-hero-ed__trust-item" {{ block.shopify_attributes }}>
+              <div class="optibio-hero-ed__trust-icon">
+                {{ block.settings.icon | default: '✓' }}
+              </div>
+              <div class="optibio-hero-ed__trust-text">
+                <strong>{{ block.settings.title | default: 'Clinically Studied' }}</strong>
+                {{ block.settings.subtitle | default: '24 peer-reviewed trials' }}
+              </div>
             </div>
-            <div class="optibio-hero__countdown-digits">
-              <div class="optibio-hero__time-unit">
-                <span class="optibio-hero__time-num" id="optibio-timer-days">--</span>
-                <span class="optibio-hero__time-label">Days</span>
-              </div>
-              <span class="optibio-hero__time-sep">:</span>
-              <div class="optibio-hero__time-unit">
-                <span class="optibio-hero__time-num" id="optibio-timer-hrs">--</span>
-                <span class="optibio-hero__time-label">Hrs</span>
-              </div>
-              <span class="optibio-hero__time-sep">:</span>
-              <div class="optibio-hero__time-unit">
-                <span class="optibio-hero__time-num" id="optibio-timer-min">--</span>
-                <span class="optibio-hero__time-label">Min</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Detail Grid (hybrid from Design B) ── {%- endcomment -%}
+      <div class="optibio-hero-ed__detail-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'detail_item' -%}
+            <div class="optibio-hero-ed__detail-item" {{ block.shopify_attributes }}>
+              <strong>{{ block.settings.label | default: 'Dose' }}</strong>
+              {{ block.settings.value | default: '600mg full-spectrum root extract' }}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+
+    {%- comment -%} ══ RIGHT COLUMN: Product Feature Card ══ {%- endcomment -%}
+    <div class="optibio-hero-ed__feature-card">
+
+      <div class="optibio-hero-ed__feature-tag">
+        {{ section.settings.feature_tag | default: 'Featured Product' }}
+      </div>
+
+      {%- comment -%} Product Image ─────────────────────── {%- endcomment -%}
+      {%- comment -%} Priority: 1) Manual image picker  2) Product featured image  3) CSS placeholder {%- endcomment -%}
+      {%- assign hero_handle = section.settings.product_link | split: '/products/' | last -%}
+      {%- assign hero_product = all_products[hero_handle] -%}
+      <div class="optibio-hero-ed__product-image">
+        {%- if section.settings.product_image != blank -%}
+          <img
+            src="{{ section.settings.product_image | image_url: width: 500 }}"
+            alt="{{ section.settings.product_image.alt | default: 'Optibio Ashwagandha KSM-66®' }}"
+            width="500"
+            height="auto"
+            loading="eager"
+            fetchpriority="high"
+          >
+        {%- elsif hero_product != blank and hero_product.featured_image != blank -%}
+          <img
+            src="{{ hero_product.featured_image | image_url: width: 500 }}"
+            alt="{{ hero_product.featured_image.alt | default: hero_product.title | default: 'Optibio Ashwagandha KSM-66®' }}"
+            width="500"
+            height="auto"
+            loading="eager"
+            fetchpriority="high"
+          >
+        {%- else -%}
+          {%- comment -%} CSS-only bottle placeholder ─── {%- endcomment -%}
+          <div class="optibio-hero-ed__bottle-placeholder">
+            <div class="optibio-hero-ed__bottle-cap"></div>
+            <div class="optibio-hero-ed__bottle-body">
+              <div class="optibio-hero-ed__bottle-label">
+                <span class="optibio-hero-ed__bl-brand">OPTIBIO</span><!-- All-caps in label is visual only -->
+                <span class="optibio-hero-ed__bl-line"></span>
+                <span class="optibio-hero-ed__bl-name">Ashwagandha<br>KSM-66&reg;</span>
+                <span class="optibio-hero-ed__bl-dose">600 MG</span>
+                <span class="optibio-hero-ed__bl-type">Full-Spectrum Root Extract</span>
               </div>
             </div>
           </div>
-        {% endif %}
-
-        {%- comment -%} 5b. Price Row {%- endcomment -%}
-        <div class="optibio-hero__price-row">
-          <span class="optibio-hero__price-current">{{ section.settings.price }}</span>
-          {% if section.settings.compare_price != blank %}
-            <span class="optibio-hero__price-compare">{{ section.settings.compare_price }}</span>
-          {% endif %}
-          {% if section.settings.savings_text != blank %}
-            <span class="optibio-hero__save-badge">{{ section.settings.savings_text }}</span>
-          {% endif %}
-        </div>
-
-        {%- comment -%} 5c. Info Box — Yellow {%- endcomment -%}
-        <div class="optibio-hero__info-box">
-          {% if section.settings.capsule_callout != blank %}
-            <div class="optibio-hero__info-row">
-              <span>✨</span>
-              <span><strong>{{ section.settings.capsule_callout | split: ' · ' | first }}</strong> · {{ section.settings.capsule_callout | split: ' · ' | slice: 1, 10 | join: ' · ' }}</span>
-            </div>
-          {% endif %}
-          {% if section.settings.shipping_text != blank %}
-            <div class="optibio-hero__info-row">
-              <span>📦</span>
-              <span>{{ section.settings.shipping_text }}</span>
-            </div>
-          {% endif %}
-        </div>
-
-        {%- comment -%} 5d. CTA Button — Electric Blue {%- endcomment -%}
-        <a href="{{ section.settings.cta_link | default: '/products/optibio-ashwagandha-ksm-66' }}" class="optibio-hero__cta">
-          {{ section.settings.cta_text }}
-          <span class="optibio-hero__cta-arrow">→</span>
-        </a>
-
-        {%- comment -%} 5e. Trust Footer — green checks {%- endcomment -%}
-        <div class="optibio-hero__trust-footer">
-          <span><span class="optibio-hero__green-check">✔</span> Secure checkout</span>
-          <span class="optibio-hero__trust-sep">•</span>
-          <span><span class="optibio-hero__green-check">✔</span> Free shipping on $75+</span>
-          <span class="optibio-hero__trust-sep">•</span>
-          <span><span class="optibio-hero__green-check">✔</span> 90-day guarantee</span>
-        </div>
-      </div>
-
-      {%- comment -%} 6. Social Proof Card — Green gradient {%- endcomment -%}
-      <div class="optibio-hero__social-proof">
-        <div class="optibio-hero__avatars">
-          <div class="optibio-hero__avatar"></div>
-          <div class="optibio-hero__avatar"></div>
-          <div class="optibio-hero__avatar"></div>
-          <div class="optibio-hero__avatar"></div>
-        </div>
-        <div class="optibio-hero__social-text">
-          <div class="optibio-hero__stars">★★★★★ <span class="optibio-hero__rating-num">{{ section.settings.rating }}/5</span></div>
-          <div class="optibio-hero__customer-count">Based on <strong>{{ section.settings.customer_count }} happy customers</strong></div>
-          {% if section.settings.bottles_sold != blank %}
-            <div class="optibio-hero__bottles-sold"><span class="optibio-hero__green-check">✔</span> {{ section.settings.bottles_sold }} bottles sold in last 24 hours</div>
-          {% endif %}
-        </div>
-      </div>
-
-    </div>
-
-    {%- comment -%} Right Column: Product Image {%- endcomment -%}
-    <div class="optibio-hero__media">
-      <div class="optibio-hero__image-wrap">
-        {%- if section.settings.product_image != blank -%}
-          <img
-            src="{{ section.settings.product_image | image_url: width: 900 }}"
-            alt="Optibio Ashwagandha KSM-66&reg;"
-            class="optibio-hero__image"
-            loading="eager"
-            fetchpriority="high"
-            width="900"
-            height="900"
-          />
-        {%- else -%}
-          <img
-            src="https://cdn.shopify.com/s/files/1/0713/6994/9253/files/LToMdDXYNWhaGtfI.png"
-            alt="Optibio Ashwagandha KSM-66&reg;"
-            class="optibio-hero__image"
-            loading="eager"
-            fetchpriority="high"
-            width="900"
-            height="900"
-          />
         {%- endif -%}
       </div>
+
+      {%- comment -%} Price ────────────────────────────── {%- endcomment -%}
+      <div class="optibio-hero-ed__feature-price">
+        <span class="optibio-hero-ed__fp-current">{{ section.settings.price | default: '$39.99' }}</span>
+        {%- if section.settings.compare_price != blank -%}
+          <span class="optibio-hero-ed__fp-compare">{{ section.settings.compare_price }}</span>
+        {%- endif -%}
+        <span class="optibio-hero-ed__fp-detail">{{ section.settings.price_detail | default: '90 Capsules · 45-Day Supply' }}</span>
+      </div>
+
+      {%- comment -%} Add to Cart Button ────────────────── {%- endcomment -%}
+      <a href="{{ section.settings.product_link | default: '/products/optibio-ashwagandha-ksm-66' }}" class="optibio-hero-ed__feature-btn">
+        {{ section.settings.feature_cta_text | default: 'Add to Bag' }}
+      </a>
+
+      {%- comment -%} Stat Highlights ─────────────────── {%- endcomment -%}
+      <div class="optibio-hero-ed__feature-stats">
+        <div class="optibio-hero-ed__stat">
+          <strong>24</strong>
+          Clinical Studies
+        </div>
+        <div class="optibio-hero-ed__stat">
+          <strong>600</strong>
+          mg per dose
+        </div>
+        <div class="optibio-hero-ed__stat">
+          <strong>90</strong>
+          Day Guarantee
+        </div>
+      </div>
+
     </div>
-
   </div>
-</section>
 
-{%- comment -%} FIRSTDOSE Countdown Timer Script {%- endcomment -%}
-<script>
-(function() {
-  var el = document.getElementById('optibio-hero-countdown');
-  if (!el) return;
-  var endDate = new Date(el.dataset.endDate + 'T23:59:59').getTime();
-  function update() {
-    var now = Date.now();
-    var diff = endDate - now;
-    if (diff <= 0) { el.style.display = 'none'; return; }
-    var d = Math.floor(diff / 86400000);
-    var h = Math.floor((diff % 86400000) / 3600000);
-    var m = Math.floor((diff % 3600000) / 60000);
-    var dEl = document.getElementById('optibio-timer-days');
-    var hEl = document.getElementById('optibio-timer-hrs');
-    var mEl = document.getElementById('optibio-timer-min');
-    if (dEl) dEl.textContent = d < 10 ? '0' + d : d;
-    if (hEl) hEl.textContent = h < 10 ? '0' + h : h;
-    if (mEl) mEl.textContent = m < 10 ? '0' + m : m;
-  }
-  update();
-  setInterval(update, 60000);
-})();
-</script>
+  {%- comment -%} ── SCIENCE STRIP (below hero) ── {%- endcomment -%}
+  {%- if section.settings.show_science_strip -%}
+    <div class="optibio-hero-ed__science-strip">
+      <div class="optibio-hero-ed__sci-item">
+        <span class="optibio-hero-ed__sci-number">24</span>
+        <span class="optibio-hero-ed__sci-label">Peer-Reviewed Studies</span>
+      </div>
+      <div class="optibio-hero-ed__sci-divider"></div>
+      <div class="optibio-hero-ed__sci-item">
+        <span class="optibio-hero-ed__sci-number">600mg</span>
+        <span class="optibio-hero-ed__sci-label">Full Clinical Dose</span>
+      </div>
+      <div class="optibio-hero-ed__sci-divider"></div>
+      <div class="optibio-hero-ed__sci-item">
+        <span class="optibio-hero-ed__sci-number">5:1</span>
+        <span class="optibio-hero-ed__sci-label">Root Extract Concentration</span>
+      </div>
+      <div class="optibio-hero-ed__sci-divider"></div>
+      <div class="optibio-hero-ed__sci-item">
+        <span class="optibio-hero-ed__sci-number">GMP</span>
+        <span class="optibio-hero-ed__sci-label">Certified Facility</span>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── FDA DISCLAIMER ── {%- endcomment -%}
+  <p class="optibio-hero-ed__fda">
+    *These statements have not been evaluated by the Food and Drug Administration.
+    This product is not intended to diagnose, treat, cure, or prevent any disease.
+    Individual results may vary.
+  </p>
+
+</section>
 
 {% schema %}
 {
-  "name": "Homepage Hero",
+  "name": "Hero — Editorial",
   "tag": "section",
   "class": "optibio-hero-wrapper",
   "settings": [
     {
-      "type": "text",
-      "id": "badge_text",
-      "label": "Badge Pill Text",
-      "default": "Science-Backed · Third-Party Tested"
+      "type": "header",
+      "content": "Category & Headline"
     },
     {
       "type": "text",
-      "id": "headline",
-      "label": "Headline (use [gradient]...[/gradient] for gradient text)",
-      "default": "Feel Like<br>[gradient]Yourself[/gradient] Again"
+      "id": "category_text",
+      "label": "Category tag",
+      "default": "Adaptogens & Wellness"
+    },
+    {
+      "type": "text",
+      "id": "headline_line1",
+      "label": "Headline line 1",
+      "default": "Your Body"
+    },
+    {
+      "type": "text",
+      "id": "headline_line2",
+      "label": "Headline line 2",
+      "default": "Knows How"
+    },
+    {
+      "type": "text",
+      "id": "headline_line3",
+      "label": "Headline line 3 (before accent)",
+      "default": "to"
+    },
+    {
+      "type": "text",
+      "id": "headline_accent",
+      "label": "Headline accent word (italic gold)",
+      "default": "Thrive."
+    },
+    {
+      "type": "header",
+      "content": "Body Copy"
     },
     {
       "type": "textarea",
-      "id": "subheadline",
-      "label": "Subheadline",
-      "default": "Clinically studied ashwagandha for the stress, overwhelm, and exhaustion of modern life. Wake up calm. Work with focus. Sleep deeply."
+      "id": "lede_text",
+      "label": "Lede paragraph (italic intro)",
+      "default": "Sometimes it just needs the right support. KSM-66® Ashwagandha is the most clinically studied adaptogen in the world — and we deliver the full clinical dose."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body paragraph",
+      "default": "Stress doesn't announce itself. It accumulates — in tight shoulders, restless nights, and that low hum of exhaustion you've learned to live with. KSM-66 works with your body's own stress-response system, helping you find balance again."
+    },
+    {
+      "type": "header",
+      "content": "Pull Quote"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pull_quote",
+      "label": "Show pull quote",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "quote_text",
+      "label": "Quote text",
+      "default": "The difference between feeling like you're surviving and feeling like you're actually living."
     },
     {
       "type": "text",
-      "id": "coupon_code",
-      "label": "Coupon Code",
-      "default": "FIRSTDOSE"
+      "id": "quote_attribution",
+      "label": "Quote attribution",
+      "default": "What our customers tell us"
+    },
+    {
+      "type": "header",
+      "content": "Call-to-Action Buttons"
     },
     {
       "type": "text",
-      "id": "coupon_message",
-      "label": "Coupon Message",
-      "default": "20% off your first bottle"
+      "id": "primary_cta_text",
+      "label": "Primary CTA text",
+      "default": "Start Feeling Better"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary CTA link"
     },
     {
       "type": "text",
-      "id": "coupon_end_date",
-      "label": "Coupon End Date (YYYY-MM-DD)",
-      "default": "2026-03-21"
+      "id": "secondary_cta_text",
+      "label": "Secondary CTA text",
+      "default": "Read the Research"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary CTA link"
+    },
+    {
+      "type": "header",
+      "content": "Product Feature Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "feature_tag",
+      "label": "Feature card tag",
+      "default": "Featured Product"
     },
     {
       "type": "text",
       "id": "price",
-      "label": "Display Price",
+      "label": "Display price",
       "default": "$39.99"
     },
     {
       "type": "text",
       "id": "compare_price",
-      "label": "Compare-at Price (strikethrough)",
+      "label": "Compare-at price (leave blank to hide)",
       "default": "$49.99"
     },
     {
       "type": "text",
-      "id": "savings_text",
-      "label": "Savings Badge Text",
-      "default": "Save 20%"
+      "id": "price_detail",
+      "label": "Price detail text",
+      "default": "90 Capsules · 45-Day Supply"
     },
     {
       "type": "text",
-      "id": "capsule_callout",
-      "label": "Capsule Callout",
-      "default": "90 Capsules · 45-Day Supply · 50% More Than Most Brands"
-    },
-    {
-      "type": "text",
-      "id": "shipping_text",
-      "label": "Shipping Note",
-      "default": "Free shipping on orders $75+"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Button Text",
-      "default": "Unlock Your Calm — Save 20%"
+      "id": "feature_cta_text",
+      "label": "Feature card CTA text",
+      "default": "Add to Bag"
     },
     {
       "type": "url",
-      "id": "cta_link",
-      "label": "CTA Button Link"
+      "id": "product_link",
+      "label": "Product link"
     },
     {
-      "type": "text",
-      "id": "rating",
-      "label": "Star Rating",
-      "default": "4.9"
+      "type": "header",
+      "content": "Science Strip"
     },
     {
-      "type": "text",
-      "id": "customer_count",
-      "label": "Customer Count",
-      "default": "2,400+"
-    },
-    {
-      "type": "text",
-      "id": "bottles_sold",
-      "label": "Bottles Sold (24h)",
-      "default": "127"
-    },
-    {
-      "type": "image_picker",
-      "id": "product_image",
-      "label": "Product Image"
+      "type": "checkbox",
+      "id": "show_science_strip",
+      "label": "Show science numbers strip",
+      "default": true
     }
   ],
   "blocks": [
     {
-      "type": "certification",
-      "name": "Certification Badge",
-      "limit": 4,
+      "type": "trust_item",
+      "name": "Trust Badge",
       "settings": [
         {
-          "type": "select",
-          "id": "icon_type",
-          "label": "Icon",
-          "options": [
-            { "value": "shield", "label": "Shield (Third-Party Tested)" },
-            { "value": "certificate", "label": "Award (GMP Certified)" },
-            { "value": "leaf", "label": "Leaf (Non-GMO / Organic)" },
-            { "value": "building", "label": "Building (FDA-Audited)" },
-            { "value": "checkmark", "label": "Checkmark (Generic)" }
-          ],
-          "default": "shield"
+          "type": "text",
+          "id": "icon",
+          "label": "Icon character",
+          "default": "✓"
         },
         {
           "type": "text",
-          "id": "cert_name",
-          "label": "Certification Name",
-          "default": "Third-Party Tested"
+          "id": "title",
+          "label": "Title",
+          "default": "Clinically Studied"
         },
         {
           "type": "text",
-          "id": "cert_subtitle",
-          "label": "Certification Subtitle",
-          "default": "for purity"
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "24 peer-reviewed trials"
+        }
+      ]
+    },
+    {
+      "type": "detail_item",
+      "name": "Detail Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Dose"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "600mg full-spectrum root extract"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Homepage Hero",
+      "name": "Hero — Editorial",
       "blocks": [
-        { "type": "certification", "settings": { "icon_type": "shield", "cert_name": "Third-Party Tested", "cert_subtitle": "for purity" } },
-        { "type": "certification", "settings": { "icon_type": "certificate", "cert_name": "GMP Certified", "cert_subtitle": "facility" } },
-        { "type": "certification", "settings": { "icon_type": "leaf", "cert_name": "Non-GMO & Organic", "cert_subtitle": "ingredients" } }
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "✓",
+            "title": "Clinically Studied",
+            "subtitle": "24 peer-reviewed trials"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "◈",
+            "title": "Full Clinical Dose",
+            "subtitle": "600mg KSM-66®"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "☆",
+            "title": "90-Day Guarantee",
+            "subtitle": "No questions asked"
+          }
+        },
+        {
+          "type": "detail_item",
+          "settings": {
+            "label": "Dose",
+            "value": "600mg full-spectrum root extract"
+          }
+        },
+        {
+          "type": "detail_item",
+          "settings": {
+            "label": "Studies",
+            "value": "24 peer-reviewed clinical trials"
+          }
+        },
+        {
+          "type": "detail_item",
+          "settings": {
+            "label": "Standard",
+            "value": "Third-party tested, GMP certified"
+          }
+        }
       ]
     }
   ]

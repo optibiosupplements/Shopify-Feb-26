@@ -3,50 +3,76 @@
     "homepage_hero": {
       "type": "homepage-hero",
       "settings": {
-        "badge_text": "Science-Backed · Third-Party Tested",
-        "headline": "Feel Like<br>[gradient]Yourself[/gradient] Again",
-        "subheadline": "Clinically studied ashwagandha for the stress, overwhelm, and exhaustion of modern life. Wake up calm. Work with focus. Sleep deeply.",
-        "coupon_code": "FIRSTDOSE",
-        "coupon_message": "20% off your first bottle",
-        "coupon_end_date": "2026-03-21",
+        "category_text": "Adaptogens & Wellness",
+        "headline_line1": "Your Body",
+        "headline_line2": "Knows How",
+        "headline_line3": "to",
+        "headline_accent": "Thrive.",
+        "lede_text": "Sometimes it just needs the right support. KSM-66\u00ae Ashwagandha is the most clinically studied adaptogen in the world \u2014 and we deliver the full clinical dose.",
+        "body_text": "Stress doesn\u2019t announce itself. It accumulates \u2014 in tight shoulders, restless nights, and that low hum of exhaustion you\u2019ve learned to live with. KSM-66 works with your body\u2019s own stress-response system, helping you find balance again.",
+        "show_pull_quote": true,
+        "quote_text": "The difference between feeling like you\u2019re surviving and feeling like you\u2019re actually living.",
+        "quote_attribution": "What our customers tell us",
+        "primary_cta_text": "Start Feeling Better",
+        "primary_cta_link": "shopify://products/optibio-ashwagandha-ksm-66",
+        "secondary_cta_text": "Read the Research",
+        "secondary_cta_link": "shopify://pages/science",
+        "feature_tag": "Featured Product",
         "price": "$39.99",
         "compare_price": "$49.99",
-        "savings_text": "Save 20%",
-        "capsule_callout": "90 Capsules · 45-Day Supply · 50% More Than Most Brands",
-        "shipping_text": "Free shipping on orders $75+",
-        "cta_text": "Unlock Your Calm — Save 20%",
-        "cta_link": "shopify://products/optibio-ashwagandha-ksm-66",
-        "rating": "4.9",
-        "customer_count": "2,400+",
-        "bottles_sold": "127"
+        "price_detail": "90 Capsules \u00b7 45-Day Supply",
+        "feature_cta_text": "Add to Bag",
+        "product_link": "shopify://products/optibio-ashwagandha-ksm-66",
+        "show_science_strip": true
       },
       "blocks": {
-        "cert_1": {
-          "type": "certification",
+        "trust_1": {
+          "type": "trust_item",
           "settings": {
-            "icon_type": "shield",
-            "cert_name": "Third-Party Tested",
-            "cert_subtitle": "for purity"
+            "icon": "\u2713",
+            "title": "Clinically Studied",
+            "subtitle": "24 peer-reviewed trials"
           }
         },
-        "cert_2": {
-          "type": "certification",
+        "trust_2": {
+          "type": "trust_item",
           "settings": {
-            "icon_type": "certificate",
-            "cert_name": "GMP Certified",
-            "cert_subtitle": "facility"
+            "icon": "\u25c8",
+            "title": "Full Clinical Dose",
+            "subtitle": "600mg KSM-66\u00ae"
           }
         },
-        "cert_3": {
-          "type": "certification",
+        "trust_3": {
+          "type": "trust_item",
           "settings": {
-            "icon_type": "leaf",
-            "cert_name": "Non-GMO & Organic",
-            "cert_subtitle": "ingredients"
+            "icon": "\u2606",
+            "title": "90-Day Guarantee",
+            "subtitle": "No questions asked"
+          }
+        },
+        "detail_1": {
+          "type": "detail_item",
+          "settings": {
+            "label": "Dose",
+            "value": "600mg full-spectrum root extract"
+          }
+        },
+        "detail_2": {
+          "type": "detail_item",
+          "settings": {
+            "label": "Studies",
+            "value": "24 peer-reviewed clinical trials"
+          }
+        },
+        "detail_3": {
+          "type": "detail_item",
+          "settings": {
+            "label": "Standard",
+            "value": "Third-party tested, GMP certified"
           }
         }
       },
-      "block_order": ["cert_1", "cert_2", "cert_3"]
+      "block_order": ["trust_1", "trust_2", "trust_3", "detail_1", "detail_2", "detail_3"]
     },
     "homepage_bundles": {
       "type": "homepage-bundles",
@@ -54,7 +80,7 @@
         "heading": "Choose Your Clinical Protocol",
         "subheading": "FREE shipping on 3+ bottles & 90-day guarantee",
         "daily_cost_message": "Less than $0.89/day — less than your morning coffee",
-        "review_count": "287",
+        "review_count": "",
         "tier1_name": "Trial",
         "tier1_supply": "45-Day Supply",
         "tier1_price": "39.99",

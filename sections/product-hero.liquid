@@ -124,25 +124,9 @@
         <li><span class="check">&#10003;</span> {{ section.settings.benefit_3 }}</li>
       </ul>
 
-      {% comment %} Social Proof Widget {% endcomment %}
-      <div class="optibio-social-proof-widget">
-        <div class="optibio-social-proof-widget__rating">
-          <span class="optibio-social-proof-widget__score">4.9</span>
-          <div class="optibio-social-proof-widget__stars-row">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08L15.78 18 10 13.97 4.22 18l2.08-6.75L1 7.17h6.61z"/></svg>
-          </div>
-        </div>
-        <div class="optibio-social-proof-widget__details">
-          <span class="optibio-social-proof-widget__count">2,400+ happy customers</span>
-          <span class="optibio-social-proof-widget__recent">
-            <span class="optibio-social-proof-widget__dot"></span>
-            287 verified reviews
-          </span>
-        </div>
+      {% comment %} Social Proof Widget — placeholder for Judge.me real reviews {% endcomment %}
+      <div id="judgeme_product_reviews" class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+        {{ product.metafields.judgeme.badge }}
       </div>
 
       {% comment %} CRO: Low Stock Indicator — real inventory data only {% endcomment %}

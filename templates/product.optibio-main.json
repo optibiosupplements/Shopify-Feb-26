@@ -120,9 +120,9 @@
         "testimonial_6"
       ],
       "settings": {
-        "rating": "4.9",
-        "review_count": "2,400+",
-        "show_review_app": false
+        "rating": "",
+        "review_count": "",
+        "show_review_app": true
       }
     },
     "1771562459cc52825f": {
@@ -438,8 +438,8 @@
       "type": "product-final-cta",
       "settings": {
         "heading": "Ready to Feel Calm Again?",
-        "subheading": "Join thousands who have transformed their stress response with clinically studied KSM-66® ashwagandha.",
-        "button_text": "Start Your Journey — $84.99"
+        "subheading": "Backed by 24+ peer-reviewed clinical studies. 600mg clinical dose. 90-day money-back guarantee.",
+        "button_text": "Start Your Journey — $39.99"
       }
     },
     "1771566289236af272": {
