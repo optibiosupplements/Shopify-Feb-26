@@ -15,9 +15,9 @@
   --optibio-sky-mid: #EBF5FB;
   --optibio-sky-end: #D6EAF8;
   --optibio-body: #475569;
-  --optibio-green: #10B981;
+  --optibio-green: #059669;
   --optibio-star: #F59E0B;
-  --optibio-red: #EF4444;
+  --optibio-red: #DC2626;
   --optibio-white: #ffffff;
   --optibio-blue-cta: #2563EB;
   --optibio-blue-hover: #1D4ED8;
@@ -900,8 +900,8 @@
 }
 
 .optibio-carousel-dot {
-  width: 8px;
-  height: 8px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: rgba(30, 58, 95, 0.2);
   border: none;
@@ -912,7 +912,7 @@
 
 .optibio-carousel-dot.active {
   background: var(--optibio-navy);
-  width: 24px;
+  width: 32px;
   border-radius: var(--optibio-radius-pill);
 }
 

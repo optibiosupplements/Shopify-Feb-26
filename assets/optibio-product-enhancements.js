@@ -308,3 +308,16 @@ if (document.readyState === 'loading') {
 } else {
   window.optiBioEnhancements = new OptibioProductEnhancements();
 }
+
+// Patch Judge.me "Write a Review" links for SEO crawlability
+(function patchJudgeMeLinks() {
+  var observer = new MutationObserver(function(mutations) {
+    var links = document.querySelectorAll('.jdgm-write-rev-link:not([href])');
+    links.forEach(function(el) {
+      el.setAttribute('href', '#judgeme_product_reviews');
+    });
+    if (links.length > 0) observer.disconnect();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  setTimeout(function() { observer.disconnect(); }, 10000);
+})();

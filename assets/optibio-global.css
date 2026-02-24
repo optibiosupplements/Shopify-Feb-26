@@ -12,7 +12,7 @@
    Canonical design tokens — source of truth for the entire store.
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap');
+/* Fonts loaded via <link> in theme.liquid head — @import removed to eliminate render-blocking chain */
 
 /* --- Global Design Tokens --- */
 :root {
@@ -20,15 +20,15 @@
   --optibio-navy-dark: #152540;
   --optibio-navy-deep: #1E3A5F;
   --optibio-gold: #C9A961;
-  --optibio-gold-dark: #B89A4F;
+  --optibio-gold-dark: #9A7D3B;
   --optibio-sky-start: #F8FCFE;
   --optibio-sky-mid: #EBF5FB;
   --optibio-sky-end: #D6EAF8;
   --optibio-body: #475569;
   --optibio-body-light: #64748B;
-  --optibio-green: #10B981;
+  --optibio-green: #059669;
   --optibio-star: #F59E0B;
-  --optibio-red: #EF4444;
+  --optibio-red: #DC2626;
   --optibio-white: #ffffff;
   --optibio-blue-cta: #2563EB;
   --optibio-blue-hover: #1D4ED8;
@@ -372,7 +372,7 @@ search-button:hover svg {
 
 .optibio-footer-fda p {
   font-size: 11px !important;
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
   line-height: 1.5;
   margin: 0;
 }

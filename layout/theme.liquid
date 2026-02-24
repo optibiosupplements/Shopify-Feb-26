@@ -75,6 +75,14 @@
   </script>
   <!-- End GA4 -->
 
+  {% comment %} Preconnect to Google Fonts + third-party tracking domains {% endcomment %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap"></noscript>
+
   {% comment %}
     Optibio Global Design System — replaces optibio-brand.css, optibio-custom.css, optibio-ethereal.css
     Loaded on ALL pages (including product optibio-main template)

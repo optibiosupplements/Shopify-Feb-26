@@ -10,14 +10,22 @@
 <script src="{{ 'product-page.js' | asset_url }}" defer></script>
 <script src="{{ 'optibio-product-enhancements.js' | asset_url }}" defer></script>
 
+{% comment %} GA4 Enhanced E-Commerce dataLayer — product data + event tracking {% endcomment %}
+<script>
+  window.__optibio_product = {
+    id: {{ product.id | json }},
+    title: {{ product.title | json }},
+    price: {{ product.selected_or_first_available_variant.price | divided_by: 100.0 }},
+    variant_id: {{ product.selected_or_first_available_variant.id | json }},
+    variant_title: {{ product.selected_or_first_available_variant.title | default: 'Default' | json }}
+  };
+</script>
+<script src="{{ 'optibio-ga4-ecommerce.js' | asset_url }}" defer></script>
+
 {% comment %} Preload hero image for LCP performance {% endcomment %}
 {% if product.featured_image %}
   <link rel="preload" as="image" href="{{ product.featured_image | image_url: width: 800 }}" fetchpriority="high">
 {% endif %}
-
-{% comment %} Preload fonts {% endcomment %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <section class="optibio-section optibio-hero" id="optibio-hero" data-section-id="{{ section.id }}">
 
