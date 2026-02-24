@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog — remaining: Google Search Console setup, Google Merchant Center feed, social media accounts, content agent delegation)
+**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + Google & YouTube app installed on Shopify — remaining: Merchant Center T&C acceptance, social media accounts, content agent delegation)
 
 ---
 
@@ -698,7 +698,28 @@ Every clinical claim MUST be:
 10. What is your return policy? → 90-day money-back guarantee
 11. Is it backed by science? → 24+ gold-standard clinical trials on KSM-66
 
+### Session N — Google Search Console + Google Merchant Center (Feb 24, 2026)
+
+| Action | Detail |
+|--------|--------|
+| SWITCHED | Google account → `optibiosupplements@gmail.com` for all Google services |
+| VERIFIED | Google Search Console — domain auto-verified via Google Analytics + Google Tag Manager |
+| SUBMITTED | Sitemap `sitemap.xml` to Google Search Console (Feb 24, 2026) |
+| CREATED | Google Merchant Center account (ID: 5731366020) under `optibiosupplements@gmail.com` |
+| INSTALLED | Google & YouTube app on Shopify (sales channel) |
+| CONNECTED | Shopify ↔ Google Merchant Center sync (product feed auto-syncing) |
+| VERIFIED | Merchant Center setup: 3/5 steps complete — Google account connected, Merchant Center connected, store setup confirmed |
+| PENDING | Step 3: Online store requirements check (automated by Google) |
+| PENDING | Step 5: Terms & conditions agreement (unlocks after step 3) |
+
+**Google Services Summary:**
+- **Google Search Console:** `https://search.google.com/search-console?resource_id=https://optibiosupplements.com/`
+- **Google Merchant Center:** Account ID `5731366020` — `https://merchants.google.com/mc/overview?a=5731366020`
+- **Google Analytics:** GA4 (installed via GTM in Session H)
+- **Google Tag Manager:** GTM (installed in Session H)
+- **Google account for all services:** `optibiosupplements@gmail.com`
+
 ---
 
-*Last updated: February 24, 2026 (Session M — Phase 0 Launch Tasks: API Token Refresh, Knowledge Base App, Agentic Storefronts)*
-*Next review: Google Search Console setup, Google Merchant Center product feed, social media accounts (Instagram, TikTok, LinkedIn), email sequence builds, ad creative production*
+*Last updated: February 24, 2026 (Session N — Google Search Console Verified, Sitemap Submitted, Google Merchant Center Connected)*
+*Next review: Merchant Center T&C acceptance (auto-unlocks), social media accounts (Instagram, TikTok, LinkedIn), email sequence builds, ad creative production*
