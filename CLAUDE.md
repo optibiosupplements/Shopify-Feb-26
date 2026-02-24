@@ -825,6 +825,24 @@ Every clinical claim MUST be:
 - This is cosmetic — our custom buy box handles subscriptions independently via Cart API
 - Impact: None visible to customers — error is console-only
 
+### Session R — Tracking Completion: Clarity Activation + GTM GA4 Published (Feb 24, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| EDITED | `layout/theme.liquid` | Activated Microsoft Clarity script — uncommented and set Project ID `p4haz84jol` |
+| PUSHED | `layout/theme.liquid` to live theme 146307776581 | Via `shopify theme push --allow-live --theme 146307776581 --only layout/theme.liquid` |
+| CREATED | GTM Tag: GA4 Configuration | Google Tag type, Tag ID `G-38QZ0WCZLG`, Trigger: Initialization - All Pages |
+| PUBLISHED | GTM Container Version 2 | "GA4 Configuration - Initial Setup" — published 02/24/2026 5:07 PM by optibiosupplements@gmail.com |
+
+**What's Now Live:**
+- Microsoft Clarity session recording + heatmaps (Project ID: `p4haz84jol`)
+- GA4 Configuration tag firing via GTM on all pages (Measurement ID: `G-38QZ0WCZLG`)
+- Note: Standalone GA4 gtag.js (lines 83-91 of theme.liquid) should be removed once GTM GA4 tag is confirmed working to prevent duplicate page_view counting
+
+**Remaining User Tasks (Claude Cannot Do These):**
+1. **Facebook & Instagram sales channel** — Install from Shopify Admin → Settings → Sales channels. Requires Meta/Facebook account login. Enables Meta Conversions API (CAPI) for server-side tracking of InitiateCheckout + Purchase events. Target Event Match Quality > 6.0.
+2. **Google Ads account** — Create at ads.google.com while logged in as optibiosupplements@gmail.com. Choose Expert Mode → Create account without a campaign. Then create 2 conversion actions (Purchase primary, Add to Cart secondary) and provide Conversion ID + Labels to Claude for GTM tag setup.
+
 ### Past Mistakes Addendum (Feb 24, 2026)
 27. **Meta Pixel only fired PageView — missing e-commerce events** — The GA4 Enhanced E-Commerce events (view_item, add_to_cart, view_item_list) were implemented with dataLayer pushes but Meta Pixel equivalents (ViewContent, AddToCart) were never added. Meta's ad algorithm needs these events to optimize ad delivery. Always implement tracking events for BOTH GA4 (dataLayer) and Meta Pixel (fbq) simultaneously when adding e-commerce tracking.
 
@@ -834,5 +852,5 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 24, 2026 (Session Q — Buy box critical bug fix, shipping verification, test mode disabled)*
-*Next review: Microsoft Clarity Project ID needed, GA4 Configuration tag in GTM, Meta CAPI setup, Google Ads account creation, social media accounts*
+*Last updated: February 24, 2026 (Session R — Clarity activated, GTM GA4 tag published, theme pushed live)*
+*Next review: Remove standalone GA4 gtag.js (after GTM confirmation), Facebook & Instagram sales channel install (Meta CAPI), Google Ads account creation + conversion tag setup, social media accounts*
