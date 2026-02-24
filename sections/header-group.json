@@ -30,7 +30,7 @@
         "announcement_shipping": {
           "type": "_announcement",
           "settings": {
-            "text": "🚚 FREE Shipping on orders $75+ · Save up to 40% on bundles",
+            "text": "🚚 FREE Shipping on orders $49+ · Save up to 40% on bundles",
             "link": "/products/optibio-ashwagandha-ksm-66",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",

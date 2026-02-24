@@ -45,7 +45,7 @@ class OptibioProductEnhancements {
   }
   
   init() {
-    this.freeShippingThreshold = 75; // $75 for free shipping
+    this.freeShippingThreshold = 49; // $49 for free shipping
     this.attachEventListeners();
     this.updateUI();
     this.integrateWithShopifySubscriptions();
@@ -286,7 +286,7 @@ class OptibioProductEnhancements {
     var threshold = this.freeShippingThreshold;
 
     if (price >= threshold || isSubscription) {
-      // Subscriptions always get free shipping; bundles >= $75 qualify too
+      // Subscriptions always get free shipping; bundles >= $49 qualify too
       progressBar.style.display = 'none';
       freeEl.style.display = 'flex';
     } else {
