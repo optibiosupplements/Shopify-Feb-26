@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session J)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session O)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -166,6 +166,7 @@ Every clinical claim MUST be:
 - ~~**Product Page:**~~ **FIXED Feb 17, 2026** — 7 violations corrected: "Clinically Proven" → "Clinically Studied", "22+" → "multiple peer-reviewed trials". SEO title updated from "Clinically-Proven" to "Clinically-Studied".
 - ~~**Store Name:** "OptiBio Supplements" (capital B) appears in store-level settings (Settings > Store details).~~ **VERIFIED FIXED Feb 20, 2026 (Session E)** — Store name already reads "Optibio Supplements" (lowercase b). Confirmed in Admin → Settings → General → Store contact details and via live site tab title + og:site_name.
 - ~~**Domain:** optibiosupplements.com still points to Manus platform~~ **FIXED Feb 20, 2026 (Session E)** — Domain connected to Shopify via GoDaddy auto-connect. DNS CNAME `www` changed from `cname.manus.space` → `shops.myshopify.com`. TLS certificate provisioned. Domain set as Primary.
+- ~~**Free shipping threshold $75 in theme code**~~ **FIXED Feb 24, 2026 (Session O)** — All 8 theme files updated from $75 to $49. Pushed to live and verified.
 - **Facebook Pixel:** Placeholder ID (YOUR_FACEBOOK_PIXEL_ID) — zero tracking
 - **Manus Sign-In:** Link redirects to manus.im auth — breaks for customers
 - **OAuth Expiry:** Token expires every 24hr — refresh before MCP sessions
@@ -260,6 +261,7 @@ Every clinical claim MUST be:
 | Feb 20, 2026 | **Session E — Domain Connection & Payments Setup** | **Domain:** Connected `optibiosupplements.com` to Shopify via Settings → Domains → Connect existing. GoDaddy auto-connect successfully updated DNS (CNAME `www` from `cname.manus.space` → `shops.myshopify.com`). Domain set as Primary. TLS certificate provisioning started. **Payments:** Initiated Shopify Payments (Stripe) activation — reached Step 1 of 4 (business type selection). Requires owner to complete remaining steps with personal/financial info (SSN, banking details). | GoDaddy auto-connect initially showed spinner for ~10 seconds but completed successfully (green toast: "Your DNS records are now connected to Shopify"). Shopify Payments setup requires sensitive personal/financial information — cannot be completed by Claude. |
 | Feb 21, 2026 | **Session F — Full Implementation: Legal, Email, Blog, Chat, Policies, Audit** | **Legal Pages:** Created 4 custom HTML files (Terms, Privacy, Refund, Shipping) in `/legal-pages/`. **Email Templates:** Created 3 branded HTML templates (Order Confirm, Shipping, Delivery) in `/email-templates/`. **Customer Support:** Created 5 response templates + expanded FAQ to 20 Q&As in `/customer-support/`. **Blog Content:** Polished 3 blog posts with 12 compliance fixes each (brand name, pricing, guarantee, FDA disclaimer, claims accuracy). **Chat Widget:** Customized Shopify Inbox via browser — Navy #1A2F4D background, Gold #C9A961 buttons, branded greeting, 4 instant answers fixed (wrong email, visibility). **Shopify Admin Policies:** Added 6 legal policies via browser (Refund, Privacy, Terms, Shipping, Contact, Subscription Cancel) — replaced auto-generated content with custom HTML. Fixed wrong email (gmail→support@) and brand name (OptiBio→Optibio) across all policies. **Compliance Audit:** Full 11-category theme audit — 0 violations found across 430 files. **Theme Edits:** Fixed "clinically-proven" → "clinically studied" (homepage-hero.liquid, index.json), KSM-66 → KSM-66® (product-badge-strip.liquid, meta-tags.liquid), sleep baseline 72% → 75.6% (science-studies.liquid), added cookie consent banner (cookie-consent.liquid + theme.liquid render). **Deploy:** All 7 files pushed to live theme via `shopify theme push` CLI (commit `74400c3`). Verified live at optibiosupplements.com — all changes confirmed. **GitHub:** Pushed to `optibiosupplements/Shopify-Feb-26` main branch. **Documentation:** Created SESSION_6_TRACKING.md with full implementation log. | CodeMirror 6 in Shopify Admin policies editor doesn't accept synthetic JS events (insertText, beforeinput, ClipboardEvent). Working approach: write to clipboard via `navigator.clipboard.writeText()`, then use keyboard shortcut `cmd+a` + `cmd+v` to paste. Shopify's color picker hex input requires: triple-click → type value → Tab → click elsewhere to apply. Chrome MCP extension disconnects intermittently during long sessions. |
 | Feb 24, 2026 | **Session K — Verification & Lighthouse Audit** | Verified GTM/GA4/Meta Pixel all firing on live site. Confirmed 3 blog posts live at /blogs/news/. Confirmed Manus sign-in link already resolved (zero refs in code). Ran Lighthouse CLI audit: Homepage 46/93/54/100, Product 35/93/54/92. Verified hero product image visible. Confirmed GitHub repo up to date at commit 629ac37. | GA4 collect endpoint returns 503 — this is NORMAL for Google Analytics. Chrome MCP network tracking only starts when first called, so initial page load requests may be missed. |
+| Feb 24, 2026 | **Session O — Free Shipping $75→$49 Fix + Asset Studio + Marketing Rollout** | Fixed all 8 theme files with $75→$49 free shipping threshold. Pushed to live via Shopify CLI. Updated Asset Studio (Gemini 2.5 Flash Image + Veo 3.1). Created AI Studio fix prompt and user guide. Created updated marketing rollout plan. API token expired — needs refresh. | $75 threshold persisted in 8 files after rate change. MCP config had stale token. |
 | Feb 24, 2026 | **Session L — Lighthouse Fixes + GA4 E-Commerce + Performance** | **Accessibility:** Fixed 19 contrast ratio failures — darkened --optibio-green (#10B981→#059669), --optibio-red (#EF4444→#DC2626), --optibio-gold-dark (#B89A4F→#9A7D3B), --green-600 (#16a34a→#15803d), footer FDA (0.4→0.7 opacity). Fixed inline colors in product-comparison.liquid and product-who-for.liquid. Increased carousel dot touch targets (8→24px). **SEO:** Fixed non-crawlable COA link (a→button), added Judge.me link patcher (MutationObserver). **GA4:** Created optibio-ga4-ecommerce.js with view_item, add_to_cart, view_item_list dataLayer events. **Performance:** Removed render-blocking @import Google Fonts, added async font loading via media="print" onload trick, added preconnect/dns-prefetch hints. **Deploy:** Pushed 11 files to Shopify live theme + GitHub commit `2b873fa`. | CSS @import inside a stylesheet creates a 2-step render-blocking chain. Always use `<link>` in HTML head instead. Remaining LCP dominated by Shopify platform overhead + third-party scripts (not reducible via theme code). Duplicate GA4 loading (standalone + GTM) — remove standalone once GTM GA4 tag confirmed. |
 
 ---
@@ -721,5 +723,49 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 24, 2026 (Session N — Google Search Console Verified, Sitemap Submitted, Google Merchant Center Connected)*
-*Next review: Merchant Center T&C acceptance (auto-unlocks), social media accounts (Instagram, TikTok, LinkedIn), email sequence builds, ad creative production*
+### Session O — Free Shipping $75→$49 Fix + Asset Studio + Marketing Rollout (Feb 24, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| EDITED | `assets/optibio-product-enhancements.js` | Changed `freeShippingThreshold = 75` → `49` and updated comment |
+| EDITED | `locales/en.default.schema.json` | Changed "Free shipping over $75" → "$49" |
+| EDITED | `sections/about-standards.liquid` | Changed "Free shipping on $75+" → "$49+" |
+| EDITED | `sections/email-popup.liquid` | Changed preset "Free Shipping $75+" → "$49+" |
+| EDITED | `sections/header-group.json` | Changed announcement bar "$75+" → "$49+" |
+| EDITED | `sections/product-final-cta.liquid` | Changed "Free shipping $75+" → "$49+" |
+| EDITED | `sections/science-sourcing.liquid` | Changed "Free shipping on $75+" → "$49+" |
+| EDITED | `snippets/optibio-enhanced-buy-box.liquid` | Changed "Free shipping $75+" → "$49+" |
+| PUSHED | All 10 files to live theme 146307776581 | Via `shopify theme push --allow-live --only` (Shopify CLI) |
+| VERIFIED | Live site optibiosupplements.com | Announcement bar shows "$49+", buy box shows "Free shipping $49+", no fake rating |
+| PUSHED | GitHub commit `d401f49` | All 8 edited files committed and pushed to `Shopify-Feb-26` |
+| CREATED | `MARKETING_ROLLOUT_UPDATED_Feb2026.md` | Updated 8-week marketing rollout reflecting Phase 0 completion |
+| PUSHED | Marketing rollout to GitHub (commit `fa406c7`) | New marketing plan in `Marketing/` directory |
+| EDITED | `optibio-asset-studio.html` | Updated Gemini model to `gemini-2.5-flash-image`, Veo to `veo-3.1-generate-preview` |
+| CREATED | `AI-STUDIO-FIX-PROMPT.md` | Paste-ready prompt for user's Google AI Studio app fixes |
+| CREATED | `ASSET-STUDIO-GUIDE.md` | Plain English user guide for both asset tools |
+
+**Free Shipping Threshold Correction:**
+- All 8 theme files updated from $75 → $49 to match actual Shopify shipping configuration
+- The $75 threshold was from Session A (original build). Shipping rates were configured at $49+ in Session F/G.
+- Verified LIVE on optibiosupplements.com: announcement bar, buy box trust bar, and JS threshold all show $49
+
+**Asset Studio Updates:**
+- Primary image model: `gemini-2.5-flash-image` (new, added as primary)
+- Fallback model: `gemini-2.0-flash-exp-image-generation` (existing)
+- Video model: `veo-3.1-generate-preview` (updated from `veo-2.0-generate-001`)
+- AI Studio app fix prompt created for user to paste into their app's code assistant
+
+**API Token Status:**
+- Token `shpat_10545...` is EXPIRED (returning 401 on all API calls)
+- MCP shopify-store tool is non-functional until token is refreshed
+- Shopify CLI (`shopify theme push`) still works via device-code auth — used for this push
+- **Action needed:** Regenerate token at dev.shopify.com → Claud MCP app → Settings
+
+### Past Mistakes Addendum (Feb 24, 2026)
+25. **$75 free shipping threshold persisted across 8 files after rate change** — Session A set the free shipping threshold at $75 in JavaScript and hardcoded "$75+" text in 7 Liquid/JSON files. When shipping rates were changed to $49+ (Session F/G), only the Shopify shipping settings were updated — not the theme code. Always search all theme files (`grep -r "$75" --include="*.liquid" --include="*.json" --include="*.js"`) after changing any pricing/threshold configuration to catch hardcoded values.
+26. **Shopify API token in MCP config was stale** — The token in `claude_desktop_config.json` was the OLD expired token, not the one refreshed in Session M. The config file must be manually updated after each token refresh, and the token expires every 24 hours. Consider using environment variables or a token refresh script.
+
+---
+
+*Last updated: February 24, 2026 (Session O — Free shipping $75→$49 fix pushed live, Asset Studio updated, Marketing rollout created)*
+*Next review: Refresh Shopify API token, Merchant Center T&C acceptance, social media accounts (Instagram, TikTok, LinkedIn), email sequence builds, ad creative production*
