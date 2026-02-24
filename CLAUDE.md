@@ -877,7 +877,17 @@ Every clinical claim MUST be:
 - Tag 3: Google Ads - Purchase Conversion — Thank You Page trigger
 - Tag 4: Google Ads - Add to Cart Conversion — add_to_cart custom event trigger
 
-**Note:** GTM showed "No Google tag found in this container" warning on conversion tracking tags — this is informational only. The Conversion Linker tag handles click attribution. No code changes needed for this session — all configuration done via GTM web interface.
+**Note:** GTM showed "No Google tag found in this container" warning on conversion tracking tags — this is informational only. The Conversion Linker tag handles click attribution.
+
+**Standalone GA4 Removal (Session S continued):**
+- Removed standalone `gtag.js` script (lines 83-91 of theme.liquid) that was loading GA4 independently of GTM
+- GA4 is now managed exclusively via GTM (GA4 Configuration tag, published in GTM Version 2)
+- The `gtag()` function remains defined in the Consent Mode v2 block (lines 43-44) which loads before GTM
+- This eliminates duplicate `page_view` counting that occurred when both standalone + GTM GA4 fired
+
+| Action | File | Purpose |
+|--------|------|---------|
+| EDITED | `layout/theme.liquid` | Removed standalone GA4 gtag.js (lines 83-91) — GA4 now managed via GTM only |
 
 ### Past Mistakes Addendum (Feb 24, 2026)
 27. **Meta Pixel only fired PageView — missing e-commerce events** — The GA4 Enhanced E-Commerce events (view_item, add_to_cart, view_item_list) were implemented with dataLayer pushes but Meta Pixel equivalents (ViewContent, AddToCart) were never added. Meta's ad algorithm needs these events to optimize ad delivery. Always implement tracking events for BOTH GA4 (dataLayer) and Meta Pixel (fbq) simultaneously when adding e-commerce tracking.
@@ -888,5 +898,5 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 24, 2026 (Session S — Google Ads account created, conversion tracking configured in GTM Version 3)*
-*Next review: Remove standalone GA4 gtag.js (after GTM confirmation), Facebook & Instagram sales channel install (Meta CAPI), social media accounts, Merchant Center T&C acceptance*
+*Last updated: February 24, 2026 (Session S — Google Ads conversion tracking in GTM V3, standalone GA4 gtag.js removed)*
+*Next review: Facebook & Instagram sales channel install (Meta CAPI), social media accounts, Merchant Center T&C acceptance*
