@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session I)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session J)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** LAUNCH READY (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live — remaining: Shopify API token refresh, hero product image upload, Knowledge Base App setup, content agent delegation)
+**Current Status:** LAUNCH READY (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified — remaining: Shopify API token refresh, hero product image upload, Knowledge Base App setup, content agent delegation)
 
 ---
 
@@ -453,6 +453,8 @@ Every clinical claim MUST be:
 
 - ~~**Session I:** Email templates installed (3), homepage.css fix, schema default fixes, product SEO optimized, test order verified end-to-end, theme pushed to live~~ DONE
 
+- ~~**Session J:** Full theme re-push to live — removed remaining fake 4.9/5 rating from live site, verified all 4 corrected files live (product-hero, product-final-cta, product-sticky-cart, email-popup), Judge.me widget rendering correctly, sticky cart shows "Clinically Studied" badge~~ DONE
+
 ### Installed Apps (February 19, 2026)
 
 #### Product Reviews (powered by Judge.me app — Free Tier)
@@ -581,8 +583,27 @@ Every clinical claim MUST be:
 19. **Shopify MCP API token 401** — Token expired (24hr OAuth expiry per CLAUDE.md). Cannot update product data via API until token is refreshed. Workaround: prepare optimized copy in documentation, paste manually via Admin, or use browser automation.
 20. **Homepage.css not loaded — bundles rendered as unstyled text** — The `homepage.css` file (containing all homepage section styles: bundles, benefits, testimonials, shop-by-goal, coming-soon, guarantee) existed in `assets/` but was never loaded by `theme.liquid` or any section file. Only the hero section loaded its own CSS. Result: the bundles section rendered as plain unstyled text on the live site. Fix: added `{% if template == 'index' %}{{ 'homepage.css' | asset_url | stylesheet_tag }}{% endif %}` to `theme.liquid`. Lesson: always verify CSS is actually loaded in the browser, not just present in the assets folder.
 21. **Shopify section schema "default": "" causes validation error** — Setting `"default": ""` (blank string) on text-type section settings causes Shopify to reject the theme push with "Invalid schema: setting with id=X default can't be blank". Fix: remove the `"default"` key entirely — Shopify treats absent defaults as null/empty without error. This was introduced during Session G social proof cleanup when clearing fake values.
+22. **Local theme edits not pushed to live Shopify** — Sessions G-I edited 4 critical files locally (product-hero.liquid, product-final-cta.liquid, product-sticky-cart.liquid, email-popup.liquid) to remove fake social proof, but the live theme still had the OLD versions with fake "4.9/5" rating, star SVGs, and "2,400+ happy customers". The previous `shopify theme push` either didn't include these files or changes were made in a sandboxed directory that didn't sync back. Fix: ran full `shopify theme push --allow-live` from the correct local directory to overwrite ALL live files. **Lesson: ALWAYS verify changes are live on the actual site after editing local files and pushing. Never assume a theme push included all files — check the live URL in a browser.**
 
 ---
 
-*Last updated: February 24, 2026 (Session I — Email Templates, Homepage CSS Fix, Test Order, Product SEO)*
+### Session J — Full Theme Re-Push + Live Verification (Feb 24, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| PUSHED | All theme files to live (Theme 146307776581) | Full `shopify theme push --allow-live` to overwrite all live files with corrected local versions |
+| VERIFIED | Live site: optibiosupplements.com/products/optibio-ashwagandha-ksm-66 | Confirmed fake 4.9/5 rating GONE, Judge.me widget rendering, sticky cart shows "Clinically Studied" badge |
+
+**Verification Results (Live Site):**
+- Hero section: Trust badges (Third-Party Tested, GMP Certified, Non-GMO, etc.) + clinical claims — NO fake star rating
+- CTA area: "Subscribe Now — $84.99" with trust indicators — NO fake star rating
+- Sticky cart: Shows "Clinically Studied" badge (replaced "★★★★★ 4.9")
+- Customer Reviews: Judge.me widget showing "Be the first to write a review" + "Write a review" button
+- Page source scan: Zero matches for "4.9/5", "4.9 out of", "social proof", "happy customers", "2,400"
+- The ★ characters found on page are ONLY in testimonial cards (customer review decorations) — NOT fake aggregate ratings
+- The "4.9" substring found on page is ONLY in prices ($84.99, $64.98) — NOT ratings
+
+---
+
+*Last updated: February 24, 2026 (Session J — Full Theme Re-Push, Live Verification of Social Proof Removal)*
 *Next review: Hero product image upload, GTM verification, content agent delegation, Knowledge Base App setup, blog post publication, Shopify API token refresh*
