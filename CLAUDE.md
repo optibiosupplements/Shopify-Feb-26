@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** LAUNCH READY (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified — remaining: Shopify API token refresh, hero product image upload, Knowledge Base App setup, content agent delegation)
+**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog — remaining: Google Search Console setup, Google Merchant Center feed, social media accounts, content agent delegation)
 
 ---
 
@@ -673,5 +673,32 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 24, 2026 (Session L — Lighthouse Fixes, GA4 E-Commerce, Performance Optimization)*
-*Next review: GTM GA4 tag configuration (begin_checkout + purchase events), Google Search Console setup, Google Merchant Center, Knowledge Base App, email sequence builds, ad creative production*
+### Session M — Phase 0 Launch Tasks: API Token, Knowledge Base, Agentic Storefronts (Feb 24, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| REFRESHED | Shopify API Token | Old token returning 401. Generated new token via client credentials grant flow on dev.shopify.com → Claud MCP app → Settings. New token stored in MCP config (not committed). Verified with shop.json API call — returned "Optibio Supplements" |
+| UPDATED | `~/Library/Application Support/Claude/claude_desktop_config.json` | Replaced old accessToken with new token in shopify-store MCP server config |
+| VERIFIED | Hero product image | Confirmed already visible on live site — bottle displayed in Featured Product card (Session K confirmed) |
+| INSTALLED | Shopify Knowledge Base App | Installed from Shopify App Store (free, by Shopify). Populated 11 FAQs total |
+| CREATED | Knowledge Base — 7 Suggested FAQs | Answered: retail locations (online-only), bulk/wholesale (no, but bundles save $60), discount codes (Subscribe & Save 15%, free shipping $49+), customer service (support@optibiosupplements.com), express shipping (Priority $12.99), international shipping (US only), free shipping ($49+ threshold) |
+| CREATED | Knowledge Base — 4 Custom FAQs | Added: "What is Optibio Ashwagandha?" (KSM-66, 600mg, 60 caps), "How much does it cost?" ($39.99/1, $99.99/3, $179.94/6), "Return policy?" (90-day guarantee), "Backed by science?" (24+ clinical trials) |
+| VERIFIED | Agentic Storefronts | Confirmed active via Settings → Sales channels → Shopify Catalog Mapping. Product data (title, description, image, pricing) automatically synced to global Shopify Catalog for AI shopping agents (ChatGPT, Perplexity, Copilot). No manual toggle needed — enabled by default |
+
+#### Knowledge Base FAQs Created (11 total)
+1. Do you have retail store locations? → Online-only DTC brand
+2. Do you offer bulk or wholesale orders? → No, but multi-bottle bundles save up to $60
+3. Do you have active discount codes? → Subscribe & Save 15%, bundle savings, free shipping $49+
+4. How can I contact customer service? → support@optibiosupplements.com, 24hr response
+5. Do you offer express shipping? → Priority $12.99, Standard $5.99, free $49+
+6. Do you ship internationally? → US only, expanding soon
+7. Do you offer free shipping? → Yes, orders over $49
+8. What is Optibio Ashwagandha? → KSM-66, 600mg, 60 vegetarian caps, non-GMO, made in USA
+9. How much does it cost? → $39.99/1, $99.99/3, $179.94/6 + Subscribe & Save 15%
+10. What is your return policy? → 90-day money-back guarantee
+11. Is it backed by science? → 24+ gold-standard clinical trials on KSM-66
+
+---
+
+*Last updated: February 24, 2026 (Session M — Phase 0 Launch Tasks: API Token Refresh, Knowledge Base App, Agentic Storefronts)*
+*Next review: Google Search Console setup, Google Merchant Center product feed, social media accounts (Instagram, TikTok, LinkedIn), email sequence builds, ad creative production*
