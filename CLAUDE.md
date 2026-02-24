@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session R)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session S)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + Google & YouTube app installed on Shopify — remaining: Merchant Center T&C acceptance, social media accounts, content agent delegation)
+**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM — remaining: Merchant Center T&C acceptance, social media accounts, content agent delegation, remove standalone GA4 gtag.js)
 
 ---
 
@@ -468,6 +468,8 @@ Every clinical claim MUST be:
 
 - ~~**Session R:** Tracking infrastructure completion — Activated Microsoft Clarity (Project ID: p4haz84jol), created + published GA4 Configuration tag in GTM (Version 2), pushed theme.liquid to live. Remaining user tasks: Facebook & Instagram sales channel install (Meta CAPI), Google Ads account creation.~~ DONE
 
+- ~~**Session S:** Google Ads account created (150-105-0443), 2 conversion actions (Purchase primary + Add to Cart secondary), 3 GTM tags created (Conversion Linker + Purchase Conversion + Add to Cart Conversion), 2 triggers created, GTM Version 3 published. No theme code changes — all config via Google Ads + GTM web interfaces.~~ DONE
+
 ### Installed Apps (February 19, 2026)
 
 #### Product Reviews (powered by Judge.me app — Free Tier)
@@ -548,7 +550,10 @@ Every clinical claim MUST be:
 |---------|-----|--------|
 | Meta Pixel | 3892490224214287 | LIVE (installed Session E) |
 | GTM Container | GTM-NG6QSJRD | Installed in theme.liquid head + body noscript |
-| GA4 Measurement | G-38QZ0WCZLG | Installed in theme.liquid via gtag.js |
+| GA4 Measurement | G-38QZ0WCZLG | Installed in theme.liquid via gtag.js + GTM GA4 Configuration tag |
+| Microsoft Clarity | p4haz84jol | LIVE (activated Session R) |
+| Google Ads | 150-105-0443 | Account created, conversion tracking via GTM (Session S) |
+| Google Ads Conversion ID | 17974959670 | Used in GTM tags for Purchase + Add to Cart conversions |
 
 ### Manual Steps Still Required (Session H)
 - [ ] **Refresh Shopify API token** — Current token `shpat_10545...` returning 401. Go to Dev Dashboard → "Claud MCP" → API credentials → regenerate
@@ -841,7 +846,38 @@ Every clinical claim MUST be:
 
 **Remaining User Tasks (Claude Cannot Do These):**
 1. **Facebook & Instagram sales channel** — Install from Shopify Admin → Settings → Sales channels. Requires Meta/Facebook account login. Enables Meta Conversions API (CAPI) for server-side tracking of InitiateCheckout + Purchase events. Target Event Match Quality > 6.0.
-2. **Google Ads account** — Create at ads.google.com while logged in as optibiosupplements@gmail.com. Choose Expert Mode → Create account without a campaign. Then create 2 conversion actions (Purchase primary, Add to Cart secondary) and provide Conversion ID + Labels to Claude for GTM tag setup.
+2. ~~**Google Ads account**~~ DONE (Session S) — Account 150-105-0443 created, 2 conversion actions configured, GTM tags published (Version 3).
+
+### Session S — Google Ads Account + Conversion Tracking in GTM (Feb 24, 2026)
+
+| Action | Location | Purpose |
+|--------|----------|---------|
+| CREATED | Google Ads (ads.google.com) | Account 150-105-0443 under optibiosupplements@gmail.com. Expert Mode → Create without campaign. |
+| CREATED | Google Ads → Conversions | "Purchase" conversion action — Primary, Website, Purchase category, count every conversion |
+| CREATED | Google Ads → Conversions | "Add to Cart" conversion action — Secondary, Website, Add to Cart category, count every conversion |
+| CREATED | GTM Tag: Conversion Linker | Fires on All Pages (Page View trigger). Required for Google Ads click attribution (GCLID). |
+| CREATED | GTM Tag: Google Ads - Purchase Conversion | Conversion ID: 17974959670, Label: f_xVCJaawP4bELa8kPtC. Trigger: "Purchase - Thank You Page" (Page View, URL contains "thank_you") |
+| CREATED | GTM Tag: Google Ads - Add to Cart Conversion | Conversion ID: 17974959670, Label: itJ3CJmawP4bELa8kPtC. Trigger: "Custom Event - add_to_cart" (Custom Event, event name "add_to_cart") |
+| CREATED | GTM Trigger: Purchase - Thank You Page | Page View trigger, fires when Page URL contains "thank_you" |
+| CREATED | GTM Trigger: Custom Event - add_to_cart | Custom Event trigger, fires on dataLayer event "add_to_cart" |
+| PUBLISHED | GTM Container Version 3 | "V3 - Google Ads Conversion Tracking" — 4 Tags, 2 Triggers, 5 Variables. Published 02/24/2026 6:17 PM |
+
+**Google Ads Conversion Tracking Details:**
+- **Account ID:** 150-105-0443
+- **Conversion ID:** 17974959670
+- **Purchase Label:** f_xVCJaawP4bELa8kPtC (Primary conversion — Smart Bidding uses this)
+- **Add to Cart Label:** itJ3CJmawP4bELa8kPtC (Secondary conversion — observation only)
+- **Conversion Linker:** Required tag that reads GCLID from URL and stores in first-party cookies for attribution
+- **Thank You Page trigger:** Fires on Shopify's post-purchase thank-you page (URL contains "thank_you")
+- **Add to Cart trigger:** Fires on `add_to_cart` custom event pushed to dataLayer by `optibio-ga4-ecommerce.js`
+
+**GTM Container Status (Version 3):**
+- Tag 1: GA4 Configuration (G-38QZ0WCZLG) — Initialization trigger
+- Tag 2: Conversion Linker — All Pages trigger
+- Tag 3: Google Ads - Purchase Conversion — Thank You Page trigger
+- Tag 4: Google Ads - Add to Cart Conversion — add_to_cart custom event trigger
+
+**Note:** GTM showed "No Google tag found in this container" warning on conversion tracking tags — this is informational only. The Conversion Linker tag handles click attribution. No code changes needed for this session — all configuration done via GTM web interface.
 
 ### Past Mistakes Addendum (Feb 24, 2026)
 27. **Meta Pixel only fired PageView — missing e-commerce events** — The GA4 Enhanced E-Commerce events (view_item, add_to_cart, view_item_list) were implemented with dataLayer pushes but Meta Pixel equivalents (ViewContent, AddToCart) were never added. Meta's ad algorithm needs these events to optimize ad delivery. Always implement tracking events for BOTH GA4 (dataLayer) and Meta Pixel (fbq) simultaneously when adding e-commerce tracking.
@@ -852,5 +888,5 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 24, 2026 (Session R — Clarity activated, GTM GA4 tag published, theme pushed live)*
-*Next review: Remove standalone GA4 gtag.js (after GTM confirmation), Facebook & Instagram sales channel install (Meta CAPI), Google Ads account creation + conversion tag setup, social media accounts*
+*Last updated: February 24, 2026 (Session S — Google Ads account created, conversion tracking configured in GTM Version 3)*
+*Next review: Remove standalone GA4 gtag.js (after GTM confirmation), Facebook & Instagram sales channel install (Meta CAPI), social media accounts, Merchant Center T&C acceptance*
