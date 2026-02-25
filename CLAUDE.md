@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM — remaining: Merchant Center T&C acceptance, social media accounts, content agent delegation, remove standalone GA4 gtag.js)
+**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + setup 6/6 complete (return policy configured) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM, Facebook & Instagram sales channel installed on Shopify, standalone GA4 gtag.js removed (GA4 managed via GTM only) — remaining: Meta account connection (owner Facebook login required), link Google Ads to Merchant Center, social media accounts, content agent delegation)
 
 ---
 
@@ -468,7 +468,7 @@ Every clinical claim MUST be:
 
 - ~~**Session R:** Tracking infrastructure completion — Activated Microsoft Clarity (Project ID: p4haz84jol), created + published GA4 Configuration tag in GTM (Version 2), pushed theme.liquid to live. Remaining user tasks: Facebook & Instagram sales channel install (Meta CAPI), Google Ads account creation.~~ DONE
 
-- ~~**Session S:** Google Ads account created (150-105-0443), 2 conversion actions (Purchase primary + Add to Cart secondary), 3 GTM tags created (Conversion Linker + Purchase Conversion + Add to Cart Conversion), 2 triggers created, GTM Version 3 published. No theme code changes — all config via Google Ads + GTM web interfaces.~~ DONE
+- ~~**Session S:** Google Ads account created (150-105-0443), 2 conversion actions (Purchase primary + Add to Cart secondary), 3 GTM tags created (Conversion Linker + Purchase Conversion + Add to Cart Conversion), 2 triggers created, GTM Version 3 published. Standalone GA4 gtag.js removed from theme.liquid (GA4 managed via GTM only). Facebook & Instagram sales channel installed on Shopify (Meta account connection requires owner Facebook login). Google Merchant Center setup completed 6/6 tasks (return policy configured: US, 90 days, by mail, no restocking fee).~~ DONE
 
 ### Installed Apps (February 19, 2026)
 
@@ -554,6 +554,8 @@ Every clinical claim MUST be:
 | Microsoft Clarity | p4haz84jol | LIVE (activated Session R) |
 | Google Ads | 150-105-0443 | Account created, conversion tracking via GTM (Session S) |
 | Google Ads Conversion ID | 17974959670 | Used in GTM tags for Purchase + Add to Cart conversions |
+| Google Merchant Center | 5731366020 | Setup 6/6 complete, return policy configured, products eligible on Google (Session S) |
+| Facebook & Instagram | Sales Channel | App installed on Shopify, Meta account connection pending owner login (Session S) |
 
 ### Manual Steps Still Required (Session H)
 - [ ] **Refresh Shopify API token** — Current token `shpat_10545...` returning 401. Go to Dev Dashboard → "Claud MCP" → API credentials → regenerate
@@ -842,11 +844,12 @@ Every clinical claim MUST be:
 **What's Now Live:**
 - Microsoft Clarity session recording + heatmaps (Project ID: `p4haz84jol`)
 - GA4 Configuration tag firing via GTM on all pages (Measurement ID: `G-38QZ0WCZLG`)
-- Note: Standalone GA4 gtag.js (lines 83-91 of theme.liquid) should be removed once GTM GA4 tag is confirmed working to prevent duplicate page_view counting
+- ~~Note: Standalone GA4 gtag.js (lines 83-91 of theme.liquid) should be removed~~ DONE (Session S) — removed, GA4 managed exclusively via GTM
 
 **Remaining User Tasks (Claude Cannot Do These):**
-1. **Facebook & Instagram sales channel** — Install from Shopify Admin → Settings → Sales channels. Requires Meta/Facebook account login. Enables Meta Conversions API (CAPI) for server-side tracking of InitiateCheckout + Purchase events. Target Event Match Quality > 6.0.
+1. ~~**Facebook & Instagram sales channel**~~ PARTIALLY DONE (Session S continued) — App installed from Shopify App Store. Owner must complete Meta account connection: Shopify Admin → Sales channels → Facebook & Instagram → Connect account → Facebook OAuth popup login. After connecting: configure Business Portfolio, Facebook Page, Meta Pixel (3892490224214287), and enable CAPI for server-side tracking. Target Event Match Quality > 6.0.
 2. ~~**Google Ads account**~~ DONE (Session S) — Account 150-105-0443 created, 2 conversion actions configured, GTM tags published (Version 3).
+3. **Link Google Ads to Merchant Center** — Google Merchant Center setup page offers "Link Google Ads account" button. Connect account 150-105-0443 to Merchant Center (5731366020) for Shopping ads / Performance Max campaigns.
 
 ### Session S — Google Ads Account + Conversion Tracking in GTM (Feb 24, 2026)
 
@@ -889,6 +892,32 @@ Every clinical claim MUST be:
 |--------|------|---------|
 | EDITED | `layout/theme.liquid` | Removed standalone GA4 gtag.js (lines 83-91) — GA4 now managed via GTM only |
 
+**Facebook & Instagram Sales Channel (Session S continued):**
+- Installed via Shopify App Store (apps.shopify.com/facebook)
+- App appears in Shopify Admin sidebar as sales channel
+- Meta account connection requires owner to complete Facebook OAuth popup login
+- After connecting: configure Business Portfolio, Facebook Page, Meta Pixel (3892490224214287), enable CAPI
+- CAPI enables server-side tracking of InitiateCheckout + Purchase events (complements browser-side Meta Pixel)
+- Target: Event Match Quality > 6.0
+
+| Action | Location | Purpose |
+|--------|----------|---------|
+| INSTALLED | Shopify App Store | Facebook & Instagram sales channel — enables Meta CAPI + catalog sync |
+| PENDING | Shopify Admin → FB&IG → Connect account | Owner must log into Facebook via OAuth popup to connect Meta account |
+
+**Google Merchant Center Setup Completed (Session S continued):**
+- Account: 5731366020 (merchants.google.com)
+- Setup: 6/6 tasks completed — "Your products can now show on Google"
+- Return Policy configured: US only, 90-day return window, new products only, by mail, no restocking fee, 10-day refund processing
+- Return policy URL: https://optibiosupplements.com/policies/refund-policy
+- Shopify connected as product data source
+- Next step: Link Google Ads account (150-105-0443) for Shopping ads / Performance Max
+
+| Action | Location | Purpose |
+|--------|----------|---------|
+| CONFIGURED | Merchant Center → Return Policy | US, 90 days, by mail, no restocking fee, 10-day refund processing |
+| COMPLETED | Merchant Center → Setup | 6/6 tasks — products eligible to show on Google |
+
 ### Past Mistakes Addendum (Feb 24, 2026)
 27. **Meta Pixel only fired PageView — missing e-commerce events** — The GA4 Enhanced E-Commerce events (view_item, add_to_cart, view_item_list) were implemented with dataLayer pushes but Meta Pixel equivalents (ViewContent, AddToCart) were never added. Meta's ad algorithm needs these events to optimize ad delivery. Always implement tracking events for BOTH GA4 (dataLayer) and Meta Pixel (fbq) simultaneously when adding e-commerce tracking.
 
@@ -898,5 +927,5 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 24, 2026 (Session S — Google Ads conversion tracking in GTM V3, standalone GA4 gtag.js removed)*
-*Next review: Facebook & Instagram sales channel install (Meta CAPI), social media accounts, Merchant Center T&C acceptance*
+*Last updated: February 24, 2026 (Session S — Google Ads conversion tracking in GTM V3, standalone GA4 removed, FB&IG sales channel installed, Merchant Center 6/6 setup complete)*
+*Next review: Meta account connection (owner Facebook login), link Google Ads to Merchant Center, social media accounts, content agent delegation*
