@@ -1,20 +1,25 @@
 /**
  * Optibio Email Capture Popup
- * - Delay-based trigger (configurable, default 8s)
+ * - Delay-based trigger (configurable, default 5s)
  * - Exit-intent trigger on desktop
  * - Cookie-based suppression (7 days dismiss, 365 days submit)
  * - Shopify customer form integration
  * - Copy discount code to clipboard
+ * - GTM dataLayer tracking (popup_view, popup_dismiss, popup_convert)
  */
 (function() {
   'use strict';
 
   // ── Config from data attributes ──
   var script = document.getElementById('optibio-popup-script');
-  var DELAY = parseInt(script.getAttribute('data-delay') || '8', 10) * 1000;
+  var DELAY = parseInt(script.getAttribute('data-delay') || '5', 10) * 1000;
   var EXIT_INTENT = script.getAttribute('data-exit-intent') === 'true';
   var DISMISS_DAYS = parseInt(script.getAttribute('data-dismiss-days') || '7', 10);
   var SUBMITTED_DAYS = parseInt(script.getAttribute('data-submitted-days') || '365', 10);
+
+  // ── dataLayer helper ──
+  window.dataLayer = window.dataLayer || [];
+  var triggerType = null; // tracks whether popup was triggered by 'delay' or 'exit_intent'
 
   // ── Cookie Helpers ──
   function setCookie(name, value, days) {
@@ -61,6 +66,13 @@
     overlay.classList.add('is-visible');
     document.body.style.overflow = 'hidden';
 
+    // GTM: Track popup view
+    window.dataLayer.push({
+      event: 'popup_view',
+      popup_trigger_type: triggerType || 'delay',
+      popup_name: 'email_capture'
+    });
+
     // Focus email input after animation
     setTimeout(function() {
       if (emailInput) emailInput.focus();
@@ -77,6 +89,13 @@
 
   // ── Dismiss (close button, overlay click, Escape key) ──
   function dismiss() {
+    // GTM: Track popup dismiss
+    window.dataLayer.push({
+      event: 'popup_dismiss',
+      popup_trigger_type: triggerType || 'delay',
+      popup_name: 'email_capture'
+    });
+
     setCookie('optibio_popup_dismissed', '1', DISMISS_DAYS);
     hidePopup();
     cleanup();
@@ -127,6 +146,13 @@
   });
 
   function showSuccess() {
+    // GTM: Track popup conversion
+    window.dataLayer.push({
+      event: 'popup_convert',
+      popup_trigger_type: triggerType || 'delay',
+      popup_name: 'email_capture'
+    });
+
     setCookie('optibio_popup_submitted', '1', SUBMITTED_DAYS);
 
     // Hide form, show success
@@ -173,11 +199,15 @@
   // ── Triggers ──
 
   // 1. Delay trigger
-  delayTimer = setTimeout(showPopup, DELAY);
+  delayTimer = setTimeout(function() {
+    triggerType = 'delay';
+    showPopup();
+  }, DELAY);
 
   // 2. Exit-intent trigger (desktop only)
   function handleExitIntent(e) {
     if (e.clientY <= 5) {
+      triggerType = 'exit_intent';
       showPopup();
     }
   }
