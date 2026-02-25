@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 25, 2026 — Session V)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 25, 2026 — Session W)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -1040,11 +1040,35 @@ Every clinical claim MUST be:
 
 **Discount Code:** WELCOME10 (10% off, evergreen) — replaces deprecated FIRSTDOSE
 
+### Session W — Asset Studio Image Generation + Theme Push (Feb 25, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| USED | Optibio Asset Studio (Google AI Studio) | Generated marketing images for PMax campaign and social ads using Gemini-powered image generation app |
+| GENERATED | 1:1 Square images (x2) | Instagram Feed / Performance Max — bottle on white marble with ashwagandha leaves, golden morning light, luxury wellness aesthetic |
+| IN PROGRESS | 4:5 Portrait, 16:9 Landscape, 1.91:1 LinkedIn/OG | Remaining aspect ratios for Meta Ads, YouTube/Web, and social sharing |
+| PUSHED | Theme to live (146307776581) | `shopify theme push --allow-live --theme 146307776581` — no theme code changes this session |
+
+**Asset Studio Details:**
+- App URL: https://aistudio.google.com/apps/b71f94bc-c112-4f3c-9bac-2cf7c118bfea
+- Powered by Gemini 3 Flash Preview model
+- App runs inside AI Studio preview iframe (cross-origin — cannot be automated from outside)
+- User must interact with app directly (upload photo, click Generate, Download PNG)
+- Design prompt used: "Premium supplement bottle on a clean white marble surface with soft golden morning light, fresh green ashwagandha leaves scattered artfully around the base, minimalist luxury wellness aesthetic, warm neutral tones, professional product photography for Instagram feed ad"
+- API key is auto-injected by AI Studio for preview apps — standalone Cloud Run URL requires manual API key input
+
+**Remaining Asset Tasks (for next session):**
+- Generate 4:5 Portrait image (Meta Ads)
+- Generate 16:9 Landscape image (YouTube/Web)
+- Generate 1.91:1 LinkedIn/OG image (Social Sharing)
+- Generate ad captions for each asset
+- Upload all assets to Google Ads Performance Max campaign (tab open at ads.google.com)
+
 ### Past Mistakes Addendum (Feb 25, 2026)
 29. **Meta reads ALL product data fields, not just title** — Session T softened the product title which fixed the "Medical equipment" rejection, but Meta re-rejected because the description body still had clinical study citations, cortisol/stress claims, and researcher names. Must soften ALL fields that feed into Meta's catalog: title, description body_html, SEO title (title_tag), SEO meta description (description_tag), AND tags. One soft field + one clinical field = rejection.
 30. **Old discount code persisted in announcement bar** — The announcement bar still showed "FIRSTDOSE for 20% off" after the discount was deprecated in favor of WELCOME10. Announcement bar messages are in `sections/header-group.json` block settings — always check this file when changing discount codes or promotions.
 
 ---
 
-*Last updated: February 25, 2026 (Session V — Klaviyo email flows live, announcement bar redesigned, product data fully softened for Meta)*
-*Next review: Performance Max campaign (after product feed syncs), social media accounts, content agent delegation, design Klaviyo email HTML templates*
+*Last updated: February 25, 2026 (Session W — Asset Studio image generation, 1:1 square images generated, theme pushed to live)*
+*Next review: Generate remaining aspect ratios (4:5, 16:9, 1.91:1), ad captions, upload to PMax campaign, social media accounts, content agent delegation, design Klaviyo email HTML templates*
