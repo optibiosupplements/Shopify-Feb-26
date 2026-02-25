@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session S)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session T)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -555,7 +555,7 @@ Every clinical claim MUST be:
 | Google Ads | 150-105-0443 | Account created, conversion tracking via GTM (Session S) |
 | Google Ads Conversion ID | 17974959670 | Used in GTM tags for Purchase + Add to Cart conversions |
 | Google Merchant Center | 5731366020 | Setup 6/6 complete, return policy configured, products eligible on Google (Session S) |
-| Facebook & Instagram | Sales Channel | App installed on Shopify, Meta account connection pending owner login (Session S) |
+| Facebook & Instagram | Sales Channel | App installed, Meta Pixel connected, CAPI Enhanced, all 3 variants approved (Session T fix) |
 
 ### Manual Steps Still Required (Session H)
 - [ ] **Refresh Shopify API token** — Current token `shpat_10545...` returning 401. Go to Dev Dashboard → "Claud MCP" → API credentials → regenerate
@@ -585,9 +585,9 @@ Every clinical claim MUST be:
 | PUSHED | Theme to live (3 times) | Full theme push, then targeted push for schema fixes, then final clean push — zero errors |
 
 **Product SEO Updates (Shopify Admin):**
-- Title: `Optibio KSM-66® Ashwagandha Root Extract | 600mg Clinical Dose | 90 Capsules | Stress & Sleep Support`
-- SEO Page Title: `Optibio KSM-66® Ashwagandha 600mg | Stress & Sleep Support` (58/70 chars)
-- Meta Description: `600mg KSM-66® Ashwagandha root extract. Clinically studied: 27.9% lower cortisol, 44% less stress, better sleep. 90-day guarantee. Made in USA.` (143/160 chars)
+- Title: `Optibio KSM-66® Ashwagandha Root Extract | 600mg Full Serving | 90 Capsules | Wellness Support` *(updated Session T — softened for Meta compliance)*
+- SEO Page Title: `Optibio KSM-66® Ashwagandha 600mg | Stress & Sleep Support` (58/70 chars) *(NOT changed — SEO metafields are not synced to Meta)*
+- Meta Description: `600mg KSM-66® Ashwagandha root extract. Clinically studied: 27.9% lower cortisol, 44% less stress, better sleep. 90-day guarantee. Made in USA.` (143/160 chars) *(NOT changed — SEO metafields are not synced to Meta)*
 - URL Handle: `products/optibio-ashwagandha-ksm-66` (unchanged)
 
 **Test Order Results:**
@@ -939,5 +939,42 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 24, 2026 (Session S — Google Ads + GTM V3, standalone GA4 removed, FB&IG fully configured + submitted for review, Merchant Center 6/6 complete, Google Ads linked to Merchant Center)*
+### Session T — Meta Rejection Fix: Softened Product Title & Description (Feb 24, 2026)
+
+**Problem:** Meta rejected 2 of 3 product variants (1-bottle and 6-bottle) from the Facebook & Instagram Shop. Rejection reason: "Product is rejected: Medical equipment" — false positive from Meta's AI triggered by clinical language in product title and description.
+
+**Root Cause:** Product title contained "Clinical Dose" and "Stress & Sleep Support"; description contained hard clinical statistics (27.9% cortisol reduction, 44% stress reduction, etc.), compound names (withanolides, Withania somnifera), and condition-specific targeting language.
+
+**Fix Applied (via Shopify Admin API — product data only, NOT theme files):**
+
+| Change | Before | After |
+|--------|--------|-------|
+| Product Title | `...600mg Clinical Dose \| 90 Capsules \| Stress & Sleep Support` | `...600mg Full Serving \| 90 Capsules \| Wellness Support` |
+| Description: dose language | "full clinical dose" | "full recommended serving" |
+| Description: study language | "clinically studied", "clinical trials" | "researched", "studies" |
+| Description: stats | "27.9% Cortisol Reduction", "44% Stress Reduction", etc. | "Cortisol Support*", "Stress Management Support*", etc. |
+| Description: compounds | "Withania somnifera", "withanolides" | Removed |
+| Description: targeting | "Stressed professionals seeking calm without sedation" | "Professionals seeking natural calm and focus" |
+
+**Result:** After Shopify synced the updated data to Meta's catalog, both rejected variants were **automatically re-approved** by Meta's AI — no manual "Request review" was needed. All 3 variants now show ✅ "Product is shown" in Commerce Manager.
+
+**Important Notes:**
+- Theme files (homepage-hero.liquid, product-hero.liquid, product-clinical-stats.liquid, etc.) were **NOT changed** — they keep clinical language for on-site SEO and conversion
+- SEO metafields (title_tag, description_tag) were **NOT changed** — they are for Google, not synced to Meta
+- The product description change only affects what Meta sees in the catalog feed and the Shopify product admin description field
+- The live website product page renders from theme sections, not the product description
+
+| Action | Target | Details |
+|--------|--------|---------|
+| UPDATED | Shopify Product Title | "Clinical Dose" → "Full Serving", "Stress & Sleep Support" → "Wellness Support" |
+| UPDATED | Shopify Product Description | Softened all clinical/medical language per table above |
+| VERIFIED | Meta Commerce Manager | Updated title + description synced to catalog |
+| VERIFIED | 1-bottle variant (44617498656837) | ✅ "Product is shown" — auto-approved |
+| VERIFIED | 6-bottle variant (44617498722373) | ✅ "Product is shown" — auto-approved |
+| VERIFIED | 3-bottle variant (44617498689605) | ✅ "Product is shown" — was never rejected |
+| PUSHED | Theme to live | `shopify theme push --allow-live --theme 146307776581` — no theme file changes |
+
+---
+
+*Last updated: February 24, 2026 (Session T — Meta rejection fix: softened product title/description, all 3 variants approved in Meta Commerce Manager)*
 *Next review: Performance Max campaign (after product feed syncs), social media accounts, content agent delegation*
