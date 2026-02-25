@@ -1,0 +1,115 @@
+<!-- Klaviyo Abandoned Cart — Email 1: Gentle Reminder -->
+<!-- Flow: Abandoned Checkout Recovery (RRVAf2) -->
+<!-- Trigger: 1 hour after checkout started; conditional split confirms no order placed -->
+<!-- Subject: You left something behind -->
+<!-- Preview Text: Your Optibio is waiting -->
+<!-- FDA Disclaimer: NOT required (no health claims) -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You left something behind</title>
+  <!--[if mso]>
+  <style>* { font-family: Arial, Helvetica, sans-serif !important; }</style>
+  <![endif]-->
+</head>
+<body style="margin:0;padding:0;background-color:#F1F5F9;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+
+<!-- Wrapper -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F1F5F9;">
+  <tr>
+    <td align="center" style="padding:24px 16px;">
+
+      <!-- Email Container -->
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#FFFFFF;border-radius:8px;overflow:hidden;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background-color:#1A2F4D;padding:32px 24px;text-align:center;">
+            <h1 style="color:#C9A961;font-family:'Sora','Inter',Helvetica,Arial,sans-serif;font-size:24px;font-weight:700;margin:0;letter-spacing:0.5px;">Optibio</h1>
+            <p style="color:rgba(255,255,255,0.7);font-size:12px;margin:8px 0 0;letter-spacing:0.1em;text-transform:uppercase;font-family:'Inter',Helvetica,Arial,sans-serif;">Science-Backed Supplements</p>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="padding:32px 24px;font-family:'Inter',Helvetica,Arial,sans-serif;color:#475569;font-size:15px;line-height:1.7;">
+
+            <p style="margin:0 0 20px;">Hi {{ first_name|default:"there" }},</p>
+
+            <p style="margin:0 0 24px;">Looks like you didn't finish checking out. No worries — your cart is saved and ready when you are.</p>
+
+            <!-- Gold Divider -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr><td style="border-top:2px solid #C9A961;font-size:1px;line-height:1px;">&nbsp;</td></tr>
+            </table>
+
+            <!-- Dynamic Cart Items -->
+            <!-- NOTE: In Klaviyo's drag-and-drop editor, use the built-in "Abandoned Cart"
+                 dynamic content block here. For the HTML template, we use Klaviyo's
+                 event data variables. -->
+            {% for item in event.extra.line_items %}
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px;border:1px solid #E2E8F0;border-radius:8px;overflow:hidden;">
+              <tr>
+                <td style="width:80px;vertical-align:top;padding:12px;">
+                  {% if item.product.image %}
+                  <img src="{{ item.product.image }}" width="80" height="80" style="border-radius:6px;object-fit:cover;display:block;" alt="{{ item.product.title }}">
+                  {% endif %}
+                </td>
+                <td style="padding:12px;vertical-align:middle;">
+                  <p style="margin:0 0 4px;font-weight:600;color:#1A2F4D;font-size:15px;">{{ item.product.title }}</p>
+                  <p style="margin:0;font-size:14px;color:#475569;">Qty: {{ item.quantity }} | {{ item.line_price|floatformat:2 }}</p>
+                </td>
+              </tr>
+            </table>
+            {% endfor %}
+
+            <!-- CTA Button -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:8px 0 24px;">
+              <tr>
+                <td align="center">
+                  <a href="{{ event.extra.checkout_url }}" target="_blank" style="display:inline-block;background-color:#2563EB;color:#FFFFFF;font-family:'Sora','Inter',Helvetica,Arial,sans-serif;font-size:16px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:8px;letter-spacing:0.3px;width:100%;max-width:320px;text-align:center;box-sizing:border-box;">Complete Your Order</a>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Trust Points -->
+            <p style="margin:0 0 8px;font-size:14px;">Just so you know:</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr><td style="padding:4px 0;font-size:14px;">&#10003; <strong>Free shipping</strong> on orders $49+</td></tr>
+              <tr><td style="padding:4px 0;font-size:14px;">&#10003; <strong>90-day money-back guarantee</strong> — no questions asked</td></tr>
+            </table>
+
+            <p style="margin:0 0 16px;">If you have any questions, just reply to this email.</p>
+
+            <p style="margin:0;">— The Optibio Team</p>
+
+          </td>
+        </tr>
+
+        <!-- Footer (No FDA Disclaimer needed) -->
+        <tr>
+          <td style="background-color:#F8FAFC;padding:24px;text-align:center;border-top:1px solid #E2E8F0;">
+            <p style="margin:0 0 8px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:12px;color:#94A3B8;">
+              Optibio | <a href="https://optibiosupplements.com" style="color:#2563EB;text-decoration:none;">optibiosupplements.com</a>
+            </p>
+            <p style="margin:0 0 8px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:12px;color:#94A3B8;">
+              <a href="mailto:support@optibiosupplements.com" style="color:#2563EB;text-decoration:none;">support@optibiosupplements.com</a>
+            </p>
+            <p style="margin:0;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:12px;color:#94A3B8;">
+              <a href="{{ unsubscribe_url }}" style="color:#94A3B8;text-decoration:underline;">Unsubscribe</a> &middot; <a href="{{ manage_preferences_url }}" style="color:#94A3B8;text-decoration:underline;">Manage Preferences</a>
+            </p>
+          </td>
+        </tr>
+
+      </table>
+      <!-- End Email Container -->
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

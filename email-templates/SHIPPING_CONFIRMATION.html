@@ -1,0 +1,69 @@
+<!-- Optibio Shipping Confirmation Email Template -->
+<!-- Paste into: Shopify Admin > Settings > Notifications > Shipping Confirmation -->
+
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;font-family:'Inter',Helvetica,Arial,sans-serif;color:#475569;line-height:1.6;">
+
+  <!-- Header -->
+  <tr>
+    <td style="background:#1A2F4D;padding:32px 24px;text-align:center;">
+      <h1 style="color:#C9A961;font-family:'Sora','Inter',Helvetica,sans-serif;font-size:24px;font-weight:700;margin:0;">Optibio</h1>
+      <p style="color:rgba(255,255,255,0.7);font-size:12px;margin:8px 0 0;letter-spacing:0.1em;text-transform:uppercase;">Science-Backed Supplements</p>
+    </td>
+  </tr>
+
+  <!-- Main Content -->
+  <tr>
+    <td style="padding:32px 24px;">
+      <h2 style="color:#1A2F4D;font-family:'Sora','Inter',Helvetica,sans-serif;font-size:20px;font-weight:700;margin:0 0 8px;">Your order is on its way!</h2>
+      <p style="margin:0 0 24px;">Hi {{ customer.first_name | default: "there" }}, great news — your Optibio supplements have shipped and are heading your way.</p>
+
+      <!-- Tracking Info -->
+      <div style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:20px;margin-bottom:24px;text-align:center;">
+        <p style="margin:0 0 4px;font-size:12px;color:#64748B;text-transform:uppercase;letter-spacing:0.05em;">Tracking Number</p>
+        <p style="margin:0 0 12px;font-size:16px;font-weight:600;color:#1A2F4D;">{{ tracking_number }}</p>
+        {% if tracking_url %}
+        <a href="{{ tracking_url }}" style="display:inline-block;background:#2563EB;color:#fff;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:600;text-decoration:none;">Track Your Package</a>
+        {% endif %}
+      </div>
+
+      <!-- Order Summary -->
+      <div style="border:1px solid #E2E8F0;border-radius:8px;padding:16px;margin-bottom:24px;">
+        <h3 style="color:#1A2F4D;font-size:14px;font-weight:600;margin:0 0 12px;">Order {{ order_name }}</h3>
+        {% for line in line_items %}
+        <p style="margin:0 0 4px;font-size:13px;">{{ line.quantity }}x {{ line.title }}{% if line.variant_title != blank %} — {{ line.variant_title }}{% endif %}</p>
+        {% endfor %}
+      </div>
+
+      <!-- Shipping Details -->
+      <div style="margin-bottom:24px;">
+        <h3 style="color:#1A2F4D;font-size:14px;font-weight:600;margin:0 0 8px;">Delivering to:</h3>
+        <p style="font-size:13px;margin:0;color:#64748B;">
+          {{ shipping_address.name }}<br>
+          {{ shipping_address.street }}<br>
+          {{ shipping_address.city }}, {{ shipping_address.province_code }} {{ shipping_address.zip }}
+        </p>
+      </div>
+
+      <!-- Getting Started Tips -->
+      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:16px;margin-bottom:24px;">
+        <h3 style="color:#166534;font-size:14px;font-weight:600;margin:0 0 8px;">Getting Started with Optibio</h3>
+        <ul style="margin:0;padding-left:20px;font-size:13px;color:#475569;">
+          <li style="margin-bottom:4px;"><strong>Dosage:</strong> Take 2 capsules daily (600mg total KSM-66&reg;)</li>
+          <li style="margin-bottom:4px;"><strong>Best time:</strong> Morning with breakfast or evening with dinner</li>
+          <li style="margin-bottom:4px;"><strong>Consistency is key:</strong> Take daily for best results</li>
+          <li><strong>Timeline:</strong> Most people notice improvements within 2-4 weeks</li>
+        </ul>
+      </div>
+
+    </td>
+  </tr>
+
+  <!-- Footer -->
+  <tr>
+    <td style="background:#1A2F4D;padding:24px;text-align:center;">
+      <p style="margin:0 0 8px;color:rgba(255,255,255,0.7);font-size:12px;">Questions? Reply to this email or contact us at support@optibiosupplements.com</p>
+      <p style="margin:0 0 16px;color:rgba(255,255,255,0.5);font-size:11px;">&copy; {{ "now" | date: "%Y" }} Optibio Supplements &middot; <a href="{{ shop.url }}/policies/privacy-policy" style="color:#C9A961;">Privacy Policy</a></p>
+      <p style="margin:0;color:rgba(255,255,255,0.4);font-size:10px;font-style:italic;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
+    </td>
+  </tr>
+</table>
