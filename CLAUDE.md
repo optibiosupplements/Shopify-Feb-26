@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 24, 2026 — Session T)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 25, 2026 — Session V)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + setup 6/6 complete (return policy configured) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM, Facebook & Instagram sales channel installed on Shopify, standalone GA4 gtag.js removed (GA4 managed via GTM only) Facebook & Instagram fully configured (Optibio Pixel connected, CAPI Enhanced, Seller Agreement accepted, submitted for Meta review), Google Ads linked to Merchant Center (150-105-0443 ↔ 5731366020) — remaining: social media accounts, content agent delegation, create Performance Max campaign when product feed syncs)
+**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + setup 6/6 complete (return policy configured) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM, Facebook & Instagram sales channel installed on Shopify, standalone GA4 gtag.js removed (GA4 managed via GTM only) Facebook & Instagram fully configured (Optibio Pixel connected, CAPI Enhanced, Seller Agreement accepted, all 3 variants approved), Google Ads linked to Merchant Center (150-105-0443 ↔ 5731366020), product data softened for Meta compliance (Sessions T+U), Klaviyo installed with 2 email flows live (Welcome Series + Abandoned Cart), announcement bar redesigned (WELCOME10 code, $49+ free shipping, 3rd-party testing, gold border) — remaining: social media accounts, content agent delegation, create Performance Max campaign when product feed syncs, design Klaviyo email templates)
 
 ---
 
@@ -168,7 +168,7 @@ Every clinical claim MUST be:
 - ~~**Domain:** optibiosupplements.com still points to Manus platform~~ **FIXED Feb 20, 2026 (Session E)** — Domain connected to Shopify via GoDaddy auto-connect. DNS CNAME `www` changed from `cname.manus.space` → `shops.myshopify.com`. TLS certificate provisioned. Domain set as Primary.
 - ~~**Free shipping threshold $75 in theme code**~~ **FIXED Feb 24, 2026 (Session O)** — All 8 theme files updated from $75 to $49. Pushed to live and verified.
 - ~~**Buy box buttons non-functional**~~ **FIXED Feb 24, 2026 (Session Q)** — Subscribe Now button, bundle card selection, and subscription toggle had no working event handlers. JS expected radio inputs that didn't exist in the HTML. Rewrote `optibio-product-enhancements.js` (v2 → v3) with proper DOM targeting.
-- **Facebook Pixel:** Placeholder ID (YOUR_FACEBOOK_PIXEL_ID) — zero tracking
+- ~~**Facebook Pixel:** Placeholder ID (YOUR_FACEBOOK_PIXEL_ID) — zero tracking~~ **FIXED** — Real Pixel ID 3892490224214287 installed (Session P/S), CAPI Enhanced enabled via FB&IG sales channel
 - **Manus Sign-In:** Link redirects to manus.im auth — breaks for customers
 - **OAuth Expiry:** Token expires every 24hr — refresh before MCP sessions
 - ~~**Verify page 404:** `/pages/verify` returns 404 — nav links in header, footer, and traceability badge all broken~~ **FIXED Feb 20, 2026** — Theme updated with Coming Soon state (disabled form, gold banner, "March 2026" launch date). Admin page creation still required.
@@ -263,6 +263,8 @@ Every clinical claim MUST be:
 | Feb 21, 2026 | **Session F — Full Implementation: Legal, Email, Blog, Chat, Policies, Audit** | **Legal Pages:** Created 4 custom HTML files (Terms, Privacy, Refund, Shipping) in `/legal-pages/`. **Email Templates:** Created 3 branded HTML templates (Order Confirm, Shipping, Delivery) in `/email-templates/`. **Customer Support:** Created 5 response templates + expanded FAQ to 20 Q&As in `/customer-support/`. **Blog Content:** Polished 3 blog posts with 12 compliance fixes each (brand name, pricing, guarantee, FDA disclaimer, claims accuracy). **Chat Widget:** Customized Shopify Inbox via browser — Navy #1A2F4D background, Gold #C9A961 buttons, branded greeting, 4 instant answers fixed (wrong email, visibility). **Shopify Admin Policies:** Added 6 legal policies via browser (Refund, Privacy, Terms, Shipping, Contact, Subscription Cancel) — replaced auto-generated content with custom HTML. Fixed wrong email (gmail→support@) and brand name (OptiBio→Optibio) across all policies. **Compliance Audit:** Full 11-category theme audit — 0 violations found across 430 files. **Theme Edits:** Fixed "clinically-proven" → "clinically studied" (homepage-hero.liquid, index.json), KSM-66 → KSM-66® (product-badge-strip.liquid, meta-tags.liquid), sleep baseline 72% → 75.6% (science-studies.liquid), added cookie consent banner (cookie-consent.liquid + theme.liquid render). **Deploy:** All 7 files pushed to live theme via `shopify theme push` CLI (commit `74400c3`). Verified live at optibiosupplements.com — all changes confirmed. **GitHub:** Pushed to `optibiosupplements/Shopify-Feb-26` main branch. **Documentation:** Created SESSION_6_TRACKING.md with full implementation log. | CodeMirror 6 in Shopify Admin policies editor doesn't accept synthetic JS events (insertText, beforeinput, ClipboardEvent). Working approach: write to clipboard via `navigator.clipboard.writeText()`, then use keyboard shortcut `cmd+a` + `cmd+v` to paste. Shopify's color picker hex input requires: triple-click → type value → Tab → click elsewhere to apply. Chrome MCP extension disconnects intermittently during long sessions. |
 | Feb 24, 2026 | **Session K — Verification & Lighthouse Audit** | Verified GTM/GA4/Meta Pixel all firing on live site. Confirmed 3 blog posts live at /blogs/news/. Confirmed Manus sign-in link already resolved (zero refs in code). Ran Lighthouse CLI audit: Homepage 46/93/54/100, Product 35/93/54/92. Verified hero product image visible. Confirmed GitHub repo up to date at commit 629ac37. | GA4 collect endpoint returns 503 — this is NORMAL for Google Analytics. Chrome MCP network tracking only starts when first called, so initial page load requests may be missed. |
 | Feb 24, 2026 | **Session O — Free Shipping $75→$49 Fix + Asset Studio + Marketing Rollout** | Fixed all 8 theme files with $75→$49 free shipping threshold. Pushed to live via Shopify CLI. Updated Asset Studio (Gemini 2.5 Flash Image + Veo 3.1). Created AI Studio fix prompt and user guide. Created updated marketing rollout plan. API token expired — needs refresh. | $75 threshold persisted in 8 files after rate change. MCP config had stale token. |
+| Feb 25, 2026 | **Session U — Meta Rejection Fix #2** | Fully softened product description body, SEO title, SEO meta description, tags. Removed all study citations, researcher names, cortisol/stress/sleep claims. All 3 variants auto-approved by Meta immediately. | Meta reads ALL product data fields — title, description, SEO title, SEO meta, AND tags. Softening only the title (Session T) was insufficient. |
+| Feb 25, 2026 | **Session V — Email Marketing + Announcement Bar + Klaviyo** | Created 3 marketing docs (welcome emails, abandoned cart, exit-intent brief). Installed Klaviyo, built 2 flows (Welcome Series Srh8uu + Abandoned Cart RRVAf2), both set to Live. Redesigned announcement bar: 3 new messages (WELCOME10, $49+ shipping, 3rd-party testing) + gold top border. Theme pushed, git commit 1ba7716. | Old FIRSTDOSE discount code persisted in announcement bar. Klaviyo email templates still need HTML design. |
 | Feb 24, 2026 | **Session L — Lighthouse Fixes + GA4 E-Commerce + Performance** | **Accessibility:** Fixed 19 contrast ratio failures — darkened --optibio-green (#10B981→#059669), --optibio-red (#EF4444→#DC2626), --optibio-gold-dark (#B89A4F→#9A7D3B), --green-600 (#16a34a→#15803d), footer FDA (0.4→0.7 opacity). Fixed inline colors in product-comparison.liquid and product-who-for.liquid. Increased carousel dot touch targets (8→24px). **SEO:** Fixed non-crawlable COA link (a→button), added Judge.me link patcher (MutationObserver). **GA4:** Created optibio-ga4-ecommerce.js with view_item, add_to_cart, view_item_list dataLayer events. **Performance:** Removed render-blocking @import Google Fonts, added async font loading via media="print" onload trick, added preconnect/dns-prefetch hints. **Deploy:** Pushed 11 files to Shopify live theme + GitHub commit `2b873fa`. | CSS @import inside a stylesheet creates a 2-step render-blocking chain. Always use `<link>` in HTML head instead. Remaining LCP dominated by Shopify platform overhead + third-party scripts (not reducible via theme code). Duplicate GA4 loading (standalone + GTM) — remove standalone once GTM GA4 tag confirmed. |
 
 ---
@@ -974,7 +976,75 @@ Every clinical claim MUST be:
 | VERIFIED | 3-bottle variant (44617498689605) | ✅ "Product is shown" — was never rejected |
 | PUSHED | Theme to live | `shopify theme push --allow-live --theme 146307776581` — no theme file changes |
 
+### Session U — Meta Rejection Fix #2: Fully Softened Product Description + SEO + Tags (Feb 25, 2026)
+
+**Problem:** Meta rejected the product AGAIN after Session T fix. Commerce Policy violations persisted.
+
+**Root Cause:** Session T softened the product title but the description body_html still contained clinical language from the original pre-Session-T content: study citations (Chandrasekhar 2012, Langade 2019, Choudhary 2015), researcher names, cortisol/stress/sleep benefit claims, "FDA-registered" mention, "peer-reviewed studies" language. Meta's AI reads ALL product data fields.
+
+**Fix Applied (via Shopify Admin):**
+
+| Field | Change |
+|-------|--------|
+| Product Description | Fully softened — removed all study citations, researcher names, cortisol/stress/sleep benefit claims, "FDA-registered", "peer-reviewed studies" |
+| SEO Title | Softened to `Optibio KSM-66® Ashwagandha 600mg \| Daily Wellness Support` |
+| SEO Meta Description | Softened — no clinical stats, no cortisol/stress/sleep claims |
+| Tags | Removed "stress relief" and "sleep support", added "wellness" |
+
+**Result:** Product auto-approved by Meta immediately after Shopify synced to catalog. All 3 variants showing ✅ in Commerce Manager.
+
+**Critical Learning:** Meta reads ALL product data fields — title, description body, SEO title, SEO meta description, AND tags. Softening just the title (Session T) was not enough. Must soften ALL fields that feed into catalog.
+
 ---
 
-*Last updated: February 24, 2026 (Session T — Meta rejection fix: softened product title/description, all 3 variants approved in Meta Commerce Manager)*
-*Next review: Performance Max campaign (after product feed syncs), social media accounts, content agent delegation*
+### Session V — Email Marketing + Announcement Bar + Klaviyo Setup (Feb 25, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| CREATED | `Marketing/email-flows-welcome.md` | 3-email welcome series copy for Klaviyo (subjects, preview text, body copy, design spec) |
+| CREATED | `Marketing/email-flows-abandoned-cart.md` | 3-email abandoned cart recovery copy for Klaviyo |
+| CREATED | `Marketing/exit-intent-popup-brief.md` | ROI decision brief with 3 options for exit-intent popup |
+| INSTALLED | Klaviyo (Shopify App Store) | Email marketing platform, free tier, linked to optibiosupplements@gmail.com |
+| BUILT | Klaviyo — Abandoned Cart flow | Checkout Started trigger → 1hr/24hr/48hr emails with conditional splits on "Has Placed Order" (flow URL: klaviyo.com/flow/RRVAf2/edit) |
+| BUILT | Klaviyo — Welcome Series flow | New Subscribers trigger → immediate/3-day/7-day emails with conditional split on "Has Placed Order" (flow URL: klaviyo.com/flow/Srh8uu/edit) |
+| SET LIVE | Both Klaviyo flows | Both flows set to Live status. Email templates still need design in Klaviyo's drag-and-drop editor — copy is in Marketing/*.md docs |
+| EDITED | `sections/header-group.json` | Replaced 3 announcement bar messages: WELCOME10 discount, $49+ free shipping, third-party testing. Removed old FIRSTDOSE/20% messages |
+| EDITED | `sections/header-announcements.liquid` | Added gold top border: `border-block-start: 2px solid #C9A961` |
+| PUSHED | Theme to live (146307776581) | `shopify theme push --allow-live --theme 146307776581` |
+| PUSHED | GitHub commit `1ba7716` | "Session V: Announcement bar redesign — WELCOME10, $49+ shipping, 3rd-party testing, gold border" |
+| VERIFIED | Live site optibiosupplements.com | All 3 announcement messages correct, gold border visible, rotation working, links clickable |
+
+**Klaviyo Flow Details:**
+
+**Welcome Series (flow: Srh8uu):**
+- Trigger: When someone is added to New Subscribers list
+- Email 1 (Day 0): "Welcome to Optibio — Here's Why We're Different" / Preview: "Not another supplement. This one has proof."
+- Wait 3 days
+- Email 2 (Day 3): "27.9% Lower Cortisol — Here's What That Feels Like" / Preview: "The study that changed how we think about stress"
+- Wait 4 days
+- Conditional split: Has Placed Order at least once since starting this flow
+- YES → Exit flow
+- NO → Email 3 (Day 7): "Your First Bottle Is Waiting — 15% Off with Subscribe & Save" / Preview: "Four benefits. One capsule. 90 days to decide."
+
+**Abandoned Cart (flow: RRVAf2):**
+- Trigger: Checkout Started
+- Email 1 (1hr): "You left something behind"
+- Email 2 (24hr): "Still waking up tired after 8 hours?"
+- Email 3 (48hr): "Still thinking it over? Here's 10% off." (WELCOME10 code)
+- Each email preceded by conditional split: Has Placed Order since starting flow → YES exits
+
+**Announcement Bar Messages (3 rotating):**
+1. "✨ 10% Off Your First Order — Code WELCOME10 · Shop Now →" (links to product page)
+2. "🚚 FREE Shipping on Orders $49+ · Save Up to 40% on Bundles · Shop Now →" (links to product page)
+3. "🔬 Every Batch Third-Party Tested · FDA-Audited Facility · Learn More →" (links to science page)
+
+**Discount Code:** WELCOME10 (10% off, evergreen) — replaces deprecated FIRSTDOSE
+
+### Past Mistakes Addendum (Feb 25, 2026)
+29. **Meta reads ALL product data fields, not just title** — Session T softened the product title which fixed the "Medical equipment" rejection, but Meta re-rejected because the description body still had clinical study citations, cortisol/stress claims, and researcher names. Must soften ALL fields that feed into Meta's catalog: title, description body_html, SEO title (title_tag), SEO meta description (description_tag), AND tags. One soft field + one clinical field = rejection.
+30. **Old discount code persisted in announcement bar** — The announcement bar still showed "FIRSTDOSE for 20% off" after the discount was deprecated in favor of WELCOME10. Announcement bar messages are in `sections/header-group.json` block settings — always check this file when changing discount codes or promotions.
+
+---
+
+*Last updated: February 25, 2026 (Session V — Klaviyo email flows live, announcement bar redesigned, product data fully softened for Meta)*
+*Next review: Performance Max campaign (after product feed syncs), social media accounts, content agent delegation, design Klaviyo email HTML templates*
