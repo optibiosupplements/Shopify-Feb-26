@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 25, 2026 — Session W)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 25, 2026 — Session X)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + setup 6/6 complete (return policy configured) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM, Facebook & Instagram sales channel installed on Shopify, standalone GA4 gtag.js removed (GA4 managed via GTM only) Facebook & Instagram fully configured (Optibio Pixel connected, CAPI Enhanced, Seller Agreement accepted, all 3 variants approved), Google Ads linked to Merchant Center (150-105-0443 ↔ 5731366020), product data softened for Meta compliance (Sessions T+U), Klaviyo installed with 2 email flows live (Welcome Series + Abandoned Cart), announcement bar redesigned (WELCOME10 code, $49+ free shipping, 3rd-party testing, gold border) — remaining: social media accounts, content agent delegation, create Performance Max campaign when product feed syncs, design Klaviyo email templates)
+**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + setup 6/6 complete (return policy configured) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM, Facebook & Instagram sales channel installed on Shopify, standalone GA4 gtag.js removed (GA4 managed via GTM only) Facebook & Instagram fully configured (Optibio Pixel connected, CAPI Enhanced, Seller Agreement accepted, all 3 variants approved), Google Ads linked to Merchant Center (150-105-0443 ↔ 5731366020), product data softened for Meta compliance (Sessions T+U), Klaviyo installed with 2 email flows live (Welcome Series + Abandoned Cart), announcement bar redesigned (WELCOME10 code, $49+ free shipping, 3rd-party testing, gold border) , 6 Klaviyo HTML email templates created (3 Welcome + 3 Abandoned Cart) with logo headers, 3 Shopify notification templates installed (Order Confirmation, Shipping, Delivered) — remaining: paste Klaviyo templates into flow editor, social media accounts, content agent delegation, create Performance Max campaign when product feed syncs, generate remaining marketing images)
 
 ---
 
@@ -1064,11 +1064,43 @@ Every clinical claim MUST be:
 - Generate ad captions for each asset
 - Upload all assets to Google Ads Performance Max campaign (tab open at ads.google.com)
 
+### Session X — Klaviyo Email Templates + Shopify Notifications (Feb 25, 2026)
+
+| Action | File/Location | Purpose |
+|--------|---------------|---------|
+| CREATED | `email-templates/klaviyo/WELCOME_EMAIL_1.html` | Welcome Series Email 1: "Welcome to Optibio — Here's Why We're Different" |
+| CREATED | `email-templates/klaviyo/WELCOME_EMAIL_2.html` | Welcome Series Email 2: "27.9% Lower Cortisol — Here's What That Feels Like" |
+| CREATED | `email-templates/klaviyo/WELCOME_EMAIL_3.html` | Welcome Series Email 3: "Your First Bottle Is Waiting — 15% Off with Subscribe & Save" |
+| CREATED | `email-templates/klaviyo/ABANDONED_CART_EMAIL_1.html` | Abandoned Cart Email 1: "You left something behind" |
+| CREATED | `email-templates/klaviyo/ABANDONED_CART_EMAIL_2.html` | Abandoned Cart Email 2: "Still waking up tired after 8 hours?" |
+| CREATED | `email-templates/klaviyo/ABANDONED_CART_EMAIL_3.html` | Abandoned Cart Email 3: "Still thinking it over? Here's 10% off." |
+| CREATED | `email-templates/ORDER_CONFIRMATION.html` | Shopify order confirmation notification template |
+| CREATED | `email-templates/SHIPPING_CONFIRMATION.html` | Shopify shipping confirmation notification template |
+| CREATED | `email-templates/DELIVERY_CONFIRMATION.html` | Shopify delivery confirmation notification template |
+| UPDATED | All Klaviyo templates | Replaced text headers with actual Optibio logo image (CDN URL) |
+| CREATED | `email-templates/HOW_TO_ADD_EMAIL_TEMPLATES.md` | Guide for manually pasting templates into Klaviyo flow editor |
+
+**Klaviyo Template Details:**
+- All 6 templates are production-ready HTML with inline CSS
+- Logo header uses CDN-hosted Optibio logo image
+- Templates need manual paste into Klaviyo flow editor HTML blocks (Chrome extension crashes on klaviyo.com tabs — screenshots/waits cause extension failure; JS exec works but Ace editor setValue() doesn't trigger React save)
+- Discount code: WELCOME10 (10% off, evergreen)
+
+**Shopify Notification Templates:**
+- 3 templates installed in Shopify Admin → Settings → Notifications
+- Branded with Optibio design system (Navy, Gold accents, Electric Blue CTAs)
+
+**Remaining Email Tasks:**
+- Paste 6 Klaviyo HTML templates into flow editor HTML blocks manually
+- Verify all 6 emails render correctly in Klaviyo preview
+- Send test emails from each flow
+
 ### Past Mistakes Addendum (Feb 25, 2026)
 29. **Meta reads ALL product data fields, not just title** — Session T softened the product title which fixed the "Medical equipment" rejection, but Meta re-rejected because the description body still had clinical study citations, cortisol/stress claims, and researcher names. Must soften ALL fields that feed into Meta's catalog: title, description body_html, SEO title (title_tag), SEO meta description (description_tag), AND tags. One soft field + one clinical field = rejection.
-30. **Old discount code persisted in announcement bar** — The announcement bar still showed "FIRSTDOSE for 20% off" after the discount was deprecated in favor of WELCOME10. Announcement bar messages are in `sections/header-group.json` block settings — always check this file when changing discount codes or promotions.
+30. **Chrome extension crashes on Klaviyo tabs** — Screenshots, waits, and page reads crash the Claude in Chrome extension on klaviyo.com. JS exec works but Ace editor's setValue() doesn't trigger React's internal state/save mechanism. Workaround: create templates as local HTML files, then manually paste into Klaviyo's HTML blocks.
+31. **Old discount code persisted in announcement bar** — The announcement bar still showed "FIRSTDOSE for 20% off" after the discount was deprecated in favor of WELCOME10. Announcement bar messages are in `sections/header-group.json` block settings — always check this file when changing discount codes or promotions.
 
 ---
 
-*Last updated: February 25, 2026 (Session W — Asset Studio image generation, 1:1 square images generated, theme pushed to live)*
-*Next review: Generate remaining aspect ratios (4:5, 16:9, 1.91:1), ad captions, upload to PMax campaign, social media accounts, content agent delegation, design Klaviyo email HTML templates*
+*Last updated: February 25, 2026 (Session X — 6 Klaviyo email templates created with logo headers, 3 Shopify notification templates installed)*
+*Next review: Paste Klaviyo templates into flow editor, generate remaining marketing images (4:5, 16:9, 1.91:1), ad captions, upload to PMax campaign, social media accounts, content agent delegation*
