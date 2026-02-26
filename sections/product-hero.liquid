@@ -179,6 +179,11 @@
         </script>
       {% endif %}
 
+      {% comment %} Store config for JS (free shipping threshold, etc.) {% endcomment %}
+      <script id="optibio-store-config" type="application/json">
+        { "freeShippingThreshold": {{ settings.free_shipping_threshold | default: 49 }} }
+      </script>
+
       {% comment %} Express Checkout (inside buy box flow) {% endcomment %}
       <div class="optibio-hero__express-checkout">
         {%- form 'product', product, id: 'optibio-express-checkout-form' -%}

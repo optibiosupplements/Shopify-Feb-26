@@ -63,6 +63,17 @@
         "padding-block-end": 0
       }
     },
+    "subscribe-banner": {
+      "type": "cart-subscription-banner",
+      "settings": {
+        "enable_banner": true,
+        "badge_text": "Save 15%",
+        "heading": "Switch to Subscribe & Save",
+        "description": "Get <strong>15% off every order</strong> plus free shipping. Cancel or pause anytime — no commitment.",
+        "cta_text": "Subscribe & Save",
+        "cta_link": "/products/optibio-ashwagandha-ksm-66"
+      }
+    },
     "product_list_NNFgcy": {
       "type": "product-list",
       "blocks": {
@@ -260,6 +271,7 @@
   },
   "order": [
     "cart-section",
+    "subscribe-banner",
     "product_list_NNFgcy"
   ]
 }

@@ -1664,6 +1664,12 @@
     "name": "t:names.cart",
     "settings": [
       {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold ($)",
+        "default": 49
+      },
+      {
         "type": "select",
         "id": "cart_type",
         "label": "t:settings.cart_type",

@@ -45,7 +45,10 @@ class OptibioProductEnhancements {
   }
 
   init() {
-    this.freeShippingThreshold = 49; // $49 for free shipping
+    // Read free shipping threshold from store config (set in Theme Settings > Cart)
+    var configEl = document.getElementById('optibio-store-config');
+    var storeConfig = configEl ? JSON.parse(configEl.textContent) : {};
+    this.freeShippingThreshold = storeConfig.freeShippingThreshold || 49;
     this.loadSellingPlans();
     this.attachEventListeners();
     this.updateUI();
