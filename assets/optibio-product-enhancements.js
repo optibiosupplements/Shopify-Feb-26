@@ -78,6 +78,14 @@ class OptibioProductEnhancements {
         self.updateUI();
         self.updateShopifyVariant();
       });
+
+      // Keyboard accessibility: Enter/Space activates bundle cards
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
     });
 
     // Subscription toggle click
@@ -162,9 +170,11 @@ class OptibioProductEnhancements {
       var checkmark = card.querySelector('.optibio-bundle-checkmark');
       if (bundleSize === self.state.bundleSize) {
         card.classList.add('selected');
+        card.setAttribute('aria-selected', 'true');
         if (checkmark) checkmark.style.display = '';
       } else {
         card.classList.remove('selected');
+        card.setAttribute('aria-selected', 'false');
         if (checkmark) checkmark.style.display = 'none';
       }
     });

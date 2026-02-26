@@ -79,7 +79,7 @@
     "sections": {
       "email-popup": {
         "type": "email-popup",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "delay_seconds": 8,
           "enable_exit_intent": true,
@@ -87,7 +87,7 @@
           "submitted_cookie_days": 360,
           "eyebrow": "LIMITED TIME OFFER",
           "heading": "Get 10% Off Your First Order",
-          "subheading": "Join 2,400+ customers who chose clinical-grade quality. Enter your email for an exclusive discount.",
+          "subheading": "Enter your email for an exclusive discount on clinically studied KSM-66\u00ae Ashwagandha.",
           "discount_code": "WELCOME10",
           "discount_value": "10% OFF",
           "placeholder_text": "Enter your email address",

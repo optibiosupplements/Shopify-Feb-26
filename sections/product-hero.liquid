@@ -71,7 +71,7 @@
                     data-thumb-index="{{ thumb_index }}"
                     type="button"
                     aria-label="View image {{ forloop.index }}">
-              {{ media | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}
+              {{ media | image_url: width: 120 | image_tag: loading: 'lazy', alt: media.alt | default: product.title }}
             </button>
             {% assign thumb_index = thumb_index | plus: 1 %}
           {% endif %}
