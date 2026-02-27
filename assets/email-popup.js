@@ -1,11 +1,12 @@
 /**
- * Optibio Email Capture Popup
- * - Delay-based trigger (configurable, default 5s)
- * - Exit-intent trigger on desktop
+ * Optibio Email Capture Popup (v2 — Multi-Step + Klaviyo Dual-Write)
+ * - Step 1: Email capture (Shopify /contact + Klaviyo subscribe API)
+ * - Step 2: Wellness goal (zero-party data → Klaviyo profile property)
+ * - Step 3: Ashwagandha experience (zero-party data → Klaviyo profile property)
+ * - Step 4: Success state with discount code
+ * - Delay-based + exit-intent triggers
  * - Cookie-based suppression (7 days dismiss, 365 days submit)
- * - Shopify customer form integration
- * - Copy discount code to clipboard
- * - GTM dataLayer tracking (popup_view, popup_dismiss, popup_convert)
+ * - GTM dataLayer tracking
  */
 (function() {
   'use strict';
@@ -16,10 +17,17 @@
   var EXIT_INTENT = script.getAttribute('data-exit-intent') === 'true';
   var DISMISS_DAYS = parseInt(script.getAttribute('data-dismiss-days') || '7', 10);
   var SUBMITTED_DAYS = parseInt(script.getAttribute('data-submitted-days') || '365', 10);
+  var KLAVIYO_COMPANY = script.getAttribute('data-klaviyo-company') || '';
+  var KLAVIYO_LIST = script.getAttribute('data-klaviyo-list') || '';
 
   // ── dataLayer helper ──
   window.dataLayer = window.dataLayer || [];
-  var triggerType = null; // tracks whether popup was triggered by 'delay' or 'exit_intent'
+  var triggerType = null;
+
+  // ── State ──
+  var capturedEmail = '';
+  var wellnessGoal = '';
+  var ashwagandhaExperience = '';
 
   // ── Cookie Helpers ──
   function setCookie(name, value, days) {
@@ -49,6 +57,11 @@
   var successEl = document.getElementById('optibio-popup-success');
   var copyBtn = document.getElementById('optibio-popup-copy');
 
+  // Step elements
+  var step1 = document.getElementById('optibio-popup-step-1');
+  var step2 = document.getElementById('optibio-popup-step-2');
+  var step3 = document.getElementById('optibio-popup-step-3');
+
   if (!overlay) return;
 
   var hasShown = false;
@@ -61,19 +74,16 @@
     hasShown = true;
 
     overlay.style.display = 'flex';
-    // Force reflow for transition
     overlay.offsetHeight;
     overlay.classList.add('is-visible');
     document.body.style.overflow = 'hidden';
 
-    // GTM: Track popup view
     window.dataLayer.push({
       event: 'popup_view',
       popup_trigger_type: triggerType || 'delay',
       popup_name: 'email_capture'
     });
 
-    // Focus email input after animation
     setTimeout(function() {
       if (emailInput) emailInput.focus();
     }, 400);
@@ -87,9 +97,91 @@
     }, 300);
   }
 
-  // ── Dismiss (close button, overlay click, Escape key) ──
+  // ── Step Navigation ──
+  function showStep(stepEl) {
+    // Hide all steps
+    var steps = overlay.querySelectorAll('.optibio-popup__step');
+    for (var i = 0; i < steps.length; i++) {
+      steps[i].style.display = 'none';
+    }
+    // Also hide step-1 elements that aren't in a .step wrapper
+    var discountPreview = overlay.querySelector('.optibio-popup__discount-preview');
+    var subheading = overlay.querySelector('.optibio-popup__subheading');
+
+    if (stepEl === step2 || stepEl === step3) {
+      if (discountPreview) discountPreview.style.display = 'none';
+      if (subheading) subheading.style.display = 'none';
+    }
+
+    // Show target step
+    stepEl.style.display = 'block';
+  }
+
+  // ── Klaviyo Subscribe API ──
+  function subscribeToKlaviyo(email) {
+    if (!KLAVIYO_COMPANY || !KLAVIYO_LIST) return;
+
+    fetch('https://a.klaviyo.com/client/subscriptions/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'revision': '2024-10-15'
+      },
+      body: JSON.stringify({
+        data: {
+          type: 'subscription',
+          attributes: {
+            custom_source: 'Website Popup',
+            profile: {
+              data: {
+                type: 'profile',
+                attributes: {
+                  email: email
+                }
+              }
+            }
+          },
+          relationships: {
+            list: {
+              data: {
+                type: 'list',
+                id: KLAVIYO_LIST
+              }
+            }
+          }
+        }
+      })
+    }).catch(function() {
+      // Silent fail — Shopify form is the primary, Klaviyo is supplementary
+    });
+  }
+
+  // ── Klaviyo Profile Property Update ──
+  function updateKlaviyoProfile(email, properties) {
+    if (!KLAVIYO_COMPANY) return;
+
+    fetch('https://a.klaviyo.com/client/profiles/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'revision': '2024-10-15'
+      },
+      body: JSON.stringify({
+        data: {
+          type: 'profile',
+          attributes: {
+            email: email,
+            properties: properties
+          }
+        }
+      })
+    }).catch(function() {
+      // Silent fail
+    });
+  }
+
+  // ── Dismiss ──
   function dismiss() {
-    // GTM: Track popup dismiss
     window.dataLayer.push({
       event: 'popup_dismiss',
       popup_trigger_type: triggerType || 'delay',
@@ -113,19 +205,21 @@
     }
   });
 
-  // ── Form Submit ──
+  // ── Step 1: Form Submit ──
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     var email = emailInput.value.trim();
     if (!email || !email.includes('@')) return;
 
+    capturedEmail = email;
+
     // Show loading state
     submitText.style.display = 'none';
     submitLoading.style.display = 'inline-flex';
     submitBtn.disabled = true;
 
-    // Submit to Shopify
+    // Submit to Shopify (primary)
     var formData = new FormData(form);
 
     fetch('/contact', {
@@ -136,34 +230,112 @@
       }
     })
     .then(function() {
-      // Show success state (even if response isn't JSON, Shopify usually accepts it)
-      showSuccess();
+      afterEmailCapture(email);
     })
     .catch(function() {
-      // Still show success — Shopify contact forms often redirect, so catch is expected
-      showSuccess();
+      // Shopify contact forms often redirect, so catch is expected
+      afterEmailCapture(email);
     });
   });
 
-  function showSuccess() {
-    // GTM: Track popup conversion
+  function afterEmailCapture(email) {
+    // Subscribe to Klaviyo (secondary — dual-write)
+    subscribeToKlaviyo(email);
+
+    // GTM: Track email capture
     window.dataLayer.push({
-      event: 'popup_convert',
+      event: 'popup_email_captured',
       popup_trigger_type: triggerType || 'delay',
       popup_name: 'email_capture'
     });
 
+    // Set cookie so popup doesn't re-show
     setCookie('optibio_popup_submitted', '1', SUBMITTED_DAYS);
 
-    // Hide form, show success
-    form.style.display = 'none';
-    var discountPreview = overlay.querySelector('.optibio-popup__discount-preview');
-    if (discountPreview) discountPreview.style.display = 'none';
-    var subheading = overlay.querySelector('.optibio-popup__subheading');
-    if (subheading) subheading.style.display = 'none';
+    // Move to Step 2
+    showStep(step2);
+  }
 
-    successEl.style.display = 'block';
+  // ── Step 2: Wellness Goal ──
+  var goalButtons = document.querySelectorAll('#optibio-popup-goals .optibio-popup__option');
+  for (var i = 0; i < goalButtons.length; i++) {
+    goalButtons[i].addEventListener('click', function() {
+      wellnessGoal = this.getAttribute('data-value');
 
+      // Visual feedback
+      this.classList.add('is-selected');
+
+      // Update Klaviyo profile
+      updateKlaviyoProfile(capturedEmail, { wellness_goal: wellnessGoal });
+
+      // GTM
+      window.dataLayer.push({
+        event: 'popup_wellness_goal',
+        popup_wellness_goal: wellnessGoal
+      });
+
+      // Brief delay for visual feedback, then move to step 3
+      var self = this;
+      setTimeout(function() {
+        showStep(step3);
+      }, 300);
+    });
+  }
+
+  // Step 2 skip
+  var skip2 = document.getElementById('optibio-popup-skip-2');
+  if (skip2) {
+    skip2.addEventListener('click', function() {
+      showStep(step3);
+    });
+  }
+
+  // ── Step 3: Ashwagandha Experience ──
+  var expButtons = document.querySelectorAll('#optibio-popup-experience .optibio-popup__option');
+  for (var j = 0; j < expButtons.length; j++) {
+    expButtons[j].addEventListener('click', function() {
+      ashwagandhaExperience = this.getAttribute('data-value');
+
+      // Visual feedback
+      this.classList.add('is-selected');
+
+      // Update Klaviyo profile
+      updateKlaviyoProfile(capturedEmail, { ashwagandha_experience: ashwagandhaExperience });
+
+      // GTM
+      window.dataLayer.push({
+        event: 'popup_experience_level',
+        popup_experience: ashwagandhaExperience
+      });
+
+      // Brief delay, then show success
+      setTimeout(function() {
+        showFinalSuccess();
+      }, 300);
+    });
+  }
+
+  // Step 3 skip
+  var skip3 = document.getElementById('optibio-popup-skip-3');
+  if (skip3) {
+    skip3.addEventListener('click', function() {
+      showFinalSuccess();
+    });
+  }
+
+  // ── Final Success ──
+  function showFinalSuccess() {
+    // GTM: Track full popup conversion
+    window.dataLayer.push({
+      event: 'popup_convert',
+      popup_trigger_type: triggerType || 'delay',
+      popup_name: 'email_capture',
+      popup_wellness_goal: wellnessGoal || 'skipped',
+      popup_experience: ashwagandhaExperience || 'skipped'
+    });
+
+    // Show success state
+    showStep(successEl);
     cleanup();
   }
 
@@ -183,14 +355,13 @@
           }, 2000);
         });
       } else {
-        // Fallback for older browsers
         var textarea = document.createElement('textarea');
         textarea.value = code;
         textarea.style.position = 'fixed';
         textarea.style.opacity = '0';
         document.body.appendChild(textarea);
         textarea.select();
-        try { document.execCommand('copy'); } catch(e) {}
+        try { document.execCommand('copy'); } catch(err) {}
         document.body.removeChild(textarea);
       }
     });

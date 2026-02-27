@@ -13,6 +13,16 @@
   {%- endif -%}
 {%- endfor -%}
 
+{%- comment -%} Calculate free shipping gap for upsell nudge {%- endcomment -%}
+{%- assign free_shipping_cents = settings.free_shipping_threshold | default: 49 | times: 100 -%}
+{%- assign cart_total = cart.total_price -%}
+{%- assign shipping_gap_cents = free_shipping_cents | minus: cart_total -%}
+{%- assign needs_shipping_upsell = false -%}
+{%- if shipping_gap_cents > 0 and cart_total > 0 -%}
+  {%- assign needs_shipping_upsell = true -%}
+  {%- assign shipping_gap_dollars = shipping_gap_cents | money_without_trailing_zeros -%}
+{%- endif -%}
+
 {%- if has_onetime_items and section.settings.enable_banner -%}
 <section class="optibio-cart-subscribe-banner" aria-label="Subscribe and Save offer">
   <style>
@@ -90,6 +100,45 @@
       height: 16px;
       flex-shrink: 0;
     }
+    /* Free Shipping Progress Bar */
+    .optibio-cart-shipping-nudge {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 12px 0 0;
+    }
+    .optibio-cart-shipping-text {
+      color: rgba(255, 255, 255, 0.85);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
+    .optibio-cart-shipping-text strong {
+      color: #C9A961;
+    }
+    .optibio-cart-shipping-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .optibio-cart-shipping-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #C9A961, #E8D69C);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+    .optibio-cart-shipping-achieved {
+      color: #4ADE80;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
     @media (max-width: 749px) {
       .optibio-cart-subscribe-inner {
         flex-direction: column;
@@ -113,6 +162,24 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </a>
   </div>
+
+  {%- if section.settings.enable_shipping_bar -%}
+    <div class="optibio-cart-shipping-nudge">
+      {%- if needs_shipping_upsell -%}
+        {%- assign progress_pct = cart_total | times: 100 | divided_by: free_shipping_cents -%}
+        {%- if progress_pct > 100 -%}{%- assign progress_pct = 100 -%}{%- endif -%}
+        <p class="optibio-cart-shipping-text">You're <strong>{{ shipping_gap_dollars }}</strong> away from <strong>FREE shipping</strong></p>
+        <div class="optibio-cart-shipping-bar">
+          <div class="optibio-cart-shipping-fill" style="width: {{ progress_pct }}%"></div>
+        </div>
+      {%- else -%}
+        <p class="optibio-cart-shipping-achieved">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          You've unlocked FREE shipping!
+        </p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
 </section>
 {%- endif -%}
 
@@ -126,6 +193,13 @@
       "id": "enable_banner",
       "label": "Enable subscribe & save banner",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shipping_bar",
+      "label": "Show free shipping progress bar",
+      "default": true,
+      "info": "Shows how close the customer is to free shipping"
     },
     {
       "type": "text",

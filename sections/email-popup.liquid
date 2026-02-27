@@ -41,31 +41,79 @@
           </div>
         {% endif %}
 
-        <form id="optibio-popup-form" class="optibio-popup__form" action="/contact#contact_form" method="post" accept-charset="UTF-8">
-          <input type="hidden" name="form_type" value="customer">
-          <input type="hidden" name="utf8" value="✓">
-          <input type="hidden" name="contact[tags]" value="popup,prospect,{{ section.settings.discount_code }}">
+        <!-- Step 1: Email Capture -->
+        <div id="optibio-popup-step-1" class="optibio-popup__step">
+          <form id="optibio-popup-form" class="optibio-popup__form" action="/contact#contact_form" method="post" accept-charset="UTF-8">
+            <input type="hidden" name="form_type" value="customer">
+            <input type="hidden" name="utf8" value="✓">
+            <input type="hidden" name="contact[tags]" value="popup,prospect,{{ section.settings.discount_code }}">
 
-          <div class="optibio-popup__input-group">
-            <input
-              type="email"
-              name="contact[email]"
-              id="optibio-popup-email"
-              class="optibio-popup__input"
-              placeholder="{{ section.settings.placeholder_text }}"
-              required
-              autocomplete="email"
-            />
-            <button type="submit" class="optibio-popup__submit" id="optibio-popup-submit">
-              <span class="optibio-popup__submit-text">{{ section.settings.button_text }}</span>
-              <span class="optibio-popup__submit-loading" style="display:none;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-dasharray="60" stroke-dashoffset="20"><animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/></circle></svg>
-              </span>
+            <div class="optibio-popup__input-group">
+              <input
+                type="email"
+                name="contact[email]"
+                id="optibio-popup-email"
+                class="optibio-popup__input"
+                placeholder="{{ section.settings.placeholder_text }}"
+                required
+                autocomplete="email"
+              />
+              <button type="submit" class="optibio-popup__submit" id="optibio-popup-submit">
+                <span class="optibio-popup__submit-text">{{ section.settings.button_text }}</span>
+                <span class="optibio-popup__submit-loading" style="display:none;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-dasharray="60" stroke-dashoffset="20"><animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/></circle></svg>
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 2: Wellness Goal -->
+        <div id="optibio-popup-step-2" class="optibio-popup__step" style="display:none;">
+          <p class="optibio-popup__step-label">Quick question — what's your primary wellness goal?</p>
+          <div class="optibio-popup__options" id="optibio-popup-goals">
+            <button type="button" class="optibio-popup__option" data-value="general_wellness">
+              <span class="optibio-popup__option-icon">{% render 'optibio-icons', icon: 'leaf', size: 18 %}</span>
+              <span class="optibio-popup__option-text">General Wellness</span>
+            </button>
+            <button type="button" class="optibio-popup__option" data-value="energy_focus">
+              <span class="optibio-popup__option-icon">{% render 'optibio-icons', icon: 'lightning', size: 18 %}</span>
+              <span class="optibio-popup__option-text">Energy & Focus</span>
+            </button>
+            <button type="button" class="optibio-popup__option" data-value="fitness_recovery">
+              <span class="optibio-popup__option-icon">{% render 'optibio-icons', icon: 'muscle', size: 18 %}</span>
+              <span class="optibio-popup__option-text">Fitness Recovery</span>
+            </button>
+            <button type="button" class="optibio-popup__option" data-value="better_sleep">
+              <span class="optibio-popup__option-icon">{% render 'optibio-icons', icon: 'moon', size: 18 %}</span>
+              <span class="optibio-popup__option-text">Better Sleep Quality</span>
             </button>
           </div>
-        </form>
+          <button type="button" class="optibio-popup__skip-link" id="optibio-popup-skip-2">Skip</button>
+        </div>
 
-        <div id="optibio-popup-success" class="optibio-popup__success" style="display:none;">
+        <!-- Step 3: Ashwagandha Experience -->
+        <div id="optibio-popup-step-3" class="optibio-popup__step" style="display:none;">
+          <p class="optibio-popup__step-label">Have you tried ashwagandha before?</p>
+          <div class="optibio-popup__options" id="optibio-popup-experience">
+            <button type="button" class="optibio-popup__option" data-value="new_to_it">
+              <span class="optibio-popup__option-icon">{% render 'optibio-icons', icon: 'sprout', size: 18 %}</span>
+              <span class="optibio-popup__option-text">New to it</span>
+            </button>
+            <button type="button" class="optibio-popup__option" data-value="tried_before">
+              <span class="optibio-popup__option-icon">{% render 'optibio-icons', icon: 'refresh', size: 18 %}</span>
+              <span class="optibio-popup__option-text">Tried it before</span>
+            </button>
+            <button type="button" class="optibio-popup__option" data-value="regular_user">
+              <span class="optibio-popup__option-icon">{% render 'optibio-icons', icon: 'check', size: 18 %}</span>
+              <span class="optibio-popup__option-text">Regular user</span>
+            </button>
+          </div>
+          <button type="button" class="optibio-popup__skip-link" id="optibio-popup-skip-3">Skip</button>
+        </div>
+
+        <!-- Step 4: Success -->
+        <div id="optibio-popup-success" class="optibio-popup__success optibio-popup__step" style="display:none;">
           <div class="optibio-popup__success-icon">✓</div>
           <h3 class="optibio-popup__success-heading">{{ section.settings.success_heading }}</h3>
           <p class="optibio-popup__success-text">{{ section.settings.success_text }}</p>
@@ -86,7 +134,7 @@
           {% for block in section.blocks %}
             {% if block.type == 'trust_item' %}
               <span class="optibio-popup__trust-item" {{ block.shopify_attributes }}>
-                {{ block.settings.icon }} {{ block.settings.text }}
+                {% render 'optibio-icons', icon: block.settings.icon, size: 16 %} {{ block.settings.text }}
               </span>
             {% endif %}
           {% endfor %}
@@ -103,6 +151,8 @@
   data-exit-intent="{{ section.settings.enable_exit_intent }}"
   data-dismiss-days="{{ section.settings.dismiss_cookie_days }}"
   data-submitted-days="{{ section.settings.submitted_cookie_days }}"
+  data-klaviyo-company="TefFZM"
+  data-klaviyo-list="SM6q8i"
   id="optibio-popup-script"
 ></script>
 
@@ -155,7 +205,7 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow Text",
-      "default": "LIMITED TIME OFFER"
+      "default": "FIRST-TIME OFFER"
     },
     {
       "type": "text",
@@ -222,7 +272,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "🔬"
+          "default": "beaker"
         },
         {
           "type": "text",
@@ -237,9 +287,9 @@
     {
       "name": "Email Popup",
       "blocks": [
-        { "type": "trust_item", "settings": { "icon": "🔬", "text": "Science-Backed" } },
-        { "type": "trust_item", "settings": { "icon": "🛡️", "text": "90-Day Guarantee" } },
-        { "type": "trust_item", "settings": { "icon": "🚚", "text": "Free Shipping $49+" } }
+        { "type": "trust_item", "settings": { "icon": "beaker", "text": "Science-Backed" } },
+        { "type": "trust_item", "settings": { "icon": "shield", "text": "90-Day Guarantee" } },
+        { "type": "trust_item", "settings": { "icon": "truck", "text": "Free Shipping $49+" } }
       ]
     }
   ]

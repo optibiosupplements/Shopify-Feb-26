@@ -1,0 +1,91 @@
+{% comment %}
+  Contact Page Hero
+  Branded hero with overline, heading, and subheading
+{% endcomment %}
+
+<section class="optibio-contact-hero">
+  <div class="optibio-contact-hero__inner">
+    <span class="optibio-overline">{{ section.settings.overline }}</span>
+    <h1 class="optibio-contact-hero__heading">{{ section.settings.heading }}</h1>
+    <p class="optibio-contact-hero__desc">{{ section.settings.description }}</p>
+  </div>
+</section>
+
+<style>
+  .optibio-contact-hero {
+    background: linear-gradient(
+      135deg,
+      #F8FCFE 0%,
+      #EBF5FB 50%,
+      #F8FCFE 100%
+    );
+    padding: clamp(80px, 10vw, 120px) 20px clamp(40px, 5vw, 64px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .optibio-contact-hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .optibio-contact-hero__inner {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .optibio-contact-hero__heading {
+    font-family: var(--optibio-font-display);
+    font-size: clamp(32px, 4vw + 14px, 48px);
+    font-weight: 700;
+    color: var(--optibio-navy);
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+  .optibio-contact-hero__desc {
+    font-family: var(--optibio-font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--optibio-body);
+    margin: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Contact Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Overline",
+      "default": "GET IN TOUCH"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We're Here to Help"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Have a question about our products, your order, or subscriptions? We typically respond within 24 hours."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Hero"
+    }
+  ]
+}
+{% endschema %}

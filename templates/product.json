@@ -295,6 +295,16 @@
         "padding-block-end": 0
       }
     },
+    "related_reading": {
+      "type": "science-articles",
+      "settings": {
+        "heading": "Related Reading",
+        "subheading": "Learn more about the science behind our ingredients and how they support your wellness.",
+        "badge_text": "Science",
+        "blog": "news",
+        "articles_count": 3
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -439,6 +449,7 @@
   },
   "order": [
     "main",
+    "related_reading",
     "product_recommendations_qggXJq"
   ]
 }

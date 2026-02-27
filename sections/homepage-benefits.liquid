@@ -4,16 +4,17 @@
   Brand: Navy #1A2F4D, Gold #C9A961, Sora + Inter
 {% endcomment %}
 
-<section class="optibio-home-benefits">
+<section class="optibio-home-benefits optibio-reveal">
   <div class="optibio-home-benefits__container">
 
+    <span class="optibio-overline">CLINICAL EVIDENCE</span>
     <h2 class="optibio-home-benefits__heading">{{ section.settings.heading }}</h2>
     <p class="optibio-home-benefits__subheading">{{ section.settings.subheading }}</p>
 
     <div class="optibio-home-benefits__grid">
       {%- for block in section.blocks -%}
         <div class="optibio-home-benefits__card" {{ block.shopify_attributes }}>
-          <div class="optibio-home-benefits__icon">{{ block.settings.icon }}</div>
+          <div class="optibio-home-benefits__icon">{% render 'optibio-icons', icon: block.settings.icon, size: 28 %}</div>
           <h3 class="optibio-home-benefits__stat">{{ block.settings.stat_headline }}</h3>
           <p class="optibio-home-benefits__desc">{{ block.settings.description }}</p>
           {%- if block.settings.study_link != blank -%}
@@ -61,7 +62,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "💤"
+          "default": "moon"
         },
         {
           "type": "text",
@@ -90,7 +91,7 @@
         {
           "type": "benefit",
           "settings": {
-            "icon": "💤",
+            "icon": "moon",
             "stat_headline": "Sleep Efficiency: 75.6% → 83.5%",
             "description": "Improved sleep quality and efficiency²",
 
@@ -99,7 +100,7 @@
         {
           "type": "benefit",
           "settings": {
-            "icon": "🧘",
+            "icon": "meditation",
             "stat_headline": "44% Stress Reduction",
             "description": "Reduced perceived stress (PSS score)¹",
 
@@ -108,7 +109,7 @@
         {
           "type": "benefit",
           "settings": {
-            "icon": "⚡",
+            "icon": "lightning",
             "stat_headline": "13% Endurance Improvement",
             "description": "Improved VO2max in clinical trial³",
 
@@ -117,7 +118,7 @@
         {
           "type": "benefit",
           "settings": {
-            "icon": "🧠",
+            "icon": "brain",
             "stat_headline": "Mental Clarity",
             "description": "Sharper focus and improved cognitive function",
 

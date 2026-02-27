@@ -17,7 +17,7 @@
       {% for block in section.blocks %}
         {% if block.type == 'trust_item' %}
           <div class="optibio-science-hero__trust-item" {{ block.shopify_attributes }}>
-            <span class="optibio-science-hero__trust-icon">{{ block.settings.icon }}</span>
+            <span class="optibio-science-hero__trust-icon">{% render 'optibio-icons', icon: block.settings.icon, size: 16 %}</span>
             <span>{{ block.settings.text }}</span>
           </div>
         {% endif %}
@@ -60,7 +60,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "🔬"
+          "default": "beaker"
         },
         {
           "type": "text",
@@ -75,10 +75,10 @@
     {
       "name": "Science Hero",
       "blocks": [
-        { "type": "trust_item", "settings": { "icon": "🔬", "text": "24+ Clinical Trials" } },
-        { "type": "trust_item", "settings": { "icon": "📊", "text": "Peer-Reviewed Journals" } },
-        { "type": "trust_item", "settings": { "icon": "🛡️", "text": "Third-Party Verified" } },
-        { "type": "trust_item", "settings": { "icon": "🇺🇸", "text": "FDA-Audited Facility" } }
+        { "type": "trust_item", "settings": { "icon": "beaker", "text": "24+ Clinical Trials" } },
+        { "type": "trust_item", "settings": { "icon": "chart", "text": "Peer-Reviewed Journals" } },
+        { "type": "trust_item", "settings": { "icon": "shield", "text": "Third-Party Verified" } },
+        { "type": "trust_item", "settings": { "icon": "flag-us", "text": "FDA-Audited Facility" } }
       ]
     }
   ]

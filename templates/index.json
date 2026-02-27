@@ -116,7 +116,7 @@
         "benefit_sleep": {
           "type": "benefit",
           "settings": {
-            "icon": "💤",
+            "icon": "moon",
             "stat_headline": "Sleep Efficiency: 75.6% → 83.5%",
             "description": "Improved sleep quality and efficiency²",
             "study_link": "shopify://pages/science"
@@ -125,7 +125,7 @@
         "benefit_stress": {
           "type": "benefit",
           "settings": {
-            "icon": "🧘",
+            "icon": "meditation",
             "stat_headline": "44% Stress Reduction",
             "description": "Reduced perceived stress (PSS score)¹",
             "study_link": "shopify://pages/science"
@@ -134,7 +134,7 @@
         "benefit_endurance": {
           "type": "benefit",
           "settings": {
-            "icon": "⚡",
+            "icon": "lightning",
             "stat_headline": "13% Endurance Improvement",
             "description": "Improved VO2max in clinical trial³",
             "study_link": "shopify://pages/science"
@@ -143,7 +143,7 @@
         "benefit_clarity": {
           "type": "benefit",
           "settings": {
-            "icon": "🧠",
+            "icon": "brain",
             "stat_headline": "Mental Clarity",
             "description": "Sharper focus and improved cognitive function",
             "study_link": "shopify://pages/science"
@@ -206,10 +206,10 @@
         "featured_cta": "Shop Now"
       },
       "blocks": {
-        "goal_stress": { "type": "goal", "settings": { "icon": "\ud83e\uddd8", "label": "Stress Relief", "tag": "POPULAR", "featured": true, "link": "/products/optibio-ashwagandha-ksm-66" } },
-        "goal_sleep": { "type": "goal", "settings": { "icon": "\ud83d\ude34", "label": "Better Sleep", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } },
-        "goal_focus": { "type": "goal", "settings": { "icon": "\ud83e\udde0", "label": "Mental Clarity", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } },
-        "goal_endurance": { "type": "goal", "settings": { "icon": "\ud83d\udcaa", "label": "Endurance", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } }
+        "goal_stress": { "type": "goal", "settings": { "icon": "meditation", "label": "Stress Relief", "tag": "POPULAR", "featured": true, "link": "/products/optibio-ashwagandha-ksm-66" } },
+        "goal_sleep": { "type": "goal", "settings": { "icon": "moon", "label": "Better Sleep", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } },
+        "goal_focus": { "type": "goal", "settings": { "icon": "brain", "label": "Mental Clarity", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } },
+        "goal_endurance": { "type": "goal", "settings": { "icon": "muscle", "label": "Endurance", "featured": false, "link": "/products/optibio-ashwagandha-ksm-66" } }
       },
       "block_order": ["goal_stress", "goal_sleep", "goal_focus", "goal_endurance"]
     },
@@ -226,10 +226,10 @@
         "button_text": "Get Early Access"
       },
       "blocks": {
-        "cat_sleep": { "type": "category", "settings": { "icon": "\ud83d\ude34", "label": "Sleep" } },
-        "cat_focus": { "type": "category", "settings": { "icon": "\ud83e\udde0", "label": "Focus" } },
-        "cat_energy": { "type": "category", "settings": { "icon": "\u26a1", "label": "Energy" } },
-        "cat_recovery": { "type": "category", "settings": { "icon": "\ud83c\udfc3", "label": "Recovery" } }
+        "cat_sleep": { "type": "category", "settings": { "icon": "moon", "label": "Sleep" } },
+        "cat_focus": { "type": "category", "settings": { "icon": "brain", "label": "Focus" } },
+        "cat_energy": { "type": "category", "settings": { "icon": "lightning", "label": "Energy" } },
+        "cat_recovery": { "type": "category", "settings": { "icon": "runner", "label": "Recovery" } }
       },
       "block_order": ["cat_sleep", "cat_focus", "cat_energy", "cat_recovery"]
     },

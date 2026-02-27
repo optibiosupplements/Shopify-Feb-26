@@ -10,7 +10,7 @@
 
 .optibio-about-hero {
   background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
-  padding: 120px 64px 80px;
+  padding: clamp(80px, 10vw, 120px) 64px var(--optibio-space-section);
 }
 
 .optibio-about-hero .optibio-page-section__inner {
@@ -45,7 +45,7 @@
 
 .optibio-about-hero__heading {
   font-family: 'Sora', sans-serif;
-  font-size: 48px;
+  font-size: clamp(30px, 4vw + 14px, 48px);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -64,7 +64,7 @@
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(30, 58, 95, 0.12);
+  box-shadow: var(--optibio-shadow-lg);
 }
 
 .optibio-about-hero__image {
@@ -89,7 +89,7 @@
   background: linear-gradient(145deg, #1A2F4D 0%, #1E3A5F 60%, #2A4A6D 100%);
   border-radius: 16px;
   border: 1px solid rgba(201, 169, 97, 0.3);
-  box-shadow: 0 8px 32px rgba(26, 47, 77, 0.15);
+  box-shadow: var(--optibio-shadow-lg);
 }
 
 .optibio-about-hero__image-placeholder--branded svg {
@@ -218,7 +218,7 @@
 
 .optibio-about-standards__card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+  box-shadow: var(--optibio-shadow-md);
   border-color: rgba(201, 169, 97, 0.3);
 }
 
@@ -295,14 +295,6 @@
 @media (max-width: 768px) {
   .optibio-about-hero {
     padding: 80px 20px 48px;
-  }
-
-  .optibio-about-hero__heading {
-    font-size: 34px;
-  }
-
-  .optibio-about-hero__desc {
-    font-size: 16px;
   }
 
   .optibio-about-standards__grid {

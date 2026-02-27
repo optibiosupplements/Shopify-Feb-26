@@ -4,8 +4,9 @@
   FDA disclaimer at bottom
 {% endcomment %}
 
-<section class="optibio-studies optibio-page-section">
+<section class="optibio-studies optibio-page-section optibio-bg-mist optibio-reveal">
   <div class="optibio-page-section__inner">
+    <span class="optibio-overline">PUBLISHED RESEARCH</span>
     <h2 class="optibio-page-section__heading">{{ section.settings.heading }}</h2>
     <p class="optibio-page-section__subheading">{{ section.settings.subheading }}</p>
 
@@ -26,16 +27,16 @@
 
             <div class="optibio-studies__card-meta">
               {% if block.settings.journal != blank %}
-                <span class="optibio-studies__card-meta-item">📰 {{ block.settings.journal }}</span>
+                <span class="optibio-studies__card-meta-item">{% render 'optibio-icons', icon: 'newspaper', size: 14 %} {{ block.settings.journal }}</span>
               {% endif %}
               {% if block.settings.year != blank %}
-                <span class="optibio-studies__card-meta-item">📅 {{ block.settings.year }}</span>
+                <span class="optibio-studies__card-meta-item">{% render 'optibio-icons', icon: 'calendar', size: 14 %} {{ block.settings.year }}</span>
               {% endif %}
               {% if block.settings.participants != blank %}
-                <span class="optibio-studies__card-meta-item">👥 {{ block.settings.participants }}</span>
+                <span class="optibio-studies__card-meta-item">{% render 'optibio-icons', icon: 'users', size: 14 %} {{ block.settings.participants }}</span>
               {% endif %}
               {% if block.settings.duration != blank %}
-                <span class="optibio-studies__card-meta-item">⏱ {{ block.settings.duration }}</span>
+                <span class="optibio-studies__card-meta-item">{% render 'optibio-icons', icon: 'timer', size: 14 %} {{ block.settings.duration }}</span>
               {% endif %}
             </div>
 
@@ -53,7 +54,7 @@
 
     {% if section.settings.fda_disclaimer != blank %}
       <div class="optibio-studies__disclaimer">
-        ⚠️ {{ section.settings.fda_disclaimer }}
+        {% render 'optibio-icons', icon: 'warning', size: 16 %} {{ section.settings.fda_disclaimer }}
       </div>
     {% endif %}
   </div>

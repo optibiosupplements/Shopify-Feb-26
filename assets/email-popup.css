@@ -316,6 +316,112 @@
 }
 
 /* ========================================
+   Multi-Step Form
+   ======================================== */
+
+/* Step Label */
+.optibio-popup__step-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1A2F4D;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+/* Option Buttons Grid */
+.optibio-popup__options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.optibio-popup__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 2px solid #E5E7EB;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+}
+
+.optibio-popup__option:hover {
+  border-color: #2563EB;
+  background: #F0F6FF;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+.optibio-popup__option.is-selected {
+  border-color: #2563EB;
+  background: #EFF6FF;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.optibio-popup__option-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.optibio-popup__option-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A2F4D;
+  line-height: 1.3;
+}
+
+/* Skip Link */
+.optibio-popup__skip-link {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #9CA3AF;
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.optibio-popup__skip-link:hover {
+  color: #6B7280;
+}
+
+/* Progress Dots */
+.optibio-popup__progress {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.optibio-popup__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #E5E7EB;
+  transition: background 0.2s ease;
+}
+
+.optibio-popup__dot.is-active {
+  background: #2563EB;
+}
+
+.optibio-popup__dot.is-complete {
+  background: #C9A961;
+}
+
+/* ========================================
    Responsive
    ======================================== */
 @media (max-width: 640px) {
@@ -356,5 +462,17 @@
 
   .optibio-popup__trust-item {
     font-size: 11px;
+  }
+
+  .optibio-popup__options {
+    grid-template-columns: 1fr;
+  }
+
+  .optibio-popup__step-label {
+    font-size: 16px;
+  }
+
+  .optibio-popup__option {
+    padding: 12px 14px;
   }
 }

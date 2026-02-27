@@ -1,0 +1,249 @@
+<!-- Klaviyo Post-Purchase — Email 3: Science Deep Dive -->
+<!-- Flow: Post-Purchase -->
+<!-- Trigger: 7 days after order placed -->
+<!-- Subject: The research behind your daily capsule -->
+<!-- Preview Text: What 24+ clinical trials say about KSM-66®. -->
+<!-- FDA Disclaimer: REQUIRED (references clinical research and wellness claims) -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The research behind your daily capsule</title>
+  <!--[if mso]>
+  <style>* { font-family: Arial, Helvetica, sans-serif !important; }</style>
+  <![endif]-->
+</head>
+<body style="margin:0;padding:0;background-color:#F1F5F9;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+
+<!-- Wrapper -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F1F5F9;">
+  <tr>
+    <td align="center" style="padding:24px 16px;">
+
+      <!-- Email Container -->
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#FFFFFF;border-radius:8px;overflow:hidden;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background-color:#1A2F4D;padding:32px 24px;text-align:center;">
+            <a href="https://optibiosupplements.com" target="_blank" style="display:inline-block;"><img src="https://optibiosupplements.com/cdn/shop/t/3/assets/optibio-logo-email.png" alt="Optibio" width="160" style="display:block;margin:0 auto;max-width:160px;height:auto;border-radius:12px;" /></a>
+            <p style="color:rgba(255,255,255,0.7);font-size:12px;margin:8px 0 0;letter-spacing:0.1em;text-transform:uppercase;font-family:'Inter',Helvetica,Arial,sans-serif;">Science-Backed Supplements</p>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="padding:32px 24px;font-family:'Inter',Helvetica,Arial,sans-serif;color:#475569;font-size:15px;line-height:1.7;">
+
+            <p style="margin:0 0 20px;">Hey {{ first_name|default:"there" }},</p>
+
+            <p style="margin:0 0 16px;">You've been taking Optibio for about a week now. While the full benefits build over 4-8 weeks of consistent use, we thought this would be a good time to share the research behind what's in your bottle.&dagger;</p>
+
+            <p style="margin:0 0 24px;">Because when you understand <em>why</em> we chose KSM-66&reg;, you'll understand why consistency is worth it.</p>
+
+            <!-- Gold Divider -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr><td style="border-top:2px solid #C9A961;font-size:1px;line-height:1px;">&nbsp;</td></tr>
+            </table>
+
+            <!-- Section: The Most Studied Extract -->
+            <h2 style="color:#1A2F4D;font-family:'Sora','Inter',Helvetica,Arial,sans-serif;font-size:18px;font-weight:700;margin:0 0 12px;">The most clinically studied ashwagandha extract</h2>
+
+            <p style="margin:0 0 16px;">KSM-66&reg; is not just another ashwagandha supplement. It is the most extensively researched ashwagandha extract in the world, with over 24 clinical trials published in peer-reviewed journals. These aren't animal studies or theoretical models — they are gold-standard human trials, many using randomized, double-blind, placebo-controlled designs.</p>
+
+            <p style="margin:0 0 24px;">The research has explored KSM-66&reg;'s role in supporting multiple areas of daily wellness, including:&dagger;</p>
+
+            {% if person|lookup:'wellness_goal' == 'Better Sleep Quality' %}
+            <!-- Sleep-focused: lead with sleep, then stress, then fitness -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Restful sleep quality</strong> — sleep efficiency improved from 75.6% to 83.5% in a 2019 study (PubMed 31728244)&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Healthy cortisol levels</strong> — 27.9% cortisol reduction supports the body's natural wind-down at night&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Everyday calm and resilience</strong> — supporting emotional balance under daily pressure&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Physical endurance</strong> — supporting exercise performance and recovery&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Cognitive function</strong> — supporting focus and mental clarity&dagger;
+                </td>
+              </tr>
+            </table>
+            {% elif person|lookup:'wellness_goal' == 'Fitness Recovery' %}
+            <!-- Fitness-focused: lead with endurance, then cortisol/recovery, then sleep -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Physical endurance</strong> — 13% VO2max improvement in a 2015 study of athletic adults (PubMed 26730141)&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Healthy cortisol levels</strong> — 27.9% cortisol reduction supports faster recovery between training sessions&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Restful sleep quality</strong> — deeper recovery sleep supports muscle repair and adaptation&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Everyday calm and resilience</strong> — supporting emotional balance under training stress&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Cognitive function</strong> — supporting focus and mental clarity during workouts&dagger;
+                </td>
+              </tr>
+            </table>
+            {% elif person|lookup:'wellness_goal' == 'Energy & Focus' %}
+            <!-- Energy-focused: lead with cortisol → energy, then cognitive, then sleep -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Healthy cortisol levels</strong> — 27.9% cortisol reduction means your energy isn't drained by a constant stress response&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Cognitive function</strong> — supporting the calm, sustained focus that comes from balanced stress hormones&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Restful sleep quality</strong> — better sleep at night fuels better energy during the day&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Everyday calm and resilience</strong> — supporting emotional balance under daily pressure&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Physical endurance</strong> — supporting exercise performance and recovery&dagger;
+                </td>
+              </tr>
+            </table>
+            {% else %}
+            <!-- General wellness: balanced default order -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Healthy cortisol levels</strong> — supporting the body's natural stress response&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Everyday calm and resilience</strong> — supporting emotional balance under daily pressure&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Restful sleep quality</strong> — supporting natural sleep-wake cycles&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Physical endurance</strong> — supporting exercise performance and recovery&dagger;
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0;font-size:15px;line-height:1.6;">
+                  <strong style="color:#1A2F4D;">&#10003; Cognitive function</strong> — supporting focus and mental clarity&dagger;
+                </td>
+              </tr>
+            </table>
+            {% endif %}
+
+            <!-- Gold Divider -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr><td style="border-top:2px solid #C9A961;font-size:1px;line-height:1px;">&nbsp;</td></tr>
+            </table>
+
+            <!-- Section: The Patented Process -->
+            <h2 style="color:#1A2F4D;font-family:'Sora','Inter',Helvetica,Arial,sans-serif;font-size:18px;font-weight:700;margin:0 0 12px;">Patented green chemistry extraction</h2>
+
+            <p style="margin:0 0 16px;">Most ashwagandha supplements use chemical solvents or alcohol to extract the active compounds. KSM-66&reg; takes a different approach.</p>
+
+            <p style="margin:0 0 16px;">Developed over 14 years of R&amp;D by Ixoreal Biomed, KSM-66&reg; is produced using a patented extraction process based on green chemistry principles — no alcohol, no synthetic solvents. The process uses only the root of the plant (not the leaves) and preserves the full spectrum of naturally occurring bioactive compounds.</p>
+
+            <p style="margin:0 0 24px;">The result is a "full-spectrum" root extract that mirrors the plant's original chemistry, standardized to contain at least <strong>5% withanolides</strong> — the key bioactive compounds that have been the focus of clinical research.</p>
+
+            <!-- Section: Why the Dose Matters -->
+            <h2 style="color:#1A2F4D;font-family:'Sora','Inter',Helvetica,Arial,sans-serif;font-size:18px;font-weight:700;margin:0 0 12px;">Why the dose matters</h2>
+
+            <p style="margin:0 0 16px;">Many supplement brands use "proprietary blends" that hide the actual dose of each ingredient. Others include ashwagandha at doses well below what was used in clinical studies.</p>
+
+            <p style="margin:0 0 24px;">Every Optibio serving delivers <strong>600mg of KSM-66&reg;</strong> — the same dose that appears throughout the published clinical literature. No proprietary blends. No underdosing. No guesswork. Every capsule matches what the researchers actually studied.</p>
+
+            <!-- Key Takeaway Callout -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr>
+                <td style="border-left:4px solid #C9A961;padding:16px 20px;background-color:#FFFBEB;border-radius:0 8px 8px 0;">
+                  <p style="margin:0;font-family:'Sora','Inter',Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;color:#1A2F4D;">In short: what's in the research papers is what's in your bottle. The same extract, at the same dose, from the same source.</p>
+                </td>
+              </tr>
+            </table>
+
+            <!-- CTA Button -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr>
+                <td align="center">
+                  <a href="https://optibiosupplements.com/pages/science" target="_blank" style="display:inline-block;background-color:#2563EB;color:#FFFFFF;font-family:'Sora','Inter',Helvetica,Arial,sans-serif;font-size:16px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:8px;letter-spacing:0.3px;">Explore the Research</a>
+                </td>
+              </tr>
+            </table>
+
+            <p style="margin:0 0 16px;">Keep going — you're building a foundation. The best results come with consistent daily use over 4-8 weeks.</p>
+
+            <p style="margin:0 0 4px;">Talk soon,</p>
+            <p style="margin:0;font-weight:600;color:#1A2F4D;">The Optibio Team</p>
+
+          </td>
+        </tr>
+
+        <!-- Footer with FDA Disclaimer -->
+        <tr>
+          <td style="background-color:#F8FAFC;padding:24px;text-align:center;border-top:1px solid #E2E8F0;">
+            <p style="margin:0 0 12px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:11px;color:#94A3B8;line-height:1.5;font-style:italic;">
+              &dagger;These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. The clinical research cited refers to KSM-66&reg; ashwagandha extract studied in independent trials. Individual results may vary.
+            </p>
+            <p style="margin:0 0 8px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:12px;color:#94A3B8;">
+              Optibio | <a href="https://optibiosupplements.com" style="color:#2563EB;text-decoration:none;">optibiosupplements.com</a>
+            </p>
+            <p style="margin:0 0 8px;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:12px;color:#94A3B8;">
+              <a href="mailto:support@optibiosupplements.com" style="color:#2563EB;text-decoration:none;">support@optibiosupplements.com</a>
+            </p>
+            <p style="margin:0;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:12px;color:#94A3B8;">
+              <a href="{{ unsubscribe_url }}" style="color:#94A3B8;text-decoration:underline;">Unsubscribe</a> &middot; <a href="{{ manage_preferences_url }}" style="color:#94A3B8;text-decoration:underline;">Manage Preferences</a>
+            </p>
+          </td>
+        </tr>
+
+      </table>
+      <!-- End Email Container -->
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

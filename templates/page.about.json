@@ -13,10 +13,10 @@
       "settings": {
         "heading": "Our Mission",
         "subheading": "We believe the supplement industry can do better — and we're proving it, one batch at a time.",
-        "problem_icon": "⚠️",
+        "problem_icon": "warning",
         "problem_title": "The Industry Problem",
         "problem_text": "Most supplement brands cut corners. They hide behind \"proprietary blends,\" use the cheapest ingredients available, and make health claims without any clinical evidence to back them up.",
-        "solution_icon": "✅",
+        "solution_icon": "check",
         "solution_title": "The Optibio Standard",
         "solution_text": "Every Optibio product meets the highest standards for transparency, quality, and clinical evidence. What's on our label is in the bottle — verified by independent labs."
       },
@@ -45,12 +45,12 @@
         "cta_text": "Shop Optibio"
       },
       "blocks": {
-        "std_1": { "type": "standard", "settings": { "icon": "🏭", "title": "FDA-Audited Facility", "description": "Manufactured at an FDA-audited, cGMP-certified pharmaceutical-grade facility in the United States." } },
-        "std_2": { "type": "standard", "settings": { "icon": "🔬", "title": "Third-Party Tested", "description": "Every batch is sent to independent labs for heavy metal, microbial, potency, and identity testing." } },
-        "std_3": { "type": "standard", "settings": { "icon": "🌿", "title": "Full-Spectrum Root Only", "description": "We use only root extract — never cheaper leaf or aerial parts that dilute potency and bioavailability." } },
-        "std_4": { "type": "standard", "settings": { "icon": "📊", "title": "Clinical Dosage: 600mg", "description": "The exact dosage used in peer-reviewed clinical trials — not an underdosed marketing gimmick." } },
-        "std_5": { "type": "standard", "settings": { "icon": "💊", "title": "90 Capsules Per Bottle", "description": "50% more capsules than most competitors. A full 45-day supply per bottle for better value." } },
-        "std_6": { "type": "standard", "settings": { "icon": "📋", "title": "Full Batch Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Verify your batch online anytime." } }
+        "std_1": { "type": "standard", "settings": { "icon": "factory", "title": "FDA-Audited Facility", "description": "Manufactured at an FDA-audited, cGMP-certified pharmaceutical-grade facility in the United States." } },
+        "std_2": { "type": "standard", "settings": { "icon": "beaker", "title": "Third-Party Tested", "description": "Every batch is sent to independent labs for heavy metal, microbial, potency, and identity testing." } },
+        "std_3": { "type": "standard", "settings": { "icon": "leaf", "title": "Full-Spectrum Root Only", "description": "We use only root extract — never cheaper leaf or aerial parts that dilute potency and bioavailability." } },
+        "std_4": { "type": "standard", "settings": { "icon": "chart", "title": "Clinical Dosage: 600mg", "description": "The exact dosage used in peer-reviewed clinical trials — not an underdosed marketing gimmick." } },
+        "std_5": { "type": "standard", "settings": { "icon": "pill", "title": "90 Capsules Per Bottle", "description": "50% more capsules than most competitors. A full 45-day supply per bottle for better value." } },
+        "std_6": { "type": "standard", "settings": { "icon": "clipboard", "title": "Full Batch Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Verify your batch online anytime." } }
       },
       "block_order": ["std_1", "std_2", "std_3", "std_4", "std_5", "std_6"]
     }

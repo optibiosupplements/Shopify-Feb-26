@@ -9,8 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 
-<section class="optibio-ingredient optibio-page-section">
+<section class="optibio-ingredient optibio-page-section optibio-reveal">
   <div class="optibio-page-section__inner">
+    <span class="optibio-overline">OUR INGREDIENT</span>
     <h2 class="optibio-page-section__heading">{{ section.settings.heading }}</h2>
     <p class="optibio-page-section__subheading">{{ section.settings.subheading }}</p>
 
@@ -25,7 +26,7 @@
           {% for block in section.blocks %}
             {% if block.type == 'feature' %}
               <div class="optibio-ingredient__feature" {{ block.shopify_attributes }}>
-                <span class="optibio-ingredient__feature-icon">{{ block.settings.icon }}</span>
+                <span class="optibio-ingredient__feature-icon">{% render 'optibio-icons', icon: block.settings.icon, size: 24 %}</span>
                 <div class="optibio-ingredient__feature-text">
                   <strong>{{ block.settings.title }}</strong><br>
                   {{ block.settings.description }}
@@ -40,7 +41,7 @@
       <div>
         <div class="optibio-ingredient__facts-card">
           <h4 class="optibio-ingredient__facts-title">
-            📋 {{ section.settings.facts_title }}
+            {% render 'optibio-icons', icon: 'clipboard', size: 18 %} {{ section.settings.facts_title }}
           </h4>
 
           {% if section.settings.facts_image != blank %}
@@ -163,7 +164,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "🌿"
+          "default": "leaf"
         },
         {
           "type": "text",
@@ -184,10 +185,10 @@
     {
       "name": "Ingredient Deep-Dive",
       "blocks": [
-        { "type": "feature", "settings": { "icon": "🌿", "title": "Full-Spectrum Root Extract", "description": "Uses only the root — not leaf or aerial parts — preserving the complete natural compound profile." } },
-        { "type": "feature", "settings": { "icon": "🧪", "title": "Milk-Based Extraction", "description": "Patented process that maintains the natural ratio of active compounds, unlike harsh chemical extractions." } },
-        { "type": "feature", "settings": { "icon": "📊", "title": "Clinical Dosage: 600mg", "description": "The exact dosage used in clinical trials — not an underdosed 'sprinkle' like many competitors." } },
-        { "type": "feature", "settings": { "icon": "🏆", "title": "24+ Peer-Reviewed Studies", "description": "The most clinically studied ashwagandha extract in the world, with randomized, double-blind trials." } }
+        { "type": "feature", "settings": { "icon": "leaf", "title": "Full-Spectrum Root Extract", "description": "Uses only the root — not leaf or aerial parts — preserving the complete natural compound profile." } },
+        { "type": "feature", "settings": { "icon": "test-tube", "title": "Milk-Based Extraction", "description": "Patented process that maintains the natural ratio of active compounds, unlike harsh chemical extractions." } },
+        { "type": "feature", "settings": { "icon": "chart", "title": "Clinical Dosage: 600mg", "description": "The exact dosage used in clinical trials — not an underdosed 'sprinkle' like many competitors." } },
+        { "type": "feature", "settings": { "icon": "trophy", "title": "24+ Peer-Reviewed Studies", "description": "The most clinically studied ashwagandha extract in the world, with randomized, double-blind trials." } }
       ]
     }
   ]

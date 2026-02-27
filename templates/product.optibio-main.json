@@ -242,7 +242,7 @@
         "badge_ny": {
           "type": "badge",
           "settings": {
-            "badge_emoji": "🇺🇸",
+            "badge_emoji": "flag-us",
             "badge_label": "Made in USA",
             "badge_sub": "USA-Based Facility"
           }
@@ -250,7 +250,7 @@
         "badge_seed": {
           "type": "badge",
           "settings": {
-            "badge_emoji": "🌱",
+            "badge_emoji": "sprout",
             "badge_label": "Seed-to-Shelf",
             "badge_sub": "Full Traceability"
           }
@@ -258,7 +258,7 @@
         "badge_award": {
           "type": "badge",
           "settings": {
-            "badge_emoji": "🏆",
+            "badge_emoji": "trophy",
             "badge_label": "Award Winning",
             "badge_sub": "KSM-66® Ingredient"
           }
@@ -266,7 +266,7 @@
         "badge_halal": {
           "type": "badge",
           "settings": {
-            "badge_emoji": "☪️",
+            "badge_emoji": "crescent",
             "badge_label": "Halal Certified",
             "badge_sub": "Dietary Compliance"
           }
@@ -274,7 +274,7 @@
         "badge_tested": {
           "type": "badge",
           "settings": {
-            "badge_emoji": "🧪",
+            "badge_emoji": "test-tube",
             "badge_label": "3rd-Party Tested",
             "badge_sub": "Independent Quality"
           }
@@ -282,7 +282,7 @@
         "badge_allergen": {
           "type": "badge",
           "settings": {
-            "badge_emoji": "✅",
+            "badge_emoji": "check",
             "badge_label": "Allergen Free",
             "badge_sub": "Soy · Gluten · GMO"
           }
@@ -307,7 +307,7 @@
         "sub_1": {
           "type": "benefit",
           "settings": {
-            "icon": "💰",
+            "icon": "dollar",
             "title": "Save 15%",
             "description": "On every order, automatically applied"
           }
@@ -315,7 +315,7 @@
         "sub_2": {
           "type": "benefit",
           "settings": {
-            "icon": "🚚",
+            "icon": "truck",
             "title": "Free Shipping",
             "description": "Every delivery, always free"
           }
@@ -323,7 +323,7 @@
         "sub_3": {
           "type": "benefit",
           "settings": {
-            "icon": "🔄",
+            "icon": "refresh",
             "title": "Flexible Schedule",
             "description": "Change frequency or skip anytime"
           }
@@ -331,7 +331,7 @@
         "sub_4": {
           "type": "benefit",
           "settings": {
-            "icon": "❌",
+            "icon": "x-circle",
             "title": "Cancel Anytime",
             "description": "No contracts, no commitments"
           }
@@ -418,6 +418,27 @@
             "question": "Is this FDA approved?",
             "answer": "<p>Dietary supplements are not evaluated or approved by the FDA in the same way prescription drugs are. However, our product is manufactured in an FDA-registered, GMP-certified facility in the United States, and every batch is third-party tested for purity, potency, and contaminants.</p>"
           }
+        },
+        "faq_8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does Subscribe & Save work?",
+            "answer": "<p>Subscribe & Save gives you 15% off every order plus free shipping on every delivery. Choose your frequency (monthly, every 3 months, or every 6 months) and we'll automatically ship your next supply on schedule. You can change your delivery frequency, skip a shipment, or cancel anytime from your account — no contracts, no commitments, no penalties.</p>"
+          }
+        },
+        "faq_9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I skip, pause, or cancel my subscription?",
+            "answer": "<p>Absolutely. You have full control over your subscription. Log into your account to skip your next delivery, pause your subscription for as long as you need, or cancel entirely — all with just a few clicks. There are no cancellation fees and no minimum number of orders required.</p>"
+          }
+        },
+        "faq_10": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When will I be charged for my subscription?",
+            "answer": "<p>You're charged when your order is placed, and then again before each scheduled delivery based on your chosen frequency. You'll always receive an email reminder before your next order ships, giving you time to make changes or skip if needed.</p>"
+          }
         }
       },
       "block_order": [
@@ -427,7 +448,10 @@
         "faq_4",
         "faq_5",
         "faq_6",
-        "faq_7"
+        "faq_7",
+        "faq_8",
+        "faq_9",
+        "faq_10"
       ],
       "settings": {
         "heading": "Frequently Asked Questions",
@@ -439,7 +463,7 @@
       "settings": {
         "heading": "Ready to Feel Calm Again?",
         "subheading": "Backed by 24+ peer-reviewed clinical studies. 600mg clinical dose. 90-day money-back guarantee.",
-        "button_text": "Start Your Journey — $39.99"
+        "button_text": "Start Your Journey — Risk Free"
       }
     },
     "1771566289236af272": {
@@ -488,6 +512,16 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "related_reading": {
+      "type": "science-articles",
+      "settings": {
+        "heading": "Related Reading",
+        "subheading": "Learn more about the science behind our ingredients and how they support your wellness.",
+        "badge_text": "Science",
+        "blog": "news",
+        "articles_count": 3
+      }
     }
   },
   "order": [
@@ -505,6 +539,7 @@
     "subscription",
     "traceability",
     "faq",
+    "related_reading",
     "final_cta",
     "1771566289236af272"
   ]

@@ -47,7 +47,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--optibio-shadow-xs);
   margin-bottom: 32px;
 }
 
@@ -58,7 +58,7 @@
 /* 2. Headline */
 .optibio-hero__headline {
   font-family: 'Sora', sans-serif;
-  font-size: 64px;
+  font-size: clamp(36px, 5vw + 16px, 64px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -141,7 +141,7 @@
   border: 2px solid rgba(201, 169, 97, 0.4);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 8px 32px rgba(30, 58, 95, 0.12);
+  box-shadow: var(--optibio-shadow-lg);
   max-width: 420px;
   width: 100%;
 }
@@ -217,7 +217,7 @@
 
 .optibio-hero__price-current {
   font-family: 'Sora', sans-serif;
-  font-size: 48px;
+  font-size: clamp(36px, 4vw + 12px, 48px);
   font-weight: 700;
   color: #1A2F4D;
 }
@@ -238,7 +238,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 13px;
   font-weight: 700;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--optibio-shadow-xs);
 }
 
 /* 5c. Info Box — Yellow */
@@ -436,7 +436,7 @@
 
 .optibio-home-bundles__heading {
   font-family: var(--optibio-font-display);
-  font-size: 32px;
+  font-size: clamp(26px, 3vw + 10px, 38px);
   font-weight: 700;
   color: var(--optibio-navy);
   margin: 0 0 12px;
@@ -614,7 +614,7 @@
 .optibio-home-bundles__cta--primary {
   background: var(--optibio-navy);
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
+  box-shadow: var(--optibio-shadow-sm);
 }
 
 .optibio-home-bundles__cta--primary::after {
@@ -646,7 +646,7 @@
   background: var(--optibio-navy);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.2);
+  box-shadow: var(--optibio-shadow-sm);
 }
 
 /* Social Proof */
@@ -734,7 +734,7 @@
 
 .optibio-home-benefits__heading {
   font-family: var(--optibio-font-display);
-  font-size: 32px;
+  font-size: clamp(26px, 3vw + 10px, 38px);
   font-weight: 700;
   color: var(--optibio-navy);
   margin: 0 0 12px;
@@ -837,7 +837,7 @@
 
 .optibio-home-testimonials__heading {
   font-family: var(--optibio-font-display);
-  font-size: 32px;
+  font-size: clamp(26px, 3vw + 10px, 38px);
   font-weight: 700;
   color: var(--optibio-navy);
   margin: 0 0 40px;
@@ -919,7 +919,7 @@
 
 .optibio-home-guarantee__heading {
   font-family: var(--optibio-font-display);
-  font-size: 32px;
+  font-size: clamp(26px, 3vw + 10px, 38px);
   font-weight: 700;
   color: var(--optibio-navy);
   margin: 0 0 16px;
@@ -1004,12 +1004,7 @@
     align-items: center;
   }
 
-  .optibio-hero__headline {
-    font-size: 36px;
-  }
-
   .optibio-hero__subheadline {
-    font-size: 16px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1029,14 +1024,6 @@
     flex-direction: column;
     gap: 8px;
     text-align: center;
-  }
-
-  .optibio-hero__price-current {
-    font-size: 36px;
-  }
-
-  .optibio-hero__price-compare {
-    font-size: 16px;
   }
 
   .optibio-hero__social-proof {
@@ -1099,10 +1086,6 @@
     align-items: center;
   }
 
-  .optibio-hero__headline {
-    font-size: 48px;
-  }
-
   .optibio-hero__subheadline {
     margin-left: auto;
     margin-right: auto;
@@ -1140,10 +1123,6 @@
     padding: 100px 40px;
   }
 
-  .optibio-home-bundles__heading {
-    font-size: 38px;
-  }
-
   .optibio-home-bundles__grid {
     gap: 28px;
   }
@@ -1161,17 +1140,9 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .optibio-home-benefits__heading {
-    font-size: 38px;
-  }
-
   /* Testimonials */
   .optibio-home-testimonials {
     padding: 100px 40px;
-  }
-
-  .optibio-home-testimonials__heading {
-    font-size: 38px;
   }
 
   /* Guarantee */
@@ -1179,7 +1150,4 @@
     padding: 100px 40px;
   }
 
-  .optibio-home-guarantee__heading {
-    font-size: 38px;
-  }
 }

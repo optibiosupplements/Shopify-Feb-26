@@ -1,4 +1,4 @@
-# CLAUDE.md — Optibio Shopify Store Project (Updated: February 26, 2026 — Session Z)
+# CLAUDE.md — Optibio Shopify Store Project (Updated: February 27, 2026 — Session AA)
 
 > This is the compounding knowledge base for the Optibio project.
 > Every mistake, every rule, every decision lives here so Claude never repeats an error.
@@ -13,7 +13,7 @@
 **Shopify Store:** optibio-store-2026.myshopify.com
 **Live Domain:** optibiosupplements.com (DNS connected to Shopify as of Feb 20, 2026 — auto-configured via GoDaddy)
 **Conversion Target:** 5%+ (vs. industry average 2–4% for supplement DTC)
-**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + setup 6/6 complete (return policy configured) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM, Facebook & Instagram sales channel installed on Shopify, standalone GA4 gtag.js removed (GA4 managed via GTM only) Facebook & Instagram fully configured (Optibio Pixel connected, CAPI Enhanced, Seller Agreement accepted, all 3 variants approved), Google Ads linked to Merchant Center (150-105-0443 ↔ 5731366020), product data softened for Meta compliance (Sessions T+U), Klaviyo installed with 2 email flows live (Welcome Series + Abandoned Cart), announcement bar redesigned (WELCOME10 code, $49+ free shipping, 3rd-party testing, gold border) , 6 Klaviyo HTML email templates created (3 Welcome + 3 Abandoned Cart) with logo headers, 3 Shopify notification templates installed (Order Confirmation, Shipping, Delivered), comprehensive store audit completed (8.7/10, 30 findings), email popup enabled, keyboard accessibility added to bundle cards, unused CSS purged, $75→$49 threshold corrected across 14+ non-theme files, dynamic shipping threshold implemented (settings_schema.json + JS config), CollectionPage JSON-LD schema added, cart subscription banner created, all 6 Klaviyo email templates installed via browser automation — remaining: social media accounts, content agent delegation, create Performance Max campaign when product feed syncs, generate remaining marketing images, set Abandoned Cart Email #3 to Live in Klaviyo)
+**Current Status:** LAUNCH READY — Phase 0 Complete (all pages FTC-compliant, domain live, 6 legal policies published, chat widget branded, 3 blog posts polished, full audit 11/11 PASS, fabricated social proof removed from ALL files and VERIFIED LIVE, Hero Editorial deployed, GTM/GA4 installed, Meta Pixel live, delegation briefs created, email templates installed in Shopify Admin, product title/description/SEO optimized for AI discovery, homepage CSS fix deployed, test order verified end-to-end, theme pushed to live and verified, Shopify API token refreshed, Knowledge Base App installed with 11 FAQs, Agentic Storefronts confirmed active via Shopify Catalog, Google Search Console verified + sitemap submitted, Google Merchant Center connected (ID: 5731366020) + setup 6/6 complete (return policy configured) + Google & YouTube app installed on Shopify, Google Ads account created (150-105-0443) + conversion tracking configured in GTM, Facebook & Instagram sales channel installed on Shopify, standalone GA4 gtag.js removed (GA4 managed via GTM only) Facebook & Instagram fully configured (Optibio Pixel connected, CAPI Enhanced, Seller Agreement accepted, all 3 variants approved), Google Ads linked to Merchant Center (150-105-0443 ↔ 5731366020), product data softened for Meta compliance (Sessions T+U), Klaviyo installed with 2 email flows live (Welcome Series + Abandoned Cart), announcement bar redesigned (WELCOME10 code, $49+ free shipping, 3rd-party testing, gold border) , 6 Klaviyo HTML email templates created (3 Welcome + 3 Abandoned Cart) with logo headers, 3 Shopify notification templates installed (Order Confirmation, Shipping, Delivered), comprehensive store audit completed (8.7/10, 30 findings), email popup enabled, keyboard accessibility added to bundle cards, unused CSS purged, $75→$49 threshold corrected across 14+ non-theme files, dynamic shipping threshold implemented (settings_schema.json + JS config), CollectionPage JSON-LD schema added, cart subscription banner created, all 6 Klaviyo email templates installed via browser automation, 24 total Klaviyo templates uploaded to library via API (14 new in Session AA), 7 Klaviyo flows fully wired with branded HTML (20 email actions total), 5 new flows created (Replenishment Reminder, Browse Abandonment, Post-Purchase, Sunset, Winback) — remaining: set Welcome Series Email 1 & 3 from Draft→Live in Klaviyo UI, create Welcome Purchaser flow in Klaviyo, social media accounts, content agent delegation, create Performance Max campaign when product feed syncs, generate remaining marketing images)
 
 ---
 
@@ -176,7 +176,7 @@ Every clinical claim MUST be:
 - ~~**Homepage missing meta description:** No `<meta name="description">` rendered on homepage~~ **FIXED Feb 20, 2026** — Added theme-level fallback (153 chars): "Science-backed supplements with full transparency. Every batch third-party tested and traceable. Clinical-grade KSM-66® Ashwagandha from an FDA-audited facility." Also added matching `og:description` and `twitter:description` fallbacks.
 - ~~**"Powered by Shopify" visible in footer**~~ **FIXED Feb 20, 2026** — Set `show_powered_by: false` in footer-group.json.
 
-### Past Mistakes (Never Repeat) — All 33 Consolidated
+### Past Mistakes (Never Repeat) — All 34 Consolidated
 1. **Misattributed study data** — The original site assigned percentage figures to the WRONG clinical outcomes. Always cross-reference PubMed before using any stat.
 2. **Capital B in OptiBio** — Proliferated across files before being caught. Always search-and-replace after any bulk content generation.
 3. **CSS golden glow on product image** — The golden radiance is baked into the photography. Adding a CSS overlay doubles the effect and looks cheap.
@@ -210,6 +210,7 @@ Every clinical claim MUST be:
 31. **Old discount code persisted in announcement bar** — The announcement bar still showed "FIRSTDOSE for 20% off" after the discount was deprecated in favor of WELCOME10. Announcement bar messages are in `sections/header-group.json` block settings — always check this file when changing discount codes or promotions.
 32. **Fabricated social proof missed in email popup** — Session G cleaned fabricated metrics from 8 theme files but missed the email popup subheading in `config/settings_data.json` which still said "Join 2,400+ customers who chose clinical-grade quality." Always search settings_data.json AND section presets when cleaning fabricated copy — not just section Liquid files.
 33. **$75 threshold persisted in 14+ non-theme supporting files** — Session O updated 8 theme files from $75→$49 but missed `legal-pages/SHIPPING_POLICY.html`, `DELEGATION_INSTRUCTIONS.md`, 8 agent prompt files, and `HOW_TO_ADD_POLICIES.md`. When changing any pricing/threshold, always search the ENTIRE project directory (`grep -r "$75" .`) not just `optibio-live-theme/`. Supporting docs, agent prompts, and legal pages all reference shipping thresholds.
+34. **Klaviyo API cannot update flow messages or flow action status** — Flow messages return 405 (PATCH not allowed). Flow-referenced templates are read-only (404 on PATCH). Flow action status (draft→live) requires a `definition` field in newer API revisions that's too complex for simple status toggling. Templates uploaded to the Klaviyo library are separate from flow-embedded templates. To update flow email content or set actions to live, you MUST use the Klaviyo UI — the API only supports creating/reading templates and reading flow structure. Use `revision: 2025-04-15` for reads; the templates POST endpoint works with `revision: 2024-10-15`.
 
 ---
 
@@ -292,6 +293,7 @@ Every clinical claim MUST be:
 | Feb 25, 2026 | **Session U — Meta Rejection Fix #2** | Fully softened product description body, SEO title, SEO meta description, tags. Removed all study citations, researcher names, cortisol/stress/sleep claims. All 3 variants auto-approved by Meta immediately. | Meta reads ALL product data fields — title, description, SEO title, SEO meta, AND tags. Softening only the title (Session T) was insufficient. |
 | Feb 25, 2026 | **Session V — Email Marketing + Announcement Bar + Klaviyo** | Created 3 marketing docs (welcome emails, abandoned cart, exit-intent brief). Installed Klaviyo, built 2 flows (Welcome Series Srh8uu + Abandoned Cart RRVAf2), both set to Live. Redesigned announcement bar: 3 new messages (WELCOME10, $49+ shipping, 3rd-party testing) + gold top border. Theme pushed, git commit 1ba7716. | Old FIRSTDOSE discount code persisted in announcement bar. Klaviyo email templates still need HTML design. |
 | Feb 24, 2026 | **Session L — Lighthouse Fixes + GA4 E-Commerce + Performance** | **Accessibility:** Fixed 19 contrast ratio failures — darkened --optibio-green (#10B981→#059669), --optibio-red (#EF4444→#DC2626), --optibio-gold-dark (#B89A4F→#9A7D3B), --green-600 (#16a34a→#15803d), footer FDA (0.4→0.7 opacity). Fixed inline colors in product-comparison.liquid and product-who-for.liquid. Increased carousel dot touch targets (8→24px). **SEO:** Fixed non-crawlable COA link (a→button), added Judge.me link patcher (MutationObserver). **GA4:** Created optibio-ga4-ecommerce.js with view_item, add_to_cart, view_item_list dataLayer events. **Performance:** Removed render-blocking @import Google Fonts, added async font loading via media="print" onload trick, added preconnect/dns-prefetch hints. **Deploy:** Pushed 11 files to Shopify live theme + GitHub commit `2b873fa`. | CSS @import inside a stylesheet creates a 2-step render-blocking chain. Always use `<link>` in HTML head instead. Remaining LCP dominated by Shopify platform overhead + third-party scripts (not reducible via theme code). Duplicate GA4 loading (standalone + GTM) — remove standalone once GTM GA4 tag confirmed. |
+| Feb 27, 2026 | **Session AA — Klaviyo Template Upload via API + Full Flow Audit** | Uploaded 14 remaining email templates to Klaviyo library via API (Welcome 1-3, Replenish 1-3, Winback 1-3, Sunset 1-2, Welcome Purchaser 1-3). Audited all 7 flows — confirmed 20/20 email actions have branded HTML. Discovered all flow messages already populated from Session Z browser automation. Library templates are newer/larger (369–7,223 chars more content). Found 2 Welcome Series emails stuck in Draft. | Klaviyo API cannot update flow messages (405), flow-referenced templates (404 on PATCH), or flow action status (requires `definition` field). Must use Klaviyo UI for these operations. |
 
 ---
 
@@ -1134,5 +1136,60 @@ Every clinical claim MUST be:
 
 ---
 
-*Last updated: February 25, 2026 (Session Y — Comprehensive audit, accessibility fixes, email popup enabled, unused CSS purged, $75→$49 corrected across 14+ files)*
-*Next review: Paste Klaviyo templates into flow editor, generate remaining marketing images (4:5, 16:9, 1.91:1), ad captions, upload to PMax campaign, social media accounts, content agent delegation*
+### Session AA — Klaviyo Template Upload via API + Full Flow Audit (Feb 27, 2026)
+
+**What was done:**
+- Uploaded 14 remaining email templates to Klaviyo template library via API
+- Audited all 7 Klaviyo flows — confirmed all 20 email actions have branded HTML content
+- Verified all flow-embedded templates contain Optibio-branded content (5,138–15,091 chars each)
+- Compared local files vs flow templates — local versions are 369–7,223 chars larger (newer/more polished)
+- Discovered Welcome Series Email 1 & 3 are stuck in DRAFT status
+- Documented Klaviyo API limitations (Past Mistake #34)
+- Saved comprehensive Klaviyo mapping to persistent memory files
+
+**Templates Uploaded to Klaviyo Library (14 new):**
+
+| Template Name | Klaviyo ID | Source File |
+|---|---|---|
+| Welcome Email 1: Why We're Different | SZFJ5d | WELCOME_EMAIL_1.html |
+| Welcome Email 2: The Science of Stress | UN7BzG | WELCOME_EMAIL_2.html |
+| Welcome Email 3: Subscribe & Save Offer | VXwsty | WELCOME_EMAIL_3.html |
+| Replenish Reminder 1: Running Low | Ty5wks | REPLENISH_REMINDER_1.html |
+| Replenish Reminder 2: Don't Break the Streak | X8Vhmq | REPLENISH_REMINDER_2.html |
+| Replenish Reminder 3: Final Reminder + Subscribe | Si3r7c | REPLENISH_REMINDER_3.html |
+| Winback Email 1: We Miss You | VSTc8a | WINBACK_EMAIL_1.html |
+| Winback Email 2: What's New at Optibio | XFj5CD | WINBACK_EMAIL_2.html |
+| Winback Email 3: Final Offer | RF2nuz | WINBACK_EMAIL_3.html |
+| Sunset Email 1: Still Want to Hear From Us? | TtsfZ4 | SUNSET_EMAIL_1.html |
+| Sunset Email 2: Goodbye (For Now) | X4i322 | SUNSET_EMAIL_2.html |
+| Welcome Purchaser 1: Thank You for Your Order | SQrdnr | WELCOME_PURCHASER_1.html |
+| Welcome Purchaser 2: Getting the Most from KSM-66 | TZQ4gh | WELCOME_PURCHASER_2.html |
+| Welcome Purchaser 3: Your Results Timeline | VNfVLL | WELCOME_PURCHASER_3.html |
+
+**Klaviyo Full Template Library (24 total):**
+- 10 pre-existing (from Session Z browser automation): Abandoned Cart 1-3, Browse Abandon 1-2, Campaign Stress Science, Post-Purchase 1-4
+- 14 new (this session via API): Welcome 1-3, Replenish 1-3, Winback 1-3, Sunset 1-2, Welcome Purchaser 1-3
+
+**Klaviyo Full Flow Status (7 flows, 20 email actions):**
+
+| Flow | ID | Emails | All Templates? | All LIVE? |
+|------|----|--------|---------------|-----------|
+| Abandoned Checkout | RRVAf2 | 3 | YES | YES |
+| Welcome Series | Srh8uu | 3 | YES | NO (2 DRAFT) |
+| Replenishment Reminder | Ruxn5d | 3 | YES | YES |
+| Browse Abandonment | TMk3Gq | 2 | YES | YES |
+| Post-Purchase | US7CeS | 4 | YES | YES |
+| Sunset | VMCG6y | 2 | YES | YES |
+| Winback | XKj6hP | 3 | YES | YES |
+
+**Klaviyo API Key:** pk_f49080bb6837f600acc5751766bf996ca5
+
+**Manual Steps Remaining (Klaviyo UI required):**
+1. **Set Welcome Series Email 1 & 3 to LIVE** — Flows → Welcome Series (Srh8uu) → click Email 1 (action 100393511) → set to Live → click Email 3 (action 100394349) → set to Live
+2. **Create Welcome Purchaser flow** (optional) — Trigger: Placed Order (first time only) → 3 emails with 3-day/4-day delays using library templates SQrdnr, TZQ4gh, VNfVLL
+3. **Optionally swap flow templates to latest versions** — Each flow email can be updated to the matching library template for the most polished content
+
+---
+
+*Last updated: February 27, 2026 (Session AA — 14 Klaviyo templates uploaded via API, 7 flows audited, 24 total templates in library, 20/20 flow emails verified with branded HTML)*
+*Next review: Set Welcome Series drafts to Live, create Welcome Purchaser flow, generate remaining marketing images (4:5, 16:9, 1.91:1), ad captions, upload to PMax campaign, social media accounts, content agent delegation*

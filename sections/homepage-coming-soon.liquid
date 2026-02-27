@@ -4,12 +4,13 @@
   Includes inline email capture for product launch notifications
 {% endcomment %}
 
-<section class="optibio-coming-soon optibio-page-section">
+<section class="optibio-coming-soon optibio-page-section optibio-bg-mist optibio-reveal">
   <div class="optibio-page-section__inner">
     <div class="optibio-coming-soon__card">
       <div class="optibio-coming-soon__glow"></div>
 
       <span class="optibio-coming-soon__badge">{{ section.settings.badge_text }}</span>
+      <span class="optibio-overline">WHAT'S NEXT</span>
       <h2 class="optibio-coming-soon__heading">{{ section.settings.heading }}</h2>
       <p class="optibio-coming-soon__desc">{{ section.settings.description }}</p>
 
@@ -18,7 +19,7 @@
           {% for block in section.blocks %}
             {% if block.type == 'category' %}
               <div class="optibio-coming-soon__cat" {{ block.shopify_attributes }}>
-                <span class="optibio-coming-soon__cat-icon">{{ block.settings.icon }}</span>
+                <span class="optibio-coming-soon__cat-icon">{% render 'optibio-icons', icon: block.settings.icon, size: 16 %}</span>
                 <span class="optibio-coming-soon__cat-label">{{ block.settings.label }}</span>
               </div>
             {% endif %}
@@ -51,9 +52,9 @@
       {% endif %}
 
       <div class="optibio-coming-soon__trust">
-        <span>🔬 Same clinical-grade standards</span>
-        <span>📋 Third-party tested</span>
-        <span>🇺🇸 Made in the USA</span>
+        <span>{% render 'optibio-icons', icon: 'beaker', size: 14 %} Same clinical-grade standards</span>
+        <span>{% render 'optibio-icons', icon: 'clipboard', size: 14 %} Third-party tested</span>
+        <span>{% render 'optibio-icons', icon: 'flag-us', size: 14 %} Made in the USA</span>
       </div>
     </div>
   </div>
@@ -61,8 +62,7 @@
 
 <style>
   .optibio-coming-soon {
-    background: linear-gradient(180deg, #fff 0%, #F8FCFE 100%);
-    padding: 64px 0;
+    padding: var(--optibio-space-section) 0;
   }
   .optibio-coming-soon__card {
     max-width: 700px;
@@ -70,7 +70,8 @@
     background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(247,244,239,0.9));
     backdrop-filter: blur(12px);
     border: 1px solid rgba(201, 169, 97, 0.25);
-    border-radius: 24px;
+    border-radius: var(--optibio-radius-section);
+    box-shadow: var(--optibio-shadow-sm);
     padding: 48px 40px;
     text-align: center;
     position: relative;
@@ -102,7 +103,7 @@
   }
   .optibio-coming-soon__heading {
     font-family: 'Sora', sans-serif;
-    font-size: 32px;
+    font-size: clamp(24px, 3vw + 8px, 32px);
     font-weight: 700;
     color: #1A2F4D;
     margin: 0 0 12px;
@@ -216,7 +217,6 @@
   @media (max-width: 768px) {
     .optibio-coming-soon { padding: 40px 0; }
     .optibio-coming-soon__card { padding: 32px 24px; border-radius: 20px; }
-    .optibio-coming-soon__heading { font-size: 26px; }
     .optibio-coming-soon__input-wrap {
       flex-direction: column;
       border-radius: 12px;
@@ -292,7 +292,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "😴"
+          "default": "moon"
         },
         {
           "type": "text",
@@ -307,10 +307,10 @@
     {
       "name": "Coming Soon",
       "blocks": [
-        { "type": "category", "settings": { "icon": "😴", "label": "Sleep" } },
-        { "type": "category", "settings": { "icon": "🧠", "label": "Focus" } },
-        { "type": "category", "settings": { "icon": "⚡", "label": "Energy" } },
-        { "type": "category", "settings": { "icon": "🏃", "label": "Recovery" } }
+        { "type": "category", "settings": { "icon": "moon", "label": "Sleep" } },
+        { "type": "category", "settings": { "icon": "brain", "label": "Focus" } },
+        { "type": "category", "settings": { "icon": "lightning", "label": "Energy" } },
+        { "type": "category", "settings": { "icon": "runner", "label": "Recovery" } }
       ]
     }
   ]

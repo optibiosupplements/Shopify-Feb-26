@@ -9,7 +9,7 @@
 
 .optibio-page-section {
   width: 100%;
-  padding: 80px 64px;
+  padding: var(--optibio-space-section) 64px;
   display: flex;
   justify-content: center;
 }
@@ -22,7 +22,7 @@
 
 .optibio-page-section__heading {
   font-family: 'Sora', sans-serif;
-  font-size: 40px;
+  font-size: clamp(26px, 3vw + 12px, 40px);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -43,7 +43,7 @@
 
 .optibio-science-hero {
   background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
-  padding: 120px 64px 80px;
+  padding: clamp(80px, 10vw, 120px) 64px var(--optibio-space-section);
   text-align: center;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .optibio-science-hero .optibio-page-section__heading {
-  font-size: 52px;
+  font-size: clamp(32px, 4vw + 16px, 52px);
   max-width: 800px;
 }
 
@@ -137,7 +137,7 @@
 
 .optibio-ingredient__name {
   font-family: 'Sora', sans-serif;
-  font-size: 36px;
+  font-size: clamp(26px, 3vw + 10px, 36px);
   font-weight: 700;
   color: #1A2F4D;
   line-height: 1.2;
@@ -194,7 +194,7 @@
   border: 2px solid rgba(201, 169, 97, 0.3);
   border-radius: 16px;
   padding: 32px;
-  box-shadow: 0 8px 32px rgba(30, 58, 95, 0.08);
+  box-shadow: var(--optibio-shadow-lg);
 }
 
 .optibio-ingredient__facts-title {
@@ -282,7 +282,7 @@
 
 .optibio-studies__card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+  box-shadow: var(--optibio-shadow-md);
 }
 
 .optibio-studies__card-badge {
@@ -304,7 +304,7 @@
 
 .optibio-studies__card-finding {
   font-family: 'Sora', sans-serif;
-  font-size: 28px;
+  font-size: clamp(22px, 2.5vw + 8px, 28px);
   font-weight: 700;
   color: #1A2F4D;
   line-height: 1.2;
@@ -397,7 +397,7 @@
 
 .optibio-quality__card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+  box-shadow: var(--optibio-shadow-md);
 }
 
 .optibio-quality__card-icon {
@@ -640,14 +640,6 @@
     padding: 80px 20px 48px;
   }
 
-  .optibio-page-section__heading {
-    font-size: 30px;
-  }
-
-  .optibio-science-hero .optibio-page-section__heading {
-    font-size: 36px;
-  }
-
   .optibio-page-section__subheading {
     font-size: 16px;
     margin-bottom: 32px;
@@ -674,14 +666,6 @@
     flex-direction: column;
     align-items: center;
     gap: 12px;
-  }
-
-  .optibio-studies__card-finding {
-    font-size: 24px;
-  }
-
-  .optibio-ingredient__name {
-    font-size: 28px;
   }
 
   .optibio-page-cta__trust {

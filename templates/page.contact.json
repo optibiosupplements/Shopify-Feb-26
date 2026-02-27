@@ -8,35 +8,17 @@
  * ------------------------------------------------------------
  */{
   "sections": {
+    "contact_hero": {
+      "type": "contact-hero",
+      "settings": {
+        "overline": "GET IN TOUCH",
+        "heading": "We're Here to Help",
+        "description": "Have a question about our products, your order, or subscriptions? We typically respond within 24 hours."
+      }
+    },
     "main": {
       "type": "main-page",
       "blocks": {
-        "title": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h2>{{ closest.page.title }}</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "content": {
           "type": "text",
           "name": "t:names.content",
@@ -65,14 +47,13 @@
         }
       },
       "block_order": [
-        "title",
         "content"
       ],
       "settings": {
         "content_direction": "column",
         "gap": 32,
         "color_scheme": "",
-        "padding-block-start": 40,
+        "padding-block-start": 20,
         "padding-block-end": 0
       }
     },
@@ -145,6 +126,7 @@
     }
   },
   "order": [
+    "contact_hero",
     "main",
     "form"
   ]

@@ -3,8 +3,9 @@
   Two-column grid of sourcing cards + bottom CTA
 {% endcomment %}
 
-<section class="optibio-sourcing optibio-page-section">
+<section class="optibio-sourcing optibio-page-section optibio-bg-mist optibio-reveal">
   <div class="optibio-page-section__inner">
+    <span class="optibio-overline">SEED TO SHELF</span>
     <h2 class="optibio-page-section__heading">{{ section.settings.heading }}</h2>
     <p class="optibio-page-section__subheading">{{ section.settings.subheading }}</p>
 
@@ -12,7 +13,7 @@
       {% for block in section.blocks %}
         {% if block.type == 'sourcing_card' %}
           <div class="optibio-sourcing__card" {{ block.shopify_attributes }}>
-            <div class="optibio-sourcing__card-icon">{{ block.settings.icon }}</div>
+            <div class="optibio-sourcing__card-icon">{% render 'optibio-icons', icon: block.settings.icon, size: 24 %}</div>
             <h3 class="optibio-sourcing__card-title">{{ block.settings.title }}</h3>
             <p class="optibio-sourcing__card-desc">{{ block.settings.description }}</p>
             {% if block.settings.detail != blank %}
@@ -98,7 +99,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "🌱"
+          "default": "sprout"
         },
         {
           "type": "text",
@@ -125,10 +126,10 @@
     {
       "name": "Sourcing & CTA",
       "blocks": [
-        { "type": "sourcing_card", "settings": { "icon": "🌱", "title": "KSM-66® by Ixoreal Biomed", "description": "Our ashwagandha is sourced from Ixoreal Biomed, the creators of KSM-66® — the world's most clinically studied ashwagandha extract, with over 24 gold-standard clinical trials.", "detail": "Origin: Rajasthan, India — sustainably farmed" } },
-        { "type": "sourcing_card", "settings": { "icon": "🏭", "title": "FDA-Audited Manufacturing", "description": "Manufactured at an FDA-audited, cGMP-certified facility in the United States. Every step of production meets pharmaceutical-grade standards.", "detail": "USA-based facility" } },
-        { "type": "sourcing_card", "settings": { "icon": "🔬", "title": "Independent Lab Testing", "description": "Every batch is sent to independent, third-party laboratories for comprehensive testing — heavy metals, microbial, potency, and identity verification.", "detail": "Results available via Verify Your Batch" } },
-        { "type": "sourcing_card", "settings": { "icon": "📦", "title": "Seed to Shelf Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Purchase verification gives you access to your batch's full quality documentation.", "detail": "COA and lab results available per batch" } }
+        { "type": "sourcing_card", "settings": { "icon": "sprout", "title": "KSM-66® by Ixoreal Biomed", "description": "Our ashwagandha is sourced from Ixoreal Biomed, the creators of KSM-66® — the world's most clinically studied ashwagandha extract, with over 24 gold-standard clinical trials.", "detail": "Origin: Rajasthan, India — sustainably farmed" } },
+        { "type": "sourcing_card", "settings": { "icon": "factory", "title": "FDA-Audited Manufacturing", "description": "Manufactured at an FDA-audited, cGMP-certified facility in the United States. Every step of production meets pharmaceutical-grade standards.", "detail": "USA-based facility" } },
+        { "type": "sourcing_card", "settings": { "icon": "beaker", "title": "Independent Lab Testing", "description": "Every batch is sent to independent, third-party laboratories for comprehensive testing — heavy metals, microbial, potency, and identity verification.", "detail": "Results available via Verify Your Batch" } },
+        { "type": "sourcing_card", "settings": { "icon": "package", "title": "Seed to Shelf Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Purchase verification gives you access to your batch's full quality documentation.", "detail": "COA and lab results available per batch" } }
       ]
     }
   ]

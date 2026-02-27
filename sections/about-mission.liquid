@@ -3,15 +3,16 @@
   Side-by-side cards: red (problem) + green (solution)
 {% endcomment %}
 
-<section class="optibio-about-mission optibio-page-section">
+<section class="optibio-about-mission optibio-page-section optibio-reveal">
   <div class="optibio-page-section__inner">
+    <span class="optibio-overline">OUR MISSION</span>
     <h2 class="optibio-page-section__heading" style="text-align: center; margin-left: auto; margin-right: auto;">{{ section.settings.heading }}</h2>
     <p class="optibio-page-section__subheading" style="text-align: center; margin-left: auto; margin-right: auto;">{{ section.settings.subheading }}</p>
 
     <div class="optibio-about-mission__grid">
       {%- comment -%} The Problem {%- endcomment -%}
       <div class="optibio-about-mission__block optibio-about-mission__problem">
-        <div class="optibio-about-mission__block-icon">{{ section.settings.problem_icon }}</div>
+        <div class="optibio-about-mission__block-icon">{% render 'optibio-icons', icon: section.settings.problem_icon, size: 28 %}</div>
         <h3 class="optibio-about-mission__block-title">{{ section.settings.problem_title }}</h3>
         <p class="optibio-about-mission__block-text">{{ section.settings.problem_text }}</p>
         <ul class="optibio-about-mission__block-list">
@@ -25,7 +26,7 @@
 
       {%- comment -%} Our Solution {%- endcomment -%}
       <div class="optibio-about-mission__block optibio-about-mission__solution">
-        <div class="optibio-about-mission__block-icon">{{ section.settings.solution_icon }}</div>
+        <div class="optibio-about-mission__block-icon">{% render 'optibio-icons', icon: section.settings.solution_icon, size: 28 %}</div>
         <h3 class="optibio-about-mission__block-title">{{ section.settings.solution_title }}</h3>
         <p class="optibio-about-mission__block-text">{{ section.settings.solution_text }}</p>
         <ul class="optibio-about-mission__block-list">
@@ -61,7 +62,7 @@
       "type": "text",
       "id": "problem_icon",
       "label": "Problem Icon",
-      "default": "⚠️"
+      "default": "warning"
     },
     {
       "type": "text",
@@ -79,7 +80,7 @@
       "type": "text",
       "id": "solution_icon",
       "label": "Solution Icon",
-      "default": "✅"
+      "default": "check"
     },
     {
       "type": "text",

@@ -4,9 +4,10 @@
   Placed on product page to build awareness of subscription option
 {% endcomment %}
 
-<section class="optibio-subscription optibio-page-section">
+<section class="optibio-subscription optibio-page-section optibio-bg-mist">
   <div class="optibio-page-section__inner">
     <div class="optibio-subscription__header">
+      <span class="optibio-overline">SUBSCRIBE &amp; SAVE</span>
       <span class="optibio-subscription__badge">{{ section.settings.badge_text }}</span>
       <h2 class="optibio-subscription__heading">{{ section.settings.heading }}</h2>
       <p class="optibio-subscription__subheading">{{ section.settings.subheading }}</p>
@@ -16,7 +17,7 @@
       {% for block in section.blocks %}
         {% if block.type == 'benefit' %}
           <div class="optibio-subscription__card" {{ block.shopify_attributes }}>
-            <span class="optibio-subscription__card-icon">{{ block.settings.icon }}</span>
+            <span class="optibio-subscription__card-icon">{% render 'optibio-icons', icon: block.settings.icon, size: 28 %}</span>
             <h3 class="optibio-subscription__card-title">{{ block.settings.title }}</h3>
             <p class="optibio-subscription__card-desc">{{ block.settings.description }}</p>
           </div>
@@ -62,7 +63,7 @@
 <style>
   .optibio-subscription {
     background: radial-gradient(ellipse at center, #F8FCFE 0%, #EBF5FB 40%, #D6EAF8 100%);
-    padding: 80px 0;
+    padding: var(--optibio-space-section) 0;
   }
   .optibio-subscription__header {
     text-align: center;
@@ -84,7 +85,7 @@
   }
   .optibio-subscription__heading {
     font-family: 'Sora', sans-serif;
-    font-size: 36px;
+    font-size: clamp(26px, 3vw + 10px, 36px);
     font-weight: 700;
     color: #1A2F4D;
     margin: 0 0 12px;
@@ -111,11 +112,12 @@
     border-radius: 16px;
     padding: 24px 20px;
     text-align: center;
+    box-shadow: var(--optibio-shadow-sm);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .optibio-subscription__card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+    box-shadow: var(--optibio-shadow-md);
   }
   .optibio-subscription__card-icon {
     font-size: 28px;
@@ -266,7 +268,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "💰"
+          "default": "dollar"
         },
         {
           "type": "text",
@@ -287,10 +289,10 @@
     {
       "name": "Subscribe & Save",
       "blocks": [
-        { "type": "benefit", "settings": { "icon": "💰", "title": "Save 15%", "description": "On every order, automatically applied" } },
-        { "type": "benefit", "settings": { "icon": "🚚", "title": "Free Shipping", "description": "Every delivery, always free" } },
-        { "type": "benefit", "settings": { "icon": "🔄", "title": "Flexible Schedule", "description": "Change frequency or skip anytime" } },
-        { "type": "benefit", "settings": { "icon": "❌", "title": "Cancel Anytime", "description": "No contracts, no commitments" } }
+        { "type": "benefit", "settings": { "icon": "dollar", "title": "Save 15%", "description": "On every order, automatically applied" } },
+        { "type": "benefit", "settings": { "icon": "truck", "title": "Free Shipping", "description": "Every delivery, always free" } },
+        { "type": "benefit", "settings": { "icon": "refresh", "title": "Flexible Schedule", "description": "Change frequency or skip anytime" } },
+        { "type": "benefit", "settings": { "icon": "x-circle", "title": "Cancel Anytime", "description": "No contracts, no commitments" } }
       ]
     }
   ]

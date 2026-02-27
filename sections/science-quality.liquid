@@ -3,8 +3,9 @@
   4-column grid of testing categories + process flow
 {% endcomment %}
 
-<section class="optibio-quality optibio-page-section">
+<section class="optibio-quality optibio-page-section optibio-reveal">
   <div class="optibio-page-section__inner">
+    <span class="optibio-overline">QUALITY ASSURANCE</span>
     <h2 class="optibio-page-section__heading">{{ section.settings.heading }}</h2>
     <p class="optibio-page-section__subheading">{{ section.settings.subheading }}</p>
 
@@ -12,7 +13,7 @@
       {% for block in section.blocks %}
         {% if block.type == 'test_category' %}
           <div class="optibio-quality__card" {{ block.shopify_attributes }}>
-            <div class="optibio-quality__card-icon">{{ block.settings.icon }}</div>
+            <div class="optibio-quality__card-icon">{% render 'optibio-icons', icon: block.settings.icon, size: 24 %}</div>
             <h3 class="optibio-quality__card-title">{{ block.settings.title }}</h3>
             <p class="optibio-quality__card-desc">{{ block.settings.description }}</p>
           </div>
@@ -90,7 +91,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "🔬"
+          "default": "beaker"
         },
         {
           "type": "text",
@@ -111,10 +112,10 @@
     {
       "name": "Quality & Testing",
       "blocks": [
-        { "type": "test_category", "settings": { "icon": "⚗️", "title": "Heavy Metal Testing", "description": "Screened for lead, mercury, cadmium, and arsenic — well below FDA safety limits." } },
-        { "type": "test_category", "settings": { "icon": "🦠", "title": "Microbial Testing", "description": "Tested for yeast, mold, E. coli, salmonella, and staph to ensure product safety." } },
-        { "type": "test_category", "settings": { "icon": "💊", "title": "Potency Verification", "description": "Confirmed to contain the exact amount of active ingredient (5% withanolides) listed on the label." } },
-        { "type": "test_category", "settings": { "icon": "🔍", "title": "Identity Testing", "description": "Raw materials are verified to be genuine KSM-66® ashwagandha root — not a substitute or adulterated material." } }
+        { "type": "test_category", "settings": { "icon": "flask", "title": "Heavy Metal Testing", "description": "Screened for lead, mercury, cadmium, and arsenic — well below FDA safety limits." } },
+        { "type": "test_category", "settings": { "icon": "virus", "title": "Microbial Testing", "description": "Tested for yeast, mold, E. coli, salmonella, and staph to ensure product safety." } },
+        { "type": "test_category", "settings": { "icon": "pill", "title": "Potency Verification", "description": "Confirmed to contain the exact amount of active ingredient (5% withanolides) listed on the label." } },
+        { "type": "test_category", "settings": { "icon": "magnifier", "title": "Identity Testing", "description": "Raw materials are verified to be genuine KSM-66® ashwagandha root — not a substitute or adulterated material." } }
       ]
     }
   ]

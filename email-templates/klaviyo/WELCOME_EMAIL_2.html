@@ -28,7 +28,7 @@
         <!-- Header -->
         <tr>
           <td style="background-color:#1A2F4D;padding:32px 24px;text-align:center;">
-            <a href="https://optibiosupplements.com" target="_blank" style="display:inline-block;"><img src="https://optibiosupplements.com/cdn/shop/t/3/assets/optibio-logo.png?v=171147415825368436171771558834" alt="Optibio" width="120" style="display:block;margin:0 auto;max-width:120px;height:auto;" /></a>
+            <a href="https://optibiosupplements.com" target="_blank" style="display:inline-block;"><img src="https://optibiosupplements.com/cdn/shop/t/3/assets/optibio-logo-email.png" alt="Optibio" width="160" style="display:block;margin:0 auto;max-width:160px;height:auto;border-radius:12px;" /></a>
             <p style="color:rgba(255,255,255,0.7);font-size:12px;margin:8px 0 0;letter-spacing:0.1em;text-transform:uppercase;font-family:'Inter',Helvetica,Arial,sans-serif;">Science-Backed Supplements</p>
           </td>
         </tr>
@@ -138,12 +138,26 @@
               <tr><td style="border-top:2px solid #C9A961;font-size:1px;line-height:1px;">&nbsp;</td></tr>
             </table>
 
-            <!-- Why This Matters -->
+            <!-- Why This Matters — Personalized by Wellness Goal -->
             <h2 style="color:#1A2F4D;font-family:'Sora','Inter',Helvetica,Arial,sans-serif;font-size:18px;font-weight:700;margin:0 0 12px;">Why this matters for you</h2>
 
+            {% if person|lookup:'wellness_goal' == 'Better Sleep Quality' %}
+            <p style="margin:0 0 16px;">You mentioned that better sleep is your goal — and here's the connection: cortisol and sleep are directly linked. When cortisol stays elevated at night, it disrupts your natural sleep-wake cycle. A separate 2019 study (Langade et al., PubMed 31728244) found that KSM-66&reg; improved sleep efficiency from 75.6% to 83.5%.&dagger;</p>
+
+            <p style="margin:0 0 24px;">The cortisol study above helps explain <em>why</em> — when your stress response normalizes, your body can wind down the way it's supposed to. Same ingredient, same dose, two complementary benefits.&dagger;</p>
+            {% elif person|lookup:'wellness_goal' == 'Fitness Recovery' %}
+            <p style="margin:0 0 16px;">Here's why this matters for your fitness goals: cortisol is catabolic — when it stays elevated, it breaks down muscle tissue and slows recovery. A separate 2015 study (Choudhary et al., PubMed 26730141) found that KSM-66&reg; improved VO2max by 13% in athletic adults.&dagger;</p>
+
+            <p style="margin:0 0 24px;">Lower cortisol + better aerobic capacity = faster recovery and more effective training. Same ingredient, same dose, compounding benefits.&dagger;</p>
+            {% elif person|lookup:'wellness_goal' == 'Energy & Focus' %}
+            <p style="margin:0 0 16px;">Here's what this means for your energy: chronically elevated cortisol creates the "wired but tired" cycle — your body burns through energy reserves and leaves you drained by afternoon. When cortisol normalizes, your natural energy rhythms return.&dagger;</p>
+
+            <p style="margin:0 0 24px;">This isn't a stimulant. It's your body's own energy system working the way it should — sustained focus during the day, natural wind-down at night.&dagger;</p>
+            {% else %}
             <p style="margin:0 0 16px;">This isn't a proprietary blend hoping to do something. This is a specific extract, at a specific dose, studied in a rigorous clinical trial, producing a measurable outcome in a biomarker you can test in your own blood.</p>
 
             <p style="margin:0 0 24px;">That's the Optibio standard: if we can't point to published research at our exact dose, it doesn't go in the bottle.</p>
+            {% endif %}
 
             <!-- Discount Reminder -->
             <p style="margin:0 0 16px;">Your <strong>WELCOME10</strong> code is still active — 10% off your first order.</p>

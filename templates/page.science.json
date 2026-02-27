@@ -10,19 +10,19 @@
       "blocks": {
         "trust_1": {
           "type": "trust_item",
-          "settings": { "icon": "🔬", "text": "24+ Clinical Trials" }
+          "settings": { "icon": "beaker", "text": "24+ Clinical Trials" }
         },
         "trust_2": {
           "type": "trust_item",
-          "settings": { "icon": "📊", "text": "Peer-Reviewed Journals" }
+          "settings": { "icon": "chart", "text": "Peer-Reviewed Journals" }
         },
         "trust_3": {
           "type": "trust_item",
-          "settings": { "icon": "🛡️", "text": "Third-Party Verified" }
+          "settings": { "icon": "shield", "text": "Third-Party Verified" }
         },
         "trust_4": {
           "type": "trust_item",
-          "settings": { "icon": "🇺🇸", "text": "FDA-Audited Facility" }
+          "settings": { "icon": "flag-us", "text": "FDA-Audited Facility" }
         }
       },
       "block_order": ["trust_1", "trust_2", "trust_3", "trust_4"]
@@ -44,19 +44,19 @@
       "blocks": {
         "feature_1": {
           "type": "feature",
-          "settings": { "icon": "🌿", "title": "Full-Spectrum Root Extract", "description": "Uses only the root — not leaf or aerial parts — preserving the complete natural compound profile as studied in clinical trials." }
+          "settings": { "icon": "leaf", "title": "Full-Spectrum Root Extract", "description": "Uses only the root — not leaf or aerial parts — preserving the complete natural compound profile as studied in clinical trials." }
         },
         "feature_2": {
           "type": "feature",
-          "settings": { "icon": "🧪", "title": "Milk-Based Extraction", "description": "Patented 14-year process that maintains the natural ratio of active compounds without harsh chemical solvents." }
+          "settings": { "icon": "test-tube", "title": "Milk-Based Extraction", "description": "Patented 14-year process that maintains the natural ratio of active compounds without harsh chemical solvents." }
         },
         "feature_3": {
           "type": "feature",
-          "settings": { "icon": "📊", "title": "Clinical Dosage: 600mg", "description": "The exact dosage used in clinical trials. Not an underdosed 'sprinkle' like many competitors — 50% more capsules per bottle." }
+          "settings": { "icon": "chart", "title": "Clinical Dosage: 600mg", "description": "The exact dosage used in clinical trials. Not an underdosed 'sprinkle' like many competitors — 50% more capsules per bottle." }
         },
         "feature_4": {
           "type": "feature",
-          "settings": { "icon": "🏆", "title": "24+ Gold-Standard Studies", "description": "The most clinically studied ashwagandha extract in the world, with randomized, double-blind, placebo-controlled trials." }
+          "settings": { "icon": "trophy", "title": "24+ Gold-Standard Studies", "description": "The most clinically studied ashwagandha extract in the world, with randomized, double-blind, placebo-controlled trials." }
         }
       },
       "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"]
@@ -139,22 +139,32 @@
       "blocks": {
         "test_1": {
           "type": "test_category",
-          "settings": { "icon": "⚗️", "title": "Heavy Metal Testing", "description": "Screened for lead, mercury, cadmium, and arsenic — verified to be well below FDA safety limits." }
+          "settings": { "icon": "flask", "title": "Heavy Metal Testing", "description": "Screened for lead, mercury, cadmium, and arsenic — verified to be well below FDA safety limits." }
         },
         "test_2": {
           "type": "test_category",
-          "settings": { "icon": "🦠", "title": "Microbial Testing", "description": "Tested for yeast, mold, E. coli, salmonella, and staph to ensure product safety and purity." }
+          "settings": { "icon": "virus", "title": "Microbial Testing", "description": "Tested for yeast, mold, E. coli, salmonella, and staph to ensure product safety and purity." }
         },
         "test_3": {
           "type": "test_category",
-          "settings": { "icon": "💊", "title": "Potency Verification", "description": "Confirmed to contain exactly 600mg KSM-66® with 5% withanolides — what's on the label is in the bottle." }
+          "settings": { "icon": "pill", "title": "Potency Verification", "description": "Confirmed to contain exactly 600mg KSM-66® with 5% withanolides — what's on the label is in the bottle." }
         },
         "test_4": {
           "type": "test_category",
-          "settings": { "icon": "🔍", "title": "Identity Testing", "description": "Raw materials verified to be genuine KSM-66® ashwagandha root — not a substitute or adulterated material." }
+          "settings": { "icon": "magnifier", "title": "Identity Testing", "description": "Raw materials verified to be genuine KSM-66® ashwagandha root — not a substitute or adulterated material." }
         }
       },
       "block_order": ["test_1", "test_2", "test_3", "test_4"]
+    },
+    "articles": {
+      "type": "science-articles",
+      "settings": {
+        "heading": "Research & Education",
+        "subheading": "Dive deeper into the science behind ashwagandha, KSM-66®, and evidence-based wellness.",
+        "badge_text": "Research Article",
+        "blog": "news",
+        "articles_count": 3
+      }
     },
     "sourcing": {
       "type": "science-sourcing",
@@ -168,19 +178,19 @@
       "blocks": {
         "source_1": {
           "type": "sourcing_card",
-          "settings": { "icon": "🌱", "title": "KSM-66® by Ixoreal Biomed", "description": "Our ashwagandha is sourced from Ixoreal Biomed, the creators of KSM-66® — with over 24 gold-standard clinical trials and 14 years of R&D behind the extraction process.", "detail": "Origin: Rajasthan, India — sustainably farmed" }
+          "settings": { "icon": "sprout", "title": "KSM-66® by Ixoreal Biomed", "description": "Our ashwagandha is sourced from Ixoreal Biomed, the creators of KSM-66® — with over 24 gold-standard clinical trials and 14 years of R&D behind the extraction process.", "detail": "Origin: Rajasthan, India — sustainably farmed" }
         },
         "source_2": {
           "type": "sourcing_card",
-          "settings": { "icon": "🏭", "title": "FDA-Audited Manufacturing", "description": "Manufactured at an FDA-audited, cGMP-certified facility in the United States. Every step of production meets pharmaceutical-grade standards.", "detail": "USA-based facility" }
+          "settings": { "icon": "factory", "title": "FDA-Audited Manufacturing", "description": "Manufactured at an FDA-audited, cGMP-certified facility in the United States. Every step of production meets pharmaceutical-grade standards.", "detail": "USA-based facility" }
         },
         "source_3": {
           "type": "sourcing_card",
-          "settings": { "icon": "🔬", "title": "Independent Lab Testing", "description": "Every batch is sent to independent, third-party laboratories for comprehensive testing — heavy metals, microbial, potency, and identity verification.", "detail": "Results available via Verify Your Batch" }
+          "settings": { "icon": "beaker", "title": "Independent Lab Testing", "description": "Every batch is sent to independent, third-party laboratories for comprehensive testing — heavy metals, microbial, potency, and identity verification.", "detail": "Results available via Verify Your Batch" }
         },
         "source_4": {
           "type": "sourcing_card",
-          "settings": { "icon": "📦", "title": "Seed to Shelf Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Purchase verification gives you access to your batch's full quality documentation.", "detail": "COA and lab results available per batch" }
+          "settings": { "icon": "package", "title": "Seed to Shelf Traceability", "description": "Every bottle is traceable from raw material sourcing to your doorstep. Purchase verification gives you access to your batch's full quality documentation.", "detail": "COA and lab results available per batch" }
         }
       },
       "block_order": ["source_1", "source_2", "source_3", "source_4"]
@@ -191,6 +201,7 @@
     "ingredient",
     "studies",
     "quality",
+    "articles",
     "sourcing"
   ]
 }
